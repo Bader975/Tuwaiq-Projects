@@ -65,7 +65,7 @@ function UserProjects() {
           <Text fontSize="lg"> نبذه عنه</Text>
         </Box>
       </SimpleGrid>
-
+      
       <hr />
       {/* <Divider orientation="vertical" /> */}
       <Text fontSize="lg" textAlign={"right"}  m={20}>
