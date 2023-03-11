@@ -3,15 +3,19 @@
 #root{
   font-family: 'Oswald', sans-serif;
 font-family: 'Tajawal', sans-serif;
+background-color: #E1EAF5;
+
 }
 body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+
 }
 html {
   margin: 0 !important;
   padding: 0 !important;
+  
 }
 @keyframes fadeInAnimation {
   0% {
@@ -23,7 +27,11 @@ html {
 }
 
 
-
+.line{
+  border-left:1px solid #000;
+  /* height:300px; */
+  height:auto;
+}
 .spinner{
   margin-left: auto;
   margin-right: auto;
