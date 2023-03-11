@@ -3,6 +3,7 @@ import { useState } from 'react'
  import './App.css'
 
 import { Routes, Route } from 'react-router-dom';
+import UserProjects from './components/UserProjects';
 
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
     <div className="App">
 
       
-
+    <UserProjects/>
        
     </div>   
  )
