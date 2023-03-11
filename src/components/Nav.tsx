@@ -233,14 +233,7 @@ console.log(res.data);
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400">
 
-          <InputGroup>
-              <InputRightElement pointerEvents="none" >
-                <AiOutlineSearch />
-              </InputRightElement>
-              <Input bg={"white"} color='black' type="tel" placeholder="بحث..." mr={"10px"} 
-                onChange={Check}
-              />
-            </InputGroup>
+        
             
             {user === null?
              <RouteLink to={"/login"}> 
