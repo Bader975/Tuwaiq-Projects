@@ -14,9 +14,9 @@ function App() {
  
   return (
     <div >
-
- 
+      <nav>
       <Nav/>
+      </nav>
 <Routes>
         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
