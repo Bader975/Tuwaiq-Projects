@@ -73,9 +73,94 @@ function UserProjects() {
             {" "}
             مشاريعي
           </Text>
-      <SimpleGrid columns={3}  textAlign={"right"} justifyContent='right'>
+      <SimpleGrid textAlign={"right"} gap={20} mx="auto" my={10} m={5} columns={{ base: 1, md: 2, lg: 4 }}>
         
 
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+
+
+        {/* --------------------------------------------------- */}
+
+
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+        {/* -- ------------------------------------*/}
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+        {/* -- ------------------------------------*/}
         <Box mx={"auto"}>
           <Card maxW="sm">
             <CardBody>
