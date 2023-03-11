@@ -37,19 +37,9 @@ import { Search2Icon } from "@chakra-ui/icons";
 function UserProjects() {
   return (
     <div>
-      <SimpleGrid columns={3} textAlign={"right"}>
-        <Box mr={5}>
-          <Text fontSize="lg" mb={20}>
-            {" "}
-            معلومات التواصل
-          </Text>
-          <Text fontSize="lg" mb={20}>
-            {" "}
-            مهاراتي
-          </Text>
-          <Text fontSize="lg"> هواياتي</Text>
-        </Box>
-        <div className="line"></div>
+      <SimpleGrid columns={3} textAlign={"right"} mb={10} >
+        
+       
         <Box mr={50}>
          
             <Image
@@ -63,6 +53,18 @@ function UserProjects() {
             اسم المطور
           </Text>
           <Text fontSize="lg"> نبذه عنه</Text>
+        </Box>
+        <div className="line"></div>
+        <Box mr={5}>
+          <Text fontSize="lg" mb={20}>
+            {" "}
+            معلومات التواصل
+          </Text>
+          <Text fontSize="lg" mb={20}>
+            {" "}
+            مهاراتي
+          </Text>
+          <Text fontSize="lg"> هواياتي</Text>
         </Box>
       </SimpleGrid>
       
