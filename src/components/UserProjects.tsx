@@ -31,7 +31,6 @@ import {
 } from "@chakra-ui/react";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
-import { MDBIcon } from "mdb-react-ui-kit";
 import { SetStateAction, useEffect, useState } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 function UserProjects() {
