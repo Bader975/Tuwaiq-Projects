@@ -68,13 +68,12 @@ function UserProjects() {
 
       <hr />
       {/* <Divider orientation="vertical" /> */}
-      <SimpleGrid columns={1}  textAlign={"right"}>
-        <Box ml={300}>
-          <Text fontSize="lg" m={20}>
+      <Text fontSize="lg" textAlign={"right"}  m={20}>
             {" "}
             مشاريعي
           </Text>
-        </Box>
+      <SimpleGrid columns={3}  textAlign={"right"} justifyContent=''>
+        
 
         <Box mx={"auto"}>
           <Card maxW="sm">
@@ -103,6 +102,7 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
+      
     </div>
   );
 }
