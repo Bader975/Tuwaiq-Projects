@@ -1,5 +1,6 @@
+import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { Box, SimpleGrid } from '@chakra-ui/react'
-import { Text, Flex, Image, Link, chakra } from "@chakra-ui/react";
+import { Text, Flex, Image, Link, chakra,Divider } from "@chakra-ui/react";
 
 import React from 'react'
 
@@ -20,7 +21,8 @@ function AllProjectsPage() {
 <SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
 >
   
-  <Box >
+  <Box   textAlign={'right'}
+ >
   <Flex
      
       _dark={{ bg: "#3e3e3e" }}
@@ -70,6 +72,7 @@ function AllProjectsPage() {
 اسم المشروع            </Link>
            
           </Box>
+          <Divider borderColor={'blackAlpha.500'} mt={5} />
 
           <Box mt={4} >
             <Flex alignItems="center">
@@ -98,8 +101,21 @@ function AllProjectsPage() {
               >
                 21 SEP 2015
               </chakra.span>
+              <Link
+                  mx={2}
+                  mr={20}
+                  fontWeight="bold"
+                  color="gray.700"
+                  _dark={{ color: "gray.200" }}
+                >
+التفاصيل<ChevronLeftIcon/>                
+                
+</Link>
             </Flex>
+
+            
           </Box>
+          
         </Box>
       </Box>
     </Flex>
@@ -152,6 +168,8 @@ function AllProjectsPage() {
 اسم المشروع            </Link>
             
           </Box>
+     
+          <Divider borderColor={'blackAlpha.500'} mt={5} />
 
           <Box mt={4}>
             <Flex alignItems="center">
@@ -180,8 +198,20 @@ function AllProjectsPage() {
               >
                 21 SEP 2015
               </chakra.span>
+                     <Link
+                  mx={2}
+                  mr={20}
+                  fontWeight="bold"
+                  color="gray.700"
+                  _dark={{ color: "gray.200" }}
+                >
+التفاصيل<ChevronLeftIcon/>                
+                
+</Link>
             </Flex>
+         
           </Box>
+
         </Box>
       </Box>
     </Flex>
@@ -234,7 +264,9 @@ function AllProjectsPage() {
 اسم المشروع            </Link>
           
           </Box>
-<hr ></hr>
+           <Divider borderColor={'blackAlpha.500'} mt={5} />
+
+        
           <Box mt={4}>
             <Flex alignItems="center">
               <Flex alignItems="center">
@@ -262,6 +294,15 @@ function AllProjectsPage() {
               >
                 21 SEP 2015
               </chakra.span>
+              <Link
+                  mx={2}
+                  mr={20}
+                  fontWeight="bold"
+                  color="gray.700"
+                  _dark={{ color: "gray.200" }}
+                >
+التفاصيل<ChevronLeftIcon/>                
+</Link>
             </Flex>
           </Box>
         </Box>
