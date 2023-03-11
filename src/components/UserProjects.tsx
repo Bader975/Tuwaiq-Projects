@@ -37,7 +37,7 @@ import { Search2Icon } from "@chakra-ui/icons";
 function UserProjects() {
   return (
     <div>
-      <SimpleGrid columns={3} textAlign={"right"}>
+      <SimpleGrid columns={3} textAlign={"right"} >
         <Box mr={5}>
           <Text fontSize="lg" mb={20}>
             {" "}
@@ -67,13 +67,16 @@ function UserProjects() {
       </SimpleGrid>
       
       <hr />
-      {/* <Divider orientation="vertical" /> */}
-      <Text fontSize="lg" textAlign={"right"}  m={20}>
+      <Box ml={300} textAlign={"right"}>
+          <Text fontSize="lg" m={20}>
             {" "}
             مشاريعي
           </Text>
-      <SimpleGrid columns={3}  textAlign={"right"} justifyContent=''>
-        
+        </Box>
+      {/* <Divider orientation="vertical" /> */}
+
+      <SimpleGrid columns={3}  textAlign={"right"}>
+      
 
         <Box mx={"auto"}>
           <Card maxW="sm">
@@ -102,7 +105,6 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
-      
     </div>
   );
 }
