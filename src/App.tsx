@@ -20,6 +20,7 @@ function App() {
 <Routes>
         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
+        <Route path='/ProfilePage' element={<ProfilePage/>}/> 
 
         </Routes>
        <footer>

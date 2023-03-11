@@ -4,12 +4,12 @@ import React from "react";
 function ProfilePage() {
    
   return (
-    <Box w={"1250px"} m={"auto"}>
+    <Box w={"full"} mx={"auto"} p={5}>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {/*  صفحتي الشخصية */}
         <GridItem w="100%"    padding={2} border={'solid 1px gray'} borderRadius={'10px'} bg={'gray.100'}>
           <Box pb={'12px'}>
-            <Box float={'right'}>صفحتي الشخصية</Box>
+            <Box float={'right'} ml={5}>صفحتي الشخصية</Box>
             <Box>عرض صفحتي الشخصية</Box>
           </Box>
           <hr />
