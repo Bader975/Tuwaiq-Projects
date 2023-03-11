@@ -3,15 +3,16 @@ import { useState } from 'react'
  import './App.css'
 
 import { Routes, Route } from 'react-router-dom';
+import AllProjectsPage from './components/AllProjectsPage';
 
 
 function App() {
  
   return (
-    <div className="App">
+    <div >
 
       
-
+<AllProjectsPage/>
        
     </div>   
  )
