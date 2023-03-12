@@ -44,7 +44,7 @@ function Nav() {
 //   localStorage.removeItem("userName")
 // console.log(user);
 const removeUser =()=>{
-  localStorage.removeItem("userName")
+  localStorage.clear();
   navigate('/login')
 }
 
@@ -151,7 +151,7 @@ console.log(res.data);
     <chakra.header
       ref={ref}
       // shadow={y > height ? "sm" : undefined}
- boxShadow='dark-lg'      
+ boxShadow='dark-md'      
       // bg={bg}
       bg={'#122A47'}
       w="full"
