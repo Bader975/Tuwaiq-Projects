@@ -149,13 +149,11 @@ console.log(res.data);
     <>
     <chakra.header
       ref={ref}
-      // shadow={y > height ? "sm" : undefined}
-      // boxShadow={"1px 1px 5px 0px lightgrey"}
+      shadow={y > height ? "sm" : undefined}
+      boxShadow={"1px 1px 5px 0px lightgrey"}
       zIndex={1}
-      
       transition="box-shadow 0.2s"
-      // bg={bg}
-      bg={'transparent'}
+      bg={bg}
       borderTopColor="brand.400"
       w="full"
       pos={"relative"}
@@ -164,42 +162,33 @@ console.log(res.data);
       _dark={{ color: "gray.900" }}
       id="header"
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'transparent'}>
+      <chakra.div h="4.5rem" mx="auto" maxW="100%" >
         <Flex
           w="full"
           h="full"
           px="6"
         
           alignItems="center"
-          // justifyContent="space-between"
+          justifyContent="space-between"
         >
-           <Flex align="flex-start">
+          <Flex align="flex-start">
             <Link href="/">
               <HStack>
-                <Image src={tuwaiqSvg} w={10} h={"64px"} ></Image>
+                
               </HStack>
             </Link>
           </Flex>
-          <Flex></Flex>
-          {/* <Flex align="flex-start">
-            <Link href="/">
-              <HStack>
-                
-              </HStack>
-            </Link>
-          </Flex> */}
-          <Flex align="flex-start">
+          <Flex>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
                 
-            {/* <Image
+            <Image
              w="full"
              h={10}
           
           src={tuwaiqSvg}
           alt="logo"
-        />         */}
-            <RouteLink to={"/"}>
+        />            <RouteLink to={"/"}>
               <Button
                 bg={bg}
                 color="white"
