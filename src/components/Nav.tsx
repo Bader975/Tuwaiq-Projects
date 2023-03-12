@@ -169,26 +169,35 @@ console.log(res.data);
           px="6"
         
           alignItems="center"
-          justifyContent="space-between"
+          // justifyContent="space-between"
         >
-          <Flex align="flex-start">
+           <Flex align="flex-start">
+            <Link href="/">
+              <HStack>
+                <Image src={tuwaiqSvg} w={"64px"} h={"64px"} borderRadius={"50%"}></Image>
+              </HStack>
+            </Link>
+          </Flex>
+          <Flex></Flex>
+          {/* <Flex align="flex-start">
             <Link href="/">
               <HStack>
                 
               </HStack>
             </Link>
-          </Flex>
-          <Flex>
+          </Flex> */}
+          <Flex align="flex-start">
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
                 
-            <Image
+            {/* <Image
              w="full"
              h={10}
           
           src={tuwaiqSvg}
           alt="logo"
-        />            <RouteLink to={"/"}>
+        />         */}
+            <RouteLink to={"/"}>
               <Button
                 bg={bg}
                 color="white"
