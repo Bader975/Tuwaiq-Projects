@@ -24,7 +24,8 @@ import {
     InputGroup,
     InputLeftElement,
     Input,
-    InputRightElement
+    InputRightElement,
+    Spacer
 } from "@chakra-ui/react";
 import { useViewportScroll } from "framer-motion";
 import axios from 'axios';
@@ -150,25 +151,21 @@ console.log(res.data);
     <chakra.header
       ref={ref}
       // shadow={y > height ? "sm" : undefined}
-      // boxShadow={"1px 1px 5px 0px lightgrey"}
-      zIndex={1}
-      
-      transition="box-shadow 0.2s"
+ boxShadow='dark-lg'      
       // bg={bg}
-      bg={'transparent'}
-      borderTopColor="brand.400"
+      bg={'#122A47'}
       w="full"
       pos={"relative"}
       overflowY="hidden"
-      // color="gray.200"
-      _dark={{ color: "gray.900" }}
-      id="header"
+  
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'transparent'}>
+      <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'#122A47'}>
         <Flex
           w="full"
           h="full"
           px="6"
+        
+          
         
           alignItems="center"
           // justifyContent="space-between"
@@ -181,44 +178,30 @@ console.log(res.data);
             </Link>
           </Flex>
           <Flex></Flex>
-          {/* <Flex align="flex-start">
-            <Link href="/">
-              <HStack>
-                
-              </HStack>
-            </Link>
-          </Flex> */}
-          <Flex align="flex-start">
-            <HStack spacing="5" display={{ base: "none", md: "flex" }}>
+         
+          <Flex mr={10}>
+            <HStack spacing="1" display={{ base: "none", md: "flex" }}>
              
-                
-            {/* <Image
-             w="full"
-             h={10}
-          
-          src={tuwaiqSvg}
-          alt="logo"
-        />         */}
             <RouteLink to={"/"}>
               <Button
-                bg={bg}
+                bg={"none"}
                 color="white"
                 display="inline-flex"
                 alignItems="center"
                 fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
+                _hover={{ color: cl, backgroundColor:"#00ADBB"}}
                 _focus={{ boxShadow: "none" }}>
                   الصفحة الرئيسية
               </Button>
               </RouteLink>
               <RouteLink to="/companies">
                 <Button
-                  bg={bg}
+                  bg={"none"}
                   color="white"
                   display="inline-flex"
                   alignItems="center"
                   fontSize="md"
-                  _hover={{ color: cl, backgroundColor:"white"}}
+                  _hover={{ color: cl, backgroundColor:"#00ADBB"}}
                   _focus={{ boxShadow: "none" }}>
                     جميع المشاريع
                 </Button>
@@ -227,16 +210,21 @@ console.log(res.data);
            
             </HStack>
           </Flex>
-          <Flex justify="flex-end" align="center" color="gray.400">
+          <Spacer />
 
-        
+          <Flex justify="flex-end" align="center">
+
             
             {user === null?
              <RouteLink to={"/login"}> 
-              <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} color={cl}>
+              <Button 
+              _hover={{ color: "white", backgroundColor:"#00ADBB"}}
+              onClick={()=>dispatch({type:"user logIn"})} mr={"2"} color={"#00ADBB"} bg={"none"}
+              border="1px solid #00ADBB"              >
               تسجيل دخول
             </Button></RouteLink>  
-            :    <Button onClick={()=>removeUser()} mr={"2"} color={cl}>
+            :    <Button
+             onClick={()=>removeUser()} mr={"2"} color={cl}>
             تسجيل خروج
           </Button>}
       

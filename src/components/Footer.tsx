@@ -106,7 +106,6 @@ function Footer() {
             </Stack>
             <Stack bg="#041C39" align={"flex-start"}>
               <Text fontSize={25} bg="#041C39">
-                أعرف سهمك
               </Text>
               <Link href={"#"}>من نحن</Link>
               <Link href={"#"}>تواصل معنا</Link>
