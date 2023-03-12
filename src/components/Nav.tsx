@@ -168,12 +168,12 @@ console.log(res.data);
           
         
           alignItems="center"
-          // justifyContent="space-between"
+          justifyContent="space-between"
         >
-           <Flex align="flex-start">
+          <Flex align="flex-start">
             <Link href="/">
               <HStack>
-                <Image src={tuwaiqSvg} w={10} h={"64px"} ></Image>
+                
               </HStack>
             </Link>
           </Flex>
