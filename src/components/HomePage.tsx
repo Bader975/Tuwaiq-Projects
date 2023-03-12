@@ -1,5 +1,7 @@
 import { Box,Image } from '@chakra-ui/react'
 import React from 'react'
+import HomeImg from "../img/Homeimg.svg";
+
 
 function HomePage() {
   return (
@@ -9,13 +11,17 @@ function HomePage() {
 <Image
  w="full"
  fit="cover"
- src="https://www.canva.com/design/DAFc-i_OmWk/M3cUL_dVH5ypphEHw8VS_Q/view?utm_content=DAFc-i_OmWk&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink"
+ src={HomeImg}
  alt="HomeImg"/>
 
 
 </Box>
+    
+    
+    
     </div>
   )
 }
+
 
 export default HomePage

@@ -5,6 +5,7 @@
 font-family: 'Tajawal', sans-serif;
 background-color: #E1EAF5;
 
+
 }
 body {
   animation: fadeInAnimation ease 3s;
@@ -28,7 +29,8 @@ html {
 
 
 .line{
-  border-left:1px solid #000;
+  border-left:1px solid #AFB8C3;
+
   /* height:300px; */
   height:auto;
 }
