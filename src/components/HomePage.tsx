@@ -1,10 +1,34 @@
 import { ChevronLeftIcon } from '@chakra-ui/icons';
-import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Spacer,Text } from '@chakra-ui/react'
+import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Spacer,Stat,StatLabel,StatNumber,Text ,useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import HomeImg from "../img/Homeimg.svg";
-
+interface StatsCardProps {
+  title: string;
+  stat: string;
+}
+function StatsCard(props: StatsCardProps) {
+  const { title, stat } = props;
+  return (
+    <Stat
+      px={{ base: 4, md: 8 }}
+      py={'5'}
+      shadow={'xl'}
+      
+      border={'1px solid'}
+      borderColor={useColorModeValue('gray.400', 'gray.400')}
+      rounded={'lg'}>
+      <StatLabel fontWeight={'medium'} isTruncated>
+        {title}
+      </StatLabel>
+      <StatNumber fontSize={'5xl'} fontWeight={'medium'}>
+        {stat}
+      </StatNumber>
+    </Stat>
+  );
+}
 
 function HomePage() {
+
   return (
     <div>
 
@@ -13,13 +37,26 @@ function HomePage() {
   
 <Image
  w="full"
- pos="sticky"
- zIndex={"1"}
+ pos='relative'
+ zIndex={"0"}
  fit="cover"
  src={HomeImg}
  alt="HomeImg"/>
 
 </Box>
+<Box m={10} p={20} boxShadow={'dark-lg'}   rounded={"xl"} 
+ >
+<Box maxW="full"  mx={'auto'}  pt={5} px={{ base: 2, sm: 12, md: 17 }} textAlign="center" >
+      
+      <SimpleGrid    columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+        <StatsCard title={'عدد المشاريع'} stat={'+20'} />
+        <StatsCard title={'عدد المستخدمين'} stat={'+30'} />
+        <StatsCard title={'عدد المعسكرات'} stat={'+23'} />
+      </SimpleGrid>
+    </Box>
+  
+    </Box>
+
 
 <Flex ml={40} mb={5} mt={60} >
   <Box  >
