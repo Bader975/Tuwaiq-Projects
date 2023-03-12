@@ -12,7 +12,7 @@ function LoginPage() {
 
       <Grid templateColumns="repeat(2, 1fr)" p={5} >
         {/*  صفحتي الشخصية */}
-        <GridItem w="auto"  mx={'auto'}  p={20}  borderRadius={'10px'} bg={'#FCFCFC'} shadow={'xl'}>
+        <GridItem w="auto"  mx={'auto'}  p={20}  borderRadius={'10px'} bg={'#FCFCFC'} shadow={'2xl'}>
           <Box >
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={2} p={2}>
           تسجيل جديد

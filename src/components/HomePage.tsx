@@ -10,7 +10,7 @@ function HomePage() {
 
 <Box 
 >
-  
+ 
 <Image
  w="full"
  pos="sticky"
