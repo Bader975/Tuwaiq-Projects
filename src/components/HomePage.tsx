@@ -2,6 +2,8 @@ import { ChevronLeftIcon } from '@chakra-ui/icons';
 import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Spacer,Stat,StatLabel,StatNumber,Text ,useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import HomeImg from "../img/Homeimg.svg";
+import { Link as RouteLink } from 'react-router-dom'
+
 interface StatsCardProps {
   title: string;
   stat: string;
@@ -17,10 +19,10 @@ function StatsCard(props: StatsCardProps) {
       border={'1px solid'}
       borderColor={useColorModeValue('gray.400', 'gray.400')}
       rounded={'lg'}>
-      <StatLabel fontWeight={'medium'} isTruncated>
+      <StatLabel fontWeight={'bold'} fontSize={'3xl'} isTruncated>
         {title}
       </StatLabel>
-      <StatNumber fontSize={'5xl'} fontWeight={'medium'}>
+      <StatNumber  color={"#00ADBB"}fontSize={'4xl'} fontWeight={'bold'}>
         {stat}
       </StatNumber>
     </Stat>
@@ -38,7 +40,6 @@ function HomePage() {
 <Image
  w="full"
  pos='relative'
- zIndex={"0"}
  fit="cover"
  src={HomeImg}
  alt="HomeImg"/>
@@ -68,6 +69,7 @@ function HomePage() {
 >أحدث المشاريع</Text>  </Box>
   <Spacer />
   <Box >
+    <RouteLink to='/Allproject'>
   <Button _hover={{ color: "white", backgroundColor:"#00ADBB"}}
   color={"#00ADBB"} bg={"none"}
   border="1px solid #00ADBB"
@@ -75,7 +77,7 @@ function HomePage() {
 
 >
 مشاهدة الكل 
-</Button>  </Box>
+</Button> </RouteLink> </Box>
 </Flex>
 <Box>
 
