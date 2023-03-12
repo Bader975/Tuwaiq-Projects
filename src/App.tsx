@@ -11,6 +11,7 @@ import Nav from './components/Nav';
 import HomePage from './components/HomePage';
 import SignUpPage from './components/SignUpPage';
 import AdminSignUpPage from './components/AdminSignUpPage';
+import LoginPage from './components/LoginPage';
  
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path='/HomePage' element={<HomePage/>}/> 
         <Route path='/SignUpPage' element={<SignUpPage/>}/> 
         <Route path='/AdminSignUpPage' element={<AdminSignUpPage/>}/> 
+        <Route path='/LoginPage' element={<LoginPage/>}/> 
 
         </Routes>
        <footer>
