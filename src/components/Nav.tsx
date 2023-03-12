@@ -1,4 +1,6 @@
 import React, { useReducer } from 'react'
+import tuwaiqSvg from "../components/tuwaiq_logo.svg";
+
 import {
     Box,
     Button,
@@ -94,15 +96,11 @@ const removeUser =()=>{
       <Button 
         w="full"
       color="light"
-        leftIcon={<AiOutlineInbox />}>
-        جميع الشركات
+        >
+        جميع المشاريع
       </Button>
       </Link>
-      <Link href="#projects">
-      <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
-        الحاسبة
-      </Button>
-      </Link>
+     
     </VStack>
   );
    // Get Method 
@@ -164,11 +162,12 @@ console.log(res.data);
       _dark={{ color: "gray.900" }}
       id="header"
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="100%">
+      <chakra.div h="4.5rem" mx="auto" maxW="100%" >
         <Flex
           w="full"
           h="full"
           px="6"
+        
           alignItems="center"
           justifyContent="space-between"
         >
@@ -181,7 +180,15 @@ console.log(res.data);
           </Flex>
           <Flex>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-            <RouteLink to={"/"}>
+             
+                
+            <Image
+             w="full"
+             h={10}
+          
+          src={tuwaiqSvg}
+          alt="logo"
+        />            <RouteLink to={"/"}>
               <Button
                 bg={bg}
                 color="white"
@@ -202,33 +209,11 @@ console.log(res.data);
                   fontSize="md"
                   _hover={{ color: cl, backgroundColor:"white"}}
                   _focus={{ boxShadow: "none" }}>
-                    جميع الشركات
+                    جميع المشاريع
                 </Button>
+              
               </RouteLink>
-              <RouteLink to={"/calculator"}>
-              <Button
-                bg={bg}
-                color="white"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
-                _focus={{ boxShadow: "none" }}>
-                    الحاسبة
-              </Button>
-              </RouteLink>
-              <RouteLink to={"/Favourites"}>
-              <Button
-                bg={bg}
-                color="white"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
-                _focus={{ boxShadow: "none" }}>
-                    قائمة المتابعة
-              </Button>
-              </RouteLink>
+           
             </HStack>
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400">
