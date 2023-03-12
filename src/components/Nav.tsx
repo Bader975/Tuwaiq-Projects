@@ -149,8 +149,8 @@ console.log(res.data);
     <>
     <chakra.header
       ref={ref}
-      shadow={y > height ? "sm" : undefined}
-      boxShadow={"1px 1px 5px 0px lightgrey"}
+      // shadow={y > height ? "sm" : undefined}
+      // boxShadow={"1px 1px 5px 0px lightgrey"}
       zIndex={1}
       transition="box-shadow 0.2s"
       bg={bg}
@@ -174,7 +174,7 @@ console.log(res.data);
            <Flex align="flex-start">
             <Link href="/">
               <HStack>
-                <Image src={tuwaiqSvg} w={"64px"} h={"64px"} borderRadius={"50%"}></Image>
+                <Image src={tuwaiqSvg} w={10} h={"64px"} ></Image>
               </HStack>
             </Link>
           </Flex>
