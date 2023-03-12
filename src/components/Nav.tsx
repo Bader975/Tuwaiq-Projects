@@ -149,8 +149,8 @@ console.log(res.data);
     <>
     <chakra.header
       ref={ref}
-      shadow={y > height ? "sm" : undefined}
-      boxShadow={"1px 1px 5px 0px lightgrey"}
+      // shadow={y > height ? "sm" : undefined}
+      // boxShadow={"1px 1px 5px 0px lightgrey"}
       zIndex={1}
       
       transition="box-shadow 0.2s"
@@ -171,26 +171,35 @@ console.log(res.data);
           px="6"
         
           alignItems="center"
-          justifyContent="space-between"
+          // justifyContent="space-between"
         >
-          <Flex align="flex-start">
+           <Flex align="flex-start">
+            <Link href="/">
+              <HStack>
+                <Image src={tuwaiqSvg} w={10} h={"64px"} ></Image>
+              </HStack>
+            </Link>
+          </Flex>
+          <Flex></Flex>
+          {/* <Flex align="flex-start">
             <Link href="/">
               <HStack>
                 
               </HStack>
             </Link>
-          </Flex>
-          <Flex>
+          </Flex> */}
+          <Flex align="flex-start">
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
                 
-            <Image
+            {/* <Image
              w="full"
              h={10}
           
           src={tuwaiqSvg}
           alt="logo"
-        />            <RouteLink to={"/"}>
+        />         */}
+            <RouteLink to={"/"}>
               <Button
                 bg={bg}
                 color="white"
