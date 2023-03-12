@@ -8,6 +8,9 @@ import UserProjects from './components/UserProjects';
  import ProfilePage from './components/ProfilePage';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
+import HomePage from './components/HomePage';
+import SignUpPage from './components/SignUpPage';
+import AdminSignUpPage from './components/AdminSignUpPage';
  
 
 function App() {
@@ -21,6 +24,9 @@ function App() {
         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
         <Route path='/ProfilePage' element={<ProfilePage/>}/> 
+        <Route path='/HomePage' element={<HomePage/>}/> 
+        <Route path='/SignUpPage' element={<SignUpPage/>}/> 
+        <Route path='/AdminSignUpPage' element={<AdminSignUpPage/>}/> 
 
         </Routes>
        <footer>

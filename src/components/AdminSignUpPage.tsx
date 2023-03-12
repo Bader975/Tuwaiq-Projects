@@ -1,13 +1,13 @@
 import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Grid, GridItem, Stack, Avatar, Textarea, Input, Button,Box, ChakraProvider, Heading, Link } from '@chakra-ui/react'
-// import  from '@chakra-ui/react';
+import { Grid, GridItem, Heading, Input, Button,Box } from '@chakra-ui/react'
 
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function SignUpPage() {
+function AdminSignUpPage() {
   return (
     <div>
-      
+          
       <Grid templateColumns="repeat(1, 1fr)" p={5} >
         {/*  صفحتي الشخصية */}
         <GridItem w="auto"  mx={'auto'}  p={20}  borderRadius={'10px'} bg={'gray.100'} shadow={'xl'}>
@@ -25,6 +25,10 @@ function SignUpPage() {
             <Box float={'right'}> اسم المستخدم</Box>
             <Input bg={'#fff'} placeholder="ksa_2030" textAlign={'right'}></Input>
             </Box>
+            <Box mb={'10px'}>
+            <Box float={'right'}> الرقم الوظيفي</Box>
+            <Input bg={'#fff'} placeholder="#1236456" textAlign={'right'}></Input>
+            </Box>
 
             <Box mb={'10px'}>
             <Box float={'right'}>  كلمة السر </Box>
@@ -36,7 +40,7 @@ function SignUpPage() {
            </Box >
            
 <Link href='#' isExternal colorScheme={'bule'}>
-  دخول ك اداري <ExternalLinkIcon mx='2px' />
+  دخول ك مستخدم <ExternalLinkIcon mx='2px' />
 </Link>
           </Box>
 
@@ -73,8 +77,11 @@ function SignUpPage() {
 
 </Grid>
 
+
+
+
     </div>
   )
 }
 
-export default SignUpPage
+export default AdminSignUpPage
