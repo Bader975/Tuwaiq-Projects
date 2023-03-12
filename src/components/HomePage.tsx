@@ -1,5 +1,5 @@
 import { ChevronLeftIcon } from '@chakra-ui/icons';
-import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Text } from '@chakra-ui/react'
+import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Spacer,Text } from '@chakra-ui/react'
 import React from 'react'
 import HomeImg from "../img/Homeimg.svg";
 
@@ -20,22 +20,29 @@ function HomePage() {
  alt="HomeImg"/>
 
 </Box>
-<Box>
-<Box mr={50} mt={20} mb={20}>
-<Text fontSize='3xl'
+
+<Flex ml={40} mb={5} mt={60} >
+  <Box  >
+  <Text fontSize='2xl'
+  fontWeight='bold'
       textAlign={'right'} 
+      mr={40} 
 
->أحدث المشاريع</Text>
-<Button colorScheme='teal ' variant='outline'
+>أحدث المشاريع</Text>  </Box>
+  <Spacer />
+  <Box >
+  <Button _hover={{ color: "white", backgroundColor:"#00ADBB"}}
+  color={"#00ADBB"} bg={"none"}
+  border="1px solid #00ADBB"
 
-      float={'left'}
-      ml={20}
-    
-      >
-    مشاهدة الكل 
-  </Button>
 
-</Box>
+>
+مشاهدة الكل 
+</Button>  </Box>
+</Flex>
+<Box>
+
+
 
 
 <SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
