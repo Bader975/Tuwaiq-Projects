@@ -152,8 +152,10 @@ console.log(res.data);
       shadow={y > height ? "sm" : undefined}
       boxShadow={"1px 1px 5px 0px lightgrey"}
       zIndex={1}
+      
       transition="box-shadow 0.2s"
-      bg={bg}
+      // bg={bg}
+      bg={'transparent'}
       borderTopColor="brand.400"
       w="full"
       pos={"relative"}
@@ -162,7 +164,7 @@ console.log(res.data);
       _dark={{ color: "gray.900" }}
       id="header"
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="100%" >
+      <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'transparent'}>
         <Flex
           w="full"
           h="full"
