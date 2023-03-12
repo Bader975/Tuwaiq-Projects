@@ -177,12 +177,18 @@ console.log(res.data);
               </HStack>
             </Link>
           </Flex>
-          <Flex></Flex>
-         
-          <Flex mr={10}>
-            <HStack spacing="1" display={{ base: "none", md: "flex" }}>
+     
+          <Flex>
+            <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
-            <RouteLink to={"/"}>
+                
+            <Image
+             w="full"
+             h={10}
+          
+          src={tuwaiqSvg}
+          alt="logo"
+        />            <RouteLink to={"/"}>
               <Button
                 bg={"none"}
                 color="white"
