@@ -1,6 +1,10 @@
 import React, { useReducer } from 'react'
+import tuwaiqSvg from "../components/tuwaiq_logo.svg";
+import { HiOutlineMoon } from 'react-icons/Hi';
+
 import {
     Box,
+
     Button,
     CloseButton,
     Flex,
@@ -22,7 +26,8 @@ import {
     InputGroup,
     InputLeftElement,
     Input,
-    InputRightElement
+    InputRightElement,
+    Spacer
 } from "@chakra-ui/react";
 import { useViewportScroll } from "framer-motion";
 import axios from 'axios';
@@ -41,7 +46,7 @@ function Nav() {
 //   localStorage.removeItem("userName")
 // console.log(user);
 const removeUser =()=>{
-  localStorage.removeItem("userName")
+  localStorage.clear();
   navigate('/login')
 }
 
@@ -94,15 +99,11 @@ const removeUser =()=>{
       <Button 
         w="full"
       color="light"
-        leftIcon={<AiOutlineInbox />}>
-        جميع الشركات
+        >
+        جميع المشاريع
       </Button>
       </Link>
-      <Link href="#projects">
-      <Button w="full" variant="ghost" leftIcon={<BsFillCameraVideoFill />}>
-        الحاسبة
-      </Button>
-      </Link>
+     
     </VStack>
   );
    // Get Method 
@@ -151,24 +152,23 @@ console.log(res.data);
     <>
     <chakra.header
       ref={ref}
-      shadow={y > height ? "sm" : undefined}
-      boxShadow={"1px 1px 5px 0px lightgrey"}
-      zIndex={1}
-      transition="box-shadow 0.2s"
-      bg={bg}
-      borderTopColor="brand.400"
+      // shadow={y > height ? "sm" : undefined}
+ boxShadow='dark-md'      
+      // bg={bg}
+      bg={'#122A47'}
       w="full"
       pos={"relative"}
       overflowY="hidden"
-      // color="gray.200"
-      _dark={{ color: "gray.900" }}
-      id="header"
+  
     >
-      <chakra.div h="4.5rem" mx="auto" maxW="100%">
+      <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'#122A47'}>
         <Flex
           w="full"
           h="full"
           px="6"
+        
+          
+        
           alignItems="center"
           justifyContent="space-between"
         >
@@ -179,68 +179,65 @@ console.log(res.data);
               </HStack>
             </Link>
           </Flex>
+     
           <Flex>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-            <RouteLink to={"/"}>
+             
+                
+            <Image
+             w="full"
+             h={10}
+          
+          src={tuwaiqSvg}
+          alt="logo"
+          
+        />   
+                 <RouteLink to={"/"}>
               <Button
-                bg={bg}
+                bg={"none"}
                 color="white"
                 display="inline-flex"
                 alignItems="center"
                 fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
-                _focus={{ boxShadow: "none" }}>
+                _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+                >
                   الصفحة الرئيسية
               </Button>
               </RouteLink>
-              <RouteLink to="/companies">
+              <RouteLink to="/Allproject">
                 <Button
-                  bg={bg}
+                  bg={"none"}
                   color="white"
                   display="inline-flex"
                   alignItems="center"
                   fontSize="md"
-                  _hover={{ color: cl, backgroundColor:"white"}}
-                  _focus={{ boxShadow: "none" }}>
-                    جميع الشركات
+                  _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+                  >
+                    جميع المشاريع
                 </Button>
+              
               </RouteLink>
-              <RouteLink to={"/calculator"}>
-              <Button
-                bg={bg}
-                color="white"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
-                _focus={{ boxShadow: "none" }}>
-                    الحاسبة
-              </Button>
-              </RouteLink>
-              <RouteLink to={"/Favourites"}>
-              <Button
-                bg={bg}
-                color="white"
-                display="inline-flex"
-                alignItems="center"
-                fontSize="md"
-                _hover={{ color: cl, backgroundColor:"white"}}
-                _focus={{ boxShadow: "none" }}>
-                    قائمة المتابعة
-              </Button>
-              </RouteLink>
+           
             </HStack>
           </Flex>
-          <Flex justify="flex-end" align="center" color="gray.400">
+          <Spacer />
 
-        
+          <Flex justify="flex-end" align="center" >
+
+          <HiOutlineMoon color='#fff' size={20}  />
+
             
             {user === null?
-             <RouteLink to={"/login"}> 
-              <Button onClick={()=>dispatch({type:"user logIn"})} mr={"2"} color={cl}>
+             <RouteLink to={"/LoginPage"}> 
+              <Button 
+              _hover={{ color: "white", backgroundColor:"#00ADBB"}}
+              onClick={()=>dispatch({type:"user logIn"})} color={"#00ADBB"} bg={"none"}
+              border="1px solid #00ADBB" 
+              mr={10} >
               تسجيل دخول
             </Button></RouteLink>  
-            :    <Button onClick={()=>removeUser()} mr={"2"} color={cl}>
+            :    <Button 
+             onClick={()=>removeUser()} mr={"2"} color={cl}>
             تسجيل خروج
           </Button>}
       

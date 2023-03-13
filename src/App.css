@@ -3,7 +3,8 @@
 #root{
   font-family: 'Oswald', sans-serif;
 font-family: 'Tajawal', sans-serif;
-background-color: #E1EAF5;
+background-color: #F9F9F9;
+
 
 }
 body {
@@ -28,10 +29,12 @@ html {
 
 
 .line{
-  border-left:1px solid #000;
+  border-left:1px solid #AFB8C3;
+
   /* height:300px; */
   height:auto;
 }
+
 .spinner{
   margin-left: auto;
   margin-right: auto;
