@@ -194,7 +194,19 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
-      
+
+
+
+
+
+
+
+
+
+
+       <footer>
+        <Footer/>
+       </footer>
     </div>
 
   );
