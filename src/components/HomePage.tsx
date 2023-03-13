@@ -57,12 +57,11 @@ function HomePage() {
       <Box>
       <Box pos={"absolute"} zIndex={"1"} color={"white"} width={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
-            <Heading fontFamily={"Cairo"}>مرحباً بك في موقع</Heading>
-            <Heading color={"gray.300"} fontFamily={"Cairo"}>أعرف سهمك</Heading>
+            <Heading  mt={60}fontFamily={"Cairo"}>  مشاريع طلاب اكاديمية طويق  </Heading>
           </Box>
           <br></br>
           <Box>
-            <Text fontSize={"x-large"}>نساعدك على معرفة شرعية سهمك</Text>
+            <Text fontSize={"x-large"}>   </Text>
           </Box>
         </Box>
         <Image
