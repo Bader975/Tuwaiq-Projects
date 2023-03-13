@@ -1,18 +1,111 @@
-import { ChevronLeftIcon } from '@chakra-ui/icons';
-import { Box, SimpleGrid } from '@chakra-ui/react'
+import { ChevronLeftIcon, Search2Icon } from '@chakra-ui/icons';
+import { Box, GridItem, Input, InputGroup, InputLeftElement, SimpleGrid } from '@chakra-ui/react'
 import { Text, Flex, Image, Link, chakra,Divider } from "@chakra-ui/react";
+import axios from 'axios';
 
-import React from 'react'
+import React, { useState } from 'react'
 import Footer from './Footer';
 import Nav from './Nav';
 
 function AllProjectsPage() {
+  const [data, setData] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    axios.get("https://63e225d4109336b6cb00a67d.mockapi.io/companiesDB")
+      .then((res) => {
+        setData(res.data);
+        console.log(data);
+      });
+  }, []);
+
+  
+  const [filteredList, setFilteredList] = useState(data);
+
+  const [title, settitle] = useState("");
+  const [companyName, setCompanyName] = React.useState("");
+
+  const filter = (filteredData: any[]) => {
+    if (!companyName) {
+      return filteredData;
+    }
+
+    const filtereddata = filteredData.filter(
+      (data: { companyName: any }) =>
+        data.companyName
+          .split(" ")
+          .toString()
+          .toLowerCase()
+          .indexOf(companyName) !== -1
+    );
+    return filtereddata;
+  };
+
+  const handleBrandChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    setCompanyName(e.target.value);
+  };
+
+  React.useEffect(() => {
+    let filteredData = filter(data);
+    setFilteredList(filteredData);
+  });
   return (
     <div >
 
 <nav>
       <Nav/>
       </nav>
+
+      <Box w={"25%"} m={"auto"} mt={5}>
+        <InputGroup
+          display={{
+            lg: "block",
+          }}
+          ml="auto"
+        >
+          <InputLeftElement pointerEvents="none">
+            <Search2Icon />
+          </InputLeftElement>
+          <Input
+            variant="outline"
+            w={"full"}
+            shadow={"xl"}
+            placeholder="أبحث عن مشروع او فكرة مشروع"
+            value={companyName}
+            onChange={handleBrandChange}
+          />
+        </InputGroup>
+      </Box>
+
+
+{/* <Box> */} 
+{/* MAP All Projecs */}
+        {/*Start of Grid body */}
+        {/* <SimpleGrid
+          borderColor={"blackAlpha.200"}
+          borderRadius={"2xl"}
+          mx="auto"
+          columns={{ base: 1, md: 2, lg: 4 }}>
+
+
+          {filteredList.map((data, index) => (
+            <div className="bg-image hover-zoom">
+             
+                <GridItem key={data.id}>
+               
+                </GridItem>
+            
+            </div>
+          ))}
+        </SimpleGrid>
+      </Box> */}
+
+        {/*End of Grid body */}
+
+
+
+
 
 <Box mr={150} mt={20}>
 <Text fontSize='3xl'
@@ -315,8 +408,6 @@ function AllProjectsPage() {
   </Box>
   
 </SimpleGrid>
-
-
 
 
 
