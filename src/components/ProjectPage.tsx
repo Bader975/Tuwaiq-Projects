@@ -66,11 +66,11 @@ function ProjectPage() {
              
             />
           
-          <Text fontSize="lg" mb={40}>
+          <Text fontSize="lg" mb={20}>
             {" "}
             رابط المشروع 
           </Text>
-          <Text fontSize="lg">  اسم المعسكر</Text>
+          <Text fontSize="lg" mb={10}>  اسم المعسكر</Text>
         </Box>
         <div className="line"></div>
         <Box mr={5}>
