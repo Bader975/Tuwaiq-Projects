@@ -19,9 +19,7 @@ function App() {
  
   return (
     <div >
-      <nav>
-      <Nav/>
-      </nav>
+    
 <Routes>
         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
@@ -33,9 +31,7 @@ function App() {
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
 
         </Routes>
-       <footer>
-        <Footer/>
-       </footer>
+  
     </div>   
  )
  }
