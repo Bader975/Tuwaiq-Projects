@@ -20,8 +20,16 @@ function App() {
   return (
     <div >
     
+       <nav>
+      <Nav/>
+      </nav>
+      {/* <Addbootcamp/> */}
+      {/* <CompanyProjects/> */}
+      {/* <MyProjects/> */}
+{/* <Routes>
+=======
 <Routes>
-        <Route path='/userproject' element={<UserProjects/>}/> 
+         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
         <Route path='/Profile' element={<ProfilePage/>}/> 
         <Route path='/' element={<HomePage/>}/> 
@@ -30,9 +38,12 @@ function App() {
         <Route path='/LoginPage' element={<LoginPage/>}/> 
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
 
-        </Routes>
-  
-    </div>   
+         </Routes> */}
+       <footer>
+        <Footer/>
+       </footer>
+   
+     </div>   
  )
  }
 
