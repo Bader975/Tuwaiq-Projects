@@ -34,6 +34,7 @@ function StatsCard(props: StatsCardProps) {
       py={"5"}
       shadow={"xl"}
       border={"1px solid"}
+      color={'#000'}
       borderColor={useColorModeValue("gray.400", "gray.400")}
       rounded={"lg"}
     >
@@ -57,22 +58,13 @@ function HomePage() {
       <Box>
       <Box pos={"absolute"} zIndex={"1"} color={"white"} width={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
-            <Heading  mt={60}fontFamily={"Cairo"}>  مشاريع طلاب اكاديمية طويق  </Heading>
+            <Heading mb={330} mt={60}fontFamily={"Cairo"}>  مشاريع طلاب اكاديمية طويق  </Heading>
+            
           </Box>
           <br></br>
-          <Box>
+          <Box >
             <Text fontSize={"x-large"}>   </Text>
-          </Box>
-        </Box>
-        <Image
-          w="full"
-          pos="relative"
-          fit="cover"
-          src={HomeImg}
-          alt="HomeImg"
-        />
-      </Box>
-      <Box m={10} p={20} boxShadow={"dark-lg"} rounded={"xl"}>
+            <Box bg={"#fff"}mt={10} m={10} p={20} zIndex={5}  boxShadow='2xl' rounded={"xl"}>
         <Box
           maxW="full"
           mx={"auto"}
@@ -87,8 +79,20 @@ function HomePage() {
           </SimpleGrid>
         </Box>
       </Box>
-
-      <Flex ml={40} mb={5} mt={60}>
+          </Box>
+        </Box>
+        <Image
+          w="full"
+          fit="cover"
+          src={HomeImg}
+          alt="HomeImg"
+        />
+      </Box>
+      <br>
+      </br>
+<br>
+      </br>
+      <Flex ml={40} mb={5} mt={80}>
         <Box>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
             أحدث المشاريع
