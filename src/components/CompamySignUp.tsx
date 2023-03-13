@@ -6,9 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import tuwaiqSvg from "../img/logIn_img.png";
 import axios from 'axios';
 import { FaUserAlt } from 'react-icons/fa';
-import { MdOutlineWork } from 'react-icons/md';
 
-function AdminSignUpPage() {
+function CompamySignUp() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -62,7 +61,7 @@ function AdminSignUpPage() {
       
 
       <Grid mt={20}>
-    
+   
         {/*  صفحتي الشخصية */}
         <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
@@ -75,13 +74,12 @@ function AdminSignUpPage() {
          mr={16}
 
        />
-
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
          >
-تسجيل جديد كمسؤول  </Heading>
+تسجيل جديد كشركة  </Heading>
 
             <Box mb={'10px'} >
-            <Box float={'right'} fontWeight={"bold"}> البريد الإلكتروني  </Box>
+            <Box float={'right'} fontWeight={"bold"}>  البريد الإلكتروني  </Box>
             <InputGroup>
     <InputRightAddon
       pointerEvents='none'
@@ -123,14 +121,15 @@ function AdminSignUpPage() {
   </InputGroup>
            
             </Box>
-            <br></br>
+            <br>
+            </br>
             <Box mb={'10px'} >
-            <Box float={'right'} fontWeight={"bold"}>  الرقم الوظيفي  </Box>
+            <Box float={'right'} fontWeight={"bold"}>  اسم الشركة  </Box>
             <InputGroup>
     <InputRightAddon
       pointerEvents='none'
       
-      children={<MdOutlineWork color='#00ADBB' />}
+      children={<FaUserAlt color='#00ADBB' />}
     />
     
     <Input type='tel' 
@@ -219,4 +218,4 @@ function AdminSignUpPage() {
   )
 }
 
-  export default AdminSignUpPage
+  export default CompamySignUp

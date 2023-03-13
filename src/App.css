@@ -3,7 +3,7 @@
 #root{
   font-family: 'Oswald', sans-serif;
 font-family: 'Tajawal', sans-serif;
-background-color: #F9F9F9;
+/* background-color: #F9F9F9; */
 
 
 }
@@ -11,6 +11,8 @@ body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+  background-color: #F9F9F9;
+
 
 }
 html {

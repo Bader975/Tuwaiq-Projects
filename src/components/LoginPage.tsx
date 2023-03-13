@@ -1,22 +1,26 @@
 
 import React from 'react'
-import { ExternalLinkIcon } from '@chakra-ui/icons'
-import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, useToast } from '@chakra-ui/react'
+import { EmailIcon, ExternalLinkIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
+import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, Text,useToast, InputGroup, InputLeftElement, InputRightElement, Checkbox, InputRightAddon } from '@chakra-ui/react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import tuwaiqSvg from "../img/logIn_img.png";
+import axios from 'axios';
 
 function LoginPage() {
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [data, setData] = React.useState<any>([]);
+
 
   const toast = useToast();
   const navigate = useNavigate();
 
 
-
+  // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
-      
       const request = await fetch("http://localhost:3008/user/login", {
         method: "POST",
         headers: {
@@ -40,9 +44,8 @@ function LoginPage() {
         duration: 3000,
         position: "top",
       });
-      localStorage.setItem("authorization", data.token);
+      localStorage.setItem("token", data.token);
       navigate("/");
-  
     } catch (error) {
       toast({
         title: "Server Error !",
@@ -57,47 +60,99 @@ function LoginPage() {
     <div>
       
 
-      <Grid templateColumns="repeat(2, 1fr)" p={5} >
+      <Grid mt={20}>
+     
         {/*  صفحتي الشخصية */}
-        <GridItem w="auto"  mx={'auto'}  p={20}  borderRadius={'10px'} bg={'#FCFCFC'} shadow={'2xl'}>
+        <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
-          <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={2} p={2}>
+          <Image
+         
+          w={300}
+          src={tuwaiqSvg}
+          alt="logo"
+          mb={5}
+        />
+          <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
+         >
           تسجيل دخول
   </Heading>
 
             <Box mb={'10px'} >
-            <Box float={'right'}> البريد الإلكتروني  </Box>
-            <Input bg={'#fff'} placeholder=" email@tuwig.com " textAlign={'right'}  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}></Input>
+            <Box float={'right'} fontWeight={"bold"}> البريد الإلكتروني  </Box>
+            <InputGroup>
+    <InputRightAddon
+      pointerEvents='none'
+      
+      children={<EmailIcon color='#00ADBB' />}
+    />
+    
+    <Input type='tel' 
+    bg={'#fff'}
+    textAlign={'right'}  onChange={(e) => {
+    
+           setEmail(e.target.value);
+         }}
+    
+    />
+  </InputGroup>
+           
             </Box>
-
+            
+            <br>
+            </br>
           
             <Box mb={'10px'}>
-            <Box float={'right'}>  كلمة السر </Box>
-            <Input bg={'#fff'} placeholder='يجب ان تكون اكثر من 8 احرف ' textAlign={'right'}  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}></Input>
+            <Box float={'right'} fontWeight={"bold"}>  كلمة المرور </Box>
+
+            <InputGroup>
+    <InputRightAddon
+      pointerEvents='none'
+      children={<LockIcon color='#00ADBB' />}
+    />
+    
+    <Input type='tel' 
+    bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
+      setPassword(e.target.value);
+    }}
+    
+    />
+  </InputGroup>
             </Box>
+            
+            <Box>
+            <Checkbox value='naruto'>تذكرني</Checkbox>
+            <Box float={'left'} color={"#00ADBB"}> نسيت كلمة المرور؟ </Box>
+              </Box>
+            
+
+
 
            <Box w={'full'} mb={'10px'} mt={'30px'}>
-            <Button textAlign={'center'} bg={'#041C39'} color={'#fff'} w='100%' _hover={{opacity:0.6 }}   onClick={submitLogin}> تسجيل دخول </Button>
+            <Button textAlign={'center'} bg={'#00ADBB'} color={'#fff'} w='100%' _hover={{opacity:0.6 }}   onClick={submitLogin}>  دخول </Button>
            </Box >
-  
+<Box >
+
+
+<Box>
+
+<Box float={'right'}  ml={3}>ليس لديك حساب؟ </Box>
+
+<Box float={'right'} color={"#00ADBB"}><Link to={"/SignUpPage"}>  إنشاء حساب </Link> </Box>
+
+              </Box>
+              <Box>
+<br></br>
+<Box float={'right' } ml={1} >أو  </Box>
+
+<Box float={'right'}ml={1} color={"#00ADBB"}><Link to={"/CompamySignUp"} >   إنشاء حساب كشركة</Link> </Box>
+
+<Box float={'right' } ml={1} >أو  </Box>
+<Box float={'right'} color={"#00ADBB"}ml={1}><Link to={"/AdminSignUpPage"}>  كمسؤول</Link> </Box>
+
+
+              </Box>
           </Box>
-
-        </GridItem>
-
-        <GridItem w="auto"  h={'360px'}  padding={2}   borderRadius={'10px'} bg={'#FCFCFC'}>
-           <Box pb={'12px'}>
-          
-             <Image src='https://upload.wikimedia.org/wikipedia/ar/thumb/9/96/%D8%B4%D8%B9%D8%A7%D8%B1_%D8%A3%D9%83%D8%A7%D8%AF%D9%8A%D9%85%D9%8A%D8%A9_%D8%B7%D9%88%D9%8A%D9%82.png/800px-%D8%B4%D8%B9%D8%A7%D8%B1_%D8%A3%D9%83%D8%A7%D8%AF%D9%8A%D9%85%D9%8A%D8%A9_%D8%B7%D9%88%D9%8A%D9%82.png' h='full' w={'full'} opacity={1}></Image>
-
-         
-
-
-           </Box >
-          
+          </Box>
         </GridItem>
 
 </Grid>
