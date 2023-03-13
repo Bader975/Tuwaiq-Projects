@@ -13,6 +13,7 @@ import SignUpPage from './components/SignUpPage';
 import AdminSignUpPage from './components/AdminSignUpPage';
 import LoginPage from './components/LoginPage';
 import ProjectPage from './components/ProjectPage';
+import CompamySignUp from './components/CompamySignUp';
  
 
 function App() {
@@ -33,8 +34,11 @@ function App() {
         <Route path='/' element={<HomePage/>}/> 
         <Route path='/SignUpPage' element={<SignUpPage/>}/> 
         <Route path='/AdminSignUpPage' element={<AdminSignUpPage/>}/> 
+        <Route path='/CompamySignUp' element={<CompamySignUp/>}/> 
+
         <Route path='/LoginPage' element={<LoginPage/>}/> 
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
+        
 
          </Routes>
       
