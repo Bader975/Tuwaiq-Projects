@@ -4,19 +4,21 @@ import { ExternalLinkIcon } from '@chakra-ui/icons'
 import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, useToast } from '@chakra-ui/react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [data, setData] = React.useState<any>([]);
+
 
   const toast = useToast();
   const navigate = useNavigate();
 
 
-
+  // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
-      
       const request = await fetch("http://localhost:3008/user/login", {
         method: "POST",
         headers: {
@@ -40,9 +42,8 @@ function LoginPage() {
         duration: 3000,
         position: "top",
       });
-      localStorage.setItem("authorization", data.token);
+      localStorage.setItem("token", data.token);
       navigate("/");
-  
     } catch (error) {
       toast({
         title: "Server Error !",
@@ -59,7 +60,7 @@ function LoginPage() {
 
       <Grid templateColumns="repeat(2, 1fr)" p={5} >
         {/*  صفحتي الشخصية */}
-        <GridItem w="auto"  mx={'auto'}  p={20}  borderRadius={'10px'} bg={'#FCFCFC'} shadow={'2xl'}>
+        <GridItem w="auto"  mx={'auto'}p={20}  borderRadius={'10px'} bg={'#FCFCFC'} shadow={'2xl'}>
           <Box >
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={2} p={2}>
           تسجيل دخول
@@ -67,7 +68,7 @@ function LoginPage() {
 
             <Box mb={'10px'} >
             <Box float={'right'}> البريد الإلكتروني  </Box>
-            <Input bg={'#fff'} placeholder=" email@tuwig.com " textAlign={'right'}  onChange={(e) => {
+            <Input bg={'#fff'} placeholder=" email@tuwig.com " textAlign={'right'} type={email} onChange={(e) => {
                     setEmail(e.target.value);
                   }}></Input>
             </Box>
@@ -75,7 +76,7 @@ function LoginPage() {
           
             <Box mb={'10px'}>
             <Box float={'right'}>  كلمة السر </Box>
-            <Input bg={'#fff'} placeholder='يجب ان تكون اكثر من 8 احرف ' textAlign={'right'}  onChange={(e) => {
+            <Input bg={'#fff'} placeholder='يجب ان تكون اكثر من 8 احرف ' textAlign={'right'} type={password} onChange={(e) => {
                     setPassword(e.target.value);
                   }}></Input>
             </Box>
