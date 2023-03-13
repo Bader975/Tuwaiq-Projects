@@ -61,16 +61,19 @@ function CompamySignUp() {
       
 
       <Grid mt={20}>
-      <Image
-          mx={'auto'}
-          w={300}
-          src={tuwaiqSvg}
-          alt="logo"
-          mb={10}
-        />
+   
         {/*  صفحتي الشخصية */}
-        <GridItem w="auto"  mx={'auto'}  p={20}  pt={5}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
+        <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
+          <Image
+         
+         w={300}
+         src={tuwaiqSvg}
+         alt="logo"
+         mb={5}
+         mr={16}
+
+       />
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
          >
 تسجيل جديد كشركة  </Heading>
