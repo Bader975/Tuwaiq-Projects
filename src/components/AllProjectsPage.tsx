@@ -17,6 +17,7 @@ function AllProjectsPage() {
         console.log(data);
       });
   }, []);
+  
 
   
   const [filteredList, setFilteredList] = useState(data);
