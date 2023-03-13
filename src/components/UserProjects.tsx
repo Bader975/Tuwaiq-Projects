@@ -33,9 +33,14 @@ import { BsFillBriefcaseFill } from "react-icons/bs";
 import { MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
 import { SetStateAction, useEffect, useState } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
+import Nav from "./Nav";
+import Footer from "./Footer";
 function UserProjects() {
   return (
     <div>
+         <nav>
+      <Nav/>
+      </nav>
       <SimpleGrid columns={3} textAlign={"right"} mb={10} mt={10} >
         
        
@@ -188,7 +193,10 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
-      
+
+       <footer>
+        <Footer/>
+       </footer>
     </div>
   );
 }
