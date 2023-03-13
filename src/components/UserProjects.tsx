@@ -194,13 +194,10 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
-<<<<<<< HEAD
-=======
 
        <footer>
         <Footer/>
        </footer>
->>>>>>> b71e71f30d88f9e7c35da6b3cb7ac9ccf9316088
     </div>
   );
 }
