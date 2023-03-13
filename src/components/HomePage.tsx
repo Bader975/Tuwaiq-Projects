@@ -3,6 +3,8 @@ import { Box,Button,chakra,Divider,Flex,Image,Link,SimpleGrid,Spacer,Stat,StatLa
 import React from 'react'
 import HomeImg from "../img/Homeimg.svg";
 import { Link as RouteLink } from 'react-router-dom'
+import Nav from './Nav';
+import Footer from './Footer';
 
 interface StatsCardProps {
   title: string;
@@ -33,6 +35,9 @@ function HomePage() {
 
   return (
     <div>
+       <nav>
+      <Nav/>
+      </nav>
 
 <Box 
 >
@@ -380,7 +385,9 @@ function HomePage() {
 
 </Box>
     
-    
+<footer>
+        <Footer/>
+       </footer>
     
     </div>
   )
