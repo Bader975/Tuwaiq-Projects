@@ -143,7 +143,7 @@ function LoginPage() {
 <br></br>
 <Box float={'right' } ml={1} >أو  </Box>
 
-<Box float={'right'}ml={1} color={"#00ADBB"}><Link to={"/SignUpPage"} >   إنشاء حساب كشركة</Link> </Box>
+<Box float={'right'}ml={1} color={"#00ADBB"}><Link to={"/"} >   إنشاء حساب كشركة</Link> </Box>
 
 <Box float={'right' } ml={1} >أو  </Box>
 <Box float={'right'} color={"#00ADBB"}ml={1}><Link to={"/AdminSignUpPage"}>  كمسؤول</Link> </Box>
