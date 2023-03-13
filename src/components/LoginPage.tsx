@@ -5,20 +5,22 @@ import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, Text,useToast
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import tuwaiqSvg from "../img/logIn_img.png";
+import axios from 'axios';
 
 function LoginPage() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [data, setData] = React.useState<any>([]);
+
 
   const toast = useToast();
   const navigate = useNavigate();
 
 
-
+  // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
-      
       const request = await fetch("http://localhost:3008/user/login", {
         method: "POST",
         headers: {
@@ -42,9 +44,8 @@ function LoginPage() {
         duration: 3000,
         position: "top",
       });
-      localStorage.setItem("authorization", data.token);
+      localStorage.setItem("token", data.token);
       navigate("/");
-  
     } catch (error) {
       toast({
         title: "Server Error !",
