@@ -20,7 +20,7 @@ function App() {
   return (
     <div >
     
-   
+     
       {/* <Addbootcamp/> */}
       {/* <CompanyProjects/> */}
       {/* <MyProjects/> */}
@@ -37,7 +37,10 @@ function App() {
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
 
          </Routes>
-     
+      
+   
+
+
    
      </div>   
  )
