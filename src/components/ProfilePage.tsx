@@ -1,10 +1,15 @@
 import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input } from "@chakra-ui/react";
 import React from "react";
+import Footer from "./Footer";
+import Nav from "./Nav";
 
 function ProfilePage() {
   
   return (
-    // column={{base:1, md:2, lg:3}}  
+    <div>
+        <nav>
+      <Nav/>
+      </nav>
     <Box w={"full"} mx={"auto"} p={5}>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {/*  صفحتي الشخصية */}
@@ -97,6 +102,10 @@ function ProfilePage() {
         </GridItem>
       </Grid>
     </Box>
+    <footer>
+        <Footer/>
+       </footer>
+    </div>
   );
 }
 

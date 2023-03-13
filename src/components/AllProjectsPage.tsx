@@ -3,12 +3,16 @@ import { Box, SimpleGrid } from '@chakra-ui/react'
 import { Text, Flex, Image, Link, chakra,Divider } from "@chakra-ui/react";
 
 import React from 'react'
+import Footer from './Footer';
+import Nav from './Nav';
 
 function AllProjectsPage() {
   return (
-    <div className='bac'>
+    <div >
 
-
+<nav>
+      <Nav/>
+      </nav>
 
 <Box mr={150} mt={20}>
 <Text fontSize='3xl'
@@ -322,7 +326,9 @@ function AllProjectsPage() {
 
 
 
-
+<footer>
+        <Footer/>
+       </footer>
 
     </div>
 

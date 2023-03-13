@@ -1,8 +1,10 @@
 import React, { useReducer } from 'react'
 import tuwaiqSvg from "../components/tuwaiq_logo.svg";
+import { HiOutlineMoon } from 'react-icons/Hi';
 
 import {
     Box,
+
     Button,
     CloseButton,
     Flex,
@@ -188,27 +190,29 @@ console.log(res.data);
           
           src={tuwaiqSvg}
           alt="logo"
-        />            <RouteLink to={"/"}>
+          
+        />   
+                 <RouteLink to={"/"}>
               <Button
                 bg={"none"}
                 color="white"
                 display="inline-flex"
                 alignItems="center"
                 fontSize="md"
-                _hover={{ color: cl, backgroundColor:"#00ADBB"}}
-                _focus={{ boxShadow: "none" }}>
+                _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+                >
                   الصفحة الرئيسية
               </Button>
               </RouteLink>
-              <RouteLink to="/companies">
+              <RouteLink to="/Allproject">
                 <Button
                   bg={"none"}
                   color="white"
                   display="inline-flex"
                   alignItems="center"
                   fontSize="md"
-                  _hover={{ color: cl, backgroundColor:"#00ADBB"}}
-                  _focus={{ boxShadow: "none" }}>
+                  _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+                  >
                     جميع المشاريع
                 </Button>
               
@@ -218,18 +222,21 @@ console.log(res.data);
           </Flex>
           <Spacer />
 
-          <Flex justify="flex-end" align="center">
+          <Flex justify="flex-end" align="center" >
+
+          <HiOutlineMoon color='#fff' size={20}  />
 
             
             {user === null?
-             <RouteLink to={"/login"}> 
+             <RouteLink to={"/LoginPage"}> 
               <Button 
               _hover={{ color: "white", backgroundColor:"#00ADBB"}}
-              onClick={()=>dispatch({type:"user logIn"})} mr={"2"} color={"#00ADBB"} bg={"none"}
-              border="1px solid #00ADBB"              >
+              onClick={()=>dispatch({type:"user logIn"})} color={"#00ADBB"} bg={"none"}
+              border="1px solid #00ADBB" 
+              mr={10} >
               تسجيل دخول
             </Button></RouteLink>  
-            :    <Button
+            :    <Button 
              onClick={()=>removeUser()} mr={"2"} color={cl}>
             تسجيل خروج
           </Button>}

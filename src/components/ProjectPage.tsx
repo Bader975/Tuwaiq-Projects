@@ -28,11 +28,15 @@ import {
 
 import React from 'react'
 import { MdHeadset } from "react-icons/md";
+import Footer from "./Footer";
+import Nav from "./Nav";
 
 function ProjectPage() {
   return (
     <div>
-
+   <nav>
+      <Nav/>
+      </nav>
 <Grid  gap={4}>
   <GridItem h='400' mx={'auto'}>
 
@@ -83,7 +87,9 @@ function ProjectPage() {
       </SimpleGrid>
       
     
-
+      <footer>
+        <Footer/>
+       </footer>
 
     </div>
   )
