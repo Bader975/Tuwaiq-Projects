@@ -183,6 +183,19 @@ const removeUser =()=>{
                 </Button>
               
               </RouteLink>
+              <RouteLink to="/Allideas">
+                <Button
+                  bg={"none"}
+                  color="white"
+                  display="inline-flex"
+                  alignItems="center"
+                  fontSize="md"
+                  _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+                  >
+                    جميع الأفكار
+                </Button>
+              
+              </RouteLink>
            
             </HStack>
           </Flex>

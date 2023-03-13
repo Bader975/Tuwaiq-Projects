@@ -61,16 +61,17 @@ function LoginPage() {
       
 
       <Grid mt={20}>
-      <Image
-          mx={'auto'}
+     
+        {/*  صفحتي الشخصية */}
+        <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
+          <Box >
+          <Image
+         
           w={300}
           src={tuwaiqSvg}
           alt="logo"
-          mb={10}
+          mb={5}
         />
-        {/*  صفحتي الشخصية */}
-        <GridItem w="auto"  mx={'auto'}  p={20}  pt={5}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
-          <Box >
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
          >
           تسجيل دخول

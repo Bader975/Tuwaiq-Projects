@@ -14,6 +14,10 @@ import AdminSignUpPage from './components/AdminSignUpPage';
 import LoginPage from './components/LoginPage';
 import ProjectPage from './components/ProjectPage';
 import CompamySignUp from './components/CompamySignUp';
+import Addbootcamp from './components/Addbootcamp';
+import MyProjects from './components/MyProjects';
+import CompanyProjects from './components/CompanyProjects';
+import AllIdeas from './components/AllIdeas';
  
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
 
 <Routes>
          <Route path='/userproject' element={<UserProjects/>}/> 
+         <Route path='/Addbootcamp' element={<Addbootcamp/>}/> 
+         <Route path='/MyProjects' element={< MyProjects/>}/> 
+         <Route path='/Allideas' element={< AllIdeas/>}/> 
+         <Route path='/CompanyProjects' element={<CompanyProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
         <Route path='/Profile' element={<ProfilePage/>}/> 
         <Route path='/' element={<HomePage/>}/> 
