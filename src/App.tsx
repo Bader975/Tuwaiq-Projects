@@ -8,9 +8,11 @@ import UserProjects from './components/UserProjects';
  import ProfilePage from './components/ProfilePage';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
-import MyProjects from './components/MyProjects';
-import CompanyProjects from './components/CompanyProjects';
-import Addbootcamp from './components/Addbootcamp';
+import HomePage from './components/HomePage';
+import SignUpPage from './components/SignUpPage';
+import AdminSignUpPage from './components/AdminSignUpPage';
+import LoginPage from './components/LoginPage';
+import ProjectPage from './components/ProjectPage';
  
 
 function App() {
@@ -18,22 +20,30 @@ function App() {
   return (
     <div >
     
-      <nav>
+       <nav>
       <Nav/>
       </nav>
       {/* <Addbootcamp/> */}
       {/* <CompanyProjects/> */}
-      <MyProjects/>
+      {/* <MyProjects/> */}
 {/* <Routes>
-        <Route path='/userproject' element={<UserProjects/>}/> 
+=======
+<Routes>
+         <Route path='/userproject' element={<UserProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
         <Route path='/ProfilePage' element={<ProfilePage/>}/> 
+        <Route path='/' element={<HomePage/>}/> 
+        <Route path='/SignUpPage' element={<SignUpPage/>}/> 
+        <Route path='/AdminSignUpPage' element={<AdminSignUpPage/>}/> 
+        <Route path='/LoginPage' element={<LoginPage/>}/> 
+        <Route path='/ProjectPage' element={<ProjectPage/>}/> 
 
-        </Routes> */}
+         </Routes> */}
        <footer>
         <Footer/>
        </footer>
-    </div>   
+   
+     </div>   
  )
  }
 

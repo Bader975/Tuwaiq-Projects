@@ -1,9 +1,15 @@
 import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input } from "@chakra-ui/react";
 import React from "react";
+import Footer from "./Footer";
+import Nav from "./Nav";
 
 function ProfilePage() {
-   
+  
   return (
+    <div>
+        <nav>
+      <Nav/>
+      </nav>
     <Box w={"full"} mx={"auto"} p={5}>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {/*  صفحتي الشخصية */}
@@ -14,7 +20,7 @@ function ProfilePage() {
           </Box>
           <hr />
           {/* الصوره */}
-          <Box className="imageProfile" m={'auto'} w={'130px'}>
+          <Box className="imageProfile" mx={'auto'} w={'130px'}>
             <Stack direction="row" mt={'5px'}>
               <Avatar
                 src="https://bit.ly/broken-link"
@@ -66,7 +72,7 @@ function ProfilePage() {
 
         </GridItem>
 
-        <GridItem w="100%"  h={'360px'}  padding={2}   borderRadius={'10px'} bg={'gray.100'}>
+        <GridItem w="auto"  h={'360px'}  padding={2}   borderRadius={'10px'} bg={'gray.100'}>
            <Box pb={'12px'}>
              <Box  textAlign={'right'}>   معلومات الحساب</Box>
            </Box >
@@ -88,14 +94,18 @@ function ProfilePage() {
                 <Input bg={'#fff'} placeholder="الهاتف" textAlign={'right'}></Input>
               </Box>
               
-              <Box w={'100%'} mb={'10px'} mt={'30px'}>
-            <Button   textAlign={'center'} bg={'#041C39'}   color={'#fff'} w='100%' _hover={{opacity:0.6 }}>تحديث ملفي الشخصي</Button>
+              <Box w={'full'} mb={'10px'} mt={'30px'}>
+            <Button   textAlign={'center'} bg={'#041C39'}  color={'#fff'} w='full' _hover={{opacity:0.6 }}>تحديث ملفي الشخصي</Button>
            </Box >
 
            </Box>
         </GridItem>
       </Grid>
     </Box>
+    <footer>
+        <Footer/>
+       </footer>
+    </div>
   );
 }
 
