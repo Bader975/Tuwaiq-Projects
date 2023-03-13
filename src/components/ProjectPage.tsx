@@ -25,6 +25,7 @@ import {
     CardFooter,
     Stack,
   } from "@chakra-ui/react";
+import axios from "axios";
 
 import React from 'react'
 import { MdHeadset } from "react-icons/md";
@@ -32,6 +33,7 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 
 function ProjectPage() {
+ 
   return (
     <div>
    <nav>
