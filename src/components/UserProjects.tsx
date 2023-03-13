@@ -194,7 +194,9 @@ function UserProjects() {
           </Card>
         </Box>
       </SimpleGrid>
+      
     </div>
+
   );
 }
 
