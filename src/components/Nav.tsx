@@ -31,7 +31,7 @@ import { AiFillHome, AiOutlineInbox, AiOutlineMenu, AiOutlineSearch } from "reac
 import { BsFillCameraVideoFill } from "react-icons/bs";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link as RouteLink, useNavigate } from 'react-router-dom'
-import Logo from "./../assets/logoo.png";
+
 const reduser =(state:any,action:any)=>{
   if(action.type === 'user logIn')return {user: state.user =  true}
   if(action.type === 'user LogOut')return {user: state.user   = false}}
@@ -175,7 +175,7 @@ console.log(res.data);
           <Flex align="flex-start">
             <Link href="/">
               <HStack>
-                <Image src={Logo} w={"64px"} h={"64px"} borderRadius={"50%"}></Image>
+                
               </HStack>
             </Link>
           </Flex>
@@ -233,14 +233,7 @@ console.log(res.data);
           </Flex>
           <Flex justify="flex-end" align="center" color="gray.400">
 
-          <InputGroup>
-              <InputRightElement pointerEvents="none" >
-                <AiOutlineSearch />
-              </InputRightElement>
-              <Input bg={"white"} color='black' type="tel" placeholder="بحث..." mr={"10px"} 
-                onChange={Check}
-              />
-            </InputGroup>
+        
             
             {user === null?
              <RouteLink to={"/login"}> 

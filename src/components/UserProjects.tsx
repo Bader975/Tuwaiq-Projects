@@ -31,25 +31,14 @@ import {
 } from "@chakra-ui/react";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
-import { MDBIcon } from "mdb-react-ui-kit";
 import { SetStateAction, useEffect, useState } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 function UserProjects() {
   return (
     <div>
-      <SimpleGrid columns={3} textAlign={"right"} >
-        <Box mr={5}>
-          <Text fontSize="lg" mb={20}>
-            {" "}
-            معلومات التواصل
-          </Text>
-          <Text fontSize="lg" mb={20}>
-            {" "}
-            مهاراتي
-          </Text>
-          <Text fontSize="lg"> هواياتي</Text>
-        </Box>
-        <div className="line"></div>
+      <SimpleGrid columns={3} textAlign={"right"} mb={10} mt={10} >
+        
+       
         <Box mr={50}>
          
             <Image
@@ -64,6 +53,18 @@ function UserProjects() {
           </Text>
           <Text fontSize="lg"> نبذه عنه</Text>
         </Box>
+        <div className="line"></div>
+        <Box mr={5}>
+          <Text fontSize="lg" mb={20}>
+            {" "}
+            معلومات التواصل
+          </Text>
+          <Text fontSize="lg" mb={20}>
+            {" "}
+            مهاراتي
+          </Text>
+          <Text fontSize="lg"> هواياتي</Text>
+        </Box>
       </SimpleGrid>
       
       <hr />
@@ -72,11 +73,9 @@ function UserProjects() {
             {" "}
             مشاريعي
           </Text>
-        </Box>
-      {/* <Divider orientation="vertical" /> */}
-
-      <SimpleGrid columns={3}  textAlign={"right"}>
-      
+          </Box>
+      <SimpleGrid textAlign={"right"} gap={20} mx="auto" my={10} m={5} columns={{ base: 1, md: 2, lg: 4 }}>
+        
 
         <Box mx={"auto"}>
           <Card maxW="sm">
@@ -91,7 +90,92 @@ function UserProjects() {
                 <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
               </Stack>
             </CardBody>
-            <Divider />
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+
+
+        {/* --------------------------------------------------- */}
+
+
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+        {/* -- ------------------------------------*/}
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
+            <CardFooter>
+              <ButtonGroup spacing="2">
+                <Button variant="solid" colorScheme="blue">
+                  Buy now
+                </Button>
+                <Button variant="ghost" colorScheme="black">
+                  Add to cart
+                </Button>
+              </ButtonGroup>
+            </CardFooter>
+          </Card>
+        </Box>
+        {/* -- ------------------------------------*/}
+        <Box mx={"auto"}>
+          <Card maxW="sm">
+            <CardBody>
+              <Image
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQc2Y2gmQB5zuaBd1AfN_AyEgoTgxPF65i7GwlvrbnnP_RUlubieG19WFnonCtS4ZfAox4&usqp=CAU"
+                alt="Green double couch with wooden legs"
+                borderRadius="lg"
+              />
+              <Stack mt="6" spacing="3">
+                <Heading size="md">REACT TS </Heading>
+                <Text>lorem ipsum dolor sit amet, consectetur adip</Text>
+              </Stack>
+            </CardBody>
+            <Divider  />
             <CardFooter>
               <ButtonGroup spacing="2">
                 <Button variant="solid" colorScheme="blue">

@@ -28,7 +28,9 @@ html {
 
 
 .line{
-  border-left:1px solid #000;height:500px;
+  border-left:1px solid #000;
+  /* height:300px; */
+  height:auto;
 }
 .spinner{
   margin-left: auto;
@@ -48,6 +50,8 @@ html {
     height: 100%;
     }
   }
+
+ 
   
 
 /*   
