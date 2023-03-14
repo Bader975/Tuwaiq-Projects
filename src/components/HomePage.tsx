@@ -26,6 +26,7 @@ interface StatsCardProps {
   title: string;
   stat: string;
 }
+
 function StatsCard(props: StatsCardProps) {
   const { title, stat } = props;
   return (
@@ -49,6 +50,55 @@ function StatsCard(props: StatsCardProps) {
 }
 
 function HomePage() {
+  const [numOfusers, setusers] = React.useState<any[]>([]);
+  const [numOfproject, setproject] = React.useState<any[]>([]);
+
+  const [numOfcamp, setcamp] = React.useState<any[]>([]);
+
+  // const [id , setId] =React.useState<number>();
+
+    // fetch data
+    const getallusers = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/user/countall"
+        )
+      ).json();
+  
+      // set state when the data received
+      setusers(data&&data.numOfuser);
+    };
+  
+    getallusers();
+    // ---------------
+    const getallprojects = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/project/all"
+        )
+      ).json();
+  
+      // set state when the data received
+      setproject(data&&data.Project.length);
+    };
+  // console.log(numOfproject);
+  
+    getallprojects();
+    // ---------------------------------
+    const getallcamps = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/camp/countAll"
+        )
+      ).json();
+  
+      // set state when the data received
+      setcamp(data&&data.Camp);
+    };
+  
+    getallcamps();
+
+
   return (
     <div>
       <nav>
@@ -73,9 +123,9 @@ function HomePage() {
           textAlign="center"
         >
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
-            <StatsCard title={"عدد المشاريع"} stat={"+20"} />
-            <StatsCard title={"عدد المستخدمين"} stat={"+30"} />
-            <StatsCard title={"عدد المعسكرات"} stat={"+23"} />
+            <StatsCard title={"عدد المشاريع"} stat={`${numOfproject}`} />
+            <StatsCard title={"عدد المستخدمين"} stat={`${numOfusers}`} />
+            <StatsCard title={"عدد المعسكرات"} stat={`${numOfcamp}`} />
           </SimpleGrid>
         </Box>
       </Box>

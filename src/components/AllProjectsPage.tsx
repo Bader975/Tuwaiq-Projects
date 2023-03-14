@@ -30,7 +30,7 @@ function AllProjectsPage() {
 
     getallproject();
   }, []);
-  // console.log(data);
+  console.log(data);
   
 
   
@@ -135,6 +135,8 @@ function AllProjectsPage() {
               <div className="bg-image hover-zoom">
       
               <GridItem key={data.id}> 
+             
+              
   <Flex
      
       _dark={{ bg: "#3e3e3e" }}
@@ -213,7 +215,7 @@ function AllProjectsPage() {
               >
                 21 SEP 2015
               </chakra.span>
-              <Link to={`/details/${data.id}`}
+              <Link to={`/ProjectPage/${data.id}`}
                  
                   // mr={20}
                   // fontWeight="bold"

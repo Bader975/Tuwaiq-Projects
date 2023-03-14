@@ -34,9 +34,10 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 
 function ProjectPage() {
-  const [data, setData] = React.useState<any[]>([]);
+
+  const[data, setData]= React.useState<any>([])
   // const [id , setId] =React.useState<number>();
-  const {id}= useParams()
+  const {id}= useParams();
 
 
   React.useEffect(() => {
@@ -49,11 +50,13 @@ function ProjectPage() {
       ).json();
 
       // set state when the data received
-      setData(data&&data.Project);
+      setData(data&&data.Project[0]);
     };
 
     getallproject();
   }, []);
+  console.log(data);
+  
   return (
     <div>
    <nav>
@@ -77,7 +80,6 @@ function ProjectPage() {
 
           <chakra.h1 mx={'auto'} color="white" fontWeight="bold" fontSize="lg">
             
-           TODO APP
           </chakra.h1>
         </Flex>
          <hr />
@@ -96,14 +98,16 @@ function ProjectPage() {
           <Text fontSize="lg" mb={20}>
             {" "}
             رابط المشروع 
+
           </Text>
-          <Text fontSize="lg" mb={10}>  اسم المعسكر</Text>
+          <Text fontSize="lg" mb={10}>   {`  اسم المعسكر    :`  +` `+ ` ${data.nameOfCamp} `}</Text>
         </Box>
         <div className="line"></div>
         <Box mr={5}>
           <Text fontSize="lg" mx={'auto'} textAlign="center" >
             {" "}
              وصف المشروع
+             {data.discription}
           </Text>
         
         </Box>

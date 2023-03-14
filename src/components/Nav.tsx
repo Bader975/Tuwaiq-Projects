@@ -219,7 +219,7 @@ const removeUser =()=>{
           <HiOutlineMoon color='#fff' size={20}  />
 
             
-            {!user === null?
+            {user === null?
              <RouteLink to={"/LoginPage"}> 
               <Button 
               _hover={{ color: "white", backgroundColor:"#00ADBB"}}
