@@ -51,7 +51,7 @@ function StatsCard(props: StatsCardProps) {
 function HomePage() {
   return (
     <div>
-      <nav>
+      <nav >
         <Nav />
       </nav>
 
@@ -106,6 +106,7 @@ function HomePage() {
               color={"#00ADBB"}
               bg={"none"}
               border="1px solid #00ADBB"
+              
             >
               مشاهدة الكل
             </Button>{" "}
