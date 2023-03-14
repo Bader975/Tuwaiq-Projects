@@ -46,7 +46,8 @@ function App() {
 
         <Route path='/LoginPage' element={<LoginPage/>}/> 
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
-        <Route path='/ProjectPage' element={<ProjectPage/>}/> 
+        <Route path='/ProjectPage/:id' element={<ProjectPage/>}/> 
+
         
 
          </Routes>

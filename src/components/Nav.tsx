@@ -27,15 +27,25 @@ import {
     InputLeftElement,
     Input,
     InputRightElement,
-    Spacer
+    Spacer,
+    Avatar,
+    Menu,
+    MenuButton,
+    MenuDivider,
+    MenuItem,
+    Text,
+    MenuList
 } from "@chakra-ui/react";
 import { useViewportScroll } from "framer-motion";
 import axios from 'axios';
 import { IoIosArrowDown } from "react-icons/io";
 import { AiFillHome, AiOutlineInbox, AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import { BsFillCameraVideoFill } from "react-icons/bs";
+import { FiBell, FiChevronDown, FiLogIn } from "react-icons/Fi";
+
 import { FaMoon, FaSun } from "react-icons/fa";
 import { Link as RouteLink, useNavigate } from 'react-router-dom'
+import { BiLogOut } from 'react-icons/bi';
 
 const reduser =(state:any,action:any)=>{
   if(action.type === 'user logIn')return {user: state.user =  true}
@@ -90,6 +100,7 @@ const removeUser =()=>{
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
+      
       <Link href="#home">
       <Button w="full" variant="light">
         الصفحة الرئيسية
@@ -119,12 +130,11 @@ const removeUser =()=>{
     <chakra.header
       ref={ref}
       // shadow={y > height ? "sm" : undefined}
- boxShadow='dark-md'      
-      // bg={bg}
+//  boxShadow='dark-md'
       bg={'#122A47'}
       w="full"
-      pos={"relative"}
       overflowY="hidden"
+      mb={0}
   
     >
       <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'#122A47'}>
@@ -132,6 +142,7 @@ const removeUser =()=>{
           w="full"
           h="full"
           px="6"
+          
         
           
         
@@ -149,7 +160,8 @@ const removeUser =()=>{
           <Flex>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
-                
+            <RouteLink to={"/"}> 
+  
             <Image
              w="full"
              h={10}
@@ -158,7 +170,8 @@ const removeUser =()=>{
           alt="logo"
           
         />   
-                 <RouteLink to={"/"}>
+              </RouteLink>
+              <RouteLink to={"/"}>
               <Button
                 bg={"none"}
                 color="white"
@@ -215,10 +228,82 @@ const removeUser =()=>{
               mr={10} >
               تسجيل دخول
             </Button></RouteLink>  
-            :    <Button 
-             onClick={()=>removeUser()} mr={"2"} color={cl}>
+            :   <HStack spacing={{ base: '0', md: '6' }} >
+            <IconButton
+              size="lg"
+              color={"#fff"}
+              _hover={{ color: "none", backgroundColor:"none"}}
+
+              mr={5}
+              bg={'none'}
+              aria-label=''
+              icon={<FiBell />}
+            />
+            <Flex alignItems={'flex-end'}>
+              <Menu>
+                <MenuButton
+                  py={2}
+                  transition="all 0.3s"
+                  _focus={{ boxShadow: 'none' }}>
+                  <HStack>
+                    <Avatar
+                      size={'sm'}
+                      src={
+                        'https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg'
+                      }
+                    />
+                    <VStack
+                      display={{ base: 'none', md: 'flex' }}
+                      alignItems='flex-start'
+                      spacing="1px"
+                      ml="2">
+                    
+                    </VStack>
+                    <Box display={{ base: 'none', md: 'flex' }}>
+                      <FiChevronDown color='#fff'  />
+                    </Box>
+                  </HStack>
+                </MenuButton>
+                <MenuList 
+                zIndex={2}
+                
+                  bg={useColorModeValue('white', 'gray.900')}
+                  borderColor={useColorModeValue('gray.200', 'gray.700')}>
+                     <Box textAlign={'center'} fontWeight={'bold'}>مرحبا: اسم المستخدم</Box> 
+                  <MenuDivider />
+                  <RouteLink to={"/Profile"}>
+                  <MenuItem              _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+ >الملف الشخصي</MenuItem>
+                  </RouteLink>
+
+                  <MenuDivider />
+                  <RouteLink to={"/MyProjects"}
+                  >
+
+                  <MenuItem _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+>مشاريعي</MenuItem>
+                  </RouteLink>
+
+                  <MenuDivider />
+                   <RouteLink to={"/"}> 
+                    <Button  textAlign={'center'} w={'full'} 
+                    rightIcon={<BiLogOut />}
+                   
+
+             onClick={()=>removeUser()}  bg={"none"} 
+             _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+             >
             تسجيل خروج
-          </Button>}
+          </Button>
+          </RouteLink>
+                   
+                </MenuList>
+              </Menu>
+            </Flex>
+          </HStack>
+
+            }
+      {/*  */}
       
         
             <RouteLink to={"/login"}>
@@ -235,8 +320,10 @@ const removeUser =()=>{
               onClick={mobileNav.onOpen}
             />
           </Flex>
+          
         </Flex>
-        {MobileNavContent}
+        {/* {MobileNavContent} */}
+        
       </chakra.div>
     </chakra.header>
      
