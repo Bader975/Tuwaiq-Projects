@@ -12,8 +12,13 @@ body {
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
   background-color: #F9F9F9;
+  height:100vh;
 
 
+}
+.allidels{
+  height: 100vh;
+  border: 1px solid #ff0000;
 }
 html {
   margin: 0 !important;

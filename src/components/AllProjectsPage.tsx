@@ -1,42 +1,54 @@
 import { ChevronLeftIcon, Search2Icon } from '@chakra-ui/icons';
 import { Box, GridItem, Input, InputGroup, InputLeftElement, SimpleGrid } from '@chakra-ui/react'
-import { Text, Flex, Image, Link, chakra,Divider } from "@chakra-ui/react";
+import { Text, Flex, Image, chakra,Divider } from "@chakra-ui/react";
+import  {Link as RouteLnk } from "@chakra-ui/react";
+
 import axios from 'axios';
 
+
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import Footer from './Footer';
 import Nav from './Nav';
 
 function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
+  const [id , setId] =React.useState<number>();
 
   React.useEffect(() => {
-    axios.get("https://63e225d4109336b6cb00a67d.mockapi.io/companiesDB")
-      .then((res) => {
-        setData(res.data);
-        console.log(data);
-      });
+    // fetch data
+    const getallproject = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/project/all"
+        )
+      ).json();
+
+      // set state when the data received
+      setData(data&&data.Project);
+    };
+
+    getallproject();
   }, []);
+  // console.log(data);
   
 
   
   const [filteredList, setFilteredList] = useState(data);
 
-  const [title, settitle] = useState("");
-  const [companyName, setCompanyName] = React.useState("");
+  const [title, settitle] = React.useState("");
+  const [nameproject, setNameProject] = React.useState("");
 
   const filter = (filteredData: any[]) => {
-    if (!companyName) {
+    if (!title) {
       return filteredData;
     }
 
     const filtereddata = filteredData.filter(
-      (data: { companyName: any }) =>
-        data.companyName
-          .split(" ")
-          .toString()
-          .toLowerCase()
-          .indexOf(companyName) !== -1
+      (data: { title: any}) => data.title.split(" ")
+      .toString()
+      .toLowerCase()
+      .indexOf(title) !== -1
     );
     return filtereddata;
   };
@@ -44,13 +56,13 @@ function AllProjectsPage() {
   const handleBrandChange = (e: {
     target: { value: React.SetStateAction<string> };
   }) => {
-    setCompanyName(e.target.value);
+    settitle(e.target.value);
   };
 
   React.useEffect(() => {
     let filteredData = filter(data);
     setFilteredList(filteredData);
-  });
+  }, );
   return (
     <div >
 
@@ -73,7 +85,7 @@ function AllProjectsPage() {
             w={"full"}
             shadow={"xl"}
             placeholder="أبحث عن مشروع او فكرة مشروع"
-            value={companyName}
+            value={title}
             onChange={handleBrandChange}
           />
         </InputGroup>
@@ -108,19 +120,21 @@ function AllProjectsPage() {
 
 
 
-<Box mr={150} mt={20}>
+<Box mr={20} mt={4}>
 <Text fontSize='3xl'
-      textAlign={'right'}
+      textAlign={'right'} 
 
 >جميع المشاريع</Text>
 
 </Box>
 
-<SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
->
+<SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+
   
-  <Box   textAlign={'right'}
- >
+{filteredList.map((data,index) => (
+              <div className="bg-image hover-zoom">
+      
+              <GridItem key={data.id}> 
   <Flex
      
       _dark={{ bg: "#3e3e3e" }}
@@ -158,7 +172,7 @@ function AllProjectsPage() {
               المعسكر
             </chakra.span>
             
-            <Link
+            <RouteLnk
               display="block"
               color="gray.800"
               _dark={{ color: "white" }}
@@ -167,7 +181,7 @@ function AllProjectsPage() {
               mt={2}
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
-اسم المشروع            </Link>
+        {data.title}     </RouteLnk>
            
           </Box>
           <Divider borderColor={'blackAlpha.500'} mt={5} />
@@ -182,14 +196,14 @@ function AllProjectsPage() {
                   src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
                   alt="Avatar"
                 />
-                <Link
+                <RouteLnk
                   mx={2}
                   fontWeight="bold"
                   color="gray.700"
                   _dark={{ color: "gray.200" }}
                 >
                   Ali fahad
-                </Link>
+                </RouteLnk>
               </Flex>
               <chakra.span
                 mx={1}
@@ -199,12 +213,12 @@ function AllProjectsPage() {
               >
                 21 SEP 2015
               </chakra.span>
-              <Link
-                  mx={2}
-                  mr={20}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
+              <Link to={`/details/${data.id}`}
+                 
+                  // mr={20}
+                  // fontWeight="bold"
+                  // color="gray.700"
+                  // _dark={{ color: "gray.200" }}
                 >
 التفاصيل<ChevronLeftIcon/>                
                 
@@ -217,196 +231,11 @@ function AllProjectsPage() {
         </Box>
       </Box>
     </Flex>
-  </Box>
-  <Box >
-  <Flex
-      _dark={{ bg: "#3e3e3e" }}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
 
-    >
-      <Box
-        mx="auto"
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        _dark={{ bg: "gray.800" }}
-        maxW="2xl"
-      >
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
-        />
 
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر
-            </chakra.span>
-            <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-اسم المشروع            </Link>
-            
-          </Box>
-     
-          <Divider borderColor={'blackAlpha.500'} mt={5} />
-
-          <Box mt={4}>
-            <Flex alignItems="center">
-              <Flex alignItems="center">
-                <Image
-                  h={10}
-                  fit="cover"
-                  rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
-                />
-                <Link
-                  mx={2}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
-                >
-                  Ahmad Doe
-                </Link>
-              </Flex>
-              <chakra.span
-                mx={1}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: "gray.300" }}
-              >
-                21 SEP 2015
-              </chakra.span>
-                     <Link
-                  mx={2}
-                  mr={20}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
-                >
-التفاصيل<ChevronLeftIcon/>                
-                
-</Link>
-            </Flex>
-         
-          </Box>
-
-        </Box>
-      </Box>
-    </Flex>
-  </Box>
-  <Box >
-  <Flex
-      _dark={{ bg: "#3e3e3e" }}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
-
-    >
-      <Box
-        mx="auto"
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        _dark={{ bg: "gray.800" }}
-        maxW="2xl"
-      >
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
-        />
-
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر
-            </chakra.span>
-            <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-اسم المشروع            </Link>
-          
-          </Box>
-           <Divider borderColor={'blackAlpha.500'} mt={5} />
-
-        
-          <Box mt={4}>
-            <Flex alignItems="center">
-              <Flex alignItems="center">
-                <Image
-                  h={10}
-                  fit="cover"
-                  rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
-                />
-                <Link
-                  mx={2}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
-                >
-                  Mohammed
-                </Link>
-              </Flex>
-              <chakra.span
-                mx={1}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: "gray.300" }}
-              >
-                21 SEP 2015
-              </chakra.span>
-              <Link
-                  mx={2}
-                  mr={20}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
-                >
-التفاصيل<ChevronLeftIcon/>                
-</Link>
-            </Flex>
-          </Box>
-        </Box>
-      </Box>
-    </Flex>
-  </Box>
+    </GridItem>
+  </div>
+  ))}
   
 </SimpleGrid>
 
