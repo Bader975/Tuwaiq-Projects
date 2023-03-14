@@ -9,9 +9,12 @@ import { FaUserAlt } from 'react-icons/fa';
 
 function CompamySignUp() {
 
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = React.useState<any>([]);
+  const [role, setRole] = useState("Company");
+  const [email, setEmail] = useState("");
+  
+
 
 
   const toast = useToast();
@@ -21,12 +24,17 @@ function CompamySignUp() {
   // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
-      const request = await fetch("http://localhost:3008/user/login", {
+      const request = await fetch("http://localhost:3008/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({  
+          email, 
+          password,
+          name,
+          role
+         }),
       });
       const data = await request.json();
       if (request.status !== 200) {
@@ -44,8 +52,8 @@ function CompamySignUp() {
         duration: 3000,
         position: "top",
       });
-      localStorage.setItem("token", data.token);
-      navigate("/");
+     
+      navigate("/LoginPage");
     } catch (error) {
       toast({
         title: "Server Error !",

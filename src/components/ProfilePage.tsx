@@ -1,5 +1,7 @@
-import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input } from "@chakra-ui/react";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input,Text } from "@chakra-ui/react";
 import React from "react";
+import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
 
@@ -13,10 +15,17 @@ function ProfilePage() {
     <Box w={"full"} mx={"auto"} p={5}>
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         {/*  صفحتي الشخصية */}
-        <GridItem w="100%"    padding={2} border={'solid 1px gray'} borderRadius={'10px'} bg={'gray.100'}>
-          <Box pb={'12px'}>
-            <Box float={'right'} ml={5}>صفحتي الشخصية</Box>
-            <Box>عرض صفحتي الشخصية</Box>
+        <GridItem w="100%"    padding={2}  borderRadius={'10px'} bg={'gray.100'}>
+          <Box p={'12px'} mb={5} pl={2} pr={2} fontWeight={'bold'}>
+            <Box float={'right'} ml={5} >الملف الشخصي:</Box>
+<Link to={'/userproject'}>
+            <Box float={'left'}>
+              <Text
+              
+              w='100%' bg={'none'} color={'#00ADBB'} _hover={{opacity:0.6 }}
+              >عرض صفحتي الشخصية <ChevronLeftIcon/></Text>
+              </Box>
+            </Link>
           </Box>
           <hr />
           {/* الصوره */}
@@ -29,73 +38,66 @@ function ProfilePage() {
               />
             </Stack>
             {/* زر تحديث صوره العرض */}
-            <Box w={'100%'} mt={'10px'} bg={'#041C39'} color={'#fff'} fontSize={12} p='5px' borderRadius={'10px'}>تحديث صورتي الشخصية</Box>
+            <Box w={'100%'} mt={'10px'} bg={'#00ADBB'} color={'#fff'}
+              _hover={{opacity:0.6 }} fontSize={12} p='5px' borderRadius={'10px'}>تحديث صورتي الشخصية</Box>
           </Box>
           {/* المدخلات */}
           <Box>
 
             <Box mb={'10px'}>
-            <Box float={'right'}>معلومات عني</Box>
-            <Textarea bg={'#fff'} placeholder="معلومات عني" textAlign={'right'}></Textarea>
+            <Box float={'right'}>المعلومات الشخصية</Box>
+            <Textarea bg={'#fff'} placeholder="معلومات عنك" textAlign={'right'}></Textarea>
             </Box>
 
             <Box mb={'10px'}>
-            <Box float={'right'}> مهاراتي</Box>
-            <Textarea bg={'#fff'} placeholder="مهاراتي" textAlign={'right'}></Textarea>
+            <Box float={'right'}> المهارات</Box>
+            <Textarea bg={'#fff'} placeholder="ادخل مهراتك هنا" textAlign={'right'}></Textarea>
             </Box>
 
             <Box mb={'10px'}>
-            <Box float={'right'}> هواياتي</Box>
-            <Textarea bg={'#fff'} placeholder='هواياتي' textAlign={'right'}></Textarea>
+            <Box float={'right'}> الهوايات</Box>
+            <Textarea bg={'#fff'} placeholder='ادخل هواياتك هنا' textAlign={'right'}></Textarea>
             </Box>
 
             <Box mb={'10px'}>
-            <Box float={'right'}> رابط حساب تويتر</Box>
-            <Input bg={'#fff'} placeholder="رابط حساب تويتر" textAlign={'right'}></Input>
+            <Box float={'right'}> حساب لينكد إن  </Box>
+            <Input bg={'#fff'} placeholder=" ادخل الرابط هنا" textAlign={'right'}></Input>
             </Box>
 
-            <Box mb={'10px'}>
-            <Box float={'right'}> اسم مشروعي الشخصي</Box>
-            <Input bg={'#fff'} placeholder="اسم مشروعي الشخصي" textAlign={'right'}></Input>
-            </Box>
-
-            <Box mb={'10px'}>
-            <Box float={'right'}> رابط مشروعي الشخصي</Box>
-            <Input bg={'#fff'} placeholder={'رابط مشروعي الشخصي'} textAlign={'right'}></Input>
-            </Box>
 
            <Box w={'100%'} mb={'10px'} mt={'30px'}>
-            <Button textAlign={'center'} bg={'#041C39'} color={'#fff'} w='100%' _hover={{opacity:0.6 }}>تحديث ملفي الشخصي</Button>
+            <Button textAlign={'center'} w='100%' bg={'#00ADBB'} color={'#fff'} _hover={{opacity:0.6 }}
+>تحديث الملف الشخصي</Button>
            </Box >
 
           </Box>
 
         </GridItem>
 
-        <GridItem w="auto"  h={'360px'}  padding={2}   borderRadius={'10px'} bg={'gray.100'}>
-           <Box pb={'12px'}>
-             <Box  textAlign={'right'}>   معلومات الحساب</Box>
+        <GridItem w="auto"  h={'360px'}  padding={2}   borderRadius={'10px'} bg={'gray.100'} >
+           <Box pb={'12px'} >
+             <Box  textAlign={'right'} fontWeight={'bold'}mt={2} >   معلومات الحساب:</Box>
            </Box >
            <hr />
 
            <Box pt={'15px'}>
               <Box mb={'10px'} >
                 <Box float={'right'}>البريدالإلكتروني</Box>
-                <Input bg={'#fff'} placeholder="البريدالإلكتروني" textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder="ادخل البريد الإلكتروني هنا" textAlign={'right'}></Input>
               </Box>
 
               <Box mb={'10px'}>
-                <Box float={'right'}> الاسم</Box>
-                <Input bg={'#fff'} placeholder=" الاسم" textAlign={'right'}></Input>
+                <Box float={'right'}> اسم المستخدم</Box>
+                <Input bg={'#fff'} placeholder=" ادخل اسمك هنا " textAlign={'right'}></Input>
               </Box>
 
               <Box mb={'10px'}>
                 <Box float={'right'}> الهاتف</Box>
-                <Input bg={'#fff'} placeholder="الهاتف" textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder="9665xxxxxxxx" textAlign={'right'}></Input>
               </Box>
               
-              <Box w={'full'} mb={'10px'} mt={'30px'}>
-            <Button   textAlign={'center'} bg={'#041C39'}  color={'#fff'} w='full' _hover={{opacity:0.6 }}>تحديث ملفي الشخصي</Button>
+              <Box w={'full'} mb={'10px'} mt={'30px'} >
+            <Button   textAlign={'center'}  w='full'bg={'#00ADBB'} color={'#fff'} _hover={{opacity:0.6 }}>تحديث معلومات الحساب</Button>
            </Box >
 
            </Box>

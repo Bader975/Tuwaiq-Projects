@@ -1,13 +1,47 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import {useDisclosure, Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Stack } from "@chakra-ui/react";
+import {useDisclosure, Box, Button, Card, CardBody, CardFooter, CardHeader, Heading, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Stack, GridItem, Spacer } from "@chakra-ui/react";
 import { Text, Flex, Image, Link, chakra, Divider } from "@chakra-ui/react";
-
+import axios from "axios";
+import {  useNavigate} from "react-router-dom";
 import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 
 function AllIdeas() {
-    
+  const navigate = useNavigate();
+  const [data , setData] =React.useState<[]>([])
+  const [id , setId] =React.useState<number>()
+  // const [showElement,setShowElement] = React.useState(true)
+
+  // React.useEffect(() => {
+  //   getallideas();
+      
+  // }, []);
+
+  // const getallideas = async () => {
+  //   const request = await fetch("http://localhost:3008/idea/all")
+  //   });
+  //   const data = await request.json();
+  // }
+  // console.log(data);
+
+  React.useEffect(() => {
+    // fetch data
+    const getallideas = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/idea/all"
+        )
+      ).json();
+
+      // set state when the data received
+      setData(data&&data.Idea);
+    };
+
+    getallideas();
+  }, []);
+  console.log(data);
+  
       let {
         isOpen: modIsOpen,
         onOpen: modOnOpen,
@@ -23,10 +57,38 @@ function AllIdeas() {
       const initialRef = React.useRef(null);
       const finalRef = React.useRef(null);
   return (
-    <div>
+    <div >
       <nav>
         <Nav />
       </nav>
+
+{/* <Box>  */}
+{/* MAP All Projecs */}
+        {/*Start of Grid body */}
+        {/* <SimpleGrid
+          borderColor={"blackAlpha.200"}
+          borderRadius={"2xl"}
+          mx="auto"
+          columns={{ base: 1, md: 2, lg: 4 }}>
+
+
+{data.map((index:any)=>(
+
+  
+<div className="bg-image hover-zoom">
+             
+             <GridItem >
+          <h1>{index.title}</h1>  
+             </GridItem>
+         
+         </div>
+   
+            
+          ))}
+        </SimpleGrid>
+      </Box> */}
+
+        {/*End of Grid body */}
 
       <Box mr={150} mt={20}>
         <Text fontSize="3xl" textAlign={"right"}>
@@ -34,49 +96,60 @@ function AllIdeas() {
         </Text>
       </Box>
 
-      <SimpleGrid
-        spacingX={5}
-        spacingY={5}
-        mx="auto"
-        m={100}
-        mt={10}
-        columns={{ base: 1, md: 2, lg: 3 }}
-      >
-        <Stack spacing="4">
+     
+      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={10} spacingY={20} columns={{ base: 1, md: 2, lg: 4 }}> 
+         {data.map((index:any)=>(
+          <div>
+                   <GridItem> 
+
           <Card  >
             <CardHeader>
-              <Heading size="md"> فكرة</Heading>
+              <Heading size="md"> {index.title}</Heading>
             </CardHeader>
             <CardBody>
               
             </CardBody>
             <CardFooter>
+              
             <Text
                  
                 color={"#4299E1"}
+                alignItems={'left'}
                 fontSize={20}
                 _hover={{ fontWeight: "bold", cursor: "pointer" }}
                 onClick={modOnOpen2}
               >
-                للمزيد...
+            للمزيد...
               </Text>
+              <Spacer></Spacer>
+              <Text
+                 
+        fontWeight={'bold'}
+                 fontSize={20}
+               
+               >
+              {index.user.name}
+               </Text>
+               
             </CardFooter>
           </Card>
-        </Stack>
+        </GridItem>
         
-        <Modal onClose={modOnClose2}   isOpen={modIsOpen2}>
+        <Modal onClose={modOnClose2}   isOpen={modIsOpen2} >
         <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+        <ModalContent p={5}>
+          <ModalHeader >{index.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-           Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis, adipisci laudantium mollitia maiores itaque!
+          {index.discription}
           </ModalBody>
           <ModalFooter>
             <Button onClick={modOnClose2}>Close</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
+      </div>
+        ))}
       </SimpleGrid>
       <footer>
         <Footer />
@@ -84,5 +157,6 @@ function AllIdeas() {
     </div>
   );
 }
+
 
 export default AllIdeas;
