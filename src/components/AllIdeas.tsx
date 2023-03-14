@@ -67,7 +67,7 @@ function AllIdeas() {
         <Modal onClose={modOnClose2}   isOpen={modIsOpen2}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader m={5}>Modal Title</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti nobis, adipisci laudantium mollitia maiores itaque!

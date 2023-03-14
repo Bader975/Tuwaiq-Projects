@@ -11,7 +11,7 @@ function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
 
   React.useEffect(() => {
-    axios.get("https://63e225d4109336b6cb00a67d.mockapi.io/companiesDB")
+    axios.get("http://localhost:3008/project/all")
       .then((res) => {
         setData(res.data);
         console.log(data);
@@ -22,7 +22,7 @@ function AllProjectsPage() {
   
   const [filteredList, setFilteredList] = useState(data);
 
-  const [title, settitle] = useState("");
+  const [title, setTitle] = useState("");
   const [companyName, setCompanyName] = React.useState("");
 
   const filter = (filteredData: any[]) => {
