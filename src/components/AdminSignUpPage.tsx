@@ -10,9 +10,13 @@ import { MdOutlineWork } from 'react-icons/md';
 
 function AdminSignUpPage() {
 
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [data, setData] = React.useState<any>([]);
+  const [role, setRole] = useState("Admin");
+  const [email, setEmail] = useState("");
+  const [employeeID, setEmployeeID] = useState("");
+
+
 
 
   const toast = useToast();
@@ -22,12 +26,18 @@ function AdminSignUpPage() {
   // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
-      const request = await fetch("http://localhost:3008/user/login", {
+      const request = await fetch("http://localhost:3008/user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({  
+          email, 
+          password,
+          name,
+          role,
+          employeeID
+         }),
       });
       const data = await request.json();
       if (request.status !== 200) {
@@ -45,8 +55,8 @@ function AdminSignUpPage() {
         duration: 3000,
         position: "top",
       });
-      localStorage.setItem("token", data.token);
-      navigate("/");
+    
+      navigate("/LoginPage");
     } catch (error) {
       toast({
         title: "Server Error !",
@@ -137,7 +147,7 @@ function AdminSignUpPage() {
     bg={'#fff'}
     textAlign={'right'}  onChange={(e) => {
     
-           setEmail(e.target.value);
+           setEmployeeID(e.target.value);
          }}
     
     />

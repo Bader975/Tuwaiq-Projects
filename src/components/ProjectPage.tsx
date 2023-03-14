@@ -26,14 +26,34 @@ import {
     Stack,
   } from "@chakra-ui/react";
 import axios from "axios";
-
+import { Link, useParams } from "react-router-dom";
 import React from 'react'
 import { MdHeadset } from "react-icons/md";
+
 import Footer from "./Footer";
 import Nav from "./Nav";
 
 function ProjectPage() {
- 
+  const [data, setData] = React.useState<any[]>([]);
+  // const [id , setId] =React.useState<number>();
+  const {id}= useParams()
+
+
+  React.useEffect(() => {
+    // fetch data
+    const getallproject = async () => {
+      const data = await (
+        await fetch(
+          `http://localhost:3008/project/${id}`
+        )
+      ).json();
+
+      // set state when the data received
+      setData(data&&data.Project);
+    };
+
+    getallproject();
+  }, []);
   return (
     <div>
    <nav>
@@ -56,6 +76,7 @@ function ProjectPage() {
           
 
           <chakra.h1 mx={'auto'} color="white" fontWeight="bold" fontSize="lg">
+            
            TODO APP
           </chakra.h1>
         </Flex>
