@@ -160,7 +160,8 @@ const removeUser =()=>{
           <Flex>
             <HStack spacing="5" display={{ base: "none", md: "flex" }}>
              
-                
+            <RouteLink to={"/"}> 
+  
             <Image
              w="full"
              h={10}
@@ -169,7 +170,8 @@ const removeUser =()=>{
           alt="logo"
           
         />   
-                 <RouteLink to={"/"}>
+              </RouteLink>
+              <RouteLink to={"/"}>
               <Button
                 bg={"none"}
                 color="white"
