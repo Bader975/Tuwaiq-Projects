@@ -100,6 +100,7 @@ const removeUser =()=>{
         justifySelf="self-start"
         onClick={mobileNav.onClose}
       />
+      
       <Link href="#home">
       <Button w="full" variant="light">
         الصفحة الرئيسية
@@ -129,11 +130,11 @@ const removeUser =()=>{
     <chakra.header
       ref={ref}
       // shadow={y > height ? "sm" : undefined}
- boxShadow='dark-md'      
-      // bg={bg}
+//  boxShadow='dark-md'
       bg={'#122A47'}
       w="full"
       overflowY="hidden"
+      mb={0}
   
     >
       <chakra.div h="4.5rem" mx="auto" maxW="100%" bg={'#122A47'}>
@@ -141,6 +142,7 @@ const removeUser =()=>{
           w="full"
           h="full"
           px="6"
+          
         
           
         
@@ -215,7 +217,7 @@ const removeUser =()=>{
           <HiOutlineMoon color='#fff' size={20}  />
 
             
-            {user === null?
+            {!user === null?
              <RouteLink to={"/LoginPage"}> 
               <Button 
               _hover={{ color: "white", backgroundColor:"#00ADBB"}}
@@ -267,11 +269,19 @@ const removeUser =()=>{
                   borderColor={useColorModeValue('gray.200', 'gray.700')}>
                      <Box textAlign={'center'} fontWeight={'bold'}>مرحبا: اسم المستخدم</Box> 
                   <MenuDivider />
+                  <RouteLink to={"/Profile"}>
+                  <MenuItem              _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+ >الملف الشخصي</MenuItem>
+                  </RouteLink>
 
-                  <MenuItem >الملف الشخصي</MenuItem>
                   <MenuDivider />
+                  <RouteLink to={"/MyProjects"}
+                  >
 
-                  <MenuItem>مشاريعي</MenuItem>
+                  <MenuItem _hover={{ color: "#00ADBB", backgroundColor:"none"}}
+>مشاريعي</MenuItem>
+                  </RouteLink>
+
                   <MenuDivider />
                    <RouteLink to={"/"}> 
                     <Button  textAlign={'center'} w={'full'} 
@@ -310,7 +320,7 @@ const removeUser =()=>{
           </Flex>
           
         </Flex>
-        {MobileNavContent}
+        {/* {MobileNavContent} */}
         
       </chakra.div>
     </chakra.header>

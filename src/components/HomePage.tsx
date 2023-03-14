@@ -83,6 +83,7 @@ function HomePage() {
         </Box>
         <Image
           w="full"
+          mt={-1}
           fit="cover"
           src={HomeImg}
           alt="HomeImg"
