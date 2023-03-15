@@ -22,16 +22,22 @@ import {
     ButtonGroup,
     Card,
     CardBody,
+    Link,
     CardFooter,
     Stack,
+    Avatar,
+    IconButton,
   } from "@chakra-ui/react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import React from 'react'
-import { MdHeadset } from "react-icons/md";
+import { RiPagesLine } from "react-icons/Ri";
 
 import Footer from "./Footer";
 import Nav from "./Nav";
+import { FaUserAlt } from "react-icons/fa";
+import { FiBell } from "react-icons/Fi";
+import { LinkIcon } from "@chakra-ui/icons";
 
 function ProjectPage() {
 
@@ -58,7 +64,7 @@ function ProjectPage() {
   console.log(data);
   
   return (
-    <div>
+    <Box bg={'#E1EAF5'} >
    <nav>
       <Nav/>
       </nav>
@@ -75,38 +81,155 @@ function ProjectPage() {
   </GridItem>
   
 </Grid>
-          <Flex alignItems="center" px={6} py={3} bg="gray.400">
           
 
-          <chakra.h1 mx={'auto'} color="white" fontWeight="bold" fontSize="lg">
-            
+          <chakra.h1 mt={3} mx={'auto'} color="black" fontWeight="bold" fontSize="2xl" textAlign={'center'}>
+            اسم المشروع
           </chakra.h1>
-        </Flex>
-         <hr />
-        <SimpleGrid columns={3} textAlign={"right"} mb={10} mt={10} >
+        
+      <SimpleGrid  textAlign={"right"} mb={10} mt={10} mx={'auto'} gap={ 5}  mr={20} ml={20} >
        
-       
-        <Box mr={50} >
-         
-            <Image
-              h={20}
-              mb={5}
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
-             
-            />
-          
-          <Text fontSize="lg" mb={20}>
-            {" "}
-            رابط المشروع 
+        <Box pr={5} pt={5}   h={300} mb={10}  
+        rounded="lg"
+        shadow="md"
+        bg="white"
+        width={'full'}
+        minH={'40vh'}
+        _dark={{ bg: "gray.800" }} >
+<Box alignContent={'center'}  >
+  <Box  float={'right'} ><IconButton
+                    fontSize={"3xl"}
+                    borderRadius={"50%"}
+                    color={"#00ADBB"}
+                    p={5}
+                    px={"17px"}
+                    py={8}
+                   _hover={{ color: "none", backgroundColor: "none" }}
+                    bg={"#DBF0F7"}
+                    aria-label=""
+                    icon={<FaUserAlt />}
+                    
+                  /></Box>
 
-          </Text>
-          <Text fontSize="lg" mb={10}>   {`  اسم المعسكر    :`  +` `+ ` ${data.nameOfCamp} `}</Text>
+             <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
+>المعلومات</Text> 
+<p className="ayaa"> </p>  
+</Box>
+<Box>
+<Box mt={4} >
+  
+            <Flex alignItems="center">
+              <Flex alignItems="center">
+                <Text ml={3}  fontSize="lg">المطور :</Text>
+                <Image
+                  h={10}
+                  fit="cover"
+                  rounded="full"
+                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  alt="Avatar"
+                />
+             
+              </Flex>
+              <chakra.span
+                mx={1}
+                fontSize="sm"
+                color="gray.600"
+                _dark={{ color: "gray.300" }}
+              >
+                21 SEP 2015
+              </chakra.span>
+              </Flex>
+              </Box>
+    </Box>
+        
+            
+          <Box>
+          <Text fontSize="lg" mt={5}>   {`  اسم المعسكر    :`  +` `+ ` ${data.nameOfCamp} `}</Text>
+<Link ><Text fontSize="lg" mt={10}  >
+          < LinkIcon ml={2}/>
+
+         رابط المشروع 
+
+       </Text></Link>
+
+          
+
+          </Box>
+         
+          
         </Box>
-        <div className="line"></div>
-        <Box mr={5}>
-          <Text fontSize="lg" mx={'auto'} textAlign="center" >
+        
+        <Box float='right' width={'full'}  rounded="lg"
+        shadow="md"
+        bg="white"
+        minH={'40vh'}
+        justifyContent='center'
+        alignContent={'center'}
+        _dark={{ bg: "gray.800" }} mb={40} pt={5} pr={5}  >
+        <Box  float={'right'} ><IconButton
+                    fontSize={"3xl"}
+                    borderRadius={"50%"}
+                    color={"#00ADBB"}
+                    p={5}
+                    px={"17px"}
+                    py={8}
+                   _hover={{ color: "none", backgroundColor: "none" }}
+                    bg={"#DBF0F7"}
+                    aria-label=""
+                    icon={<RiPagesLine />}
+                    
+                  /></Box>
+                  <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
+>الوصف</Text> 
+<p className="ayaa"> </p>
+          <Text fontSize="lg" mx={'auto'} textAlign='right' mr={5} mt={5} >
             {" "}
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع             وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع             وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
+            وصف المشروع
              وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+             وصف المشروع
+
              {data.discription}
           </Text>
         
@@ -118,7 +241,7 @@ function ProjectPage() {
         <Footer/>
        </footer>
 
-    </div>
+    </Box>
   )
 }
 

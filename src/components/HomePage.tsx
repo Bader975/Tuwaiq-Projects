@@ -113,7 +113,7 @@ const getfirst3 = async () => {
 };
 getfirst3();
   return (
-    <div>
+    <div className={"backcoler"}>
       <nav >
         <Nav />
       </nav>

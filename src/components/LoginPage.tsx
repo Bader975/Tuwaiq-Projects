@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { EmailIcon, ExternalLinkIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, EmailIcon, ExternalLinkIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
 import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, Text,useToast, InputGroup, InputLeftElement, InputRightElement, Checkbox, InputRightAddon } from '@chakra-ui/react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -66,6 +66,7 @@ function LoginPage() {
         <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
           <Link to={"/"}> 
+          <ChevronRightIcon/>
 
           <Image
          
