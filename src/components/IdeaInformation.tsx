@@ -7,20 +7,22 @@ function IdeaInformation() {
   return (
      <>
       {/* Navbar */}
-      <Box mb={10} >
+      <Box   >
         <Nav />
       </Box>
        {/* Navbar */}
-    <Box minH='60vh' w={1000} m={'auto'}>
+         <Box bg='#E1EAF5'  p={50} minH='80vh'>
+         <Box minH='30vh' w={1000} m={'auto'} bg='white' borderRadius={10} pr={10}>
     <Box >
        
-       <Text textAlign={'center'} fontSize={20} mb={10}>عنوان الفكرة</Text>
+       <Text textAlign={'center'} fontSize={'35px'} mb={10}>عنوان الفكرة</Text>
        <Text>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt fuga consequatur, officia architecto incidunt quis rerum eius omnis cum consequuntur blanditiis voluptatum alias ullam molestiae ratione exercitationem? Recusandae, provident molestiae?</Text>
       
    </Box>
-    </Box>
+     </Box>
+         </Box>
      {/* Footer */}
-     <Box mt={10}>
+     <Box >
      <Footer />
    </Box>
     {/* Footer */}
