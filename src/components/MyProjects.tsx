@@ -4,6 +4,8 @@ import {
   EditIcon,
   SearchIcon,
 } from "@chakra-ui/icons";
+import { Link } from 'react-router-dom';
+import  {Link as RouteLnk } from "@chakra-ui/react";
 import {
   useDisclosure,
   ModalOverlay,
@@ -18,7 +20,7 @@ import {
   ModalFooter,
   Select,
   Modal,
-  Link,
+  
   Textarea,
   Box,
   SimpleGrid,
@@ -58,47 +60,31 @@ function MyProjects() {
 
       // set state when the data received
       setData(data&&data.Project);
+      
     };
-
     getallproject();
+
+    
   }, []);
-  console.log(data);
+  // console.log(data);
 
-  
-
-  const [img,SetImg]=React.useState("")
-  const [base64,SetBase64]=React.useState("")
-console.log(img);
-// const baseConvertor = React.useCallback((file:File)=>{
-//   return new Promise((resolve:any, reject:any)=>{
-//       const reader = new FileReader();
-  
-//       reader.readAsDataURL(file);
-//       reader.onload = () => resolve(reader.result)
-//       reader.onerror = err => reject(err)
-//       })
-//  },[])
-
- 
-//   baseConvertor()
-  
-  let {
-    isOpen: addIsOpen,
-    onOpen: addOnOpen,
-    onClose: addOnClose,
-  } = useDisclosure();
-  let {
-    isOpen: modIsOpen,
-    onOpen: modOnOpen,
-    onClose: modOnClose,
-  } = useDisclosure();
-
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
-
- 
-  
-
+  const deletProject = async (id:string) => {
+    const data = await (
+      await fetch(
+        `http://localhost:3008/project/${id}`,{
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization": localStorage.getItem('token') as string,
+          },
+        }
+        )
+        ).json();
+        // we will come back to this to fix it!!!!!
+        window.location.reload();
+        // navigate("/MyProjects")
+  };
+  // getallproject();
   return (
     <div>
        <nav>
@@ -106,22 +92,7 @@ console.log(img);
       </nav>
 
      
-      
-      {/* المشاريع */}
-      {/* <Box mr={150} mt={20}>
-      <Button
-        onClick={addOnOpen}
-        m="10px"
-       bg={'#00ADBB'} color={'#fff'} _hover={{opacity:0.6 }}
-      >
-        إضافة مشروع جديد
-      </Button>
-<Text fontSize='3xl'
-      textAlign={'right'}
-
-> المشاريع الخاصة بك</Text>
-
-</Box> */}
+    
       <Flex ml={40} mb={5} mt={20}>
         <Box>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
@@ -148,7 +119,7 @@ console.log(img);
 {data.map((index) => (
               <div >
       
-              <GridItem> 
+              <GridItem key={index.id}> 
              
   <Box   textAlign={'right'}
  >
@@ -171,7 +142,7 @@ console.log(img);
           w="full"
           h={64}
           fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          src={index.img}
           alt="Article"
         />
         <Text fontWeight={"bold"} fontSize={25} mr={5}mt={2}> {index.title}</Text>
@@ -189,22 +160,26 @@ console.log(img);
 
               </Text>
             </chakra.span>
-            <Box float={'left'}> <IconButton
+            <Box float={'left'}> 
+             <IconButton
   color={'red'}
   aria-label='delete'
   icon={<DeleteIcon />}
+  onClick={()=>deletProject(index.id)}
 />
+  <Link to={`/ModifyProject/${index.id}`}>
 <IconButton
   mr={5}
   color={'green'}
- 
-
+  
+  
   aria-label='edit'
   icon={<EditIcon />}
 />
+  </Link>
 </Box>
             
-            <Link
+            <RouteLnk
               display="block"
               color="gray.800"
               _dark={{ color: "white" }}
@@ -213,7 +188,7 @@ console.log(img);
               mt={2}
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
-           </Link>
+           </RouteLnk>
            
           </Box>
          
