@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import "../App.css";
-import { Link, useNavigate } from "react-router-dom";
+ import {useNavigate,  Link as LinkRout } from "react-router-dom";
+
 import {
   Text,
   SimpleGrid,
