@@ -31,6 +31,24 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 
 function MyProjects() {
+ 
+
+  const [img,SetImg]=React.useState("")
+  const [base64,SetBase64]=React.useState("")
+console.log(img);
+// const baseConvertor = React.useCallback((file:File)=>{
+//   return new Promise((resolve:any, reject:any)=>{
+//       const reader = new FileReader();
+  
+//       reader.readAsDataURL(file);
+//       reader.onload = () => resolve(reader.result)
+//       reader.onerror = err => reject(err)
+//       })
+//  },[])
+
+ 
+//   baseConvertor()
+  
   let {
     isOpen: addIsOpen,
     onOpen: addOnOpen,
@@ -44,6 +62,9 @@ function MyProjects() {
 
   const initialRef = React.useRef(null);
   const finalRef = React.useRef(null);
+
+ 
+  
 
   return (
     <>
@@ -88,6 +109,11 @@ function MyProjects() {
             <FormControl mt={4}>
               <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
               <Input placeholder=" وصف المشروع  " />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>صورة للمشروع</FormLabel>
+              <Input type="file"  onChange={(e)=>SetImg(e.target.value)}/>
             </FormControl>
           </ModalBody>
 
@@ -149,6 +175,11 @@ function MyProjects() {
             <FormControl mt={4}>
               <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
               <Input placeholder=" وصف المشروع  " />
+            </FormControl>
+
+            <FormControl mt={4}>
+              <FormLabel>صورة للمشروع</FormLabel>
+              <Input type="file"  onChange={(e)=>SetImg(e.target.value)} />
             </FormControl>
           </ModalBody>
 
@@ -427,5 +458,6 @@ function MyProjects() {
     </>
   );
 }
+
 
 export default MyProjects;

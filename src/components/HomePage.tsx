@@ -114,7 +114,7 @@ const getfirst3 = async () => {
 getfirst3();
   return (
     <div>
-      <nav>
+      <nav >
         <Nav />
       </nav>
 
@@ -170,6 +170,7 @@ getfirst3();
               color={"#00ADBB"}
               bg={"none"}
               border="1px solid #00ADBB"
+              
             >
               مشاهدة الكل
             </Button>{" "}
