@@ -73,6 +73,7 @@ function CompamySignUp() {
         {/*  صفحتي الشخصية */}
         <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
+          <Link to={"/"}> 
           <Image
          
          w={300}
@@ -82,6 +83,8 @@ function CompamySignUp() {
          mr={16}
 
        />
+</Link>
+          
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
          >
 تسجيل جديد كشركة  </Heading>
@@ -107,9 +110,9 @@ function CompamySignUp() {
            
             </Box>
             
-            <br>
-            </br>
-            <Box mb={'10px'} >
+         
+
+            {/* <Box mb={'10px'} >
             <Box float={'right'} fontWeight={"bold"}>  اسم المستخدم  </Box>
             <InputGroup>
     <InputRightAddon
@@ -120,15 +123,12 @@ function CompamySignUp() {
     
     <Input type='tel' 
     bg={'#fff'}
-    textAlign={'right'}  onChange={(e) => {
-    
-           setEmail(e.target.value);
-         }}
+    textAlign={'right'}  
     
     />
   </InputGroup>
            
-            </Box>
+            </Box> */}
             <br>
             </br>
             <Box mb={'10px'} >
@@ -144,7 +144,7 @@ function CompamySignUp() {
     bg={'#fff'}
     textAlign={'right'}  onChange={(e) => {
     
-           setEmail(e.target.value);
+           setName(e.target.value);
          }}
     
     />
@@ -182,9 +182,7 @@ function CompamySignUp() {
     />
     
     <Input type='tel' 
-    bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
-      setPassword(e.target.value);
-    }}
+    bg={'#fff'}  textAlign={'right'} 
     
     />
   </InputGroup>

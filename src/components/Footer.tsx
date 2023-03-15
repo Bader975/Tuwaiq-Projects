@@ -7,13 +7,20 @@ import {
   Stack,
   Text,
   VisuallyHidden,
+  Image,
   Input,
   IconButton,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
+import footerImg from "../img/footer.png";
+
+import { CgWebsite } from "react-icons/Cg";
+
+import { AiFillLinkedin } from "react-icons/ai";
+
 
 const Logo = (props: any) => {
   return (
@@ -82,28 +89,50 @@ function Footer() {
         color={useColorModeValue("white", "whiteAlpha")}
         mt={15}
       >
-        <Container as={Stack} maxW={"6xl"} py={10} bg="#041C39">
+     
+    
+        <Container as={Stack} maxW={"6xl"} py={10} bg="#041C39" >
+          
           <SimpleGrid
             templateColumns={{ sm: "1fr 1fr", md: "2fr 1fr 1fr 2fr" }}
             spacing={8}
             bg="#041C39"
           >
+              
             <Stack spacing={6} bg="#041C39">
-              <Stack direction={"row"} spacing={6} bg="#041C39">
-                <SocialButton label={"Twitter"} href={"https://twitter.com/"}>
+               <Box>
+        <Image
+         w={300}
+         src={footerImg}
+         alt="logo"
+       />
+        </Box>
+              <Stack direction={"row"} spacing={6} bg="#041C39" justifyContent={'center'}>
+                
+                <SocialButton label={"Twitter"} href={"https://twitter.com/TuwaiqAcademy?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"}>
                   <FaTwitter />
                 </SocialButton>
-                <SocialButton label={"YouTube"} href={"https://YouTube.com/"}>
-                  <FaYoutube />
+                <SocialButton label={"Linkedin"} href={"https://www.linkedin.com/company/tuwaiqacademy/?originalSubdomain=sa/"}>
+                  <AiFillLinkedin />
                 </SocialButton>
                 <SocialButton
-                  label={"Instagram"}
-                  href={"https://instagram.com/"}
+                  label={"YouTube"}
+                  href={"https://www.youtube.com/@TuwaiqAcademy_/"}
                 >
-                  <FaInstagram />
+                  <FaYoutube />
                 </SocialButton>
+                
+                <SocialButton
+                  label={"webSite"}
+                  href={"https://tuwaiq.edu.sa/"}
+                >
+                  <CgWebsite/>
+                </SocialButton>
+                
+
               </Stack>
             </Stack>
+            
             <Stack bg="#041C39" align={"flex-start"}>
               <Text fontSize={25} bg="#041C39">
               </Text>
@@ -131,18 +160,22 @@ function Footer() {
                   }}
                 />
                 <IconButton
-                  bg={useColorModeValue("green.400", "green.800")}
+                  bg={useColorModeValue("#00ADBB", "green.800")}
                   color={useColorModeValue("white", "gray.800")}
-                  _hover={{
-                    bg: "green.600",
-                  }}
+                  _hover={{opacity:0.6 }}
                   aria-label="Subscribe"
                   icon={<BiMailSend />}
                 />
+              
               </Stack>
+              
             </Stack>
           </SimpleGrid>
+    
+
         </Container>
+        <Box  pb={10}><Text textAlign={'center'}> جميع الحقوق محفوظة لأكاديمية طويق التابعة للاتحاد السعودي للأمن السيبراني والبرمجة والدرونز  2023</Text>
+</Box>
       </Box>
     </>
   );

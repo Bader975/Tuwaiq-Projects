@@ -132,7 +132,7 @@ function AllProjectsPage() {
 
   
 {filteredList.map((data,index) => (
-              <div className="bg-image hover-zoom">
+              <div >
       
               <GridItem key={data.id}> 
              

@@ -18,7 +18,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import HomeImg from "../img/Homeimg.svg";
+import HomeImg from "../img/Homeimg1.svg";
 import {  Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";

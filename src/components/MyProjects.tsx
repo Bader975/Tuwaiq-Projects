@@ -29,6 +29,7 @@ import {
   Button,
   IconButton,
   Spacer,
+  GridItem,
 } from "@chakra-ui/react";
 import React from "react";
 import { FiBell } from "react-icons/Fi";
@@ -37,16 +38,75 @@ import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 
 function MyProjects() {
-  const navigate = useNavigate();
+  const [data, setData] = React.useState<any[]>([]);
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    // fetch data
+    const getallproject = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/project",{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem('token') as string,
+            },
+          }
+        )
+      ).json();
+
+      // set state when the data received
+      setData(data&&data.Project);
+    };
+
+    getallproject();
+  }, []);
+  console.log(data);
+
+  
+
+  const [img,SetImg]=React.useState("")
+  const [base64,SetBase64]=React.useState("")
+console.log(img);
+// const baseConvertor = React.useCallback((file:File)=>{
+//   return new Promise((resolve:any, reject:any)=>{
+//       const reader = new FileReader();
+  
+//       reader.readAsDataURL(file);
+//       reader.onload = () => resolve(reader.result)
+//       reader.onerror = err => reject(err)
+//       })
+//  },[])
+
+ 
+//   baseConvertor()
+  
+  let {
+    isOpen: addIsOpen,
+    onOpen: addOnOpen,
+    onClose: addOnClose,
+  } = useDisclosure();
+  let {
+    isOpen: modIsOpen,
+    onOpen: modOnOpen,
+    onClose: modOnClose,
+  } = useDisclosure();
+
+  const initialRef = React.useRef(null);
+  const finalRef = React.useRef(null);
+
+ 
+  
 
   return (
-    <>
-      <nav>
+    <div>
+       <nav>
         <Nav />
       </nav>
 
-      {/* موديل لاضافه مشروع جديد */}
-
+     
+      
       {/* المشاريع */}
       {/* <Box mr={150} mt={20}>
       <Button
@@ -81,220 +141,102 @@ function MyProjects() {
           </Button>
         </Box>
       </Flex>
-
-      <SimpleGrid
-        spacingX={5}
-        spacingY={5}
+{/* ------- this is where to code */}
+<SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
+>
+    
+{data.map((index) => (
+              <div >
+      
+              <GridItem> 
+             
+  <Box   textAlign={'right'}
+ >
+  <Flex
+     
+      _dark={{ bg: "#3e3e3e" }}
+     
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+      textAlign={'right'}
+    >
+      <Box
         mx="auto"
         m={100}
         mt={10}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
-        <Box textAlign={"right"}>
-          <Flex
-            _dark={{ bg: "#3e3e3e" }}
-            w="full"
-            alignItems="center"
-            justifyContent="center"
-            textAlign={"right"}
-          >
-            <Box
-              mx="auto"
-              rounded="lg"
-              shadow="md"
-              bg="white"
-              _dark={{ bg: "gray.800" }}
-              maxW="2xl"
+        <Image
+          roundedTop="lg"
+          w="full"
+          h={64}
+          fit="cover"
+          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="Article"
+        />
+         {index.title}
+        <Box p={6}>
+          <Box>
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
             >
-              <Image
-                roundedTop="lg"
-                w="full"
-                h={64}
-                fit="cover"
-                src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="Article"
-              />
+             {index.nameOfCamp}: المعسكر
+            </chakra.span>
+            <Box float={'left'}> <IconButton
+  color={'red'}
+  aria-label='delete'
+  icon={<DeleteIcon />}
+/>
+<IconButton
+  mr={5}
+  color={'green'}
+ 
 
-              <Box p={6}>
-                <Box>
-                  <chakra.span
-                    fontSize="xs"
-                    textTransform="uppercase"
-                    color="brand.600"
-                    _dark={{ color: "brand.400" }}
-                  >
-                    المعسكر
-                  </chakra.span>
-                  <Box float={"left"}>
-                    {" "}
-                    <IconButton
-                      color={"red"}
-                      aria-label="delete"
-                      icon={<DeleteIcon />}
-                    />
-                    <IconButton
-                      mr={5}
-                      color={"green"}
-                      aria-label="edit"
-                      icon={<EditIcon />}
-                      onClick={()=> navigate('/ModifyProject')}
-                    />
-                  </Box>
-
-                  <Link
-                    display="block"
-                    color="gray.800"
-                    _dark={{ color: "white" }}
-                    fontWeight="bold"
-                    fontSize="2xl"
-                    mt={2}
-                    _hover={{ color: "gray.600", textDecor: "underline" }}
-                  >
-                    اسم المشروع{" "}
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-          </Flex>
-        </Box>
-        <Box>
-          <Flex
-            _dark={{ bg: "#3e3e3e" }}
-            w="full"
-            alignItems="center"
-            justifyContent="center"
-            textAlign={"right"}
-          >
-            <Box
-              mx="auto"
-              rounded="lg"
-              shadow="md"
-              bg="white"
-              _dark={{ bg: "gray.800" }}
-              maxW="2xl"
+  aria-label='edit'
+  icon={<EditIcon />}
+/>
+</Box>
+            
+            <Link
+              display="block"
+              color="gray.800"
+              _dark={{ color: "white" }}
+              fontWeight="bold"
+              fontSize="2xl"
+              mt={2}
+              _hover={{ color: "gray.600", textDecor: "underline" }}
             >
-              <Image
-                roundedTop="lg"
-                w="full"
-                h={64}
-                fit="cover"
-                src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="Article"
-              />
-
-              <Box p={6}>
-                <Box>
-                  <chakra.span
-                    fontSize="xs"
-                    textTransform="uppercase"
-                    color="brand.600"
-                    _dark={{ color: "brand.400" }}
-                  >
-                    المعسكر
-                  </chakra.span>
-                  <Box float={"left"}>
-                    {" "}
-                    <IconButton
-                      color={"red"}
-                      aria-label="delete"
-                      icon={<DeleteIcon />}
-                    />
-                    <IconButton
-                      mr={5}
-                      color={"green"}
-                      aria-label="edit"
-                      icon={<EditIcon />}
-                      onClick={()=> navigate('/ModifyProject')}
-                    />
-                  </Box>
-                  <Link
-                    display="block"
-                    color="gray.800"
-                    _dark={{ color: "white" }}
-                    fontWeight="bold"
-                    fontSize="2xl"
-                    mt={2}
-                    _hover={{ color: "gray.600", textDecor: "underline" }}
-                  >
-                    اسم المشروع{" "}
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-          </Flex>
+           </Link>
+           
+          </Box>
+         
+            
+         
+          
         </Box>
-        <Box>
-          <Flex
-            _dark={{ bg: "#3e3e3e" }}
-            w="full"
-            alignItems="center"
-            justifyContent="center"
-            textAlign={"right"}
-          >
-            <Box
-              mx="auto"
-              rounded="lg"
-              shadow="md"
-              bg="white"
-              _dark={{ bg: "gray.800" }}
-              maxW="2xl"
-            >
-              <Image
-                roundedTop="lg"
-                w="full"
-                h={64}
-                fit="cover"
-                src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="Article"
-              />
+      </Box>
+    </Flex>
+  </Box>
+ 
+  </GridItem>
+  </div>
+  ))}
+  
+</SimpleGrid>
 
-              <Box p={6}>
-                <Box>
-                  <chakra.span
-                    fontSize="xs"
-                    textTransform="uppercase"
-                    color="brand.600"
-                    _dark={{ color: "brand.400" }}
-                  >
-                    المعسكر
-                  </chakra.span>
-                  <Box float={"left"}>
-                    {" "}
-                    <IconButton
-                      color={"red"}
-                      aria-label="delete"
-                      icon={<DeleteIcon />}
-                    />
-                    <IconButton
-                      mr={5}
-                      color={"green"}
-                      aria-label="edit"
-                      icon={<EditIcon />}
-                      onClick={()=> navigate('/ModifyProject')}
-                    />
-                  </Box>
-                  <Link
-                    display="block"
-                    color="gray.800"
-                    _dark={{ color: "white" }}
-                    fontWeight="bold"
-                    fontSize="2xl"
-                    mt={2}
-                    _hover={{ color: "gray.600", textDecor: "underline" }}
-                  >
-                    اسم المشروع{" "}
-                  </Link>
-                </Box>
-              </Box>
-            </Box>
-          </Flex>
-        </Box>
-      </SimpleGrid>
 
+
+{/* -------------------------------------------------------- */}
+
+     
       <footer>
-        <Footer />
-      </footer>
-    </>
+        <Footer/>
+       </footer>
+    </div>
   );
 }
 

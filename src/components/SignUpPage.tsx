@@ -99,7 +99,10 @@ function SignUpPage() {
           shadow={"2xl"}
         >
           <Box>
-            <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
+          <Link to={"/"}> 
+          <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
+
+</Link>
             <Heading
               as="h1"
               size="lg"
