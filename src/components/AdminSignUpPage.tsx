@@ -129,7 +129,7 @@ function AdminSignUpPage() {
     bg={'#fff'}
     textAlign={'right'}  onChange={(e) => {
     
-           setEmail(e.target.value);
+           setName(e.target.value);
          }}
     
     />
@@ -188,9 +188,7 @@ function AdminSignUpPage() {
     />
     
     <Input type='tel' 
-    bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
-      setPassword(e.target.value);
-    }}
+    bg={'#fff'}  textAlign={'right'} 
     
     />
   </InputGroup>
