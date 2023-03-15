@@ -107,9 +107,9 @@ function CompamySignUp() {
            
             </Box>
             
-            <br>
-            </br>
-            <Box mb={'10px'} >
+         
+
+            {/* <Box mb={'10px'} >
             <Box float={'right'} fontWeight={"bold"}>  اسم المستخدم  </Box>
             <InputGroup>
     <InputRightAddon
@@ -120,15 +120,12 @@ function CompamySignUp() {
     
     <Input type='tel' 
     bg={'#fff'}
-    textAlign={'right'}  onChange={(e) => {
-    
-           setEmail(e.target.value);
-         }}
+    textAlign={'right'}  
     
     />
   </InputGroup>
            
-            </Box>
+            </Box> */}
             <br>
             </br>
             <Box mb={'10px'} >
@@ -144,7 +141,7 @@ function CompamySignUp() {
     bg={'#fff'}
     textAlign={'right'}  onChange={(e) => {
     
-           setEmail(e.target.value);
+           setName(e.target.value);
          }}
     
     />
@@ -182,9 +179,7 @@ function CompamySignUp() {
     />
     
     <Input type='tel' 
-    bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
-      setPassword(e.target.value);
-    }}
+    bg={'#fff'}  textAlign={'right'} 
     
     />
   </InputGroup>

@@ -45,6 +45,7 @@ function LoginPage() {
         position: "top",
       });
       localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
       navigate("/");
     } catch (error) {
       toast({

@@ -24,6 +24,7 @@ import {
   Button,
   IconButton,
   Spacer,
+  GridItem,
 } from "@chakra-ui/react";
 import React from "react";
 import { FiBell } from "react-icons/Fi";
@@ -31,7 +32,32 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 
 function MyProjects() {
- 
+  const [data, setData] = React.useState<any[]>([]);
+
+  React.useEffect(() => {
+    // fetch data
+    const getallproject = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/project",{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem('token') as string,
+            },
+          }
+        )
+      ).json();
+
+      // set state when the data received
+      setData(data&&data.Project);
+    };
+
+    getallproject();
+  }, []);
+  console.log(data);
+
+  
 
   const [img,SetImg]=React.useState("")
   const [base64,SetBase64]=React.useState("")
@@ -67,138 +93,13 @@ console.log(img);
   
 
   return (
-    <>
+    <div>
        <nav>
         <Nav />
       </nav>
 
      
-      {/* موديل لاضافه مشروع جديد */}
-      <Modal
-        size={"4xl"}
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={addIsOpen}
-        onClose={addOnClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader>اضف مشروعك</ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel> عنوان المشروع</FormLabel>
-              <Input ref={initialRef} placeholder=" عنوان المشروع" />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>اسم المعسكر</FormLabel>
-              <Select>
-              <option ></option>
-                <option value=" ">Option 1</option>
-                <option value=" ">Option 2</option>
-                <option value=" ">Option 3</option>
-              </Select>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>وصف المشروع</FormLabel>
-              <Textarea placeholder=" وصف المشروع  " />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
-              <Input placeholder=" وصف المشروع  " />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>صورة للمشروع</FormLabel>
-              <Input type="file"  onChange={(e)=>SetImg(e.target.value)}/>
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter
-            justifyContent={"center"}
-            width={"500px"}
-            margin={"auto"}
-          >
-            <Button bg="#159741" color={"#fff"} width={"50%"}>
-              حفظ
-            </Button>
-            <Button
-              onClick={addOnClose}
-              mr={2}
-              width={"50%"}
-              bg={"#97151D"}
-              color={"#fff"}
-            >
-              إلغاء
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
-
-      {/* موديل للتعديل على مشروع */}
-
-      <Modal
-        size={"4xl"}
-        initialFocusRef={initialRef}
-        finalFocusRef={finalRef}
-        isOpen={modIsOpen}
-        onClose={modOnClose}
-      >
-        <ModalOverlay />
-        <ModalContent>
-          <ModalHeader> تعديل المشروع </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody pb={6}>
-            <FormControl>
-              <FormLabel> عنوان المشروع</FormLabel>
-              <Input ref={initialRef} placeholder=" عنوان المشروع" />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>اسم المعسكر</FormLabel>
-              <Select>
-              <option ></option>
-                <option value=" ">Option 1</option>
-                <option value=" ">Option 2</option>
-                <option value=" ">Option 3</option>
-              </Select>
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>وصف المشروع</FormLabel>
-              <Textarea placeholder=" وصف المشروع  " />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
-              <Input placeholder=" وصف المشروع  " />
-            </FormControl>
-
-            <FormControl mt={4}>
-              <FormLabel>صورة للمشروع</FormLabel>
-              <Input type="file"  onChange={(e)=>SetImg(e.target.value)} />
-            </FormControl>
-          </ModalBody>
-
-          <ModalFooter width={"500px"} margin={"auto"}>
-            <Button bg="#159741" color={"#fff"} width={"50%"}>
-              حفظ
-            </Button>
-            <Button
-              onClick={modOnClose}
-              mr={2}
-              width={"50%"}
-              bg={"#97151D"}
-              color={"#fff"}
-            >
-              إلغاء
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+      
       {/* المشاريع */}
       {/* <Box mr={150} mt={20}>
       <Button
@@ -231,10 +132,15 @@ console.log(img);
       </Button>
         </Box>
       </Flex>
-
+{/* ------- this is where to code */}
 <SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
 >
-  
+    
+{data.map((index) => (
+              <div >
+      
+              <GridItem> 
+             
   <Box   textAlign={'right'}
  >
   <Flex
@@ -262,7 +168,7 @@ console.log(img);
           src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
           alt="Article"
         />
-
+         {index.title}
         <Box p={6}>
           <Box>
             <chakra.span
@@ -271,7 +177,7 @@ console.log(img);
               color="brand.600"
               _dark={{ color: "brand.400" }}
             >
-              المعسكر
+             {index.nameOfCamp}: المعسكر
             </chakra.span>
             <Box float={'left'}> <IconButton
   color={'red'}
@@ -297,7 +203,7 @@ console.log(img);
               mt={2}
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
-اسم المشروع            </Link>
+           </Link>
            
           </Box>
          
@@ -308,154 +214,22 @@ console.log(img);
       </Box>
     </Flex>
   </Box>
-  <Box >
-  <Flex
-      _dark={{ bg: "#3e3e3e" }}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
-
-    >
-      <Box
-        mx="auto"
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        _dark={{ bg: "gray.800" }}
-        maxW="2xl"
-      >
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
-        />
-
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر
-            </chakra.span>
-            <Box float={'left'}> <IconButton
-  color={'red'}
-  aria-label='delete'
-  icon={<DeleteIcon />}
-/>
-<IconButton
-  mr={5}
-  color={'green'}
  
-
-  aria-label='edit'
-  icon={<EditIcon />}
-/>
-</Box>
-            <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-اسم المشروع            </Link>
-            
-          </Box>
-     
-
-          
-
-        </Box>
-      </Box>
-    </Flex>
-  </Box>
-  <Box >
-  <Flex
-      _dark={{ bg: "#3e3e3e" }}
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
-
-    >
-      <Box
-        mx="auto"
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        _dark={{ bg: "gray.800" }}
-        maxW="2xl"
-      >
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
-        />
-
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر
-            </chakra.span>
-            <Box float={'left'}> <IconButton
-  color={'red'}
-  aria-label='delete'
-  icon={<DeleteIcon />}
-/>
-<IconButton
-  mr={5}
-  color={'green'}
- 
-
-  aria-label='edit'
-  icon={<EditIcon />}
-/>
-</Box>
-            <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-اسم المشروع            </Link>
-          
-          </Box>
-
-        
-          
-        </Box>
-      </Box>
-    </Flex>
-  </Box>
+  </GridItem>
+  </div>
+  ))}
   
 </SimpleGrid>
 
+
+
+{/* -------------------------------------------------------- */}
 
      
       <footer>
         <Footer/>
        </footer>
-    </>
+    </div>
   );
 }
 

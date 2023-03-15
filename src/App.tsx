@@ -19,6 +19,7 @@ import MyProjects from './components/MyProjects';
 import CompanyProjects from './components/CompanyProjects';
 import AllIdeas from './components/AllIdeas';
 import AddNewProject from './components/AddNewProject';
+import Myideas from './components/Myideas';
  
 
 function App() {
@@ -45,6 +46,8 @@ function App() {
         <Route path='/SignUpPage' element={<SignUpPage/>}/> 
         <Route path='/AdminSignUpPage' element={<AdminSignUpPage/>}/> 
         <Route path='/CompamySignUp' element={<CompamySignUp/>}/> 
+        <Route path='/Myideas' element={<Myideas/>}/> 
+
 
         <Route path='/LoginPage' element={<LoginPage/>}/> 
         <Route path='/ProjectPage' element={<ProjectPage/>}/> 
