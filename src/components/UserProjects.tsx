@@ -29,6 +29,7 @@ import {
   CardBody,
   CardFooter,
   Stack,
+  Link,
 } from "@chakra-ui/react";
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
@@ -161,7 +162,7 @@ function UserProjects() {
                     mt={2}
                     _hover={{ color: "gray.600", textDecor: "underline" }}
                   >
-                    اسم المشروع{" "}
+                    اسم المشروع {" "}
                   </Link>
                 </Box>
                 <Divider borderColor={"blackAlpha.500"} mt={5} />

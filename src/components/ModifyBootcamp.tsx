@@ -38,7 +38,7 @@ function ModifyBootcamp() {
       </Box>
        {/* Navbar */}
 
-      <Box m={'auto'} w={1000} minH={'60vh'}> 
+      <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl>
                 <FormLabel> اسم المعسكر</FormLabel>
@@ -55,11 +55,11 @@ function ModifyBootcamp() {
 
      
 
-         <SimpleGrid columns={2} mt={4}>
-              <Button bg="#159741" color={"#fff"}    >
+              <SimpleGrid columns={2} mt={4}>
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  >
               حفظ
             </Button>
-            <Button mr={2}   bg={"#97151D"} color={"#fff"}>
+            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'>
               إلغاء
             </Button>
          </SimpleGrid>
@@ -67,7 +67,7 @@ function ModifyBootcamp() {
         </Box>
 
         {/* Footer */}
-      <Box mt={10}>
+      <Box mt={20}>
         <Footer />
       </Box>
        {/* Footer */}

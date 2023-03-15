@@ -25,6 +25,7 @@ import ModifyBootcamp from "./components/ModifyBootcamp";
 import AddNewIdea from "./components/AddNewIdea";
 import ModifyIdea from "./components/ModifyIdea";
 import Myideas from "./components/Myideas";
+import IdeaInformation from "./components/IdeaInformation";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path="/ModifyProject" element={<ModifyProject />} />
         <Route path="/ModifyBootcamp" element={<ModifyBootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />
+        <Route path="/IdeaInfo" element={<IdeaInformation />} />
         <Route path="/CompanyProjects" element={<CompanyProjects />} />
         <Route path="/AddNewIdea" element={<AddNewIdea />} />
         <Route path="/ModifyIdea" element={<ModifyIdea />} />

@@ -38,7 +38,7 @@ function ModifyProject() {
       </Box>
        {/* Navbar */}
 
-      <Box m={'auto'} w={1000}> 
+      <Box m={'auto'} w={800}> 
       <Text textAlign={'center'} fontSize={30}>تعديل</Text>
       <FormControl>
         <FormLabel> عنوان المشروع</FormLabel>
@@ -70,11 +70,11 @@ function ModifyProject() {
         <Input type="file" />
       </FormControl>
 
-         <SimpleGrid columns={2} mt={4}>
-              <Button bg="#159741" color={"#fff"}    >
+      <SimpleGrid columns={2} mt={4}>
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  >
               حفظ
             </Button>
-            <Button mr={2}   bg={"#97151D"} color={"#fff"}>
+            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'>
               إلغاء
             </Button>
          </SimpleGrid>
@@ -82,7 +82,7 @@ function ModifyProject() {
         </Box>
 
         {/* Footer */}
-      <Box mt={10}>
+      <Box mt={20}>
         <Footer />
       </Box>
        {/* Footer */}

@@ -45,33 +45,20 @@ function AllIdeas() {
   // }
   // console.log(data);
 
-  React.useEffect(() => {
-    // fetch data
-    const getallideas = async () => {
-      const data = await (await fetch("http://localhost:3008/idea/all")).json();
+//   React.useEffect(() => {
+//     // fetch data
+//     const getallideas = async () => {
+//       const data = await (await fetch("http://localhost:3008/idea/all")).json();
 
-      // set state when the data received
-      setData(data && data.Idea);
-    };
+//       // set state when the data received
+//       setData(data && data.Idea);
+//     };
 
-    getallideas();
-  }, []);
-  console.log(data);
+//     getallideas();
+//   }, []);
+//   console.log(data);
 
-  let {
-    isOpen: modIsOpen,
-    onOpen: modOnOpen,
-    onClose: modOnClose,
-  } = useDisclosure();
-
-  let {
-    isOpen: modIsOpen2,
-    onOpen: modOnOpen2,
-    onClose: modOnClose2,
-  } = useDisclosure();
-
-  const initialRef = React.useRef(null);
-  const finalRef = React.useRef(null);
+   
   return (
     <div>
       <nav>
@@ -116,51 +103,49 @@ function AllIdeas() {
         borderColor={"blackAlpha.200"}
         minH={"60vh"}
         p={20}
-        borderRadius={"2xl"}
+         borderRadius={"2xl"}
         mx="auto"
         spacingX={10}
         spacingY={20}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
-        {data.map((index: any) => (
+        {/* {data.map((index: any) => ( */}
           <div>
-            <GridItem>
-              <Card>
+            <GridItem  >
+              <Card 
+              h={320}
+              >
                 <CardHeader>
-                  <Heading size="md"> {index.title}</Heading>
+                  <Heading size="sm" mb={4}>
+                     {/* {index.title} */} اسم الفكرة
+                  </Heading>
+                  <Text> اسم الشركة</Text>
                 </CardHeader>
-                <CardBody></CardBody>
+                <CardBody>
+                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod vero blanditiis voluptatibus similique tenetur.
+                </CardBody>
                 <CardFooter>
-                  <Text
-                    color={"#4299E1"}
-                    alignItems={"left"}
-                    fontSize={20}
-                    _hover={{ fontWeight: "bold", cursor: "pointer" }}
-                    onClick={modOnOpen2}
-                  >
-                    للمزيد...
-                  </Text>
-                  <Spacer></Spacer>
-                  <Text fontWeight={"bold"} fontSize={20}>
-                    {index.user.name}
-                  </Text>
+                   
+                <Box position={'relative'} right={'230px'}><Text
+                  
+                  color={"#4299E1"}
+                  fontSize={20}
+                  _hover={{ fontWeight: "bold", cursor: "pointer" }}
+                 >
+                 التفاصيل<ChevronLeftIcon/>                
+
+                </Text>
+                </Box>
+                    {/* {index.user.name} */}
                 </CardFooter>
+                
               </Card>
+              
             </GridItem>
 
-            <Modal onClose={modOnClose2} isOpen={modIsOpen2}>
-              <ModalOverlay />
-              <ModalContent p={5}>
-                <ModalHeader>{index.title}</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>{index.discription}</ModalBody>
-                <ModalFooter>
-                  <Button onClick={modOnClose2}>Close</Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
+            
           </div>
-        ))}
+        {/* ))} */}
       </SimpleGrid>
       <footer>
         <Footer />
