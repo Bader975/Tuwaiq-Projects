@@ -48,13 +48,13 @@ function MyProjects() {
     const getallproject = async () => {
       const data = await (
         await fetch(
-          "http://localhost:3008/project",{
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              "authorization": localStorage.getItem('token') as string,
-            },
-          }
+          "http://localhost:3008/project", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization": localStorage.getItem('token') as string,
+          },
+        }
         )
       ).json();
 
@@ -87,7 +87,7 @@ function MyProjects() {
   // getallproject();
   return (
     <div>
-       <nav>
+      <nav>
         <Nav />
       </nav>
 
@@ -208,12 +208,14 @@ function MyProjects() {
 
 
 
-{/* -------------------------------------------------------- */}
 
-     
+
+      {/* -------------------------------------------------------- */}
+
+
       <footer>
-        <Footer/>
-       </footer>
+        <Footer />
+      </footer>
     </div>
   );
 }

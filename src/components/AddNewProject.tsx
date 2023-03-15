@@ -112,6 +112,10 @@ function AddNewProject() {
             ))}
           </Select>
         </FormControl>
+      <FormControl mt={4}>
+        <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
+        <Input placeholder="رابط المشروع  " />
+      </FormControl>
 
         <FormControl mt={4}>
           <FormLabel>وصف المشروع</FormLabel>

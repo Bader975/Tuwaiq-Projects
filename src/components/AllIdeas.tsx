@@ -116,10 +116,11 @@ function AllIdeas() {
               h={320}
               >
                 <CardHeader>
-                  <Heading size="sm" mb={4}>
-                     {index.title}  
-                  </Heading>
-                  <Text> {index.user.name}</Text>
+                  <Text fontSize={30}  mb={4}>
+                     {/* {index.title} */}
+                      اسم الفكرة
+                  </Text>
+                  <Text> اسم الشركة</Text>
                 </CardHeader>
                 <CardBody>
                 {index.discription}

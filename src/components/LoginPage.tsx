@@ -1,6 +1,6 @@
 
 import React from 'react'
-import { EmailIcon, ExternalLinkIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
+import { ChevronRightIcon, EmailIcon, ExternalLinkIcon, LockIcon, PhoneIcon } from '@chakra-ui/icons'
 import { Grid, GridItem, Heading, Input, Button,Box, Avatar,Image, Text,useToast, InputGroup, InputLeftElement, InputRightElement, Checkbox, InputRightAddon } from '@chakra-ui/react'
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
