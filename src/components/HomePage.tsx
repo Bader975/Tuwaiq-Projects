@@ -120,7 +120,7 @@ React.useEffect(() => {
   getallprojects();
 }, []);
   return (
-    <div>
+    <div className={"backcoler"}>
       <nav >
         <Nav />
       </nav>

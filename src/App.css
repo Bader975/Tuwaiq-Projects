@@ -10,10 +10,10 @@ font-family: 'Tajawal', sans-serif;
 body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-  background-color: #F9F9F9;
-  height:100vh;
- 
+  animation-fill-mode: forwards; 
+  background-color: #E1EAF5;
+   height:100vh;
+
 
 }
 .allidels{
@@ -62,7 +62,9 @@ html {
     }
   }
 
- 
+ .ayaa{
+  clear: both;
+ }
   
 
 /*   
@@ -92,3 +94,7 @@ html {
 
 
 } */
+.backcoler{
+  background-color: #E1EAF5;
+
+}
