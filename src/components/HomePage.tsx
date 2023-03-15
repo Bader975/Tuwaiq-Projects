@@ -5,6 +5,7 @@ import {
   chakra,
   Divider,
   Flex,
+  GridItem,
   Heading,
   Image,
   Link,
@@ -18,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import HomeImg from "../img/Homeimg.svg";
-import { Link as RouteLink } from "react-router-dom";
+import {  Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 
@@ -52,8 +53,9 @@ function StatsCard(props: StatsCardProps) {
 function HomePage() {
   const [numOfusers, setusers] = React.useState<any[]>([]);
   const [numOfproject, setproject] = React.useState<any[]>([]);
-
   const [numOfcamp, setcamp] = React.useState<any[]>([]);
+  const [data, setData] = React.useState<any[]>([]);
+
 
   // const [id , setId] =React.useState<number>();
 
@@ -97,8 +99,19 @@ function HomePage() {
     };
   
     getallcamps();
+//---------------------------------
+//get first 3
+const getfirst3 = async () => {
+  const data = await (
+    await fetch(
+      "http://localhost:3008/project/last3"
+    )
+  ).json();
 
-
+  // set state when the data received
+  setData(data&&data.Project);
+};
+getfirst3();
   return (
     <div>
       <nav>
@@ -151,7 +164,7 @@ function HomePage() {
         </Box>
         <Spacer />
         <Box>
-          <RouteLink to="/Allproject">
+          <RouteLnk to="/Allproject">
             <Button
               _hover={{ color: "white", backgroundColor: "#00ADBB" }}
               color={"#00ADBB"}
@@ -160,297 +173,132 @@ function HomePage() {
             >
               مشاهدة الكل
             </Button>{" "}
-          </RouteLink>{" "}
+          </RouteLnk>{" "}
         </Box>
       </Flex>
       <Box>
-        <SimpleGrid
-          spacingX={5}
-          spacingY={5}
-          mx="auto"
-          m={100}
-          mt={10}
-          columns={{ base: 1, md: 2, lg: 3 }}
-        >
-          <Box textAlign={"right"}>
-            <Flex
-              _dark={{ bg: "#3e3e3e" }}
-              w="full"
-              alignItems="center"
-              justifyContent="center"
-              textAlign={"right"}
-            >
-              <Box
-                mx="auto"
-                rounded="lg"
-                shadow="md"
-                bg="white"
-                _dark={{ bg: "gray.800" }}
-                maxW="2xl"
-              >
-                <Image
-                  roundedTop="lg"
-                  w="full"
-                  h={64}
-                  fit="cover"
-                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                  alt="Article"
-                />
+      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
 
-                <Box p={6}>
-                  <Box>
-                    <chakra.span
-                      fontSize="xs"
-                      textTransform="uppercase"
-                      color="brand.600"
-                      _dark={{ color: "brand.400" }}
-                    >
-                      المعسكر
-                    </chakra.span>
+  
+      {data.map((index:any)=>(
+              <div className="bg-image hover-zoom">
+      
+              <GridItem key={index.id}> 
+             
+              
+  <Flex
+     
+      _dark={{ bg: "#3e3e3e" }}
+     
+      w="full"
+      alignItems="center"
+      justifyContent="center"
+      textAlign={'right'}
+    >
+      <Box
+        mx="auto"
+        rounded="lg"
+        shadow="md"
+        bg="white"
+        _dark={{ bg: "gray.800" }}
+        maxW="2xl"
+      >
+        <Image
+          roundedTop="lg"
+          w="full"
+          h={64}
+          fit="cover"
+          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          alt="Article"
+        />
 
-                    <Link
-                      display="block"
-                      color="gray.800"
-                      _dark={{ color: "white" }}
-                      fontWeight="bold"
-                      fontSize="2xl"
-                      mt={2}
-                      _hover={{ color: "gray.600", textDecor: "underline" }}
-                    >
-                      اسم المشروع{" "}
-                    </Link>
-                  </Box>
-                  <Divider borderColor={"blackAlpha.500"} mt={5} />
-
-                  <Box mt={4}>
-                    <Flex alignItems="center">
-                      <Flex alignItems="center">
-                        <Image
-                          h={10}
-                          fit="cover"
-                          rounded="full"
-                          src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                          alt="Avatar"
-                        />
-                        <Link
-                          mx={2}
-                          fontWeight="bold"
-                          color="gray.700"
-                          _dark={{ color: "gray.200" }}
-                        >
-                          Ali fahad
-                        </Link>
-                      </Flex>
-                      <chakra.span
-                        mx={1}
-                        fontSize="sm"
-                        color="gray.600"
-                        _dark={{ color: "gray.300" }}
-                      >
-                        21 SEP 2015
-                      </chakra.span>
-                      <Link
-                        mx={2}
-                        mr={20}
-                        fontWeight="bold"
-                        color="gray.700"
-                        _dark={{ color: "gray.200" }}
-                      >
-                        التفاصيل
-                        <ChevronLeftIcon />
-                      </Link>
-                    </Flex>
-                  </Box>
-                </Box>
-              </Box>
-            </Flex>
-          </Box>
+        <Box p={6}>
           <Box>
-            <Flex
-              _dark={{ bg: "#3e3e3e" }}
-              w="full"
-              alignItems="center"
-              justifyContent="center"
-              textAlign={"right"}
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
             >
-              <Box
-                mx="auto"
-                rounded="lg"
-                shadow="md"
-                bg="white"
-                _dark={{ bg: "gray.800" }}
-                maxW="2xl"
-              >
-                <Image
-                  roundedTop="lg"
-                  w="full"
-                  h={64}
-                  fit="cover"
-                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                  alt="Article"
-                />
-
-                <Box p={6}>
-                  <Box>
-                    <chakra.span
-                      fontSize="xs"
-                      textTransform="uppercase"
-                      color="brand.600"
-                      _dark={{ color: "brand.400" }}
-                    >
-                      المعسكر
-                    </chakra.span>
-                    <Link
-                      display="block"
-                      color="gray.800"
-                      _dark={{ color: "white" }}
-                      fontWeight="bold"
-                      fontSize="2xl"
-                      mt={2}
-                      _hover={{ color: "gray.600", textDecor: "underline" }}
-                    >
-                      اسم المشروع{" "}
-                    </Link>
-                  </Box>
-
-                  <Divider borderColor={"blackAlpha.500"} mt={5} />
-
-                  <Box mt={4}>
-                    <Flex alignItems="center">
-                      <Flex alignItems="center">
-                        <Image
-                          h={10}
-                          fit="cover"
-                          rounded="full"
-                          src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                          alt="Avatar"
-                        />
-                        <Link
-                          mx={2}
-                          fontWeight="bold"
-                          color="gray.700"
-                          _dark={{ color: "gray.200" }}
-                        >
-                          Ahmad Doe
-                        </Link>
-                      </Flex>
-                      <chakra.span
-                        mx={1}
-                        fontSize="sm"
-                        color="gray.600"
-                        _dark={{ color: "gray.300" }}
-                      >
-                        21 SEP 2015
-                      </chakra.span>
-                      <Link
-                        mx={2}
-                        mr={20}
-                        fontWeight="bold"
-                        color="gray.700"
-                        _dark={{ color: "gray.200" }}
-                      >
-                        التفاصيل
-                        <ChevronLeftIcon />
-                      </Link>
-                    </Flex>
-                  </Box>
-                </Box>
-              </Box>
-            </Flex>
-          </Box>
-          <Box>
-            <Flex
-              _dark={{ bg: "#3e3e3e" }}
-              w="full"
-              alignItems="center"
-              justifyContent="center"
-              textAlign={"right"}
+              المعسكر
+            </chakra.span>
+            <Link
+              display="block"
+              color="gray.800"
+              _dark={{ color: "white" }}
+              fontWeight="bold"
+              fontSize="2xl"
+              mt={2}
+              _hover={{ color: "gray.600", textDecor: "underline" }}
             >
-              <Box
-                mx="auto"
-                rounded="lg"
-                shadow="md"
-                bg="white"
-                _dark={{ bg: "gray.800" }}
-                maxW="2xl"
-              >
-                <Image
-                  roundedTop="lg"
-                  w="full"
-                  h={64}
-                  fit="cover"
-                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                  alt="Article"
-                />
-
-                <Box p={6}>
-                  <Box>
-                    <chakra.span
-                      fontSize="xs"
-                      textTransform="uppercase"
-                      color="brand.600"
-                      _dark={{ color: "brand.400" }}
-                    >
-                      المعسكر
-                    </chakra.span>
-                    <Link
-                      display="block"
-                      color="gray.800"
-                      _dark={{ color: "white" }}
-                      fontWeight="bold"
-                      fontSize="2xl"
-                      mt={2}
-                      _hover={{ color: "gray.600", textDecor: "underline" }}
-                    >
-                      اسم المشروع{" "}
-                    </Link>
-                  </Box>
-                  <Divider borderColor={"blackAlpha.500"} mt={5} />
-
-                  <Box mt={4}>
-                    <Flex alignItems="center">
-                      <Flex alignItems="center">
-                        <Image
-                          h={10}
-                          fit="cover"
-                          rounded="full"
-                          src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                          alt="Avatar"
-                        />
-                        <Link
-                          mx={2}
-                          fontWeight="bold"
-                          color="gray.700"
-                          _dark={{ color: "gray.200" }}
-                        >
-                          Mohammed
-                        </Link>
-                      </Flex>
-                      <chakra.span
-                        mx={1}
-                        fontSize="sm"
-                        color="gray.600"
-                        _dark={{ color: "gray.300" }}
-                      >
-                        21 SEP 2015
-                      </chakra.span>
-                      <Link
-                        mx={2}
-                        mr={20}
-                        fontWeight="bold"
-                        color="gray.700"
-                        _dark={{ color: "gray.200" }}
-                      >
-                        التفاصيل
-                        <ChevronLeftIcon />
-                      </Link>
-                    </Flex>
-                  </Box>
-                </Box>
-              </Box>
-            </Flex>
+        {index.title}     </Link>
+            
+            {/* <Link
+              display="block"
+              color="gray.800"
+              _dark={{ color: "white" }}
+              fontWeight="bold"
+              fontSize="2xl"
+              mt={2}
+              _hover={{ color: "gray.600", textDecor: "underline" }}
+            >
+        {index.title}     </Link>  */}
+           
           </Box>
-        </SimpleGrid>
+          <Divider borderColor={'blackAlpha.500'} mt={5} />
+
+          <Box mt={4} >
+            <Flex alignItems="center">
+              <Flex alignItems="center">
+                <Image
+                  h={10}
+                  fit="cover"
+                  rounded="full"
+                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  alt="Avatar"
+                />
+                {/* <RouteLnk
+                  mx={2}
+                  fontWeight="bold"
+                  color="gray.700"
+                  _dark={{ color: "gray.200" }}
+                >
+                  Ali fahad
+                </RouteLnk> */}
+              </Flex>
+              <chakra.span
+                mx={1}
+                fontSize="sm"
+                color="gray.600"
+                _dark={{ color: "gray.300" }}
+              >
+                21 SEP 2015
+              </chakra.span>
+              <RouteLnk to={`/ProjectPage/${index.id}`}
+                 
+                  // mr={20}
+                  // fontWeight="bold"
+                  // color="gray.700"
+                  // _dark={{ color: "gray.200" }}
+                >
+التفاصيل<ChevronLeftIcon/>                
+                
+</RouteLnk>
+            </Flex>
+
+            
+          </Box>
+          
+        </Box>
+      </Box>
+    </Flex>
+
+
+    </GridItem>
+  </div>
+  ))}
+  
+</SimpleGrid>
       </Box>
 
       <footer>
