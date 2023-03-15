@@ -185,6 +185,20 @@ function Nav() {
                     جميع الأفكار
                   </Button>
                 </RouteLink>
+                { localStorage.getItem('role')=="Admin" ? 
+                <RouteLink to="/Allideas">
+                  <Button
+                    bg={"none"}
+                    color="white"
+                    display="inline-flex"
+                    alignItems="center"
+                    fontSize="md"
+                    _hover={{ color: "#00ADBB", backgroundColor: "none" }}
+                  >
+                   المعسكرات
+                  </Button>
+                </RouteLink>
+                : ""}
               </HStack>
             </Flex>
             <Spacer />
@@ -247,7 +261,7 @@ function Nav() {
                         borderColor={useColorModeValue("gray.200", "gray.700")}
                       >
                         <Box textAlign={"center"} fontWeight={"bold"}>
-                          مرحبا: اسم المستخدم
+                          مرحبا: {localStorage.getItem('name')} 
                         </Box>
                         <MenuDivider />
                         <RouteLink to={"/Profile"}>

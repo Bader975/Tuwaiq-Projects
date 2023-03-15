@@ -142,7 +142,7 @@ console.log(img);
         </Box>
       </Flex>
 {/* ------- this is where to code */}
-<SimpleGrid spacingX={5} spacingY={5} mx="auto"  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
+<SimpleGrid spacingX={5} spacingY={5} mx="auto" minH={"30vh"} m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
 >
     
 {data.map((index) => (
@@ -162,10 +162,9 @@ console.log(img);
       textAlign={'right'}
     >
       <Box
-        mx="auto"
-        m={100}
-        mt={10}
-        columns={{ base: 1, md: 2, lg: 3 }}
+        // mx="auto"
+        // m={100}
+        // mt={10}
       >
         <Image
           roundedTop="lg"
@@ -175,7 +174,8 @@ console.log(img);
           src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
           alt="Article"
         />
-         {index.title}
+        <Text fontWeight={"bold"} fontSize={25} mr={5}mt={2}> {index.title}</Text>
+        
         <Box p={6}>
           <Box>
             <chakra.span
@@ -184,7 +184,10 @@ console.log(img);
               color="brand.600"
               _dark={{ color: "brand.400" }}
             >
-             {index.nameOfCamp}: المعسكر
+              <Text  fontSize={20} >
+              المعسكر : {index.nameOfCamp}
+
+              </Text>
             </chakra.span>
             <Box float={'left'}> <IconButton
   color={'red'}

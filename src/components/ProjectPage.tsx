@@ -50,7 +50,7 @@ function ProjectPage() {
       ).json();
 
       // set state when the data received
-      setData(data&&data.Project[0]);
+      setData(data&&data.Project);
     };
 
     getallproject();
@@ -79,7 +79,7 @@ function ProjectPage() {
           
 
           <chakra.h1 mx={'auto'} color="white" fontWeight="bold" fontSize="lg">
-            
+            {data.title}
           </chakra.h1>
         </Flex>
          <hr />
