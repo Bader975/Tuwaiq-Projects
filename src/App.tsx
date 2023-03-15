@@ -19,6 +19,7 @@ import MyProjects from './components/MyProjects';
 import CompanyProjects from './components/CompanyProjects';
 import AllIdeas from './components/AllIdeas';
 import AddNewProject from './components/AddNewProject';
+import ModifyProject from './components/ModifyProject';
  
 
 function App() {
@@ -34,9 +35,10 @@ function App() {
 
 <Routes>
          <Route path='/userproject' element={<UserProjects/>}/> 
-         <Route path='/Addbootcamp' element={<Addbootcamp/>}/> 
+          <Route path='/Addbootcamp' element={<Addbootcamp/>}/> 
          <Route path='/MyProjects' element={< MyProjects/>}/> 
          <Route path='/Allideas' element={< AllIdeas/>}/> 
+         <Route path='/ModifyProject' element={< ModifyProject/>}/> 
          <Route path='/addProject' element={< AddNewProject/>}/> 
          <Route path='/CompanyProjects' element={<CompanyProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 

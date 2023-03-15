@@ -29,7 +29,7 @@ import {
   Spacer,
 } from "@chakra-ui/react";
 
-function AddNewProject() {
+function ModifyProject() {
   return (
     <div>
        {/* Navbar */}
@@ -39,7 +39,7 @@ function AddNewProject() {
        {/* Navbar */}
 
       <Box m={'auto'} w={1000}> 
-      <Text textAlign={'center'} fontSize={30}>إضافة مشروع جديد</Text>
+      <Text textAlign={'center'} fontSize={30}>تعديل</Text>
       <FormControl>
         <FormLabel> عنوان المشروع</FormLabel>
         <Input placeholder=" عنوان المشروع" />
@@ -90,4 +90,4 @@ function AddNewProject() {
   );
 }
 
-export default AddNewProject;
+export default ModifyProject;
