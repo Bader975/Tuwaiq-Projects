@@ -85,7 +85,7 @@ function HomePage() {
     };
   // console.log(numOfproject);
   
-    getallprojects();
+    // getallprojects();
     // ---------------------------------
     const getallcamps = async () => {
       const data = await (
@@ -98,7 +98,7 @@ function HomePage() {
       setcamp(data&&data.Camp);
     };
   
-    getallcamps();
+    // getallcamps();
 //---------------------------------
 //get first 3
 const getfirst3 = async () => {
@@ -111,7 +111,14 @@ const getfirst3 = async () => {
   // set state when the data received
   setData(data&&data.Project);
 };
-getfirst3();
+// getfirst3();
+
+
+React.useEffect(() => {
+  getfirst3();
+  getallcamps();
+  getallprojects();
+}, []);
   return (
     <div className={"backcoler"}>
       <nav >

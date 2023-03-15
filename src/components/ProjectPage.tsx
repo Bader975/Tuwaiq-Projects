@@ -56,7 +56,7 @@ function ProjectPage() {
       ).json();
 
       // set state when the data received
-      setData(data&&data.Project[0]);
+      setData(data&&data.Project);
     };
 
     getallproject();
@@ -83,8 +83,11 @@ function ProjectPage() {
 </Grid>
           
 
+
           <chakra.h1 mt={3} mx={'auto'} color="black" fontWeight="bold" fontSize="2xl" textAlign={'center'}>
-            اسم المشروع
+
+            {data.title}
+
           </chakra.h1>
         
       <SimpleGrid  textAlign={"right"} mb={10} mt={10} mx={'auto'} gap={ 5}  mr={20} ml={20} >
