@@ -87,7 +87,7 @@ function Footer() {
       <Box
         bg={useColorModeValue("#041C39", "#d4d0d0")}
         color={useColorModeValue("white", "whiteAlpha")}
-        mt={15}
+         
       >
      
     
