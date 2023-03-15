@@ -64,6 +64,8 @@ function LoginPage() {
         {/*  صفحتي الشخصية */}
         <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
+          <Link to={"/"}> 
+
           <Image
          
           w={300}
@@ -71,6 +73,7 @@ function LoginPage() {
           alt="logo"
           mb={5}
         />
+        </Link>
           <Heading as='h1' size='lg' mx={'auto'} color={'#009FAE'} textAlign={'center'} mb={10} p={2}
          >
           تسجيل دخول
