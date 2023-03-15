@@ -18,6 +18,7 @@ import Addbootcamp from './components/Addbootcamp';
 import MyProjects from './components/MyProjects';
 import CompanyProjects from './components/CompanyProjects';
 import AllIdeas from './components/AllIdeas';
+import AddNewProject from './components/AddNewProject';
  
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
          <Route path='/Addbootcamp' element={<Addbootcamp/>}/> 
          <Route path='/MyProjects' element={< MyProjects/>}/> 
          <Route path='/Allideas' element={< AllIdeas/>}/> 
+         <Route path='/addProject' element={< AddNewProject/>}/> 
          <Route path='/CompanyProjects' element={<CompanyProjects/>}/> 
         <Route path='/Allproject' element={<AllProjectsPage/>}/> 
         <Route path='/Profile' element={<ProfilePage/>}/> 
