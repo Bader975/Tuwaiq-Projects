@@ -137,13 +137,8 @@ function AllIdeas() {
         
         <Modal onClose={modOnClose2}   isOpen={modIsOpen2} >
         <ModalOverlay />
-<<<<<<< HEAD
-        <ModalContent>
-          <ModalHeader m={5}>Modal Title</ModalHeader>
-=======
         <ModalContent p={5}>
           <ModalHeader >{index.title}</ModalHeader>
->>>>>>> 587cdf1b6d6c8bbe6b400faff7a564c936c54845
           <ModalCloseButton />
           <ModalBody>
           {index.discription}
