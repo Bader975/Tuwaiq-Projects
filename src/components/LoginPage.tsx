@@ -17,7 +17,6 @@ function LoginPage() {
   const toast = useToast();
   const navigate = useNavigate();
 
-
   // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
     try {
@@ -39,7 +38,7 @@ function LoginPage() {
         return;
       }
       toast({
-        title: data.message,
+        title: data.message,  
         status: "success",
         duration: 3000,
         position: "top",
