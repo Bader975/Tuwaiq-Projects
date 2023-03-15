@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../App.css";
- import {useNavigate,  Link as LinkRout } from "react-router-dom";
+ import { Link as LinkRout } from "react-router-dom";
 
 import {
   Text,
