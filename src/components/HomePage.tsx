@@ -182,7 +182,7 @@ getfirst3();
 
   
       {data.map((index:any)=>(
-              <div className="bg-image hover-zoom">
+              <div >
       
               <GridItem key={index.id}> 
              
@@ -258,14 +258,7 @@ getfirst3();
                   src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
                   alt="Avatar"
                 />
-                {/* <RouteLnk
-                  mx={2}
-                  fontWeight="bold"
-                  color="gray.700"
-                  _dark={{ color: "gray.200" }}
-                >
-                  Ali fahad
-                </RouteLnk> */}
+             
               </Flex>
               <chakra.span
                 mx={1}
@@ -275,6 +268,8 @@ getfirst3();
               >
                 21 SEP 2015
               </chakra.span>
+              <Spacer />
+
               <RouteLnk to={`/ProjectPage/${index.id}`}
                  
                   // mr={20}
