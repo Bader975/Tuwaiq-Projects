@@ -79,7 +79,7 @@ import {
   
               <FormControl mt={4}>
                 <FormLabel>  التاريخ  </FormLabel>
-                <Input placeholder="     2023  " />
+                <Input placeholder= "2023 " />
               </FormControl>
             </ModalBody>
 
@@ -116,7 +116,7 @@ import {
         >
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>     تعديل </ModalHeader>
+            <ModalHeader m={5}>     تعديل </ModalHeader>
             <ModalCloseButton />
             <ModalBody pb={6}>
             <FormControl>
