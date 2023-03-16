@@ -64,11 +64,11 @@ function AddNewBootcamp() {
       </Box>
        {/* Navbar */}
 
-      <Box m={'auto'} w={800} minH={'60vh'}> 
+      <Box mx={'auto'} w={{base:300,md:700,lg:800}} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}>إضافة معسكر  </Text>
       <FormControl>
                 <FormLabel> اسم المعسكر</FormLabel>
-                <Input  placeholder=" اسم المعسكر"  onChange={(e) => {
+                <Input  placeholder=" اسم المعسكر" onChange={(e) => {
               setName(e.target.value);
             }} />
               </FormControl>
