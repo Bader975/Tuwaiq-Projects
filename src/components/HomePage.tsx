@@ -185,7 +185,7 @@ React.useEffect(() => {
         </Box>
       </Flex>
       <Box>
-      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} spacingY={10} alignItems={'center'} minWidth={400} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
 
   
       {data.map((index:any)=>(
@@ -198,7 +198,7 @@ React.useEffect(() => {
      
       _dark={{ bg: "#3e3e3e" }}
      
-      w="full"
+      
       alignItems="center"
       justifyContent="center"
       textAlign={'right'}
@@ -209,11 +209,12 @@ React.useEffect(() => {
         shadow="xl"
         bg="white"
         _dark={{ bg: "gray.800" }}
-        // maxW="2xl"
+        w={500}
       >
         <Image
+mx={'auto'}
           roundedTop="lg"
-          w="full"
+          w={"auto"}
           h={64}
           fit="cover"
           src={index.img}
@@ -231,6 +232,7 @@ React.useEffect(() => {
               المعسكر
             </chakra.span>
             <Link
+            href={`/ProjectPage/${index.id}`}
               display="block"
               color="gray.800"
               _dark={{ color: "white" }}
@@ -240,7 +242,7 @@ React.useEffect(() => {
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
         {index.title}     </Link>
-            
+       
            
           </Box>
           <Divider borderColor={'blackAlpha.500'} mt={5} />
@@ -248,20 +250,10 @@ React.useEffect(() => {
           <Box mt={4} >
             <Flex alignItems="center">
               <Flex alignItems="center">
-                {/* <Image
-                  h={10}
-                  fit="cover"
-                  rounded="full"
-                  src={index.img}
-                  alt="Avatar"
-                /> */}
+            
                 
-                <RouteLnk to={`/ProjectPage/${index.id}`}
+                <RouteLnk to={`/UserProfile/${index.id}`}
                  
-                 // mr={20}
-                 // fontWeight="bold"
-                 // color="gray.700"
-                 // _dark={{ color: "gray.200" }}
                >
 {index.user.name}<ChevronLeftIcon/>                
                
@@ -273,10 +265,7 @@ React.useEffect(() => {
 
               <RouteLnk to={`/ProjectPage/${index.id}`}
                  
-                  // mr={20}
-                  // fontWeight="bold"
-                  // color="gray.700"
-                  // _dark={{ color: "gray.200" }}
+             
                 >
 التفاصيل<ChevronLeftIcon/>                
                 
