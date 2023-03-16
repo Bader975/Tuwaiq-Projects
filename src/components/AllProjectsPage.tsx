@@ -70,7 +70,7 @@ function AllProjectsPage() {
       <Nav/>
       </nav>
 
-      <Box w={"30%"} mx={"auto"} mt={10}>
+      <Box w={"35%"} mx={"auto"} mt={10}>
         <InputGroup
           display={{
             lg: "block",

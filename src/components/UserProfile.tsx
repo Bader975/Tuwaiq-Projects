@@ -40,7 +40,7 @@ import { SetStateAction, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
-function UserProjects() {
+function UserProfile() {
   return (
     <div>
       <nav>
@@ -243,4 +243,4 @@ function UserProjects() {
   );
 }
 
-export default UserProjects;
+export default UserProfile;

@@ -43,10 +43,10 @@ function LoginPage() {
         duration: 3000,
         position: "top",
       });
+      navigate("/");
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       localStorage.setItem("name",data.name)
-      navigate("/");
     } catch (error) {
       toast({
         title: "Server Error !",
