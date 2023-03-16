@@ -83,9 +83,10 @@ function AllIdeas() {
                      {index.title}
                       
                   </Text>
-                  <Text> {index.user.name} </Text>
+                  <hr />
+                  <Text mt={3}>صاحب الفكرة : {index.user.name} </Text>
                 </CardHeader>
-                <CardBody h={20}>
+                <CardBody h={10}>
                 {index.discription}
                 </CardBody>
                 <CardFooter>

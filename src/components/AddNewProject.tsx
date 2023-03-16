@@ -111,10 +111,7 @@ function AddNewProject() {
             ))}
           </Select>
         </FormControl>
-      <FormControl mt={4}>
-        <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
-        <Input placeholder="رابط المشروع  " />
-      </FormControl>
+     
 
         <FormControl mt={4}>
           <FormLabel>وصف المشروع</FormLabel>
@@ -154,7 +151,7 @@ function AddNewProject() {
             _hover={{ opacity: "0.8" }}
             onClick={ addproject}
           >
-            حفظ
+            اضافة
           </Button>
           <Button mr={2} bg={"#fff"} border="solid 1px lightgray">
             إلغاء
