@@ -41,6 +41,7 @@ function App() {
         <Route path="/Allideas" element={<AllIdeas />} />
         <Route path="/addProject" element={<AddNewProject />} />
         <Route path="/ModifyProject" element={<ModifyProject />} />
+        <Route path="/ModifyProject/:id" element={<ModifyProject />} />
         <Route path="/ModifyBootcamp" element={<ModifyBootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />
         <Route path="/IdeaInfo" element={<IdeaInformation />} />
