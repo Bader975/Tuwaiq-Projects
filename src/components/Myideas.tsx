@@ -5,27 +5,10 @@ import {
   SearchIcon,
 } from "@chakra-ui/icons";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  FormControl,
-  Input,
-  FormLabel,
   Text,
-  ModalFooter,
-  Select,
-  Modal,
-  
-  Textarea,
   Box,
   SimpleGrid,
-  Divider,
   Flex,
-  Image,
-  chakra,
   Button,
   IconButton,
   Spacer,
@@ -35,13 +18,10 @@ import {
   CardFooter,
   CardHeader,
 } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
-import  {Link as RouteLnk } from "@chakra-ui/react";
 import React from "react";
-import { FiBell } from "react-icons/Fi";
 import Footer from "./Footer";
 import Nav from "./Nav";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link} from "react-router-dom";
 
 function Myideas() {
   const [data, setData] = React.useState<any[]>([]);
@@ -135,7 +115,7 @@ function Myideas() {
                   <Text fontSize={30}  mb={4}>
 {index.title}                   
                   </Text>
-                  <Divider />
+                  <hr />
                   <Text>  </Text>
                 </CardHeader>
                 
@@ -147,7 +127,7 @@ function Myideas() {
                 
                 <CardFooter>
                    
-                <Box float={'left'}> 
+                <Box > 
              <IconButton
   color={'red'}
   aria-label='delete'
@@ -165,7 +145,8 @@ function Myideas() {
 />
   </Link>
 </Box>
-                    {/* {index.user.name} */}
+
+                   
                 </CardFooter>
                 
               </Card>
