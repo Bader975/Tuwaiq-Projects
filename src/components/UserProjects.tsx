@@ -45,7 +45,7 @@ function UserProjects() {
         <Nav />
       </nav>
       <SimpleGrid columns={2} textAlign={"right"} mb={10} mt={10}>
-        <Box pr={2}>
+        <Box pr={2} border={'2px'}>
           <Box display={"flex"} justifyContent={"center"}>
             <SimpleGrid>
               <Image
@@ -69,7 +69,7 @@ function UserProjects() {
           <Box mb={5}>
             <Heading fontSize="lg" mb={2}>
               {" "}
-              معلومات التواصل
+              معلومات التواصل:
             </Heading>
             <Text fontWeight={"bold"} m={1} display={"inline"}>
               رقم الهاتف:
@@ -104,7 +104,7 @@ function UserProjects() {
         <Box>
           <Heading fontSize="lg" m={20}>
             {" "}
-            مشاريعي
+            المشاريع الخاصة به
           </Heading>
         </Box>
       </Box>

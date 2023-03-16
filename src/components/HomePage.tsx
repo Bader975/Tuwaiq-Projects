@@ -128,7 +128,7 @@ React.useEffect(() => {
       <Box>
       <Box pos={"absolute"} zIndex={"1"} color={"white"} width={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
-            <Heading mb={330} mt={60}>   مشاريع طلاب معسكرات اكاديمية طويق في مكان واحد  </Heading>
+            <Heading mb={330} mt={60}>   مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد  </Heading>
             
           </Box>
           <br></br>
@@ -206,17 +206,17 @@ React.useEffect(() => {
       <Box
         mx="auto"
         rounded="lg"
-        shadow="md"
+        shadow="xl"
         bg="white"
         _dark={{ bg: "gray.800" }}
-        maxW="2xl"
+        // maxW="2xl"
       >
         <Image
           roundedTop="lg"
           w="full"
           h={64}
           fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          src={index.img}
           alt="Article"
         />
 

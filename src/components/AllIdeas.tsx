@@ -45,18 +45,18 @@ function AllIdeas() {
   // }
   // console.log(data);
 
-//   React.useEffect(() => {
-//     // fetch data
-//     const getallideas = async () => {
-//       const data = await (await fetch("http://localhost:3008/idea/all")).json();
+  React.useEffect(() => {
+    // fetch data
+    const getallideas = async () => {
+      const data = await (await fetch("http://localhost:3008/idea/all")).json();
 
-//       // set state when the data received
-//       setData(data && data.Idea);
-//     };
+      // set state when the data received
+      setData(data && data.Idea);
+    };
 
-//     getallideas();
-//   }, []);
-//   console.log(data);
+    getallideas();
+  }, []);
+  console.log(data);
 
    
   return (
@@ -109,7 +109,7 @@ function AllIdeas() {
         spacingY={20}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
-        {/* {data.map((index: any) => ( */}
+        {data.map((index: any) => (
           <div>
             <GridItem  >
               <Card 
@@ -123,7 +123,7 @@ function AllIdeas() {
                   <Text> اسم الشركة</Text>
                 </CardHeader>
                 <CardBody>
-                   Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, quod vero blanditiis voluptatibus similique tenetur.
+                {index.discription}
                 </CardBody>
                 <CardFooter>
                    
@@ -146,7 +146,7 @@ function AllIdeas() {
 
             
           </div>
-        {/* ))} */}
+         ))} 
       </SimpleGrid>
       <footer>
         <Footer />

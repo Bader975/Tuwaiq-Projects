@@ -64,7 +64,7 @@ function ProjectPage() {
   console.log(data);
   
   return (
-    <Box bg={'#E1EAF5'} >
+    <Box bg={'#F9F9F9'} >
    <nav>
       <Nav/>
       </nav>

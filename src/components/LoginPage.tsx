@@ -67,7 +67,6 @@ function LoginPage() {
         <GridItem w="auto"  mx={'auto'}  p={20}  pt={10}  borderRadius={'10px'} bg={'#fff'} shadow={'2xl'}>
           <Box >
           <Link to={"/"}> 
-          <ChevronRightIcon/>
 
           <Image
          
