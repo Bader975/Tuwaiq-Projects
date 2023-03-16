@@ -18,7 +18,7 @@ import {
   ModalFooter,
   Select,
   Modal,
-  Link,
+  
   Textarea,
   Box,
   SimpleGrid,
@@ -30,7 +30,13 @@ import {
   IconButton,
   Spacer,
   GridItem,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
 } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+import  {Link as RouteLnk } from "@chakra-ui/react";
 import React from "react";
 import { FiBell } from "react-icons/Fi";
 import Footer from "./Footer";
@@ -63,6 +69,23 @@ function Myideas() {
     getallproject();
   }, []);
   console.log(data);
+
+  const deletIdea = async (id:string) => {
+    const data = await (
+      await fetch(
+        `http://localhost:3008/idea/${id}`,{
+          method: "delete",
+          headers: {
+            "Content-Type": "application/json",
+            "authorization": localStorage.getItem('token') as string,
+          },
+        }
+        )
+        ).json();
+        // we will come back to this to fix it!!!!!
+        window.location.reload();
+        navigate("/MyProjects")
+  };
   
   return (
     <div>
@@ -90,90 +113,69 @@ function Myideas() {
         </Box>
       </Flex>
 {/* ------- this is where to code */}
-<SimpleGrid spacingX={5} spacingY={5} mx="auto" minH={"30vh"}  m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
->
-    
-{data.map((index) => (
-              <div >
-      
-              <GridItem> 
-             
-  <Box   textAlign={'right'}
- >
-  <Flex
-     
-      _dark={{ bg: "#3e3e3e" }}
-     
-      w="full"
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
-    >
-      <Box
-       
+
+<SimpleGrid
+        borderColor={"blackAlpha.200"}
+        minH={"60vh"}
+        p={20}
+         borderRadius={"2xl"}
+        mx="auto"
+        spacingX={10}
+        spacingY={20}
+        columns={{ base: 1, md: 2, lg: 3 }}
       >
-        <Image
-          roundedTop="lg"
-          w="full"
-          h={64}
-          fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-          alt="Article"
-        />
-         {index.title}
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-             {index.nameOfCamp}: المعسكر
-            </chakra.span>
-            <Box float={'left'}> <IconButton
+        {data.map((index) => (
+          <div>
+          
+            <GridItem key={index.id} >
+              <Card 
+              h={320}
+              >
+                <CardHeader>
+                  <Text fontSize={30}  mb={4}>
+{index.title}                   
+                  </Text>
+                  <Divider />
+                  <Text>  </Text>
+                </CardHeader>
+                
+                <CardBody>
+                
+                  <Text>{index.discription}</Text>
+                
+                </CardBody>
+                
+                <CardFooter>
+                   
+                <Box float={'left'}> 
+             <IconButton
   color={'red'}
   aria-label='delete'
   icon={<DeleteIcon />}
+  onClick={()=>deletIdea(index.id)}
 />
+  <Link to={`/ModifyIdea/${index.id}`}>
 <IconButton
-  mr={5}
+  mr={10}
   color={'green'}
- 
-
+  
+  
   aria-label='edit'
   icon={<EditIcon />}
 />
+  </Link>
 </Box>
-            
-            <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-           </Link>
-           
-          </Box>
-         
-            
-         
-          
-        </Box>
-      </Box>
-    </Flex>
-  </Box>
- 
-  </GridItem>
-  </div>
-  ))}
-  
-</SimpleGrid>
+                    {/* {index.user.name} */}
+                </CardFooter>
+                
+              </Card>
+              
+            </GridItem>
 
-
+            
+          </div>
+     ))}
+      </SimpleGrid>
 
 {/* -------------------------------------------------------- */}
 
