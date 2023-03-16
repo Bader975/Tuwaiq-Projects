@@ -30,71 +30,120 @@ import {
   CardFooter,
   Stack,
   Link,
+  IconButton,
 } from "@chakra-ui/react";
 import { BsFillBriefcaseFill } from "react-icons/bs";
-import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
+import { ChevronLeftIcon, LinkIcon, Search2Icon } from "@chakra-ui/icons";
 
-import { MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
+import { MdContactPhone, MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
 import { SetStateAction, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { FaUserAlt } from "react-icons/fa";
 function UserProjects() {
   return (
     <div>
       <nav>
         <Nav />
       </nav>
-      <SimpleGrid columns={2} textAlign={"right"} mb={10} mt={10}>
-        <Box pr={2} border={'2px'}>
-          <Box display={"flex"} justifyContent={"center"}>
-            <SimpleGrid>
-              <Image
-                h={20}
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/2048px-User_icon_2.svg.png"
-                alt="Dan Abramov"
-              />
-              <Box minH={20}>
-                <Heading fontSize="lg"> اسم المطور</Heading>
+      <SimpleGrid columns={2} textAlign={"right"} m={10} mt={20}>
+      <Box pr={5} pt={5}   h={400} mb={10}  
+        rounded="lg"
+        shadow="md"
+        bg="white"
+        width={'full'}
+        minH={'40vh'}
+        _dark={{ bg: "gray.800" }} >
+<Box alignContent={'center'}  >
+  <Box  float={'right'} ><IconButton
+                    fontSize={"3xl"}
+                    borderRadius={"50%"}
+                    color={"#00ADBB"}
+                    p={5}
+                    px={"17px"}
+                    py={8}
+                   _hover={{ color: "none", backgroundColor: "none" }}
+                    bg={"#DBF0F7"}
+                    aria-label=""
+                    icon={<FaUserAlt />}
+                    
+                  /></Box>
+
+             <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
+>معلومات عامة</Text> 
+<p className="ayaa"> </p>  
+</Box>
+<Box mr={5}>
+<Box  fontSize="lg" >
+<Text  mt={10}> الاسم :</Text>
+<Divider/>
+
+<Text  mt={10}> السيرة :</Text>
+<Divider/>
+
+<Text  mt={10} > المهارات:</Text>
+<Divider/>
+
+
+
+          
               </Box>
-            </SimpleGrid>
-          </Box>
-
-          <Box minH={20}>
-            <Heading fontSize="lg"> نبذه عني</Heading>
-          </Box>
+    </Box>
+        
+            
+         
+         
+          
         </Box>
+        <Box  pr={5}>
+        <Box pr={5} pt={5}   h={400} mb={10}  
+        rounded="lg"
+        shadow="md"
+        bg="white"
+        width={'full'}
+        minH={'40vh'}
+        _dark={{ bg: "gray.800" }} >
+<Box alignContent={'center'}  >
+  <Box  float={'right'} ><IconButton
+                    fontSize={"3xl"}
+                    borderRadius={"50%"}
+                    color={"#00ADBB"}
+                    p={5}
+                    px={"17px"}
+                    py={8}
+                   _hover={{ color: "none", backgroundColor: "none" }}
+                    bg={"#DBF0F7"}
+                    aria-label=""
+                    icon={<MdContactPhone />}
+                    
+                  /></Box>
 
-        <Box borderRight={"solid 1px lightgray"} pr={5}>
-          {/* معلومات التواصل */}
-          <Box mb={5}>
-            <Heading fontSize="lg" mb={2}>
-              {" "}
-              معلومات التواصل:
-            </Heading>
-            <Text fontWeight={"bold"} m={1} display={"inline"}>
-              رقم الهاتف:
-            </Text>
-            <Text display={"inline"}>067287287</Text>
-            <Box></Box>
-            <Text fontWeight={"bold"} m={1} display={"inline"}>
-              حساب لينكد إن:
-            </Text>
-            <Text display={"inline"}>hatimlinked</Text>
-          </Box>
-          {/*    مهاراتي */}
-          <Box mb={2} minH={20}>
-            <Heading fontSize="lg" mb={2} minH={15}>
-              {" "}
-              المهارات
-            </Heading>
-          </Box>
-          <Box mb={2} minH={20}>
-            <Heading fontSize="lg" mb={2}>
-              {" "}
-              الهوايات
-            </Heading>
-            <Text>الرسم, السباحه</Text>
-          </Box>
+             <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
+>معلومات التواصل</Text> 
+<p className="ayaa"> </p>  
+</Box>
+
+        
+            
+<Box mr={5}>
+<Box  fontSize="lg" >
+<Text  mt={10}> البريد الإلكتروني :</Text>
+<Divider/>
+
+<Text  mt={10}> رقم الهاتف :</Text>
+<Divider/>
+
+<Text  mt={10} > حساب ليكند إن:</Text>
+<Divider/>
+
+
+
+          
+              </Box>
+    </Box>
+         
+          
+        </Box>
         </Box>
       </SimpleGrid>
 
@@ -102,7 +151,7 @@ function UserProjects() {
       <Box textAlign={"right"}>
         {/* معلومات التواصل */}
         <Box>
-          <Heading fontSize="lg" m={20}>
+          <Heading fontSize="xl" m={20} mt={10}>
             {" "}
             المشاريع الخاصة به
           </Heading>
@@ -132,6 +181,7 @@ function UserProjects() {
               bg="white"
               _dark={{ bg: "gray.800" }}
               maxW="2xl"
+              h={420}
             >
               <Image
                 roundedTop="lg"
@@ -165,10 +215,9 @@ function UserProjects() {
                     اسم المشروع {" "}
                   </Link>
                 </Box>
-                <Divider borderColor={"blackAlpha.500"} mt={5} />
 
-                <Box mt={4}>
-                  <Flex alignItems="center">
+                <Box mt={4} float={'left'}>
+                  <Flex >
                     <Link
                       mx={2}
                       mr={20}
