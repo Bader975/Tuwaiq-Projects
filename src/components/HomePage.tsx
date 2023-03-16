@@ -241,16 +241,6 @@ React.useEffect(() => {
             >
         {index.title}     </Link>
             
-            {/* <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-        {index.title}     </Link>  */}
            
           </Box>
           <Divider borderColor={'blackAlpha.500'} mt={5} />
@@ -258,23 +248,27 @@ React.useEffect(() => {
           <Box mt={4} >
             <Flex alignItems="center">
               <Flex alignItems="center">
-                <Image
+                {/* <Image
                   h={10}
                   fit="cover"
                   rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
+                  src={index.img}
                   alt="Avatar"
-                />
-             
+                /> */}
+                
+                <RouteLnk to={`/ProjectPage/${index.id}`}
+                 
+                 // mr={20}
+                 // fontWeight="bold"
+                 // color="gray.700"
+                 // _dark={{ color: "gray.200" }}
+               >
+{index.user.name}<ChevronLeftIcon/>                
+               
+</RouteLnk>
+
               </Flex>
-              <chakra.span
-                mx={1}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: "gray.300" }}
-              >
-                21 SEP 2015
-              </chakra.span>
+             
               <Spacer />
 
               <RouteLnk to={`/ProjectPage/${index.id}`}

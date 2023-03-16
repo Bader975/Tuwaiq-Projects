@@ -2,32 +2,14 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   FormControl,
   Input,
   FormLabel,
-  Text,
-  ModalFooter,
-  Select,
-  Modal,
-  Link,
+  Text, 
   Textarea,
   Box,
   SimpleGrid,
-  Divider,
-  Flex,
-  Image,
-  chakra,
   Button,
-  IconButton,
-  Heading,
-  Spacer,
-  useToast,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -41,28 +23,34 @@ const {id}=useParams();
 
   React.useEffect(() => {
     // fetch data
-    const getCampByid = async () => {
+    const getIdeaByid = async () => {
+      
       const data = await (
+        
+        
         await fetch(
-          `http://localhost:3008/camp/${id}`
+          `http://localhost:3008/idea/company/${id}`
         )
       ).json();
      
+     
+      
       
       // set state when the data received
-      setData(data&&data.Camp);
+      setData(data&&data.Idea&& data.Idea[0]);
+      
     };
 
-    getCampByid();
+    getIdeaByid();
   }, []);
   
-  console.log(data);
+ 
 
 
-//update boot camp
+//update Idea
 
 
-const updateCamp = async () => {
+const updateIdea = async () => {
   const data = await (
     await fetch(`http://localhost:3008/idea/${id}`, {
       method: "PUT",
@@ -92,16 +80,15 @@ const updateCamp = async () => {
         <Nav />
       </Box>
        {/* Navbar */}
-{/* <input type='text' value={data.name} ></input> */}
+
       <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl>
       <FormLabel> عنوان الفكرة </FormLabel>
-                <Textarea  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
+                <Input  placeholder={`${data.title}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
-            }} ></Textarea>
+            }} ></Input>
               </FormControl>
-              {/* {data.name} */}
 
 
 
@@ -109,11 +96,11 @@ const updateCamp = async () => {
                 <FormLabel>  اوصف الفكرة  </FormLabel>
 
 
-                <Input placeholder={`${data.date}`} onChange={(e) => {
+                <Textarea placeholder={`${data.discription}`} onChange={(e) => {
               setDiscription(e.target.value);
             }}>
               
-              </Input>
+              </Textarea>
               </FormControl>
  
       
@@ -122,7 +109,7 @@ const updateCamp = async () => {
      
 
               <SimpleGrid columns={2} mt={4}>
-              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateIdea} >
               حفظ
             </Button>
             <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'onClick={()=>navigate("/Myideas")}>

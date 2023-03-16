@@ -1,27 +1,19 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
-  useDisclosure,
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   SimpleGrid,
   Stack,
   GridItem,
   Spacer,
 } from "@chakra-ui/react";
-import { Text, Flex, Image, Link, chakra, Divider } from "@chakra-ui/react";
-import axios from "axios";
+import { Text, Flex, Image,  chakra, Divider } from "@chakra-ui/react";
+import  {Link as RouteLnk } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Footer from "./Footer";
@@ -64,35 +56,6 @@ function AllIdeas() {
       <nav>
         <Nav />
       </nav>
-
-      {/* <Box>  */}
-      {/* MAP All Projecs */}
-      {/*Start of Grid body */}
-      {/* <SimpleGrid
-          borderColor={"blackAlpha.200"}
-          borderRadius={"2xl"}
-          mx="auto"
-          columns={{ base: 1, md: 2, lg: 4 }}>
-
-
-{data.map((index:any)=>(
-
-  
-<div className="bg-image hover-zoom">
-             
-             <GridItem >
-          <h1>{index.title}</h1>  
-             </GridItem>
-         
-         </div>
-   
-            
-          ))}
-        </SimpleGrid>
-      </Box> */}
-
-      {/*End of Grid body */}
-
       <Box mr={150} mt={20}>
         <Text fontSize="3xl" textAlign={"right"}>
           جميع الافكار
@@ -117,25 +80,27 @@ function AllIdeas() {
               >
                 <CardHeader>
                   <Text fontSize={30}  mb={4}>
-                     {/* {index.title} */}
-                      اسم الفكرة
+                     {index.title}
+                      
                   </Text>
-                  <Text> اسم الشركة</Text>
+                  <Text> {index.user.name} </Text>
                 </CardHeader>
-                <CardBody>
+                <CardBody h={20}>
                 {index.discription}
                 </CardBody>
                 <CardFooter>
                    
-                <Box position={'relative'} right={'230px'}><Text
+                <Box  right={'230px'}>
                   
+                  
+                  <Link
+                  to={`/IdeaInfo/${index.id}`}
                   color={"#4299E1"}
-                  fontSize={20}
-                  _hover={{ fontWeight: "bold", cursor: "pointer" }}
+              
                  >
                  التفاصيل<ChevronLeftIcon/>                
 
-                </Text>
+                </Link>
                 </Box>
                     {/* {index.user.name} */}
                 </CardFooter>
