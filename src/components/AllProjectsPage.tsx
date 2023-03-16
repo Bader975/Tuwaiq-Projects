@@ -70,7 +70,7 @@ function AllProjectsPage() {
       <Nav/>
       </nav>
 
-      <Box w={"25%"} m={"auto"} mt={5}>
+      <Box w={"25%"} m={"auto"} mt={10}>
         <InputGroup
           display={{
             lg: "block",
@@ -84,7 +84,7 @@ function AllProjectsPage() {
             variant="outline"
             w={"full"}
             shadow={"xl"}
-            placeholder="أبحث عن مشروع او فكرة مشروع"
+            placeholder=" البحث عن مشروع"
             value={title}
             onChange={handleBrandChange}
           />

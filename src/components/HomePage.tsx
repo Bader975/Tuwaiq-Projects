@@ -128,7 +128,7 @@ React.useEffect(() => {
       <Box>
       <Box pos={"absolute"} zIndex={"1"} color={"white"} width={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
-            <Heading mb={330} mt={60}>   مشاريع طلاب معسكرات اكاديمية طويق في مكان واحد  </Heading>
+            <Heading mb={330} mt={60}>   مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد  </Heading>
             
           </Box>
           <br></br>
