@@ -70,7 +70,7 @@ function AllProjectsPage() {
       <Nav/>
       </nav>
 
-      <Box w={"25%"} m={"auto"} mt={10}>
+      <Box w={"30%"} mx={"auto"} mt={10}>
         <InputGroup
           display={{
             lg: "block",
@@ -128,7 +128,7 @@ function AllProjectsPage() {
 
 </Box>
 
-<SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+<SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20} minH={"60vh"}> 
 
   
 {filteredList.map((data,index) => (
