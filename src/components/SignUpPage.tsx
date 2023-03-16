@@ -27,12 +27,16 @@ import { Link, useNavigate } from "react-router-dom";
 import tuwaiqSvg from "../img/logIn_img.png";
 import axios from "axios";
 import { FaUserAlt } from "react-icons/fa";
+import { MDBCheckbox } from "mdb-react-ui-kit";
 
 function SignUpPage() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("User");
   const [email, setEmail] = useState("");
+  const [error, setError] = React.useState(false);
+  const [password2, setPassword2] = useState("");
+  const[cheked, setChecked] = React.useState(true);
 
   const [data, setData] = React.useState<any>([]);
 
@@ -41,48 +45,63 @@ function SignUpPage() {
 
   // axios.post("http://localhost:3008/user/login",
   const submitSignUp = async () => {
-    try {
-      const request = await fetch("http://localhost:3008/user", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          
-          email, 
-          password,
-          name,
-          role
-         })
-      });
-      const data = await request.json();
-      console.log(data.newUser);
-      
-      if (request.status !== 200) {
+    if (
+      name.length == 0 ||
+      email.length == 0 ||
+      password.length == 0 ||
+      password2.length == 0 ||
+      !cheked ||
+      password&&password2&&password!==password2 
+       
+    ) {
+      setError(true);
+      setChecked(false)
+
+    }else{
+      try {
+        const request = await fetch("http://localhost:3008/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            
+            email, 
+            password,
+            name,
+            role
+           })
+        });
+        const data = await request.json();
+        console.log(data.newUser);
+        
+        if (request.status !== 200) {
+          toast({
+            title: data.message,
+            status: "error",
+            duration: 3000,
+            position: "top",
+          });
+          return;
+        }
         toast({
-          title: data.message,
+          title: data.message+"  Hello "+data.newUser.name,
+          status: "success",
+          duration: 3000,
+          position: "top",
+        });
+  
+        navigate("/LoginPage");
+      } catch (error) {
+        toast({
+          title: "Server Error !",
           status: "error",
           duration: 3000,
           position: "top",
         });
-        return;
       }
-      toast({
-        title: data.message+"  Hello "+data.newUser.name,
-        status: "success",
-        duration: 3000,
-        position: "top",
-      });
-
-      navigate("/LoginPage");
-    } catch (error) {
-      toast({
-        title: "Server Error !",
-        status: "error",
-        duration: 3000,
-        position: "top",
-      });
     }
+   
   };
 
   return (
@@ -98,7 +117,7 @@ function SignUpPage() {
           bg={"#fff"}
           shadow={"2xl"}
         >
-          <Box>
+          <Box width={400}>
           <Link to={"/"}> 
           <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
 
@@ -115,7 +134,7 @@ function SignUpPage() {
               تسجيل جديد
             </Heading>
 
-            <Box mb={"10px"}>
+            <Box h={'90px'}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 البريد الإلكتروني{" "}
@@ -135,10 +154,12 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
+              {error&&email.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+              {error&&email&&!email.includes('@')?<Box   ><Text  color={'red'}    >   البريدالإلكتروني غير صالح</Text></Box>:''}
+
             </Box>
 
-            <br></br>
-            <Box mb={"10px"}>
+             <Box h={'90px'}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 اسم المستخدم{" "}
@@ -158,11 +179,12 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
+              {error&&name.length<=0?<Box float={"right"} ><Text  color={'red'} fontSize={15}     >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
             </Box>
 
-            <br></br>
-
-            <Box mb={"10px"}>
+ 
+            <Box h={'90px'} >
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 كلمة المرور{" "}
@@ -175,7 +197,7 @@ function SignUpPage() {
                 />
 
                 <Input
-                  type="tel"
+                  type="password"
                   bg={"#fff"}
                   textAlign={"right"}
                   onChange={(e) => {
@@ -183,9 +205,12 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
-            </Box>
-            <br></br>
-            <Box mb={"10px"}>
+              {error&&password.length<=0?<Box float={"right"} ><Text  color={'red'}   fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+              {error&&password&&password.length <=6 ?<Box  >
+                <Text  color={'red'}   fontSize={15}   > 
+                   كلمة السر قصيرة   </Text></Box>:''}
+            </Box >
+             <Box  h={'90px'}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 تأكيد كلمة المرور{" "}
@@ -196,30 +221,40 @@ function SignUpPage() {
                   pointerEvents="none"
                   children={<LockIcon color="#00ADBB" />}
                 />
-  {/* onChange={(e) => {
-                    setPassword(e.target.value);
-                  } */}
-                <Input
-                  type="tel"
-                  bg={"#fff"}
-                  textAlign={"right"}
-                
+
+                <Input type="password" bg={"#fff"} textAlign={"right"} onChange={(e) => {
+                    setPassword2(e.target.value);
+                  }}
                 />
               </InputGroup>
+              {error&&password2.length <=0?<Box   >
+                <Text  color={'red'}   fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+               
+
+                {error&&password2&&password2 !== password?<Box  >
+                <Text  color={'red'}   fontSize={15}   > 
+                كلمة السر ليست متساوية </Text></Box>:''}
+
             </Box>
-            <br></br>
-            <Box>
-              <Checkbox value="naruto">بالتسجيل أقر بأني قرأت</Checkbox>
-              <Box float={"left"} color={"#00ADBB"} mr={1}>
+             <Box h={'85px'}  >
+             <Box   float='right'>
+              <MDBCheckbox value="naruto"  onClick={(e)=> {setChecked(true)} } />
+            </Box>
+
+            <Text float={"right"}  mr={1}>
                 {" "}
-                شروط الاستخدام و سياسية الخصوصية{" "}
-              </Box>
+                بالتسجيل أقر بأني قرأت
+              </Text>
+            <Box mb={2}>
+              <Text display={'inline'} mr={1} color={"#00ADBB"}> 
+               شروط الاستخدام و سياسية الخصوصية
+                </Text>
+                <Text display={'inline'} mr={1}>وأوافق عليها</Text>
+              
             </Box>
-            <Box>
-              {" "}
-              <Box float={"right"}> و أوافق عليها </Box>
-            </Box>
-            <br></br>
+            {!cheked?<Text color={'red'}> يجب ان توافق على شروط الاستخدام و سياسية الخصوصية </Text>:cheked}
+
+             </Box>
 
             <Box w={"full"} mb={"10px"} mt={"30px"}>
               <Button

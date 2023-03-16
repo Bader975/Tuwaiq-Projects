@@ -209,7 +209,7 @@ React.useEffect(() => {
         shadow="xl"
         bg="white"
         _dark={{ bg: "gray.800" }}
-        maxW="2xl"
+        // maxW="2xl"
       >
         <Image
           roundedTop="lg"

@@ -72,20 +72,20 @@ function Myideas() {
       <Flex ml={40} mb={5} mt={20}>
         <Box>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
-            المشاريع الخاصة بك
+            الافكار الخاصة بك
           </Text>{" "}
         </Box>
         <Spacer />
         <Box>
           <Button
-            onClick={() => navigate("/addProject")}
+            onClick={() => navigate("/AddNewIdea")}
             m="10px"
             _hover={{ color: "white", backgroundColor: "#00ADBB" }}
               color={"#00ADBB"}
               bg={"none"}
               border="1px solid #00ADBB"
           >
-            إضافة مشروع جديد
+            إضافة فكرة جديد
           </Button>
         </Box>
       </Flex>

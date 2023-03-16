@@ -122,7 +122,7 @@ function MyProjects() {
       
               <GridItem key={index.id}> 
              
-  <Box   textAlign={'right'}
+  <Box   textAlign={'right'} shadow={"lg"}
  >
   <Flex
      
@@ -197,6 +197,7 @@ function MyProjects() {
          
           
         </Box>
+        <br/>
       </Box>
     </Flex>
   </Box>

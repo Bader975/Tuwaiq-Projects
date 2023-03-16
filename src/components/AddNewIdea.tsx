@@ -28,8 +28,32 @@ import {
   Heading,
   Spacer,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 function AddNewIdea() {
+  const navigate = useNavigate();
+
+  const [title, setTitle] = React.useState<any>("");
+  const [discription, setDiscription] = React.useState<any>("");
+  const addIdea = async () => {
+    const data = await (
+      await fetch("http://localhost:3008/idea", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token") as string,
+        },
+        body: JSON.stringify({
+          title,
+          discription,
+        
+        }),
+      })
+    ).json();
+    navigate("/Myideas");
+    // set state when the data received
+  };
+
   return (
     <div>
        {/* Navbar */}
@@ -42,12 +66,18 @@ function AddNewIdea() {
       <Text textAlign={'center'} fontSize={30}>إضافة فكرة  </Text>
       <FormControl>
                 <FormLabel>  عنوان الفكرة  </FormLabel>
-                <Input  placeholder=" اسم المعسكر" />
+                <Input  placeholder=" عنوان الفكرة " onChange={(e) => {
+              setTitle(e.target.value);
+            }}
+                />
               </FormControl>
   
               <FormControl mt={4}>
                 <FormLabel>  وصف عن الفكرة  </FormLabel>
-                <Textarea placeholder= "اوصف الفكرة " />
+                <Textarea placeholder= "اوصف الفكرة " onChange={(e) => {
+              setDiscription(e.target.value);
+            }}
+                />
               </FormControl>
  
       
@@ -56,10 +86,10 @@ function AddNewIdea() {
      
 
               <SimpleGrid columns={2} mt={4}>
-              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  >
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ addIdea} >
               حفظ
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'>
+            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray' onClick={()=>navigate("/Myideas")}>
               إلغاء
             </Button>
          </SimpleGrid>
