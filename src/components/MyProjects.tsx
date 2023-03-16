@@ -82,7 +82,7 @@ function MyProjects() {
         ).json();
         // we will come back to this to fix it!!!!!
         window.location.reload();
-        // navigate("/MyProjects")
+        navigate("/MyProjects")
   };
   // getallproject();
   return (

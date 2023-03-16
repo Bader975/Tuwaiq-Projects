@@ -186,7 +186,7 @@ function Nav() {
                   </Button>
                 </RouteLink>
                 { localStorage.getItem('role')=="Admin" ? 
-                <RouteLink to="/Allideas">
+                <RouteLink to="/Bootcamp">
                   <Button
                     bg={"none"}
                     color="white"

@@ -206,7 +206,7 @@ React.useEffect(() => {
       <Box
         mx="auto"
         rounded="lg"
-        shadow="md"
+        shadow="xl"
         bg="white"
         _dark={{ bg: "gray.800" }}
         maxW="2xl"
@@ -216,7 +216,7 @@ React.useEffect(() => {
           w="full"
           h={64}
           fit="cover"
-          src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+          src={index.img}
           alt="Article"
         />
 

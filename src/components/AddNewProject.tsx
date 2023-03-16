@@ -64,14 +64,14 @@ function AddNewProject() {
 
   React.useEffect(() => {
     // fetch data
-    const getallproject = async () => {
+    const getallcamp = async () => {
       const data = await (await fetch("http://localhost:3008/camp")).json();
 
       // set state when the data received
       setData(data && data.Camp);
     };
 
-    getallproject();
+    getallcamp();
   }, []);
 
   return (
@@ -106,7 +106,6 @@ function AddNewProject() {
           >
             <option></option>
             {data.map((index: any) => (
-              // <option>{`${index.name}` + ` ` + `${index.date}`}</option>
               <option>{index.name}</option>
 
             ))}

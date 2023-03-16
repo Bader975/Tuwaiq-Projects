@@ -28,8 +28,34 @@ import {
   Heading,
   Spacer,
 } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
+import  {Link as RouteLnk } from "@chakra-ui/react";
 
 function AddNewBootcamp() {
+
+  const navigate = useNavigate();
+
+  const [name, setName] = React.useState<any>("");
+  const [date, setDate] = React.useState<any>("");
+  const addCamp = async () => {
+    const data = await (
+      await fetch("http://localhost:3008/admin/camp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token") as string,
+        },
+        body: JSON.stringify({
+          name,
+          date,
+        
+        }),
+      })
+    ).json();
+    navigate("/Bootcamp");
+    // set state when the data received
+  };
+
   return (
     <div>
        {/* Navbar */}
@@ -42,12 +68,16 @@ function AddNewBootcamp() {
       <Text textAlign={'center'} fontSize={30}>إضافة معسكر  </Text>
       <FormControl>
                 <FormLabel> اسم المعسكر</FormLabel>
-                <Input  placeholder=" اسم المعسكر" />
+                <Input  placeholder=" اسم المعسكر"  onChange={(e) => {
+              setName(e.target.value);
+            }} />
               </FormControl>
   
               <FormControl mt={4}>
                 <FormLabel>  التاريخ  </FormLabel>
-                <Input placeholder= "2023 " />
+                <Input placeholder= "2023 " onChange={(e) => {
+              setDate(e.target.value);
+            }}/>
               </FormControl>
  
       
@@ -56,10 +86,10 @@ function AddNewBootcamp() {
      
 
               <SimpleGrid columns={2} mt={4}>
-              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  >
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}   onClick={ addCamp} >
               حفظ
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'>
+            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray' onClick={()=>navigate("/Bootcamp")}>
               إلغاء
             </Button>
          </SimpleGrid>
