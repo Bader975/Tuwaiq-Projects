@@ -119,7 +119,7 @@ function Myideas() {
                   <Text>  </Text>
                 </CardHeader>
                 
-                <CardBody>
+                <CardBody h={20}>
                 
                   <Text>{index.discription}</Text>
                 

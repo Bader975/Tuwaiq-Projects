@@ -1,27 +1,19 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
-  useDisclosure,
   Box,
-  Button,
   Card,
   CardBody,
   CardFooter,
   CardHeader,
-  Heading,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   SimpleGrid,
   Stack,
   GridItem,
   Spacer,
 } from "@chakra-ui/react";
-import { Text, Flex, Image, Link, chakra, Divider } from "@chakra-ui/react";
-import axios from "axios";
+import { Text, Flex, Image,  chakra, Divider } from "@chakra-ui/react";
+import  {Link as RouteLnk } from "@chakra-ui/react";
+import { Link } from 'react-router-dom';
+
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import Footer from "./Footer";
@@ -93,20 +85,22 @@ function AllIdeas() {
                   </Text>
                   <Text> {index.user.name} </Text>
                 </CardHeader>
-                <CardBody>
+                <CardBody h={20}>
                 {index.discription}
                 </CardBody>
                 <CardFooter>
                    
-                <Box position={'relative'} right={'230px'}><Text
+                <Box  right={'230px'}>
                   
+                  
+                  <Link
+                  to={`/IdeaInfo/${index.id}`}
                   color={"#4299E1"}
-                  fontSize={20}
-                  _hover={{ fontWeight: "bold", cursor: "pointer" }}
+              
                  >
                  التفاصيل<ChevronLeftIcon/>                
 
-                </Text>
+                </Link>
                 </Box>
                     {/* {index.user.name} */}
                 </CardFooter>

@@ -4,8 +4,31 @@ import { FaRegLightbulb } from 'react-icons/fa'
 import { MdContactPhone } from 'react-icons/md'
 import Footer from './Footer'
 import Nav from './Nav'
+import { useNavigate, useParams } from "react-router-dom";
 
 function IdeaInformation() {
+  const [data, setData] = React.useState<any>([]);
+
+  const navigate = useNavigate();
+  const {id}=useParams();
+  React.useEffect(() => {
+    // fetch data
+    const getIdeaByid = async () => {
+      
+      const data = await (
+        
+        
+        await fetch(
+          `http://localhost:3008/idea/company/${id}`
+        )
+      ).json();
+     
+      setData(data&&data.Idea&& data.Idea[0]);
+      
+    };
+
+    getIdeaByid();
+  }, []);
   return (
      <>
       {/* Navbar */}
@@ -33,9 +56,9 @@ function IdeaInformation() {
                   /></Box>
 
              <Text  mt={4}  mr={4} color={'#00ADBB'}  fontSize={'2xl'} fontWeight={'bold'} float={'right'} 
->عنوان الفكرة</Text> 
+> {data.title}</Text> 
 <p className="ayaa"> </p>  
-</Box>       <Text mt={5}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut rerum nulla quo maiores quod aut corrupti provident. Et aliquid, molestiae illo inventore possimus, dolor quam voluptatem debitis suscipit eligendi tenetur. Molestiae sapiente earum assumenda ad neque. Delectus deserunt rem esse eum voluptatibus optio repudiandae illo officia eaque, in est? Ipsam pariatur maxime nisi voluptatibus, dolorem soluta eum autem nobis et dolores illum totam obcaecati consequatur molestiae rerum voluptates placeat corporis nesciunt exercitationem? Quo veritatis facilis magnam explicabo qui nobis, dolores, deleniti rerum excepturi omnis delectus! Aliquam sequi tempore architecto aperiam necessitatibus, exercitationem minima ipsam cum? Quo ipsam quas atque temporibus.</Text>
+</Box>       <Text mt={5}>{data.discription}</Text>
       
    </Box>
      </Box>

@@ -21,24 +21,30 @@ function ModifyIdea() {
   const navigate = useNavigate();
 const {id}=useParams();
 
-  // React.useEffect(() => {
-  //   // fetch data
-  //   const getIdeaByid = async () => {
-  //     const data = await (
-  //       await fetch(
-  //         `http://localhost:3008/idea/${id}`
-  //       )
-  //     ).json();
+  React.useEffect(() => {
+    // fetch data
+    const getIdeaByid = async () => {
+      
+      const data = await (
+        
+        
+        await fetch(
+          `http://localhost:3008/idea/company/${id}`
+        )
+      ).json();
+     
      
       
-  //     // set state when the data received
-  //     setData(data&&data.Idea);
-  //   };
+      
+      // set state when the data received
+      setData(data&&data.Idea&& data.Idea[0]);
+      
+    };
 
-  //   getIdeaByid();
-  // }, []);
+    getIdeaByid();
+  }, []);
   
-  // console.log(data);
+ 
 
 
 //update Idea

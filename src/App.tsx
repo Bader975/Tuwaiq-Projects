@@ -52,7 +52,7 @@ function App() {
         <Route path="/ModifyIdea/:id" element={<ModifyIdea />} />
 
 
-        <Route path="/IdeaInfo" element={<IdeaInformation />} />
+        <Route path="/IdeaInfo/:id" element={<IdeaInformation />} />
 
 
 
