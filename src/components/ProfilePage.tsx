@@ -1,14 +1,53 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input,Text } from "@chakra-ui/react";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
 
 function ProfilePage() {
+  const [data, setData] = React.useState<any[]>([]);
+  const [name, setName] = React.useState<any[]>();
+  const [twitterURL, setTwitterURL] = React.useState<any[]>();
+  const [img, setImg] = React.useState<any[]>();
+  const [skill, setSkill] = React.useState<any[]>();
+  const [user, setUser] = React.useState<any[]>();
+  const [email, setEmail] = React.useState<any[]>();
+  const [discription, setDiscription] = React.useState<any>("");
+  const navigate = useNavigate()
+
+  React.useEffect(() => {
+    // fetch data
+    const getUserProfile = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/profile",{
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem('token') as string,
+            },
+          }
+        )
+      ).json();
+      // console.log(data);
+      
+
+      // set state when the data received
+      setData(data&&data.profile[0]);
+      // console.log(data);
+
+    };
+
+    getUserProfile();
+  }, []);
+  console.log(data.user);
+      console.log(data);
+
   
   return (
     <div>
+      
         <nav>
       <Nav/>
       </nav>
@@ -46,22 +85,19 @@ function ProfilePage() {
 
             <Box mb={'10px'}>
             <Box float={'right'}>المعلومات الشخصية</Box>
-            <Textarea bg={'#fff'} placeholder="معلومات عنك" textAlign={'right'}></Textarea>
+            <Textarea bg={'#fff'} placeholder={`${data.aboutMy}`}  textAlign={'right'}></Textarea>
             </Box>
 
             <Box mb={'10px'}>
             <Box float={'right'}> المهارات</Box>
-            <Textarea bg={'#fff'} placeholder="ادخل مهراتك هنا" textAlign={'right'}></Textarea>
+            <Textarea bg={'#fff'} placeholder={`${data.skill}`}  textAlign={'right'}></Textarea>
             </Box>
 
-            <Box mb={'10px'}>
-            <Box float={'right'}> الهوايات</Box>
-            <Textarea bg={'#fff'} placeholder='ادخل هواياتك هنا' textAlign={'right'}></Textarea>
-            </Box>
+            
 
             <Box mb={'10px'}>
             <Box float={'right'}> حساب لينكد إن  </Box>
-            <Input bg={'#fff'} placeholder=" ادخل الرابط هنا" textAlign={'right'}></Input>
+            <Input bg={'#fff'} placeholder={`${data.twitterURL}`}  textAlign={'right'}></Input>
             </Box>
 
 
@@ -83,17 +119,17 @@ function ProfilePage() {
            <Box pt={'15px'}>
               <Box mb={'10px'} >
                 <Box float={'right'}>البريدالإلكتروني</Box>
-                <Input bg={'#fff'} placeholder="ادخل البريد الإلكتروني هنا" textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder={`${data.user.email}`}  textAlign={'right'} readOnly={true}></Input>
               </Box>
 
               <Box mb={'10px'}>
                 <Box float={'right'}> اسم المستخدم</Box>
-                <Input bg={'#fff'} placeholder=" ادخل اسمك هنا " textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder={`${data.user.name}`}  textAlign={'right'}></Input>
               </Box>
 
               <Box mb={'10px'}>
                 <Box float={'right'}> الهاتف</Box>
-                <Input bg={'#fff'} placeholder="9665xxxxxxxx" textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder={`${data.user.phone_number}`}  textAlign={'right'}></Input>
               </Box>
               
               <Box w={'full'} mb={'10px'} mt={'30px'} >

@@ -85,7 +85,7 @@ function SignUpPage() {
           return;
         }
         toast({
-          title: data.message+"  Hello "+data.newUser.name,
+          title: data.message+" "+data.newUser.name,
           status: "success",
           duration: 3000,
           position: "top",

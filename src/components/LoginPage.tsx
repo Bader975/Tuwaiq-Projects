@@ -32,11 +32,12 @@ function LoginPage() {
         toast({
           title: data.message,
           status: "error",
-          duration: 3000,
+          duration: 4000,
           position: "top",
         });
         return;
       }
+      else{
       toast({
         title: data.message,  
         status: "success",
@@ -47,7 +48,8 @@ function LoginPage() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       localStorage.setItem("name",data.name)
-    } catch (error) {
+    }}
+     catch (error) {
       toast({
         title: "Server Error !",
         status: "error",
