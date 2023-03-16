@@ -114,7 +114,7 @@ function LoginPage() {
       children={<LockIcon color='#00ADBB' />}
     />
     
-    <Input type='tel' 
+    <Input type="password" 
     bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
       setPassword(e.target.value);
     }}
