@@ -104,9 +104,10 @@ function MyProjects() {
           <Button
             onClick={() => navigate("/addProject")}
             m="10px"
-            bg={"#00ADBB"}
-            color={"#fff"}
-            _hover={{ opacity: 0.6 }}
+            _hover={{ color: "white", backgroundColor: "#00ADBB" }}
+            color={"#00ADBB"}
+            bg={"none"}
+            border="1px solid #00ADBB"
           >
             إضافة مشروع جديد
           </Button>

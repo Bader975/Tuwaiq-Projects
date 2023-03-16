@@ -302,6 +302,7 @@ function Nav() {
                           <Button
                             textAlign={"center"}
                             w={"full"}
+                            color={'red'}
                             rightIcon={<BiLogOut />}
                             onClick={() => removeUser()}
                             bg={"none"}
