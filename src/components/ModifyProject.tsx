@@ -1,37 +1,20 @@
 
-
 import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   FormControl,
   Input,
   FormLabel,
   Text,
-  ModalFooter,
   Select,
-  Modal,
-  Link,
   Textarea,
   Box,
   SimpleGrid,
-  Divider,
-  Flex,
-  Image,
-  chakra,
   Button,
-  IconButton,
-  Heading,
-  Spacer,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import './AddNewProject.css';
 function ModifyProject() {
   const [title, setTitle] = React.useState<any>("");
   const [nameOfCamp, setNameOfCamp] = React.useState<any>("");

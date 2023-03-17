@@ -35,7 +35,7 @@ function App() {
       {/* <MyProjects/> */}
 
       <Routes>
-        <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/UserProfile/:id" element={<UserProfile />} />
 
         <Route path="/Bootcamp" element={<Bootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />

@@ -31,11 +31,11 @@ function ProfilePage() {
           }
         )
       ).json();
-      // console.log(data);
+      console.log(data);
       
 
       // set state when the data received
-      setData(data&&data.profile[0]);
+      setData(data);
       // console.log(data);
 
     };

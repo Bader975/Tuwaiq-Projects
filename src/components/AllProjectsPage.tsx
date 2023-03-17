@@ -47,7 +47,7 @@ function AllProjectsPage() {
       (data: { title: any}) => data.title.split(" ")
       .toString()
       .toLowerCase()
-      .indexOf(title) !== -1
+      .indexOf(title.toLowerCase()) !== -1
     );
     return filtereddata;
   };
@@ -137,15 +137,7 @@ mx={'auto'}
 
         <Box p={6}>
           <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر
-            </chakra.span>
-            <Link
+          <Link
             href={`/ProjectPage/${index.id}`}
               display="block"
               color="gray.800"
@@ -156,6 +148,15 @@ mx={'auto'}
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
         {index.title}     </Link>
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
+            >
+              المعسكر : {index.nameOfCamp}
+            </chakra.span>
+           
        
            
           </Box>
@@ -166,7 +167,7 @@ mx={'auto'}
               <Flex alignItems="center">
             
                 
-                <RouteLnk to={`/UserProfile/${index.id}`}
+                <RouteLnk to={`/UserProfile/${index.user.id}`}
                  
                >
 {index.user.name}<ChevronLeftIcon/>                

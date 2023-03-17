@@ -108,6 +108,7 @@ const getfirst3 = async () => {
     )
   ).json();
 
+ 
   // set state when the data received
   setData(data&&data.Project);
 };
@@ -252,7 +253,7 @@ mx={'auto'}
               <Flex alignItems="center">
             
                 
-                <RouteLnk to={`/UserProfile/${index.id}`}
+                <RouteLnk to={`/UserProfile/${index.user.id}`}
                  
                >
 {index.user.name}<ChevronLeftIcon/>                

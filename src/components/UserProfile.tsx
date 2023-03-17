@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../App.css";
- import { Link as LinkRout } from "react-router-dom";
+import { Link as LinkRout, useParams } from "react-router-dom";
 
 import {
   Text,
@@ -35,115 +35,152 @@ import {
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { ChevronLeftIcon, LinkIcon, Search2Icon } from "@chakra-ui/icons";
 
-import { MdContactPhone, MdEmail, MdHeadset, MdLocationOn } from "react-icons/md";
+import {
+  MdContactPhone,
+  MdEmail,
+  MdHeadset,
+  MdLocationOn,
+} from "react-icons/md";
 import { SetStateAction, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
 function UserProfile() {
+  const [data, setData] = React.useState<any[]>([]);
+  const { id } = useParams();
+
+  React.useEffect(() => {
+    // fetch data
+    const getUserProfile = async () => {
+      const data = await (
+        await fetch(`http://localhost:3008/profile/${id}`, {
+          method: "GET",
+        })
+      ).json();
+      console.log(data);
+
+      // set state when the data received
+      // setData(data&&data.profile[0]);
+      // console.log(data);
+    };
+
+    getUserProfile();
+  }, []);
+
   return (
     <div>
       <nav>
         <Nav />
       </nav>
       <SimpleGrid columns={2} textAlign={"right"} m={10} mt={20}>
-      <Box pr={5} pt={5}   h={400} mb={10}  
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        width={'full'}
-        minH={'40vh'}
-        _dark={{ bg: "gray.800" }} >
-<Box alignContent={'center'}  >
-  <Box  float={'right'} ><IconButton
-                    fontSize={"3xl"}
-                    borderRadius={"50%"}
-                    color={"#00ADBB"}
-                    p={5}
-                    px={"17px"}
-                    py={8}
-                   _hover={{ color: "none", backgroundColor: "none" }}
-                    bg={"#DBF0F7"}
-                    aria-label=""
-                    icon={<FaUserAlt />}
-                    
-                  /></Box>
+        <Box
+          pr={5}
+          pt={5}
+          h={400}
+          mb={10}
+          rounded="lg"
+          shadow="md"
+          bg="white"
+          width={"full"}
+          minH={"40vh"}
+          _dark={{ bg: "gray.800" }}
+        >
+          <Box alignContent={"center"}>
+            <Box float={"right"}>
+              <IconButton
+                fontSize={"3xl"}
+                borderRadius={"50%"}
+                color={"#00ADBB"}
+                p={5}
+                px={"17px"}
+                py={8}
+                _hover={{ color: "none", backgroundColor: "none" }}
+                bg={"#DBF0F7"}
+                aria-label=""
+                icon={<FaUserAlt />}
+              />
+            </Box>
 
-             <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
->معلومات عامة</Text> 
-<p className="ayaa"> </p>  
-</Box>
-<Box mr={5}>
-<Box  fontSize="lg" >
-<Text  mt={10}> الاسم :</Text>
-<Divider/>
+            <Text
+              mt={5}
+              mr={4}
+              color={"#00ADBB"}
+              fontSize={"xl"}
+              fontWeight={"bold"}
+              float={"right"}
+            >
+              معلومات عامة
+            </Text>
+            <p className="ayaa"> </p>
+          </Box>
+          <Box mr={5}>
+            <Box fontSize="lg">
+              <Text mt={10}> الاسم : {data.name}</Text>
+              <Divider />
 
-<Text  mt={10}> السيرة :</Text>
-<Divider/>
+              <Text mt={10}> السيرة : {data.aboutMy}</Text>
+              <Divider />
 
-<Text  mt={10} > المهارات:</Text>
-<Divider/>
-
-
-
-          
-              </Box>
-    </Box>
-        
-            
-         
-         
-          
+              <Text mt={10}> المهارات: {data.skill}</Text>
+              <Divider />
+            </Box>
+          </Box>
         </Box>
-        <Box  pr={5}>
-        <Box pr={5} pt={5}   h={400} mb={10}  
-        rounded="lg"
-        shadow="md"
-        bg="white"
-        width={'full'}
-        minH={'40vh'}
-        _dark={{ bg: "gray.800" }} >
-<Box alignContent={'center'}  >
-  <Box  float={'right'} ><IconButton
-                    fontSize={"3xl"}
-                    borderRadius={"50%"}
-                    color={"#00ADBB"}
-                    p={5}
-                    px={"17px"}
-                    py={8}
-                   _hover={{ color: "none", backgroundColor: "none" }}
-                    bg={"#DBF0F7"}
-                    aria-label=""
-                    icon={<MdContactPhone />}
-                    
-                  /></Box>
-
-             <Text  mt={5}  mr={4} color={'#00ADBB'}  fontSize={'xl'} fontWeight={'bold'} float={'right'} 
->معلومات التواصل</Text> 
-<p className="ayaa"> </p>  
-</Box>
-
-        
-            
-<Box mr={5}>
-<Box  fontSize="lg" >
-<Text  mt={10}> البريد الإلكتروني :</Text>
-<Divider/>
-
-<Text  mt={10}> رقم الهاتف :</Text>
-<Divider/>
-
-<Text  mt={10} > حساب ليكند إن:</Text>
-<Divider/>
-
-
-
-          
+        <Box pr={5}>
+          <Box
+            pr={5}
+            pt={5}
+            h={400}
+            mb={10}
+            rounded="lg"
+            shadow="md"
+            bg="white"
+            width={"full"}
+            minH={"40vh"}
+            _dark={{ bg: "gray.800" }}
+          >
+            <Box alignContent={"center"}>
+              <Box float={"right"}>
+                <IconButton
+                  fontSize={"3xl"}
+                  borderRadius={"50%"}
+                  color={"#00ADBB"}
+                  p={5}
+                  px={"17px"}
+                  py={8}
+                  _hover={{ color: "none", backgroundColor: "none" }}
+                  bg={"#DBF0F7"}
+                  aria-label=""
+                  icon={<MdContactPhone />}
+                />
               </Box>
-    </Box>
-         
-          
-        </Box>
+
+              <Text
+                mt={5}
+                mr={4}
+                color={"#00ADBB"}
+                fontSize={"xl"}
+                fontWeight={"bold"}
+                float={"right"}
+              >
+                معلومات التواصل
+              </Text>
+              <p className="ayaa"> </p>
+            </Box>
+
+            <Box mr={5}>
+              <Box fontSize="lg">
+                <Text mt={10}> البريد الإلكتروني : </Text>
+                <Divider />
+
+                <Text mt={10}> رقم الهاتف : {data.phone_number}</Text>
+                <Divider />
+
+                <Text mt={10}> حساب ليكند إن: {data.twitterURL}</Text>
+                <Divider />
+              </Box>
+            </Box>
+          </Box>
         </Box>
       </SimpleGrid>
 
@@ -165,7 +202,6 @@ function UserProfile() {
         mt={10}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
-         
         <Box>
           <Flex
             _dark={{ bg: "#3e3e3e" }}
@@ -195,7 +231,7 @@ function UserProfile() {
               <Box p={6}>
                 <Box>
                   <chakra.span
-                   display="block"
+                    display="block"
                     fontSize="xs"
                     textTransform="uppercase"
                     color="brand.600"
@@ -212,12 +248,12 @@ function UserProfile() {
                     mt={2}
                     _hover={{ color: "gray.600", textDecor: "underline" }}
                   >
-                    اسم المشروع {" "}
+                    اسم المشروع{" "}
                   </Link>
                 </Box>
 
-                <Box mt={4} float={'left'}>
-                  <Flex >
+                <Box mt={4} float={"left"}>
+                  <Flex>
                     <Link
                       mx={2}
                       mr={20}

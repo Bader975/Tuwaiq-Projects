@@ -48,6 +48,8 @@ function ProjectPage() {
 
   React.useEffect(() => {
     // fetch data
+    // window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
     const getallproject = async () => {
       const data = await (
         await fetch(

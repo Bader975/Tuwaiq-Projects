@@ -3,33 +3,19 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import  {Link as RouteLnk } from "@chakra-ui/react";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   FormControl,
   Input,
   FormLabel,
   Text,
-  ModalFooter,
   Select,
-  Modal,
-  Link,
   Textarea,
   Box,
   SimpleGrid,
-  Divider,
-  Flex,
-  Image,
-  chakra,
   Button,
-  IconButton,
-  Heading,
-  Spacer,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+
+import './AddNewProject.css';
 
 function AddNewProject() {
   const [title, setTitle] = React.useState<any>("");
@@ -61,6 +47,22 @@ function AddNewProject() {
     navigate("/MyProjects");
     // set state when the data received
   };
+
+  var fileAsBase64 = React.useCallback((file:File)=>{
+    return new Promise((resolve:any, reject:any)=>{
+        const reader = new FileReader();
+    
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = err => reject(err)
+        })
+   },[])
+ 
+  const uploadFileHandler = async (e : any) => {
+    var file = e.target.files[0];
+    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+    setImg(image);
+  }
 
   React.useEffect(() => {
     // fetch data
@@ -126,20 +128,22 @@ function AddNewProject() {
         <FormControl mt={4}>
           <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
           <Input
-            placeholder=" وصف المشروع  "
+            placeholder=" رابط المشروع  "
             onChange={(e) => {
               setProjectURL(e.target.value);
             }}
           />
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} p={0}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
-            
+          p={0}
+          className="custom-file-input"
+            type={'File'}
             placeholder=" رابط الصوره"
             onChange={(e) => {
-              setImg(e.target.value);
+              uploadFileHandler(e);
             }}
           />
         </FormControl>
