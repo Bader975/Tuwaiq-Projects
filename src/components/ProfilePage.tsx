@@ -4,18 +4,26 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
+interface UserData {
+  name?: any;
+  twitterURL: string;
+  skill: string,
 
-function ProfilePage() {
+}
+function ProfilePage(props:UserData) {
   const [data, setData] = React.useState<any[]>([]);
+  const [user, setUser] = React.useState<any[]>([]);
   const [name, setName] = React.useState<any>("");
   const [twitterURL, setTwitterURL] = React.useState<any>("");
   const [img, setImg] = React.useState<any>("");
   const [skill, setSkill] = React.useState<any>("");
   const [aboutMy, setAboutMy] = React.useState<any>("");
-  const [user, setUser] = React.useState<any[]>([]);
   const [email, setEmail] = React.useState<any>("");
+  const [phone_number, setPhone_number] = React.useState <any>("");
   const [discription, setDiscription] = React.useState<any>("");
   const navigate = useNavigate()
+
+
 
   React.useEffect(() => {
     // fetch data
@@ -36,19 +44,23 @@ function ProfilePage() {
 
       // set state when the data received
       setData(data&&data.profile[0]);
+      setUser(data&&data.profile[0].user);
       // console.log(data);
 
     };
 
     getUserProfile();
   }, []);
-  // console.log(data.user);
+  // console.log(user.name);
   //     console.log(data);
 
   
 
       // update profile
 
+      // interface phone{
+      //   phone_number:number;
+      // }
       
       const updateProfle = async () => {
         const data = await (
@@ -62,8 +74,10 @@ function ProfilePage() {
              
               skill,
               aboutMy,
-              twitterURL
-        
+              twitterURL,
+              // Test USER Info Update 
+              // phone_number,
+              // name
         
             }),
           })
@@ -71,7 +85,40 @@ function ProfilePage() {
         window.location.reload();
         navigate("/Profile")        // set state when the data received
       };
+      // Upadate User info --------------------------------
+      // update profile
+      
+      // convert String ti Int 
+      
+      console.log(typeof(phone_number));
+      
+      // interface UserData {
+      //   phone_number:number;
+      // }
+      // --------
+  const updateUserInfo = async () => {
+    const data = await (
+      await fetch(`http://localhost:3008/user/`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token") as string,
+        },
+        body: JSON.stringify({
+         
+        
+          // Test USER Info Update 
+        phone_number ,
+          name
     
+        }),
+      })
+    ).json();
+    window.location.reload();
+    navigate("/Profile") 
+    console.log(data.message);
+           // set state when the data received
+  };
 
   return (
     <div>
@@ -153,21 +200,23 @@ function ProfilePage() {
            <Box pt={'15px'}>
               <Box mb={'10px'} >
                 <Box float={'right'}>البريدالإلكتروني</Box>
-                <Input bg={'#fff'} placeholder='' textAlign={'right'} readOnly={true}></Input>
+                <Input bg={'#fff'} placeholder={`${user.email}`} textAlign={'right'} readOnly={true}></Input>
               </Box>
 
               <Box mb={'10px'}>
                 <Box float={'right'}> اسم المستخدم</Box>
-                <Input bg={'#fff'} placeholder='' textAlign={'right'}></Input>
+                <Input bg={'#fff'} placeholder={`${user.name}`}  textAlign={'right'}  onChange={(e) => {
+          setName(e.target.value); }}></Input>
               </Box>
 
               <Box mb={'10px'}>
                 <Box float={'right'}> الهاتف</Box>
-                <Input bg={'#fff'} placeholder='' textAlign={'right'}></Input>
+                <Input  id='phone' bg={'#fff'} placeholder={`${user.phone_number}`} type={'number'} textAlign={'right'} onChange={(e) => {
+          setPhone_number(e.target.value);}}></Input>
               </Box>
-              
+
               <Box w={'full'} mb={'10px'} mt={'30px'} >
-            <Button   textAlign={'center'}  w='full'bg={'#00ADBB'} color={'#fff'} _hover={{opacity:0.6 }}>تحديث معلومات الحساب</Button>
+            <Button   textAlign={'center'}  w='full'bg={'#00ADBB'} color={'#fff'} _hover={{opacity:0.6 }} onClick={updateUserInfo} >تحديث معلومات الحساب</Button>
            </Box >
 
            </Box>
