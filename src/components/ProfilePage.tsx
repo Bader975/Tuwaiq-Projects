@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input,Text } from "@chakra-ui/react";
+import { Box, Grid, GridItem, Avatar, Stack, Button, Textarea, Input,Text, useToast } from "@chakra-ui/react";
+import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
@@ -10,7 +11,7 @@ interface UserData {
   skill: string,
 
 }
-function ProfilePage(props:UserData) {
+function ProfilePage() {
   const [data, setData] = React.useState<any[]>([]);
   const [user, setUser] = React.useState<any[]>([]);
   const [name, setName] = React.useState<any>("");
@@ -21,8 +22,9 @@ function ProfilePage(props:UserData) {
   const [email, setEmail] = React.useState<any>("");
   const [phone_number, setPhone_number] = React.useState <any>("");
   const [discription, setDiscription] = React.useState<any>("");
+  
   const navigate = useNavigate()
-
+  const toast = useToast();
 
 
   React.useEffect(() => {
@@ -82,15 +84,22 @@ function ProfilePage(props:UserData) {
             }),
           })
         ).json();
-        window.location.reload();
-        navigate("/Profile")        // set state when the data received
+        // window.location.reload(); 
+         toast({
+      title: data.message,  
+      status: "success",
+      duration: 3000,
+      position: "top",
+    });
+        navigate("/Profile") 
+               // set state when the data received
       };
       // Upadate User info --------------------------------
       // update profile
       
       // convert String ti Int 
       
-      console.log(typeof(phone_number));
+      // console.log(typeof(phone_number));
       
       // interface UserData {
       //   phone_number:number;
@@ -114,8 +123,16 @@ function ProfilePage(props:UserData) {
         }),
       })
     ).json();
-    window.location.reload();
+    // window.location.reload();
+    // preventDefault();  
+    toast({
+      title: data.message,  
+      status: "success",
+      duration: 3000,
+      position: "top",
+    });
     navigate("/Profile") 
+
     console.log(data.message);
            // set state when the data received
   };
@@ -231,3 +248,4 @@ function ProfilePage(props:UserData) {
 }
 
 export default ProfilePage;
+

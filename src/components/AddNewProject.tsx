@@ -82,7 +82,7 @@ function AddNewProject() {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={800}>
+      <Box m={"auto"} w={{base:300,md:500,lg:800}}>
         <Text textAlign={"center"} fontSize={30}>
           اضافة مشروع جديد
         </Text>

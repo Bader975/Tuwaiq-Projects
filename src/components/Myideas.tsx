@@ -104,6 +104,7 @@ function Myideas() {
         spacingY={20}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
+        {/* {data== "" || "" ? "لا توجد لديك افكار " :""} */}
         {data.map((index) => (
           <div>
           

@@ -1,4 +1,6 @@
-import { ChevronLeftIcon } from "@chakra-ui/icons";
+
+import { ChevronLeftIcon, Search2Icon } from '@chakra-ui/icons';
+
 import {
   Box,
   Card,
@@ -9,13 +11,16 @@ import {
   Stack,
   GridItem,
   Spacer,
+  InputLeftElement,
+  Input,
+  InputGroup,
 } from "@chakra-ui/react";
 import { Text, Flex, Image,  chakra, Divider } from "@chakra-ui/react";
 import  {Link as RouteLnk } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 
@@ -51,11 +56,61 @@ function AllIdeas() {
   console.log(data);
 
    
+  const [filteredList, setFilteredList] = useState(data);
+
+  const [title, settitle] = React.useState("");
+  const [nameproject, setNameProject] = React.useState("");
+
+  const filter = (filteredData: any) => {
+    if (!title) {
+      return filteredData;
+    }
+
+    const filtereddata = filteredData.filter(
+      (data: { title: any}) => data.title.split(" ")
+      .toString()
+      .toLowerCase()
+      .indexOf(title) !== -1
+    );
+    return filtereddata;
+  };
+
+  const handleBrandChange = (e: {
+    target: { value: React.SetStateAction<string> };
+  }) => {
+    settitle(e.target.value);
+  };
+
+  React.useEffect(() => {
+    let filteredData = filter(data);
+    setFilteredList(filteredData);
+  }, );
   return (
     <div>
       <nav>
         <Nav />
-      </nav>
+      </nav> 
+      {/* Searsh bar */}
+      <Box w={"35%"} mx={"auto"} mt={10}>
+        <InputGroup
+          display={{
+            lg: "block",
+          }}
+          ml="auto"
+        >
+          <InputLeftElement pointerEvents="none">
+            <Search2Icon />
+          </InputLeftElement>
+          <Input
+            variant="outline"
+            w={"full"}
+            shadow={"xl"}
+            placeholder=" البحث عن الافكار"
+            value={title}
+            onChange={handleBrandChange}
+          />
+        </InputGroup>
+      </Box>
       <Box mr={150} mt={20}>
         <Text fontSize="3xl" textAlign={"right"}>
           جميع الافكار
@@ -72,7 +127,7 @@ function AllIdeas() {
         spacingY={20}
         columns={{ base: 1, md: 2, lg: 3 }}
       >
-        {data.map((index: any) => (
+        {filteredList.map((index: any) => (
           <div>
             <GridItem  >
               <Card 

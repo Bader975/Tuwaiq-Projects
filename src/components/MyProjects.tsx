@@ -114,9 +114,9 @@ function MyProjects() {
         </Box>
       </Flex>
 {/* ------- this is where to code */}
-<SimpleGrid spacingX={5} spacingY={5} mx="auto" minH={"30vh"} m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
+
+<SimpleGrid spacingX={5} spacingY={10} mx="auto" minH={"30vh"} alignItems={'center'} mt={10} columns={{ base: 1, md: 2, lg: 3 }} p={20}
 >
-    
 {data.map((index) => (
               <div >
       
@@ -205,8 +205,9 @@ function MyProjects() {
   </GridItem>
   </div>
   ))}
-  
 </SimpleGrid>
+
+
 
 
 
