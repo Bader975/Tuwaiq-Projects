@@ -41,20 +41,20 @@ function ProfilePage() {
           }
         )
       ).json();
-      // console.log(data);
+    
       
 
       // set state when the data received
-      setData(data&&data.profile[0]);
-      setUser(data&&data.profile[0].user);
-      // console.log(data);
+      setData(data.profile);
+      setUser(data.profile.user);
+     
 
     };
 
     getUserProfile();
   }, []);
   // console.log(user.name);
-  //     console.log(data);
+      console.log(data);
 
   
 
@@ -228,7 +228,7 @@ function ProfilePage() {
 
               <Box mb={'10px'}>
                 <Box float={'right'}> الهاتف</Box>
-                <Input  id='phone' bg={'#fff'} placeholder={`${user.phone_number}`} type={'number'} textAlign={'right'} onChange={(e) => {
+                <Input  id='phone' bg={'#fff'} placeholder={`${user.phone_number}`}  textAlign={'right'} onChange={(e) => {
           setPhone_number(e.target.value);}}></Input>
               </Box>
 
