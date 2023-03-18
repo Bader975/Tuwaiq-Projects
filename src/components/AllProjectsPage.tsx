@@ -27,10 +27,6 @@ function AllProjectsPage() {
 console.log("ggg");
 
   React.useEffect(() => {
-    // fetch data
-  console.log("hhhh");
-  
-
     getallproject();
   }, []);
 
@@ -39,7 +35,7 @@ console.log("ggg");
   console.log(data);
   
 
-  
+
   const [filteredList, setFilteredList] = useState(data);
 
   const [title, settitle] = React.useState("");
@@ -111,7 +107,8 @@ console.log("ggg");
   
 {filteredList.map((index) => (
               <div >
-      
+        
+            
               <GridItem key={index.id}> 
              
               
@@ -172,7 +169,7 @@ mx={'auto'}
           <Box mt={4} >
             <Flex alignItems="center">
               <Flex alignItems="center">
-            
+        
                 
                 <RouteLnk to={`/UserProfile/${index.user.id}`}
                  

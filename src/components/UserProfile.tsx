@@ -1,5 +1,6 @@
-import React from "react";
-import axios from "axios";
+
+
+import React, {useState, useEffect} from 'react';
 import "../App.css";
 import {  useParams } from "react-router-dom";
 import {
@@ -27,7 +28,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 
 function UserProfile() {
-  const [data, setData] = React.useState<any>([]);
+  const [data, setData] = React.useState<any[]>([]);
   const [user, setUser] = React.useState<any>([]);
   const [project, setProject] = React.useState<any[]>([]);
 
@@ -39,6 +40,9 @@ function UserProfile() {
       const data = await (
         await fetch(`http://localhost:3008/profile/${id}`, {
           method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
       ).json();
       console.log(data.profile[0]);
@@ -80,6 +84,7 @@ function UserProfile() {
       
     };
 
+console.log(data);
 
     console.log("user "+ user);
   return (
@@ -126,7 +131,7 @@ function UserProfile() {
             >
               معلومات عامة
             </Text>
-            <p className="ayaa"> </p>
+            <p className="ayaa"></p>
           </Box>
           <Box mr={5}>
             <Box fontSize="lg">

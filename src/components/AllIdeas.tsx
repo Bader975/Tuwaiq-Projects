@@ -20,7 +20,7 @@ import  {Link as RouteLnk } from "@chakra-ui/react";
 import { Link } from 'react-router-dom';
 
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 
@@ -53,7 +53,12 @@ function AllIdeas() {
 
 
   // console.log(data);
+  useEffect(() => {
+    // fetch data
 
+    getallideas();
+
+  }, []);
    
   const [filteredList, setFilteredList] = useState(data);
 
@@ -82,10 +87,12 @@ function AllIdeas() {
 
   React.useEffect(() => {
     
-    getallideas();
+  
     let filteredData = filter(data);
     setFilteredList(filteredData);
-  }, );
+  }, 
+  );
+
   return (
     <div>
       <nav>

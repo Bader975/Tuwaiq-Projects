@@ -264,6 +264,8 @@ function Nav() {
                           مرحبا: {localStorage.getItem('name')} 
                         </Box>
                         <MenuDivider />
+                        {
+                        localStorage.getItem('role')=="User"  ?
                         <RouteLink to={"/Profile"}>
                           <MenuItem
                             _hover={{
@@ -274,6 +276,7 @@ function Nav() {
                             الملف الشخصي
                           </MenuItem>
                         </RouteLink>
+                        :  localStorage.getItem('role')=="Admin" || "Company" ? "": ""}
 
                         <MenuDivider /> 
                         {

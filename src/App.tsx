@@ -35,6 +35,8 @@ function App() {
       {/* <MyProjects/> */}
 
       <Routes>
+      <Route path="/" element={<HomePage />} />
+      
         <Route path="/UserProfile/:id" element={<UserProfile />} />
 
         <Route path="/Bootcamp" element={<Bootcamp />} />
@@ -57,7 +59,7 @@ function App() {
 
 
 
-        <Route path="/" element={<HomePage />} />
+        
         <Route path="/Allproject" element={<AllProjectsPage />} />
         <Route path="/Allideas" element={<AllIdeas />} />
         <Route path="/Profile" element={<ProfilePage />} />
