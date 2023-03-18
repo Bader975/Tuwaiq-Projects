@@ -35,9 +35,17 @@ function ModifyIdea() {
   const [data, setData] = React.useState<any>([]);
   const [title, setTitle] = React.useState<any>("");
   const [discription, setDiscription] = React.useState<any>("");
-  
+  const [error, setError] = React.useState(false);
+
   const navigate = useNavigate();
 const {id}=useParams();
+
+const validation = () => {
+  if (title.length == 0 || discription.length == 0) {
+    setError(true);
+  }
+};
+
 
   React.useEffect(() => {
     // fetch data
@@ -63,6 +71,8 @@ const {id}=useParams();
 
 
 const updateCamp = async () => {
+  validation()
+
   const data = await (
     await fetch(`http://localhost:3008/idea/${id}`, {
       method: "PUT",
@@ -95,17 +105,19 @@ const updateCamp = async () => {
 {/* <input type='text' value={data.name} ></input> */}
       <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
-      <FormControl>
-      <FormLabel> عنوان الفكرة </FormLabel>
+      <FormControl h={'8rem'}>
+      <FormLabel > عنوان الفكرة </FormLabel>
                 <Textarea  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
             }} ></Textarea>
+        {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
               </FormControl>
               {/* {data.name} */}
 
 
 
-              <FormControl mt={4}>
+              <FormControl mt={4}  h={'8rem'}>
                 <FormLabel>  اوصف الفكرة  </FormLabel>
 
 
@@ -114,6 +126,9 @@ const updateCamp = async () => {
             }}>
               
               </Input>
+              {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+                  {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+
               </FormControl>
  
       
@@ -121,7 +136,7 @@ const updateCamp = async () => {
 
      
 
-              <SimpleGrid columns={2} mt={4}>
+              <SimpleGrid columns={2} bg='red'>
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>

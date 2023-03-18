@@ -40,6 +40,8 @@ function ModifyProject() {
   const [img, setImg] = React.useState<any>("");
   const [data, setData] = React.useState<any[]>([]);
   const [camp, setCamp] = React.useState<any[]>([]);
+  const [error, setError] = React.useState(false);
+
 
   const navigate = useNavigate();
 const {id}=useParams();
@@ -57,6 +59,7 @@ React.useEffect(() => {
     // set state when the data received
     setData(data&&data.Project);
   };
+  
 const getallcamp = async () => {
     const data = await (await fetch("http://localhost:3008/camp")).json();
 
@@ -75,10 +78,15 @@ const getallcamp = async () => {
   // fetch data
   
 
-
+  const validation = () => {
+    if (title.length == 0 || discription.length == 0 ||projectURL.length ==0 || img.length == 0 ) {
+      setError(true);
+    }
+  };
 
   
   const updateproject = async () => {
+    validation()
     const data = await (
       await fetch(`http://localhost:3008/project/${id}`, {
         method: "PUT",
@@ -111,7 +119,7 @@ const getallcamp = async () => {
         <Text textAlign={"center"} fontSize={30}>
           تعديل المشروع 
         </Text>
-        <FormControl>
+        <FormControl h={'6rem'}>
           <FormLabel> عنوان المشروع</FormLabel>
           <Input
             placeholder=" عنوان المشروع"
@@ -119,10 +127,12 @@ const getallcamp = async () => {
               setTitle(e.target.value);
             }}
           />
+            {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
          
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'5rem'}>
           <FormLabel>اسم المعسكر</FormLabel>
 
           <Select
@@ -139,7 +149,7 @@ const getallcamp = async () => {
           </Select>
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'8rem'}>
           <FormLabel>وصف المشروع</FormLabel>
           <Textarea
             placeholder=" وصف المشروع  "
@@ -147,19 +157,25 @@ const getallcamp = async () => {
               setDiscription(e.target.value);
             }}
           />
+          {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'6rem'}>
           <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
           <Input
-            placeholder=" وصف المشروع  "
+            placeholder="رابط خارجي للمشروع  "
             onChange={(e) => {
               setProjectURL(e.target.value);
             }}
           />
+            {error&&projectURL.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error&&projectURL&&!(projectURL.startsWith('http://')|| projectURL.startsWith('https://'))?<Box  ><Text  color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box>:''}
+
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'6rem'}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
             
@@ -168,6 +184,8 @@ const getallcamp = async () => {
               setImg(e.target.value);
             }}
           />
+          {error&&img.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
         </FormControl>
 
         <SimpleGrid columns={2} mt={4}>

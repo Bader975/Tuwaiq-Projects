@@ -35,6 +35,8 @@ function ModifyBootcamp() {
   const [data, setData] = React.useState<any>([]);
   const [name, setName] = React.useState<any>("");
   const [date, setDate] = React.useState<any>("");
+  const [error, setError] = React.useState(false);
+
   
   const navigate = useNavigate();
 const {id}=useParams();
@@ -58,11 +60,16 @@ const {id}=useParams();
   
   console.log(data);
 
-
+  const validation = () => {
+    if (name.length == 0 || date.length == 0) {
+      setError(true);
+    }
+  };
 //update boot camp
 
 
 const updateCamp = async () => {
+  validation()
   const data = await (
     await fetch(`http://localhost:3008/admin/camp/${id}`, {
       method: "PUT",
@@ -103,17 +110,19 @@ const updateCamp = async () => {
 {/* <input type='text' value={data.name} ></input> */}
       <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
-      <FormControl>
+      <FormControl h={'5rem'}>
       <FormLabel> اسم المعسكر</FormLabel>
-                <Textarea  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
+                <Input  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
               setName(e.target.value);
-            }} ></Textarea>
+            }} ></Input>
+                          {error&&name.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
               </FormControl>
               {/* {data.name} */}
 
 
 
-              <FormControl mt={4}>
+              <FormControl mt={4} h={'5rem'}>
                 <FormLabel>  التاريخ  </FormLabel>
 
 
@@ -122,6 +131,8 @@ const updateCamp = async () => {
             }}>
               
               </Input>
+              {error&&date.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
               </FormControl>
  
       
@@ -129,7 +140,7 @@ const updateCamp = async () => {
 
      
 
-              <SimpleGrid columns={2} mt={4}>
+              <SimpleGrid columns={2} mt={6}  >
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>

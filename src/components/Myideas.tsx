@@ -70,7 +70,7 @@ function Myideas() {
         <Nav />
       </nav>
       <Flex ml={40} mb={5} mt={20}>
-        <Box>
+        <Box >
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
             الافكار الخاصة بك
           </Text>{" "}
