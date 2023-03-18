@@ -42,7 +42,7 @@ function AllIdeas() {
   // }
   // console.log(data);
 
-  React.useEffect(() => {
+
     // fetch data
     const getallideas = async () => {
       const data = await (await fetch("http://localhost:3008/idea/all")).json();
@@ -51,9 +51,8 @@ function AllIdeas() {
       setData(data && data.Idea);
     };
 
-    getallideas();
-  }, []);
-  console.log(data);
+
+  // console.log(data);
 
    
   const [filteredList, setFilteredList] = useState(data);
@@ -82,6 +81,8 @@ function AllIdeas() {
   };
 
   React.useEffect(() => {
+    
+    getallideas();
     let filteredData = filter(data);
     setFilteredList(filteredData);
   }, );

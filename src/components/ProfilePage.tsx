@@ -27,9 +27,9 @@ function ProfilePage() {
   const toast = useToast();
 
 
-  React.useEffect(() => {
-    // fetch data
-    const getUserProfile = async () => {
+
+  const getUserProfile = async () => {
+        // fetch data
       const data = await (
         await fetch(
           "http://localhost:3008/profile",{
@@ -41,25 +41,17 @@ function ProfilePage() {
           }
         )
       ).json();
-      console.log(data);
+      // set state when the data received
       setData(data.profile);
       setUser(data.profile.user);
-      // console.log(data);
-
+     
     };
 
+    React.useEffect(() => {
     getUserProfile();
   }, []);
-  // console.log(user.name);
-  //     console.log(data);
 
-  
-
-      // update profile
-
-      // interface phone{
-      //   phone_number:number;
-      // }
+ 
       
       const updateProfle = async () => {
         const data = await (
@@ -88,6 +80,9 @@ function ProfilePage() {
       duration: 3000,
       position: "top",
     });
+
+    getUserProfile();
+
         navigate("/Profile") 
                // set state when the data received
       };
@@ -128,7 +123,8 @@ function ProfilePage() {
       duration: 3000,
       position: "top",
     });
-    navigate("/Profile") 
+    getUserProfile();
+    navigate("/Profile/") 
 
     console.log(data.message);
            // set state when the data received
@@ -225,7 +221,7 @@ function ProfilePage() {
 
               <Box mb={'10px'}>
                 <Box float={'right'}> الهاتف</Box>
-                <Input  id='phone' bg={'#fff'} placeholder={`${user.phone_number}`} type={'number'} textAlign={'right'} onChange={(e) => {
+                <Input  id='phone' bg={'#fff'} placeholder={`${user.phone_number}`}  textAlign={'right'} onChange={(e) => {
           setPhone_number(e.target.value);}}></Input>
               </Box>
 
