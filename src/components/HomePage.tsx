@@ -1,4 +1,5 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+import anime from 'animejs/lib/anime.es.js';
 import {
   Avatar,
   Box,
@@ -23,6 +24,7 @@ import HomeImg from "../img/Homeimg1.svg";
 import { Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { motion } from "framer-motion";
 
 interface StatsCardProps {
   title: string;
@@ -126,10 +128,23 @@ function HomePage() {
           height={"20vh"}
           top={"25vh"}
         >
+          
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
             <Heading mb={330} mt={60}>
               {" "}
-              مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
+ <motion.h1
+                animate={{ x: [50, 150, 50], opacity: 1, scale: 1 }}
+                transition={{
+                    duration: 5,
+                    delay: 0.3,
+                    ease: [0.5, 0.71, 1, 1.5],
+                }}
+                initial={{ opacity: 0, scale: 0.5 }}
+                whileHover={{ scale: 1.2 }}
+            >
+               
+            مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
+            </motion.h1>
             </Heading>
           </Box>
 
