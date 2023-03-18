@@ -4,7 +4,7 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 import AllProjectsPage from "./components/AllProjectsPage";
-import UserProjects from "./components/UserProjects";
+
 import ProfilePage from "./components/ProfilePage";
 import Footer from "./components/Footer";
 import Nav from "./components/Nav";
@@ -25,6 +25,7 @@ import AddNewIdea from "./components/AddNewIdea";
 import ModifyIdea from "./components/ModifyIdea";
 import Myideas from "./components/Myideas";
 import IdeaInformation from "./components/IdeaInformation";
+import UserProfile from "./components/UserProfile";
 
 function App() {
   return (
@@ -34,7 +35,7 @@ function App() {
       {/* <MyProjects/> */}
 
       <Routes>
-        <Route path="/userproject" element={<UserProjects />} />
+        <Route path="/UserProfile/:id" element={<UserProfile />} />
 
         <Route path="/Bootcamp" element={<Bootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />
@@ -52,7 +53,7 @@ function App() {
         <Route path="/ModifyIdea/:id" element={<ModifyIdea />} />
 
 
-        <Route path="/IdeaInfo" element={<IdeaInformation />} />
+        <Route path="/IdeaInfo/:id" element={<IdeaInformation />} />
 
 
 

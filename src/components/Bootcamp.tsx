@@ -71,7 +71,7 @@ function Bootcamp() {
       </Box>
       {/* Navbar */}
 
-      <Box margin={"auto"} w={1200}>
+      <Box mx={"auto"}>
         <Link to="/AddNewBootcamp">
         <Button bg={"#159741"} _hover={{ opacity: 0.8 }} color="#fff" m="10px">
           انشاء معسكر

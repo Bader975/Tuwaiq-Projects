@@ -2,32 +2,14 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   FormControl,
   Input,
   FormLabel,
-  Text,
-  ModalFooter,
-  Select,
-  Modal,
-  Link,
+  Text, 
   Textarea,
   Box,
   SimpleGrid,
-  Divider,
-  Flex,
-  Image,
-  chakra,
   Button,
-  IconButton,
-  Heading,
-  Spacer,
-  useToast,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 
@@ -49,25 +31,31 @@ const validation = () => {
 
   React.useEffect(() => {
     // fetch data
-    const getCampByid = async () => {
+    const getIdeaByid = async () => {
+      
       const data = await (
+        
+        
         await fetch(
-          `http://localhost:3008/camp/${id}`
+          `http://localhost:3008/idea/company/${id}`
         )
       ).json();
      
+     
+      
       
       // set state when the data received
-      setData(data&&data.Camp);
+      setData(data&&data.Idea&& data.Idea[0]);
+      
     };
 
-    getCampByid();
+    getIdeaByid();
   }, []);
   
-  console.log(data);
+ 
 
 
-//update boot camp
+//update Idea
 
 
 const updateCamp = async () => {
@@ -102,18 +90,17 @@ const updateCamp = async () => {
         <Nav />
       </Box>
        {/* Navbar */}
-{/* <input type='text' value={data.name} ></input> */}
+
       <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl h={'8rem'}>
       <FormLabel > عنوان الفكرة </FormLabel>
-                <Textarea  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
+                <Input  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
-            }} ></Textarea>
+            }} ></Input>
         {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
 
               </FormControl>
-              {/* {data.name} */}
 
 
 
@@ -121,11 +108,11 @@ const updateCamp = async () => {
                 <FormLabel>  اوصف الفكرة  </FormLabel>
 
 
-                <Input placeholder={`${data.date}`} onChange={(e) => {
+                <Textarea placeholder={`${data.discription}`} onChange={(e) => {
               setDiscription(e.target.value);
             }}>
               
-              </Input>
+              </Textarea>
               {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
                   {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
 

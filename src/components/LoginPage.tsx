@@ -28,26 +28,30 @@ function LoginPage() {
         body: JSON.stringify({ email, password }),
       });
       const data = await request.json();
-      if (request.status !== 200) {
+   
+
+     if (request.status !== 200) {
         toast({
           title: data.message,
           status: "error",
-          duration: 3000,
+          duration: 4000,
           position: "top",
         });
         return;
       }
+      else{
       toast({
         title: data.message,  
         status: "success",
         duration: 3000,
         position: "top",
       });
+      navigate("/");
       localStorage.setItem("token", data.token);
       localStorage.setItem("role", data.role);
       localStorage.setItem("name",data.name)
-      navigate("/");
-    } catch (error) {
+    }}
+     catch (error) {
       toast({
         title: "Server Error !",
         status: "error",
@@ -114,7 +118,7 @@ function LoginPage() {
       children={<LockIcon color='#00ADBB' />}
     />
     
-    <Input type='tel' 
+    <Input type="password" 
     bg={'#fff'}  textAlign={'right'}  onChange={(e) => {
       setPassword(e.target.value);
     }}

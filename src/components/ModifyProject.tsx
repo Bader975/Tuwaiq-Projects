@@ -1,37 +1,20 @@
 
-
 import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
   FormControl,
   Input,
   FormLabel,
   Text,
-  ModalFooter,
   Select,
-  Modal,
-  Link,
   Textarea,
   Box,
   SimpleGrid,
-  Divider,
-  Flex,
-  Image,
-  chakra,
   Button,
-  IconButton,
-  Heading,
-  Spacer,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import './AddNewProject.css';
 function ModifyProject() {
   const [title, setTitle] = React.useState<any>("");
   const [nameOfCamp, setNameOfCamp] = React.useState<any>("");
@@ -42,6 +25,23 @@ function ModifyProject() {
   const [camp, setCamp] = React.useState<any[]>([]);
   const [error, setError] = React.useState(false);
 
+
+
+  var fileAsBase64 = React.useCallback((file:File)=>{
+    return new Promise((resolve:any, reject:any)=>{
+        const reader = new FileReader();
+    
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = err => reject(err)
+        })
+   },[])
+ 
+  const uploadFileHandler = async (e : any) => {
+    var file = e.target.files[0];
+    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+    setImg(image);
+  }
 
   const navigate = useNavigate();
 const {id}=useParams();
@@ -178,10 +178,11 @@ const getallcamp = async () => {
         <FormControl mt={4} h={'6rem'}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
-            
+           className="custom-file-input"
+            type={"file"}
             placeholder=" رابط الصوره"
             onChange={(e) => {
-              setImg(e.target.value);
+              uploadFileHandler(e);
             }}
           />
           {error&&img.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}

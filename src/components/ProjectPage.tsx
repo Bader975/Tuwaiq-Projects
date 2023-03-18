@@ -48,19 +48,23 @@ function ProjectPage() {
 
   React.useEffect(() => {
     // fetch data
+    // window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
     const getallproject = async () => {
       const data = await (
         await fetch(
           `http://localhost:3008/project/${id}`
         )
       ).json();
-
+          console.log(data);
+          
       // set state when the data received
-      setData(data&&data.Project);
+      setData(data&&data.Project&&data.Project[0]);
     };
 
     getallproject();
   }, []);
+  
   console.log(data);
   
   return (
@@ -72,8 +76,9 @@ function ProjectPage() {
   <GridItem h='400' mx={'auto'}>
 
   <Image
+  mt={3}
               h={'full'}
-              src="https://www.springboard.com/blog/wp-content/uploads/2022/03/what-is-a-coding-project.png"
+              src={data.img}
             
             />
 
@@ -84,7 +89,7 @@ function ProjectPage() {
           
 
 
-          <chakra.h1 mt={3} mx={'auto'} color="black" fontWeight="bold" fontSize="2xl" textAlign={'center'}>
+          <chakra.h1 mt={3} mx={'auto'} color="black" fontWeight="bold" fontSize="2xl" marginTop={5} textAlign={'center'}>
 
             {data.title}
 
@@ -123,24 +128,11 @@ function ProjectPage() {
   
             <Flex alignItems="center">
               <Flex alignItems="center">
-                <Text ml={3}  fontSize="lg">المطور :</Text>
-                <Image
-                  h={10}
-                  fit="cover"
-                  rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
-                />
+                <Text ml={3}  fontSize="lg">المطور : {data.user&&data.user.name}</Text>
+            
              
               </Flex>
-              <chakra.span
-                mx={1}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: "gray.300" }}
-              >
-                21 SEP 2015
-              </chakra.span>
+             
               </Flex>
               </Box>
     </Box>
@@ -148,7 +140,7 @@ function ProjectPage() {
             
           <Box>
           <Text fontSize="lg" mt={5}>   {`  اسم المعسكر    :`  +` `+ ` ${data.nameOfCamp} `}</Text>
-<Link ><Text fontSize="lg" mt={10}  >
+<Link href={data.projectURL} isExternal><Text fontSize="lg" mt={10}  >
           < LinkIcon ml={2}/>
 
          رابط المشروع 
@@ -187,52 +179,6 @@ function ProjectPage() {
 <p className="ayaa"> </p>
           <Text fontSize="lg" mx={'auto'} textAlign='right' mr={5} mt={5} >
             {" "}
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع             وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع             وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-            وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-             وصف المشروع
-
              {data.discription}
           </Text>
         

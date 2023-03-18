@@ -1,30 +1,13 @@
 import {
-  ChevronLeftIcon,
   DeleteIcon,
   EditIcon,
-  SearchIcon,
 } from "@chakra-ui/icons";
 import { Link } from 'react-router-dom';
 import  {Link as RouteLnk } from "@chakra-ui/react";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  FormControl,
-  Input,
-  FormLabel,
   Text,
-  ModalFooter,
-  Select,
-  Modal,
-  
-  Textarea,
   Box,
   SimpleGrid,
-  Divider,
   Flex,
   Image,
   chakra,
@@ -34,7 +17,6 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import React from "react";
-import { FiBell } from "react-icons/Fi";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
@@ -43,7 +25,7 @@ function MyProjects() {
   const [data, setData] = React.useState<any[]>([]);
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+
     // fetch data
     const getallproject = async () => {
       const data = await (
@@ -62,26 +44,32 @@ function MyProjects() {
       setData(data&&data.Project);
       
     };
-    getallproject();
 
-    
+    React.useEffect(() => {
+      getallproject();
   }, []);
   // console.log(data);
 
   const deletProject = async (id:string) => {
-    const data = await (
-      await fetch(
-        `http://localhost:3008/project/${id}`,{
-          method: "delete",
-          headers: {
-            "Content-Type": "application/json",
-            "authorization": localStorage.getItem('token') as string,
-          },
-        }
-        )
-        ).json();
+   let result= confirm("هل انت متاكد؟؟!");
+    if (result==true) {
+      const data = await (
+        await fetch(
+          `http://localhost:3008/project/${id}`,{
+            method: "delete",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem('token') as string,
+            },
+          }
+          )
+          ).json();
+    }
+
+   
         // we will come back to this to fix it!!!!!
-        window.location.reload();
+        // window.location.reload();
+        getallproject();
         navigate("/MyProjects")
   };
   // getallproject();
@@ -114,9 +102,9 @@ function MyProjects() {
         </Box>
       </Flex>
 {/* ------- this is where to code */}
-<SimpleGrid spacingX={5} spacingY={5} mx="auto" minH={"30vh"} m={100} mt={10} columns={{ base: 1, md: 2, lg: 3 }}
+
+<SimpleGrid spacingX={5} spacingY={10} mx="auto" minH={"30vh"} alignItems={'center'} mt={10} columns={{ base: 1, md: 2, lg: 3 }} p={20}
 >
-    
 {data.map((index) => (
               <div >
       
@@ -205,8 +193,9 @@ function MyProjects() {
   </GridItem>
   </div>
   ))}
-  
 </SimpleGrid>
+
+
 
 
 

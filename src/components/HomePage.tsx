@@ -108,6 +108,7 @@ const getfirst3 = async () => {
     )
   ).json();
 
+ 
   // set state when the data received
   setData(data&&data.Project);
 };
@@ -120,7 +121,7 @@ React.useEffect(() => {
   getallprojects();
 }, []);
   return (
-    <div className={"backcoler"}>
+    <div >
       <nav >
         <Nav />
       </nav>
@@ -185,7 +186,7 @@ React.useEffect(() => {
         </Box>
       </Flex>
       <Box>
-      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} alignItems={'center'} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} spacingY={10} alignItems={'center'} minWidth={400} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
 
   
       {data.map((index:any)=>(
@@ -198,7 +199,7 @@ React.useEffect(() => {
      
       _dark={{ bg: "#3e3e3e" }}
      
-      w="full"
+      
       alignItems="center"
       justifyContent="center"
       textAlign={'right'}
@@ -209,11 +210,12 @@ React.useEffect(() => {
         shadow="xl"
         bg="white"
         _dark={{ bg: "gray.800" }}
-        // maxW="2xl"
+        w={500}
       >
         <Image
+mx={'auto'}
           roundedTop="lg"
-          w="full"
+          w={"auto"}
           h={64}
           fit="cover"
           src={index.img}
@@ -228,9 +230,10 @@ React.useEffect(() => {
               color="brand.600"
               _dark={{ color: "brand.400" }}
             >
-              المعسكر
+              المعسكر: {index.nameOfCamp}
             </chakra.span>
             <Link
+            href={`/ProjectPage/${index.id}`}
               display="block"
               color="gray.800"
               _dark={{ color: "white" }}
@@ -240,17 +243,7 @@ React.useEffect(() => {
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
         {index.title}     </Link>
-            
-            {/* <Link
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-        {index.title}     </Link>  */}
+       
            
           </Box>
           <Divider borderColor={'blackAlpha.500'} mt={5} />
@@ -258,31 +251,22 @@ React.useEffect(() => {
           <Box mt={4} >
             <Flex alignItems="center">
               <Flex alignItems="center">
-                <Image
-                  h={10}
-                  fit="cover"
-                  rounded="full"
-                  src="https://images.unsplash.com/photo-1586287011575-a23134f797f9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=48&q=60"
-                  alt="Avatar"
-                />
-             
+            
+                
+                <RouteLnk to={`/UserProfile/${index.user.id}`}
+                 
+               >
+{index.user.name}<ChevronLeftIcon/>                
+               
+</RouteLnk>
+
               </Flex>
-              <chakra.span
-                mx={1}
-                fontSize="sm"
-                color="gray.600"
-                _dark={{ color: "gray.300" }}
-              >
-                21 SEP 2015
-              </chakra.span>
+             
               <Spacer />
 
               <RouteLnk to={`/ProjectPage/${index.id}`}
                  
-                  // mr={20}
-                  // fontWeight="bold"
-                  // color="gray.700"
-                  // _dark={{ color: "gray.200" }}
+             
                 >
 التفاصيل<ChevronLeftIcon/>                
                 
