@@ -1,5 +1,5 @@
 import { ChevronLeftIcon, Search2Icon } from '@chakra-ui/icons';
-import { Box, GridItem, Input, InputGroup, InputLeftElement, SimpleGrid, Spacer ,Link} from '@chakra-ui/react'
+import { Box, GridItem, Input, InputGroup, InputLeftElement, SimpleGrid, Spacer ,Link, Avatar} from '@chakra-ui/react'
 import { Text, Flex, Image, chakra,Divider } from "@chakra-ui/react";
 import {  Link as RouteLnk } from "react-router-dom";
 
@@ -13,6 +13,7 @@ import Nav from './Nav';
 function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
   const [id , setId] =React.useState<number>();
+  const [profleImg, setProfleImg] = React.useState<any>("");
 
   const getallproject = async () => {
     const data = await (
@@ -23,6 +24,9 @@ function AllProjectsPage() {
 
     // set state when the data received
     setData(data&&data.Project);
+    console.log(data&&data.Project[0].user.Profill.img);
+    
+    setProfleImg(data&&data.Project.user.Profill.img);
   };
 console.log("ggg");
 
@@ -170,7 +174,12 @@ mx={'auto'}
             <Flex alignItems="center">
               <Flex alignItems="center">
         
-                
+              <Avatar
+          src={index.user.Profill.img}
+          ml={2}
+          // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
+       
+        />
                 <RouteLnk to={`/UserProfile/${index.user.id}`}
                  
                >

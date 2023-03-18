@@ -1,5 +1,6 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 import {
+  Avatar,
   Box,
   Button,
   chakra,
@@ -32,15 +33,16 @@ function StatsCard(props: StatsCardProps) {
   const { title, stat } = props;
   return (
     <Stat
-      px={{ base: 4, md: 8 }}
+      p={{ base: 4, md: 5 }}
       py={"5"}
       shadow={"xl"}
       border={"1px solid"}
       color={'#000'}
+     
       borderColor={useColorModeValue("gray.400", "gray.400")}
       rounded={"lg"}
     >
-      <StatLabel fontWeight={"bold"} fontSize={"3xl"} isTruncated>
+      <StatLabel fontWeight={"bold"}  fontSize={{base:"sm",md:"lg",lg:"2xl"}} isTruncated>
         {title}
       </StatLabel>
       <StatNumber color={"#00ADBB"} fontSize={"4xl"} fontWeight={"bold"}>
@@ -55,6 +57,7 @@ function HomePage() {
   const [numOfproject, setproject] = React.useState<any[]>([]);
   const [numOfcamp, setcamp] = React.useState<any[]>([]);
   const [data, setData] = React.useState<any[]>([]);
+  const [profleImg, setProfleImg] = React.useState<any>("");
 
 
   // const [id , setId] =React.useState<number>();
@@ -108,9 +111,14 @@ const getfirst3 = async () => {
     )
   ).json();
 
- 
+  
   // set state when the data received
+  setProfleImg(data&&data.Project[0].user.Profill.img);
   setData(data&&data.Project);
+  setData(data&&data.Project);
+  console.log(data.project);
+  // setData(data&&data.Project);
+  
 };
 // getfirst3();
 
@@ -127,13 +135,13 @@ React.useEffect(() => {
       </nav>
 
       <Box>
-      <Box pos={"absolute"} zIndex={"1"} color={"white"} width={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
+      <Box pos={"absolute"} zIndex={"1"} color={"white"} w={"100%"} textAlign={"center"} height={"20vh"} top={"25vh"}>
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
             <Heading mb={330} mt={60}>   مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد  </Heading>
             
           </Box>
-          <br></br>
-          <Box >
+         
+          <Box mt={20}>
             <Text fontSize={"x-large"}>   </Text>
             <Box bg={"#fff"}mt={10} m={10} p={20} zIndex={5}  boxShadow='2xl' rounded={"xl"}>
         <Box
@@ -143,7 +151,7 @@ React.useEffect(() => {
           px={{ base: 2, sm: 12, md: 17 }}
           textAlign="center"
         >
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+          <SimpleGrid columns={{ base: 1, md: 2,lg:3 }} spacing={{ base: 5, lg: 8 }}>
             <StatsCard title={"عدد المشاريع"} stat={`${numOfproject}`} />
             <StatsCard title={"عدد المستخدمين"} stat={`${numOfusers}`} />
             <StatsCard title={"عدد المعسكرات"} stat={`${numOfcamp}`} />
@@ -263,11 +271,17 @@ mx={'auto'}
             <Flex alignItems="center">
               <Flex alignItems="center">
             
-                
-                <RouteLnk to={`/UserProfile/${index.user.id}`}
+            
+                <Avatar
+          src={profleImg}
+          ml={2}
+          // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
+       
+        />
+                <RouteLnk to={`/UserProfile/${index.user.id}` }
                  
                >
-{index.user.name}<ChevronLeftIcon/>                
+{index.user.name }<ChevronLeftIcon/>                
                
 </RouteLnk>
 

@@ -73,7 +73,7 @@ function AddNewIdea() {
       </Box>
       {/* Navbar */}
 
-      <Box m={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'}> 
+      <Box mx={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'} shadow={'dark-lg'}  rounded={'xl'} p={10}> 
       <Text textAlign={'center'} fontSize={30}>إضافة فكرة  </Text>
       <FormControl>
                 <FormLabel>  عنوان الفكرة  </FormLabel>
@@ -101,7 +101,7 @@ function AddNewIdea() {
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ addIdea} >
             اضافة
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray' onClick={()=>navigate("/Myideas")}>
+            <Button mr={2}   bg={'red'}  color={'#fff'}  border='solid 1px lightgray' onClick={()=>navigate("/Myideas")}>
               إلغاء
             </Button>
          </SimpleGrid>

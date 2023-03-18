@@ -92,14 +92,14 @@ const updateCamp = async () => {
       </Box>
        {/* Navbar */}
 
-      <Box mx={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'}> 
+      <Box mx={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'} shadow={'dark-lg'}  rounded={'xl'} p={10}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl h={'8rem'}>
       <FormLabel > عنوان الفكرة </FormLabel>
                 <Input  placeholder={`${data.title}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
             }} ></Input>
-        {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+        {error&&title.length<=0?<Box><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:""}
 
               </FormControl>
 
@@ -128,7 +128,7 @@ const updateCamp = async () => {
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'onClick={()=>navigate("/Myideas")}>
+            <Button mr={2}    bg={'red'}  color={'#fff'}   border='solid 1px lightgray'onClick={()=>navigate("/Myideas")}>
               إلغاء
             </Button>
          </SimpleGrid>
