@@ -14,18 +14,21 @@ function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
   const [id , setId] =React.useState<number>();
 
+  const getallproject = async () => {
+    const data = await (
+      await fetch(
+        "http://localhost:3008/project/all"
+      )
+    ).json();
+
+    // set state when the data received
+    setData(data&&data.Project);
+  };
+
   React.useEffect(() => {
     // fetch data
-    const getallproject = async () => {
-      const data = await (
-        await fetch(
-          "http://localhost:3008/project/all"
-        )
-      ).json();
-
-      // set state when the data received
-      setData(data&&data.Project);
-    };
+  console.log("hhhh");
+  
 
     getallproject();
   }, []);

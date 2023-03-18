@@ -286,16 +286,16 @@ function Nav() {
                           >
                             مشاريعي
                           </MenuItem>
-                        </RouteLink> :<RouteLink to={"/Myideas"}>
+                        </RouteLink> :  localStorage.getItem('role')=="Company" ? <RouteLink to={"/Myideas"}>
                           <MenuItem
                             _hover={{
                               color: "#00ADBB",
                               backgroundColor: "none",
                             }}
                           >
-                            مشاريعي
+                        أفكاري
                           </MenuItem>
-                        </RouteLink> }
+                        </RouteLink> : "" } 
 
                         <MenuDivider />
                         <RouteLink to={"/"}>

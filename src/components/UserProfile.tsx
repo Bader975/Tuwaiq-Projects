@@ -2,54 +2,36 @@ import React from "react";
 import axios from "axios";
 import "../App.css";
 import { Link as LinkRout, useParams } from "react-router-dom";
-
 import {
   Text,
   SimpleGrid,
   Box,
-  Spinner,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
-  Grid,
-  GridItem,
-  chakra,
-  Image,
-  Flex,
-  Icon,
-  Button,
-  HStack,
-  InputLeftElement,
-  InputGroup,
   Heading,
   Divider,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
-  Stack,
-  Link,
   IconButton,
 } from "@chakra-ui/react";
-import { BsFillBriefcaseFill } from "react-icons/bs";
-import { ChevronLeftIcon, LinkIcon, Search2Icon } from "@chakra-ui/icons";
 
 import {
   MdContactPhone,
-  MdEmail,
-  MdHeadset,
-  MdLocationOn,
 } from "react-icons/md";
-import { SetStateAction, useEffect, useState } from "react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
 function UserProfile() {
-  const [data, setData] = React.useState<any[]>([]);
-  const { id } = useParams();
+  const [data, setData] = React.useState<any>([]);
+  const [user, setUser] = React.useState<any>([]);
 
+  const { id } = useParams();
+  console.log('ggg');
   React.useEffect(() => {
+    // fetch data
+  
+  
+    console.log("hhhh");
+  getUserProfile();
+  }, []);
+  console.log("bb");
+  
     // fetch data
     const getUserProfile = async () => {
       const data = await (
@@ -57,15 +39,18 @@ function UserProfile() {
           method: "GET",
         })
       ).json();
-      console.log(data);
-
+      console.log(data.profile);
+      console.log("--------------");
+      
+ console.log(data.profile.user);
+     
       // set state when the data received
-      // setData(data&&data.profile[0]);
-      // console.log(data);
+      setData(data.profile);
+     setUser(data.profile.user)
     };
 
-    getUserProfile();
-  }, []);
+
+
 
   return (
     <div>
@@ -115,7 +100,7 @@ function UserProfile() {
           </Box>
           <Box mr={5}>
             <Box fontSize="lg">
-              <Text mt={10}> الاسم : {data.name}</Text>
+              <Text mt={10}> الاسم : {data.user.name}</Text>
               <Divider />
 
               <Text mt={10}> السيرة : {data.aboutMy}</Text>
@@ -170,7 +155,7 @@ function UserProfile() {
 
             <Box mr={5}>
               <Box fontSize="lg">
-                <Text mt={10}> البريد الإلكتروني : </Text>
+                <Text mt={10}> البريد الإلكتروني : {data.user.email} </Text>
                 <Divider />
 
                 <Text mt={10}> رقم الهاتف : {data.phone_number}</Text>
@@ -194,7 +179,7 @@ function UserProfile() {
           </Heading>
         </Box>
       </Box>
-      <SimpleGrid
+      {/* <SimpleGrid
         spacingX={5}
         spacingY={5}
         mx="auto"
@@ -270,7 +255,7 @@ function UserProfile() {
             </Box>
           </Flex>
         </Box>
-      </SimpleGrid>
+      </SimpleGrid> */}
 
       <footer>
         <Footer />
