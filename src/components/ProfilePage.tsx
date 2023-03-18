@@ -87,15 +87,34 @@ function ProfilePage() {
                // set state when the data received
       };
       // Upadate User info --------------------------------
-      // update profile
-      
-      // convert String ti Int 
-      
-      // console.log(typeof(phone_number));
-      
-      // interface UserData {
-      //   phone_number:number;
-      // }
+      const updateProfleImg = async () => {
+        const data = await (
+          await fetch(`http://localhost:3008/profile/`, {
+            method: "PUT",
+            headers: {
+              "Content-Type": "application/json",
+              authorization: localStorage.getItem("token") as string,
+            },
+            body: JSON.stringify({
+             
+             img
+        
+            }),
+          })
+        ).json();
+   
+         toast({
+      title: data.message,  
+      status: "success",
+      duration: 3000,
+      position: "top",
+    });
+
+    getUserProfile();
+
+        navigate("/Profile") 
+               // set state when the data received
+      };
       // --------
   const updateUserInfo = async () => {
     const data = await (
@@ -142,28 +161,22 @@ function ProfilePage() {
     <GridItem w="100%"    padding={2}  borderRadius={'10px'} bg={'gray.100'}>
       <Box p={'12px'} mb={5} pl={2} pr={2} fontWeight={'bold'}>
         <Box float={'right'} ml={5} >الملف الشخصي:</Box>
-<Link to={'/userproject'}>
-        <Box float={'left'}>
-          <Text
-          
-          w='100%' bg={'none'} color={'#00ADBB'} _hover={{opacity:0.6 }}
-          >عرض صفحتي الشخصية <ChevronLeftIcon/></Text>
-          </Box>
-        </Link>
+
       </Box>
       <hr />
       {/* الصوره */}
-      <Box className="imageProfile" mx={'auto'} w={'130px'}>
+      <Box className="imageProfile" mx={'auto'}  justifyContent={'center'} justifyItems={'center'} w={'130px'}>
         <Stack direction="row" mt={'5px'}>
           <Avatar
-            src="https://bit.ly/broken-link"
+            src={data}
             w={"130px"}
             h={"130px"}
           />
         </Stack>
         {/* زر تحديث صوره العرض */}
-        <Box w={'100%'} mt={'10px'} bg={'#00ADBB'} color={'#fff'}
-          _hover={{opacity:0.6 }} fontSize={12} p='5px' borderRadius={'10px'}>تحديث صورتي الشخصية</Box>
+        <Input type="file" border={'none'} className="custom-file-input2"></Input>
+        <Button w={'100%'} mt={'10px'} bg={'#00ADBB'} color={'#fff'}
+          _hover={{opacity:0.6 }} fontSize={12} p='5px' borderRadius={'10px'}>تحديث صورتي الشخصية</Button>
       </Box>
       {/* المدخلات */}
       <Box>

@@ -1,5 +1,9 @@
 .custom-file-input::-webkit-file-upload-button {
     visibility: hidden;
+
+  }
+  .custom-file-input2::-webkit-file-upload-button {
+    visibility: hidden;
   }
   .custom-file-input::before {
     content: 'ارفق صوره للمشروع ';
@@ -9,6 +13,7 @@
     border-radius: 3px;
     padding: 8px 15px;
     outline: none;
+    text-align: center;
     white-space: nowrap;
     -webkit-user-select: none;
     cursor: pointer;
@@ -24,4 +29,23 @@
   }
   .custom-file-input:active::before {
     background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+  }
+  .custom-file-input2::before {
+    content: 'ارفق صوره العرض';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1px solid inherit;
+    border-radius: 3px;
+    padding: 8px 15px;
+    outline: none;
+    text-align: center!important;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: none;
+    font-weight: 700;
+    font-size: 10pt;
+    width: 100% !important;
+    height: 100% !important;
+    color: #999;
   }
