@@ -23,6 +23,7 @@ function ModifyProject() {
   const [img, setImg] = React.useState<any>("");
   const [data, setData] = React.useState<any[]>([]);
   const [camp, setCamp] = React.useState<any[]>([]);
+  const [date, setDate] = React.useState<any>("");
 
 
   var fileAsBase64 = React.useCallback((file:File)=>{
@@ -92,6 +93,7 @@ const getallcamp = async () => {
           discription,
           projectURL,
           img,
+          date
         }),
       })
     ).json();
@@ -155,6 +157,16 @@ const getallcamp = async () => {
             placeholder=" وصف المشروع  "
             onChange={(e) => {
               setProjectURL(e.target.value);
+            }}
+          />
+        </FormControl>
+
+        <FormControl>
+          <FormLabel> تاريخ المشروع</FormLabel>
+          <Input
+            placeholder=" 2/02/2023 "
+            onChange={(e) => {
+              setDate(e.target.value);
             }}
           />
         </FormControl>

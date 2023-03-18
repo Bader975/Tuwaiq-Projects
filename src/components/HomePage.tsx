@@ -224,14 +224,7 @@ mx={'auto'}
 
         <Box p={6}>
           <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
-            >
-              المعسكر: {index.nameOfCamp}
-            </chakra.span>
+           
             <Link
             href={`/ProjectPage/${index.id}`}
               display="block"
@@ -243,6 +236,24 @@ mx={'auto'}
               _hover={{ color: "gray.600", textDecor: "underline" }}
             >
         {index.title}     </Link>
+
+        <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
+            >
+              المعسكر: {index.nameOfCamp}
+            </chakra.span>
+<br />
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
+            >
+              التاريخ: {index.date}
+            </chakra.span>
        
            
           </Box>

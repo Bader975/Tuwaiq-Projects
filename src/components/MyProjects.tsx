@@ -149,6 +149,16 @@ function MyProjects() {
 
               </Text>
             </chakra.span>
+            <br />
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
+            >
+              التاريخ: {index.date}
+            </chakra.span>
+
             <Box float={'left'}> 
              <IconButton
   color={'red'}

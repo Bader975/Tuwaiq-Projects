@@ -23,6 +23,8 @@ function AddNewProject() {
   const [discription, setDiscription] = React.useState<any>("");
   const [projectURL, setProjectURL] = React.useState<any>("");
   const [img, setImg] = React.useState<any>("");
+  const [date, setDate] = React.useState<any>("");
+
   const [data, setData] = React.useState<any[]>([]);
 
   const navigate = useNavigate();
@@ -41,6 +43,7 @@ function AddNewProject() {
           discription,
           projectURL,
           img,
+          date
         }),
       })
     ).json();
@@ -135,6 +138,16 @@ function AddNewProject() {
           />
         </FormControl>
 
+        <FormControl>
+          <FormLabel> تاريخ المشروع</FormLabel>
+          <Input
+            placeholder=" 2/02/2023 "
+            onChange={(e) => {
+              setDate(e.target.value);
+            }}
+          />
+        </FormControl>
+        
         <FormControl mt={4} p={0}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input

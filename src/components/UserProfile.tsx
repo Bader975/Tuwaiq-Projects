@@ -35,6 +35,8 @@ function UserProfile() {
   console.log('ggg');
   React.useEffect(() => {
     // fetch data
+    document.documentElement.scrollTop = 0;
+
     const getUserProfile = async () => {
       const data = await (
         await fetch(`http://localhost:3008/profile/${id}`, {
