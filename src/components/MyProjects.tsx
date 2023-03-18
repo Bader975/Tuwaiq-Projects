@@ -1,30 +1,13 @@
 import {
-  ChevronLeftIcon,
   DeleteIcon,
   EditIcon,
-  SearchIcon,
 } from "@chakra-ui/icons";
 import { Link } from 'react-router-dom';
 import  {Link as RouteLnk } from "@chakra-ui/react";
 import {
-  useDisclosure,
-  ModalOverlay,
-  ModalContent,
-  ModalHeader,
-  ModalCloseButton,
-  ModalBody,
-  FormControl,
-  Input,
-  FormLabel,
   Text,
-  ModalFooter,
-  Select,
-  Modal,
-  
-  Textarea,
   Box,
   SimpleGrid,
-  Divider,
   Flex,
   Image,
   chakra,
@@ -34,7 +17,6 @@ import {
   GridItem,
 } from "@chakra-ui/react";
 import React from "react";
-import { FiBell } from "react-icons/Fi";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";

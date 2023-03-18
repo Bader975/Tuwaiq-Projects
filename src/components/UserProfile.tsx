@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "../App.css";
-import { Link as LinkRout, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import {
   Text,
   SimpleGrid,
@@ -9,7 +9,14 @@ import {
   Heading,
   Divider,
   IconButton,
+  Flex,
+  chakra,
+  Link,
+  Image,
+  GridItem,
+  Spacer
 } from "@chakra-ui/react";
+import {  Link as RouteLnk } from "react-router-dom";
 
 import {
   MdContactPhone,
@@ -17,21 +24,16 @@ import {
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
+import { ChevronLeftIcon } from "@chakra-ui/icons";
+
 function UserProfile() {
   const [data, setData] = React.useState<any>([]);
   const [user, setUser] = React.useState<any>([]);
+  const [project, setProject] = React.useState<any[]>([]);
 
   const { id } = useParams();
   console.log('ggg');
   React.useEffect(() => {
-    // fetch data
-  
-  
-    console.log("hhhh");
-  getUserProfile();
-  }, []);
-  console.log("bb");
-  
     // fetch data
     const getUserProfile = async () => {
       const data = await (
@@ -39,19 +41,47 @@ function UserProfile() {
           method: "GET",
         })
       ).json();
-      console.log(data.profile);
+      console.log(data.profile[0]);
       console.log("--------------");
       
  console.log(data.profile.user);
      
+      
+      setData(data.profile[0]);
+      setUser(data.profile[0].user)
+      
+      
+    //  setUser(data.profile.user)
+    };
+
+    console.log("user "+ user);
+    console.log("hhhh");
+  getUserProfile();
+  getallproject()
+  }, []);
+  console.log("bb");
+  
+    // fetch data
+    const getallproject = async () => {
+      const data = await (
+        await fetch(
+          "http://localhost:3008/project/userProject", {
+          method: "GET",
+       
+        }
+        )
+      ).json();
+      console.log("project");
+      
+        console.log(data&&data.Project);
+        
       // set state when the data received
-      setData(data.profile);
-     setUser(data.profile.user)
+      setProject(data&&data.Project);
+      
     };
 
 
-
-
+    console.log("user "+ user);
   return (
     <div>
       <nav>
@@ -100,13 +130,13 @@ function UserProfile() {
           </Box>
           <Box mr={5}>
             <Box fontSize="lg">
-              <Text mt={10}> الاسم : {data.user.name}</Text>
+              <Text mt={10}> الاسم :{user.name} </Text>
               <Divider />
 
-              <Text mt={10}> السيرة : {data.aboutMy}</Text>
+              <Text mt={10}> السيرة :{data.aboutMy} </Text>
               <Divider />
 
-              <Text mt={10}> المهارات: {data.skill}</Text>
+              <Text mt={10}> المهارات: {data.skill} </Text>
               <Divider />
             </Box>
           </Box>
@@ -155,13 +185,13 @@ function UserProfile() {
 
             <Box mr={5}>
               <Box fontSize="lg">
-                <Text mt={10}> البريد الإلكتروني : {data.user.email} </Text>
+                <Text mt={10}> البريد الإلكتروني : {user.email}  </Text>
                 <Divider />
 
-                <Text mt={10}> رقم الهاتف : {data.phone_number}</Text>
+                <Text mt={10}> رقم الهاتف : {user.phone_number} </Text>
                 <Divider />
 
-                <Text mt={10}> حساب ليكند إن: {data.twitterURL}</Text>
+                <Text mt={10}> حساب ليكند إن: {data.twitterURL}  </Text>
                 <Divider />
               </Box>
             </Box>
@@ -179,83 +209,106 @@ function UserProfile() {
           </Heading>
         </Box>
       </Box>
-      {/* <SimpleGrid
-        spacingX={5}
-        spacingY={5}
+      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} spacingY={10} alignItems={'center'} minWidth={400} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+
+  
+      {project.map((index:any)=>(
+              <div >
+      
+              <GridItem key={index.id}> 
+             
+              
+  <Flex
+     
+      _dark={{ bg: "#3e3e3e" }}
+     
+      
+      alignItems="center"
+      justifyContent="center"
+      textAlign={'right'}
+    >
+      <Box
         mx="auto"
-        m={100}
-        mt={10}
-        columns={{ base: 1, md: 2, lg: 3 }}
+        rounded="lg"
+        shadow="xl"
+        bg="white"
+        _dark={{ bg: "gray.800" }}
+        w={500}
       >
-        <Box>
-          <Flex
-            _dark={{ bg: "#3e3e3e" }}
-            w="full"
-            alignItems="center"
-            justifyContent="center"
-            textAlign={"right"}
-          >
-            <Box
-              mx="auto"
-              rounded="lg"
-              shadow="md"
-              bg="white"
-              _dark={{ bg: "gray.800" }}
-              maxW="2xl"
-              h={420}
+        <Image
+mx={'auto'}
+          roundedTop="lg"
+          w={"auto"}
+          h={64}
+          fit="cover"
+          src={index.img}
+          alt="Article"
+        />
+
+        <Box p={6}>
+          <Box>
+            <chakra.span
+              fontSize="xs"
+              textTransform="uppercase"
+              color="brand.600"
+              _dark={{ color: "brand.400" }}
             >
-              <Image
-                roundedTop="lg"
-                w="full"
-                h={64}
-                fit="cover"
-                src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                alt="Article"
-              />
+              المعسكر: {index.nameOfCamp}
+            </chakra.span>
+            <Link
+            href={`/ProjectPage/${index.id}`}
+              display="block"
+              color="gray.800"
+              _dark={{ color: "white" }}
+              fontWeight="bold"
+              fontSize="2xl"
+              mt={2}
+              _hover={{ color: "gray.600", textDecor: "underline" }}
+            >
+        {index.title}     </Link>
+       
+           
+          </Box>
+          <Divider borderColor={'blackAlpha.500'} mt={5} />
 
-              <Box p={6}>
-                <Box>
-                  <chakra.span
-                    display="block"
-                    fontSize="xs"
-                    textTransform="uppercase"
-                    color="brand.600"
-                    _dark={{ color: "brand.400" }}
-                  >
-                    المعسكر
-                  </chakra.span>
-                  <Link
-                    display="block"
-                    color="gray.800"
-                    _dark={{ color: "white" }}
-                    fontWeight="bold"
-                    fontSize="2xl"
-                    mt={2}
-                    _hover={{ color: "gray.600", textDecor: "underline" }}
-                  >
-                    اسم المشروع{" "}
-                  </Link>
-                </Box>
+          <Box mt={4} >
+            <Flex alignItems="center">
+              <Flex alignItems="center">
+            
+                
+                <RouteLnk to={`/UserProfile/${index.user.id}`}
+                 
+               >
+{index.user.name}<ChevronLeftIcon/>                
+               
+</RouteLnk>
 
-                <Box mt={4} float={"left"}>
-                  <Flex>
-                    <Link
-                      mx={2}
-                      mr={20}
-                      fontWeight="bold"
-                      color="gray.700"
-                      _dark={{ color: "gray.200" }}
-                    >
-                      التفاصيل
-                      <ChevronLeftIcon />
-                    </Link>
-                  </Flex>
-                </Box>
-              </Box>
-            </Box>
-          </Flex>
+              </Flex>
+             
+              <Spacer />
+
+              <RouteLnk to={`/ProjectPage/${index.id}`}
+                 
+             
+                >
+التفاصيل<ChevronLeftIcon/>                
+                
+</RouteLnk>
+            </Flex>
+
+            
+          </Box>
+          
         </Box>
-      </SimpleGrid> */}
+      </Box>
+    </Flex>
+
+
+    </GridItem>
+  </div>
+  ))}
+  
+</SimpleGrid>
 
       <footer>
         <Footer />

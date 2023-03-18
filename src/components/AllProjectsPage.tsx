@@ -24,6 +24,7 @@ function AllProjectsPage() {
     // set state when the data received
     setData(data&&data.Project);
   };
+console.log("ggg");
 
   React.useEffect(() => {
     // fetch data
@@ -32,6 +33,9 @@ function AllProjectsPage() {
 
     getallproject();
   }, []);
+
+  console.log("bbbbb");
+  
   console.log(data);
   
 
