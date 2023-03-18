@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  EmailIcon,
-  ExternalLinkIcon,
-  LockIcon,
-  PhoneIcon,
-} from "@chakra-ui/icons";
+import { EmailIcon, LockIcon } from "@chakra-ui/icons";
 import {
   Grid,
   GridItem,
@@ -12,14 +7,10 @@ import {
   Input,
   Button,
   Box,
-  Avatar,
   Image,
   Text,
   useToast,
   InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Checkbox,
   InputRightAddon,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -36,7 +27,7 @@ function SignUpPage() {
   const [email, setEmail] = useState("");
   const [error, setError] = React.useState(false);
   const [password2, setPassword2] = useState("");
-  const[cheked, setChecked] = React.useState(true);
+  const [cheked, setChecked] = React.useState(true);
 
   const [data, setData] = React.useState<any>([]);
 
@@ -51,13 +42,11 @@ function SignUpPage() {
       password.length == 0 ||
       password2.length == 0 ||
       !cheked ||
-      password&&password2&&password!==password2 
-       
+      (password && password2 && password !== password2)
     ) {
       setError(true);
-      setChecked(false)
-
-    }else{
+      setChecked(false);
+    } else {
       try {
         const request = await fetch("http://localhost:3008/user", {
           method: "POST",
@@ -65,16 +54,14 @@ function SignUpPage() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            
-            email, 
+            email,
             password,
             name,
-            role
-           })
+            role,
+          }),
         });
         const data = await request.json();
-        console.log(data.newUser);
-        
+
         if (request.status !== 200) {
           toast({
             title: data.message,
@@ -85,12 +72,12 @@ function SignUpPage() {
           return;
         }
         toast({
-          title: data.message+" "+data.newUser.name,
+          title: data.message + " " + data.newUser.name,
           status: "success",
           duration: 3000,
           position: "top",
         });
-  
+
         navigate("/LoginPage");
       } catch (error) {
         toast({
@@ -101,7 +88,6 @@ function SignUpPage() {
         });
       }
     }
-   
   };
 
   return (
@@ -118,10 +104,9 @@ function SignUpPage() {
           shadow={"2xl"}
         >
           <Box width={400}>
-          <Link to={"/"}> 
-          <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
-
-</Link>
+            <Link to={"/"}>
+              <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
+            </Link>
             <Heading
               as="h1"
               size="lg"
@@ -134,7 +119,7 @@ function SignUpPage() {
               تسجيل جديد
             </Heading>
 
-            <Box h={'90px'}>
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 البريد الإلكتروني{" "}
@@ -154,12 +139,25 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
-              {error&&email.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-              {error&&email&&!email.includes('@')?<Box   ><Text  color={'red'}    >   البريدالإلكتروني غير صالح</Text></Box>:''}
-
+              {error && email.length <= 0 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+              {error && email && !email.includes("@") ? (
+                <Box>
+                  <Text color={"red"}> البريدالإلكتروني غير صالح</Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
 
-             <Box h={'90px'}>
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 اسم المستخدم{" "}
@@ -179,12 +177,18 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
-              {error&&name.length<=0?<Box float={"right"} ><Text  color={'red'} fontSize={15}     >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-
+              {error && name.length <= 0 ? (
+                <Box float={"right"}>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
 
- 
-            <Box h={'90px'} >
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 كلمة المرور{" "}
@@ -205,12 +209,26 @@ function SignUpPage() {
                   }}
                 />
               </InputGroup>
-              {error&&password.length<=0?<Box float={"right"} ><Text  color={'red'}   fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-              {error&&password&&password.length <=6 ?<Box  >
-                <Text  color={'red'}   fontSize={15}   > 
-                   كلمة السر قصيرة   </Text></Box>:''}
-            </Box >
-             <Box  h={'90px'}>
+              {error && password.length <= 0 ? (
+                <Box float={"right"}>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+              {error && password && password.length <= 6 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    كلمة السر قصيرة{" "}
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+            </Box>
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 تأكيد كلمة المرور{" "}
@@ -222,39 +240,66 @@ function SignUpPage() {
                   children={<LockIcon color="#00ADBB" />}
                 />
 
-                <Input type="password" bg={"#fff"} textAlign={"right"} onChange={(e) => {
+                <Input
+                  type="password"
+                  bg={"#fff"}
+                  textAlign={"right"}
+                  onChange={(e) => {
                     setPassword2(e.target.value);
                   }}
                 />
               </InputGroup>
-              {error&&password2.length <=0?<Box   >
-                <Text  color={'red'}   fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-               
+              {error && password2.length <= 0 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
 
-                {error&&password2&&password2 !== password?<Box  >
-                <Text  color={'red'}   fontSize={15}   > 
-                كلمة السر ليست متساوية </Text></Box>:''}
-
+              {error && password2 && password2 !== password ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    كلمة السر ليست متساوية{" "}
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
-             <Box h={'85px'}  >
-             <Box   float='right'>
-              <MDBCheckbox value="naruto"  onClick={(e)=> {setChecked(true)} } />
-            </Box>
+            <Box h={"85px"}>
+              <Box float="right">
+                <MDBCheckbox
+                  value="naruto"
+                  onClick={(e) => {
+                    setChecked(true);
+                  }}
+                />
+              </Box>
 
-            <Text float={"right"}  mr={1}>
+              <Text float={"right"} mr={1}>
                 {" "}
                 بالتسجيل أقر بأني قرأت
               </Text>
-            <Box mb={2}>
-              <Text display={'inline'} mr={1} color={"#00ADBB"}> 
-               شروط الاستخدام و سياسية الخصوصية
+              <Box mb={2}>
+                <Text display={"inline"} mr={1} color={"#00ADBB"}>
+                  شروط الاستخدام و سياسية الخصوصية
                 </Text>
-                <Text display={'inline'} mr={1}>وأوافق عليها</Text>
-              
+                <Text display={"inline"} mr={1}>
+                  وأوافق عليها
+                </Text>
+              </Box>
+              {!cheked ? (
+                <Text color={"red"}>
+                  {" "}
+                  يجب ان توافق على شروط الاستخدام و سياسية الخصوصية{" "}
+                </Text>
+              ) : (
+                cheked
+              )}
             </Box>
-            {!cheked?<Text color={'red'}> يجب ان توافق على شروط الاستخدام و سياسية الخصوصية </Text>:cheked}
-
-             </Box>
 
             <Box w={"full"} mb={"10px"} mt={"30px"}>
               <Button

@@ -1,5 +1,4 @@
-
-import { ChevronLeftIcon, Search2Icon } from '@chakra-ui/icons';
+import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
 
 import {
   Box,
@@ -8,16 +7,16 @@ import {
   CardFooter,
   CardHeader,
   SimpleGrid,
-  Stack,
+
   GridItem,
-  Spacer,
+  
   InputLeftElement,
   Input,
   InputGroup,
 } from "@chakra-ui/react";
-import { Text, Flex, Image,  chakra, Divider } from "@chakra-ui/react";
-import  {Link as RouteLnk } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Text, Flex, Image, chakra, Divider } from "@chakra-ui/react";
+import { Link as RouteLnk } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
@@ -28,38 +27,21 @@ function AllIdeas() {
   const navigate = useNavigate();
   const [data, setData] = React.useState<[]>([]);
   const [id, setId] = React.useState<number>();
-  // const [showElement,setShowElement] = React.useState(true)
 
-  // React.useEffect(() => {
-  //   getallideas();
+  const getallideas = async () => {
+    const data = await (await fetch("http://localhost:3008/idea/all")).json();
 
-  // }, []);
-
-  // const getallideas = async () => {
-  //   const request = await fetch("http://localhost:3008/idea/all")
-  //   });
-  //   const data = await request.json();
-  // }
-  // console.log(data);
-
-
-    // fetch data
-    const getallideas = async () => {
-      const data = await (await fetch("http://localhost:3008/idea/all")).json();
-
-      // set state when the data received
-      setData(data && data.Idea);
-    };
-
+    // set state when the data received
+    setData(data && data.Idea);
+  };
 
   // console.log(data);
   useEffect(() => {
     // fetch data
 
     getallideas();
-
   }, []);
-   
+
   const [filteredList, setFilteredList] = useState(data);
 
   const [title, settitle] = React.useState("");
@@ -71,10 +53,8 @@ function AllIdeas() {
     }
 
     const filtereddata = filteredData.filter(
-      (data: { title: any}) => data.title.split(" ")
-      .toString()
-      .toLowerCase()
-      .indexOf(title) !== -1
+      (data: { title: any }) =>
+        data.title.split(" ").toString().toLowerCase().indexOf(title) !== -1
     );
     return filtereddata;
   };
@@ -86,18 +66,15 @@ function AllIdeas() {
   };
 
   React.useEffect(() => {
-    
-  
     let filteredData = filter(data);
     setFilteredList(filteredData);
-  }, 
-  );
+  });
 
   return (
     <div>
       <nav>
         <Nav />
-      </nav> 
+      </nav>
       {/* Searsh bar */}
       <Box w={"35%"} mx={"auto"} mt={10}>
         <InputGroup
@@ -129,7 +106,7 @@ function AllIdeas() {
         borderColor={"blackAlpha.200"}
         minH={"60vh"}
         p={20}
-         borderRadius={"2xl"}
+        borderRadius={"2xl"}
         mx="auto"
         spacingX={10}
         spacingY={20}
@@ -137,45 +114,29 @@ function AllIdeas() {
       >
         {filteredList.map((index: any) => (
           <div>
-            <GridItem  >
-              <Card 
-              h={320}
-              >
+            <GridItem>
+              <Card h={320}>
                 <CardHeader>
-                  <Text fontSize={30}  mb={4}>
-                     {index.title}
-                      
+                  <Text fontSize={30} mb={4}>
+                    {index.title}
                   </Text>
                   <hr />
                   <Text mt={3}>صاحب الفكرة : {index.user.name} </Text>
                 </CardHeader>
-                <CardBody h={10}>
-                {index.discription}
-                </CardBody>
+                <CardBody h={10}>{index.discription}</CardBody>
                 <CardFooter>
-                   
-                <Box  right={'230px'}>
-                  
-                  
-                  <Link
-                  to={`/IdeaInfo/${index.id}`}
-                  color={"#4299E1"}
-              
-                 >
-                 التفاصيل<ChevronLeftIcon/>                
-
-                </Link>
-                </Box>
-                    {/* {index.user.name} */}
+                  <Box right={"230px"}>
+                    <Link to={`/IdeaInfo/${index.id}`} color={"#4299E1"}>
+                      التفاصيل
+                      <ChevronLeftIcon />
+                    </Link>
+                  </Box>
+                  {/* {index.user.name} */}
                 </CardFooter>
-                
               </Card>
-              
             </GridItem>
-
-            
           </div>
-         ))} 
+        ))}
       </SimpleGrid>
       <footer>
         <Footer />

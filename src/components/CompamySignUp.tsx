@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  EmailIcon,
-  ExternalLinkIcon,
-  LockIcon,
-  PhoneIcon,
-} from "@chakra-ui/icons";
+import { EmailIcon, LockIcon } from "@chakra-ui/icons";
 import {
   Grid,
   GridItem,
@@ -12,14 +7,10 @@ import {
   Input,
   Button,
   Box,
-  Avatar,
   Image,
   Text,
   useToast,
   InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Checkbox,
   InputRightAddon,
 } from "@chakra-ui/react";
 import { useState } from "react";
@@ -40,31 +31,22 @@ function CompamySignUp() {
   const [password2, setPassword2] = useState("");
   const [cheked, setChecked] = React.useState(true);
 
-
-
-
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post("http://localhost:3008/user/login",
   const submitLogin = async () => {
-
-
     if (
       name.length == 0 ||
       email.length == 0 ||
       password.length == 0 ||
       password2.length == 0 ||
       !cheked ||
-      password && password2 && password !== password2
-
+      (password && password2 && password !== password2)
     ) {
       setError(true);
-      setChecked(false)
-
+      setChecked(false);
     } else {
       try {
-
         const request = await fetch("http://localhost:3008/user", {
           method: "POST",
           headers: {
@@ -103,9 +85,7 @@ function CompamySignUp() {
           position: "top",
         });
       }
-
     }
-
   };
 
   return (
@@ -138,7 +118,7 @@ function CompamySignUp() {
               تسجيل جديد كشركة{" "}
             </Heading>
 
-            <Box h={'90px'} >
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 البريد الإلكتروني{" "}
@@ -150,41 +130,34 @@ function CompamySignUp() {
                 />
 
                 <Input
-                  display={'flex'}
+                  display={"flex"}
                   type="tel"
                   bg={"#fff"}
                   textAlign={"right"}
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
-
                 />
-
               </InputGroup>
-              {error && email.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
-              {error && email && !email.includes('@') ? <Box   ><Text color={'red'}    >   البريدالإلكتروني غير صالح</Text></Box> : ''}
-
-
+              {error && email.length <= 0 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+              {error && email && !email.includes("@") ? (
+                <Box>
+                  <Text color={"red"}> البريدالإلكتروني غير صالح</Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
 
-            {/* <Box mb={'10px'} >
-            <Box float={'right'} fontWeight={"bold"}>  اسم المستخدم  </Box>
-            <InputGroup>
-    <InputRightAddon
-      pointerEvents='none'
-      
-      children={<FaUserAlt color='#00ADBB' />}
-    />
-    
-    <Input type='tel' 
-    bg={'#fff'}
-    textAlign={'right'}  
-    
-    />
-  </InputGroup>
-           
-            </Box> */}
-            <Box h={'90px'}>
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 اسم الشركة{" "}
@@ -192,8 +165,7 @@ function CompamySignUp() {
               <InputGroup>
                 <InputRightAddon
                   pointerEvents="none"
-                  children={<MdOutlineWork
-                    color="#00ADBB" />}
+                  children={<MdOutlineWork color="#00ADBB" />}
                 />
 
                 <Input
@@ -205,12 +177,18 @@ function CompamySignUp() {
                   }}
                 />
               </InputGroup>
-              {error && name.length <= 0 ? <Box float={"right"} ><Text color={'red'} fontSize={15}     >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
-
+              {error && name.length <= 0 ? (
+                <Box float={"right"}>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
 
-
-            <Box h={'90px'} >
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 كلمة المرور{" "}
@@ -231,12 +209,26 @@ function CompamySignUp() {
                   }}
                 />
               </InputGroup>
-              {error && password.length <= 0 ? <Box float={"right"} ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
-              {error && password && password.length <= 6 ? <Box  >
-                <Text color={'red'} fontSize={15}   >
-                  كلمة السر قصيرة   </Text></Box> : ''}
-            </Box >
-            <Box h={'90px'}>
+              {error && password.length <= 0 ? (
+                <Box float={"right"}>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+              {error && password && password.length <= 6 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    كلمة السر قصيرة{" "}
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
+            </Box>
+            <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
                 تأكيد كلمة المرور{" "}
@@ -248,23 +240,43 @@ function CompamySignUp() {
                   children={<LockIcon color="#00ADBB" />}
                 />
 
-                <Input type="password" bg={"#fff"} textAlign={"right"} onChange={(e) => {
-                  setPassword2(e.target.value);
-                }}
+                <Input
+                  type="password"
+                  bg={"#fff"}
+                  textAlign={"right"}
+                  onChange={(e) => {
+                    setPassword2(e.target.value);
+                  }}
                 />
               </InputGroup>
-              {error && password2.length <= 0 ? <Box   >
-                <Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
+              {error && password2.length <= 0 ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    هذا الحقل لا يجب ان يكون فارغا
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
 
-
-              {error && password2 && password2 !== password ? <Box  >
-                <Text color={'red'} fontSize={15}   >
-                  كلمة السر ليست متساوية </Text></Box> : ''}
-
+              {error && password2 && password2 !== password ? (
+                <Box>
+                  <Text color={"red"} fontSize={15}>
+                    كلمة السر ليست متساوية{" "}
+                  </Text>
+                </Box>
+              ) : (
+                ""
+              )}
             </Box>
-            <Box h={'85px'}  >
-              <Box float='right'>
-                <MDBCheckbox value="naruto" onClick={(e) => { setChecked(true) }} />
+            <Box h={"85px"}>
+              <Box float="right">
+                <MDBCheckbox
+                  value="naruto"
+                  onClick={(e) => {
+                    setChecked(true);
+                  }}
+                />
               </Box>
 
               <Text float={"right"} mr={1}>
@@ -272,16 +284,22 @@ function CompamySignUp() {
                 بالتسجيل أقر بأني قرأت
               </Text>
               <Box mb={2}>
-                <Text display={'inline'} mr={1} color={"#00ADBB"}>
+                <Text display={"inline"} mr={1} color={"#00ADBB"}>
                   شروط الاستخدام و سياسية الخصوصية
                 </Text>
-                <Text display={'inline'} mr={1}>وأوافق عليها</Text>
-
+                <Text display={"inline"} mr={1}>
+                  وأوافق عليها
+                </Text>
               </Box>
-              {!cheked ? <Text color={'red'}> يجب ان توافق على شروط الاستخدام و سياسية الخصوصية </Text> : cheked}
-
+              {!cheked ? (
+                <Text color={"red"}>
+                  {" "}
+                  يجب ان توافق على شروط الاستخدام و سياسية الخصوصية{" "}
+                </Text>
+              ) : (
+                cheked
+              )}
             </Box>
-
 
             <Box w={"full"} mb={"10px"} mt={"30px"}>
               <Button
