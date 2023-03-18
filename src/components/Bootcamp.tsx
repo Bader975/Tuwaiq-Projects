@@ -22,6 +22,7 @@ import {
   Button,
   CardFooter,
   Image,
+  Flex,
   
 } from "@chakra-ui/react";
 import React from "react";
@@ -73,19 +74,21 @@ function Bootcamp() {
 
       <Box mx={"auto"}>
         <Link to="/AddNewBootcamp">
-        <Button bg={"#159741"} _hover={{ opacity: 0.8 }} color="#fff" m="10px">
+        <Button bg={"#159741"} _hover={{ opacity: 0.8 }} color="#fff" m="10px" mr={5}>
           انشاء معسكر
         </Button>
         </Link>
       
-    <Box minH={"30vh"}>
-
+    <Box minH={"30vh"} >
+    
     {data.map((index: any) => (
+       <li key={index.id}>
           <Card
-            direction={{ base: "column", sm: "row" }}
+           mx={"auto"}
             overflow="hidden"
             padding={"1vh"}
             variant="outline"
+            w={'70%'}
             bg={"#193547"}
             mt={3}
           >
@@ -119,8 +122,9 @@ function Bootcamp() {
               </SimpleGrid>
             </CardBody>
           </Card>
-          
+          </li>
           ))}
+         
           </Box>
         {/* </SimpleGrid> */}
 

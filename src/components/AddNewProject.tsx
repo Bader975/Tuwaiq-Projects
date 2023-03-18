@@ -95,7 +95,7 @@ function AddNewProject() {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={{base:300,md:500,lg:800}}>
+      <Box m={"auto"} w={{base:300,md:500,lg:800}} boxShadow={'dark-lg'}  rounded={'xl'} p={10}>
         <Text textAlign={"center"} fontSize={30}>
           اضافة مشروع جديد
         </Text>
@@ -188,7 +188,7 @@ function AddNewProject() {
           >
             اضافة
           </Button>
-          <Button mr={2} bg={"#fff"} border="solid 1px lightgray">
+          <Button mr={2} bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={()=>{navigate("/MyProjects");}}>
             إلغاء
           </Button>
         </SimpleGrid>

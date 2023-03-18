@@ -71,7 +71,8 @@ function AddNewBootcamp() {
       </Box>
        {/* Navbar */}
 
-      <Box mx={'auto'} w={{base:300,md:700,lg:800}} minH={'60vh'}> 
+      <Box mx={'auto'} w={{base:300,md:700,lg:800}} minH={'60vh'}boxShadow={'dark-lg'}  rounded={'xl'} p={10}
+> 
       <Text textAlign={'center'} fontSize={30}>إضافة معسكر  </Text>
       <FormControl h={'5rem'}>
                 <FormLabel> اسم المعسكر</FormLabel>
@@ -98,9 +99,9 @@ function AddNewBootcamp() {
 
               <SimpleGrid columns={2} mt={6}  >
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}   onClick={ addCamp} >
-              حفظ
+              اضافة
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray' onClick={()=>navigate("/Bootcamp")}>
+            <Button mr={2}   bg={"red"} color={"#fff"}    border='solid 1px lightgray' onClick={()=>navigate("/Bootcamp")}>
               إلغاء
             </Button>
          </SimpleGrid>
