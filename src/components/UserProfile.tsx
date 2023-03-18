@@ -1,5 +1,6 @@
-import React from "react";
-import axios from "axios";
+
+
+import React, {useState, useEffect} from 'react';
 import "../App.css";
 import { Link as LinkRout, useParams } from "react-router-dom";
 import {
@@ -18,38 +19,37 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
 function UserProfile() {
-  const [data, setData] = React.useState<any>([]);
+  const [data, setData] = React.useState<any[]>([]);
   const [user, setUser] = React.useState<any>([]);
 
   const { id } = useParams();
-  console.log('ggg');
-  React.useEffect(() => {
-    // fetch data
-  
-  
-    console.log("hhhh");
-  getUserProfile();
-  }, []);
-  console.log("bb");
-  
+
     // fetch data
     const getUserProfile = async () => {
       const data = await (
         await fetch(`http://localhost:3008/profile/${id}`, {
           method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
         })
       ).json();
-      console.log(data.profile);
-      console.log("--------------");
-      
- console.log(data.profile.user);
      
       // set state when the data received
       setData(data.profile);
      setUser(data.profile.user)
+     
+     getUserProfile();
     };
 
+console.log(data);
 
+   useEffect(() => {
+      // fetch data
+  console.log("aaaaaaaaaaaaaaaaaaaaaa");
+  getUserProfile();
+  
+    }, []);
 
 
   return (
@@ -96,11 +96,11 @@ function UserProfile() {
             >
               معلومات عامة
             </Text>
-            <p className="ayaa"> </p>
+            <p className="ayaa"></p>
           </Box>
           <Box mr={5}>
             <Box fontSize="lg">
-              <Text mt={10}> الاسم : {data.user.name}</Text>
+              <Text mt={10}> الاسم : {user.name}</Text>
               <Divider />
 
               <Text mt={10}> السيرة : {data.aboutMy}</Text>

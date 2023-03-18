@@ -26,16 +26,12 @@ function AllProjectsPage() {
   };
 
   React.useEffect(() => {
-    // fetch data
-  console.log("hhhh");
-  
-
     getallproject();
   }, []);
-  console.log(data);
+  // console.log(data);
   
 
-  
+
   const [filteredList, setFilteredList] = useState(data);
 
   const [title, settitle] = React.useState("");
@@ -107,7 +103,8 @@ function AllProjectsPage() {
   
 {filteredList.map((index) => (
               <div >
-      
+        
+            
               <GridItem key={index.id}> 
              
               
@@ -168,7 +165,7 @@ mx={'auto'}
           <Box mt={4} >
             <Flex alignItems="center">
               <Flex alignItems="center">
-            
+        
                 
                 <RouteLnk to={`/UserProfile/${index.user.id}`}
                  
