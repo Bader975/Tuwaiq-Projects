@@ -26,6 +26,7 @@ const validation = () => {
   if (title.length == 0 || discription.length == 0) {
     setError(true);
   }
+  return false;
 };
 
 
@@ -59,7 +60,7 @@ const validation = () => {
 
 
 const updateCamp = async () => {
-  validation()
+  validation() == false ? "aaaaa" :"aa"
 
   const data = await (
     await fetch(`http://localhost:3008/idea/${id}`, {
@@ -91,11 +92,11 @@ const updateCamp = async () => {
       </Box>
        {/* Navbar */}
 
-      <Box m={'auto'} w={800} minH={'60vh'}> 
+      <Box mx={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl h={'8rem'}>
       <FormLabel > عنوان الفكرة </FormLabel>
-                <Input  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
+                <Input  placeholder={`${data.title}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
             }} ></Input>
         {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
@@ -104,7 +105,7 @@ const updateCamp = async () => {
 
 
 
-              <FormControl mt={4}  h={'8rem'}>
+              <FormControl mt={10}  h={'8rem'}>
                 <FormLabel>  اوصف الفكرة  </FormLabel>
 
 
@@ -113,8 +114,8 @@ const updateCamp = async () => {
             }}>
               
               </Textarea>
-              {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-                  {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+              {error&&discription.length<=0?<Box><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+                  {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}  mb={10} > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
 
               </FormControl>
  
@@ -123,7 +124,7 @@ const updateCamp = async () => {
 
      
 
-              <SimpleGrid columns={2} bg='red'>
+              <SimpleGrid columns={2} >
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>

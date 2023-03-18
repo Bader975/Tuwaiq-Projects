@@ -17,16 +17,31 @@ function ProfilePage() {
   const [name, setName] = React.useState<any>("");
   const [twitterURL, setTwitterURL] = React.useState<any>("");
   const [img, setImg] = React.useState<any>("");
+  const [profleImg, setProfleImg] = React.useState<any>("");
   const [skill, setSkill] = React.useState<any>("");
   const [aboutMy, setAboutMy] = React.useState<any>("");
   const [email, setEmail] = React.useState<any>("");
   const [phone_number, setPhone_number] = React.useState <any>("");
   const [discription, setDiscription] = React.useState<any>("");
-  
+
   const navigate = useNavigate()
   const toast = useToast();
 
-
+  var fileAsBase64 = React.useCallback((file:File)=>{
+    return new Promise((resolve:any, reject:any)=>{
+        const reader = new FileReader();
+    
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = err => reject(err)
+        })
+   },[])
+ 
+  const uploadFileHandler = async (e : any) => {
+    var file = e.target.files[0];
+    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+    setImg(image);
+  }
 
   const getUserProfile = async () => {
         // fetch data
@@ -44,6 +59,7 @@ function ProfilePage() {
       // set state when the data received
       setData(data.profile);
       setUser(data.profile.user);
+      setProfleImg(data.profile.img);
      
     };
 
@@ -51,6 +67,7 @@ function ProfilePage() {
     getUserProfile();
   }, []);
 
+ console.log(data);
  
       
       const updateProfle = async () => {
@@ -86,7 +103,8 @@ function ProfilePage() {
         navigate("/Profile") 
                // set state when the data received
       };
-      // Upadate User info --------------------------------
+
+      // Upadate User Image --------------------------------
       const updateProfleImg = async () => {
         const data = await (
           await fetch(`http://localhost:3008/profile/`, {
@@ -156,6 +174,7 @@ function ProfilePage() {
   <Nav/>
   </nav>
 <Box w={"full"} mx={"auto"} p={5}>
+  {/* <Image src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3"></Image> */}
   <Grid templateColumns="repeat(2, 1fr)" gap={6}>
     {/*  صفحتي الشخصية */}
     <GridItem w="100%"    padding={2}  borderRadius={'10px'} bg={'gray.100'}>
@@ -168,15 +187,20 @@ function ProfilePage() {
       <Box className="imageProfile" mx={'auto'}  justifyContent={'center'} justifyItems={'center'} w={'130px'}>
         <Stack direction="row" mt={'5px'}>
           <Avatar
-            src={data}
+            src={profleImg}
+            // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
             w={"130px"}
             h={"130px"}
           />
         </Stack>
         {/* زر تحديث صوره العرض */}
-        <Input type="file" border={'none'} className="custom-file-input2"></Input>
+        <Input type="file" border={'none'} className="custom-file-input2"
+          onChange={(e) => {
+            uploadFileHandler(e);
+          }}
+        ></Input>
         <Button w={'100%'} mt={'10px'} bg={'#00ADBB'} color={'#fff'}
-          _hover={{opacity:0.6 }} fontSize={12} p='5px' borderRadius={'10px'}>تحديث صورتي الشخصية</Button>
+          _hover={{opacity:0.6 }} fontSize={12} p='5px' borderRadius={'10px'} onClick={updateProfleImg}>تحديث صورتي الشخصية</Button>
       </Box>
       {/* المدخلات */}
       <Box>

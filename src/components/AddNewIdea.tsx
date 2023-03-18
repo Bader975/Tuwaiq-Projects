@@ -106,24 +106,7 @@ function AddNewIdea() {
             </Button>
          </SimpleGrid>
 
-        <SimpleGrid columns={2} mt={4}>
-          <Button
-            bg="#00ADBB"
-            color={"#fff"}
-            _hover={{ opacity: "0.8" }}
-            onClick={addIdea}
-          >
-            حفظ
-          </Button>
-          <Button
-            mr={2}
-            bg={"#fff"}
-            border="solid 1px lightgray"
-            onClick={() => navigate("/Myideas")}
-          >
-            إلغاء
-          </Button>
-        </SimpleGrid>
+      
       </Box>
 
       {/* Footer */}
