@@ -27,9 +27,9 @@ function ProfilePage() {
   const toast = useToast();
 
 
-  React.useEffect(() => {
-    // fetch data
-    const getUserProfile = async () => {
+
+  const getUserProfile = async () => {
+        // fetch data
       const data = await (
         await fetch(
           "http://localhost:3008/profile",{
@@ -41,28 +41,17 @@ function ProfilePage() {
           }
         )
       ).json();
-    
-      
-
       // set state when the data received
       setData(data.profile);
       setUser(data.profile.user);
      
-
     };
 
+    React.useEffect(() => {
     getUserProfile();
   }, []);
-  // console.log(user.name);
-      console.log(data);
 
-  
-
-      // update profile
-
-      // interface phone{
-      //   phone_number:number;
-      // }
+ 
       
       const updateProfle = async () => {
         const data = await (
@@ -91,6 +80,9 @@ function ProfilePage() {
       duration: 3000,
       position: "top",
     });
+
+    getUserProfile();
+
         navigate("/Profile") 
                // set state when the data received
       };
@@ -131,7 +123,8 @@ function ProfilePage() {
       duration: 3000,
       position: "top",
     });
-    navigate("/Profile") 
+    getUserProfile();
+    navigate("/Profile/") 
 
     console.log(data.message);
            // set state when the data received

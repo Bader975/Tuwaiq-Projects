@@ -43,7 +43,7 @@ function MyProjects() {
   const [data, setData] = React.useState<any[]>([]);
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+
     // fetch data
     const getallproject = async () => {
       const data = await (
@@ -62,13 +62,14 @@ function MyProjects() {
       setData(data&&data.Project);
       
     };
-    getallproject();
 
-    
+    React.useEffect(() => {
+      getallproject();
   }, []);
   // console.log(data);
 
   const deletProject = async (id:string) => {
+    confirm("Want to delete?");
     const data = await (
       await fetch(
         `http://localhost:3008/project/${id}`,{
@@ -81,7 +82,8 @@ function MyProjects() {
         )
         ).json();
         // we will come back to this to fix it!!!!!
-        window.location.reload();
+        // window.location.reload();
+        getallproject();
         navigate("/MyProjects")
   };
   // getallproject();

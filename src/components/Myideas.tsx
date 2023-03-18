@@ -27,7 +27,7 @@ function Myideas() {
   const [data, setData] = React.useState<any[]>([]);
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+ 
     // fetch data
     const getallproject = async () => {
       const data = await (
@@ -46,6 +46,7 @@ function Myideas() {
       setData(data&&data.Idea);
     };
 
+    React.useEffect(() => {
     getallproject();
   }, []);
   console.log(data);
@@ -63,8 +64,9 @@ function Myideas() {
         )
         ).json();
         // we will come back to this to fix it!!!!!
-        window.location.reload();
-        navigate("/MyProjects")
+        // window.location.reload();
+        getallproject();
+        navigate("/Myideas")
   };
   
   return (
