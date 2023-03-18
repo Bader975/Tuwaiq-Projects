@@ -92,7 +92,7 @@ function AddNewProject() {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={800} >
+      <Box m={"auto"} w={{base:300,md:500,lg:800}}>
         <Text textAlign={"center"} fontSize={30}>
           اضافة مشروع جديد
         </Text>
@@ -123,6 +123,7 @@ function AddNewProject() {
             ))}
           </Select>
         </FormControl>
+     
 
         <FormControl mt={4} h={'8rem'}>
           <FormLabel>وصف المشروع</FormLabel>
@@ -150,7 +151,7 @@ function AddNewProject() {
 
         </FormControl>
 
-        <FormControl mt={4} h={'6rem'}>
+        <FormControl mt={4} p={0}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
           p={0}

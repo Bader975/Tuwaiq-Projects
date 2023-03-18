@@ -73,15 +73,11 @@ function AddNewIdea() {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={800} minH={"60vh"} >
-        <Text textAlign={"center"} fontSize={30}>
-          إضافة فكرة{" "}
-        </Text>
-        <FormControl   h={'6rem'}>
-          <FormLabel> عنوان الفكرة </FormLabel>
-          <Input
-            placeholder=" عنوان الفكرة "
-            onChange={(e) => {
+      <Box m={'auto'} w={{base:300,md:500,lg:800}} minH={'60vh'}> 
+      <Text textAlign={'center'} fontSize={30}>إضافة فكرة  </Text>
+      <FormControl>
+                <FormLabel>  عنوان الفكرة  </FormLabel>
+                <Input  placeholder=" عنوان الفكرة " onChange={(e) => {
               setTitle(e.target.value);
             }}
           />
@@ -99,9 +95,16 @@ function AddNewIdea() {
           />
                   {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
                   {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+            </FormControl>
 
-
-        </FormControl>
+              <SimpleGrid columns={2} mt={4}>
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ addIdea} >
+            اضافة
+            </Button>
+            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray' onClick={()=>navigate("/Myideas")}>
+              إلغاء
+            </Button>
+         </SimpleGrid>
 
         <SimpleGrid columns={2} mt={4}>
           <Button
