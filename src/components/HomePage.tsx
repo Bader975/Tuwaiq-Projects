@@ -230,7 +230,7 @@ mx={'auto'}
               color="brand.600"
               _dark={{ color: "brand.400" }}
             >
-              المعسكر
+              المعسكر: {index.nameOfCamp}
             </chakra.span>
             <Link
             href={`/ProjectPage/${index.id}`}

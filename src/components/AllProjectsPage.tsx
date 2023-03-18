@@ -24,11 +24,15 @@ function AllProjectsPage() {
     // set state when the data received
     setData(data&&data.Project);
   };
+console.log("ggg");
 
   React.useEffect(() => {
     getallproject();
   }, []);
-  // console.log(data);
+
+  console.log("bbbbb");
+  
+  console.log(data);
   
 
 
