@@ -26,8 +26,16 @@ function AddNewProject() {
   const [data, setData] = React.useState<any[]>([]);
 
   const navigate = useNavigate();
+  const [error, setError] = React.useState(false);
+
+  const validation = () => {
+    if (title.length == 0 || discription.length == 0 ||projectURL.length ==0 || img.length == 0 ) {
+      setError(true);
+    }
+  };
 
   const addproject = async () => {
+    validation()
     const data = await (
       await fetch("http://localhost:3008/project/", {
         method: "POST",
@@ -88,7 +96,7 @@ function AddNewProject() {
         <Text textAlign={"center"} fontSize={30}>
           اضافة مشروع جديد
         </Text>
-        <FormControl>
+        <FormControl h={'6rem'}>
           <FormLabel> عنوان المشروع</FormLabel>
           <Input
             placeholder=" عنوان المشروع"
@@ -96,9 +104,11 @@ function AddNewProject() {
               setTitle(e.target.value);
             }}
           />
+          {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'5rem'}>
           <FormLabel>اسم المعسكر</FormLabel>
 
           <Select
@@ -115,7 +125,7 @@ function AddNewProject() {
         </FormControl>
      
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'8rem'}>
           <FormLabel>وصف المشروع</FormLabel>
           <Textarea
             placeholder=" وصف المشروع  "
@@ -123,16 +133,22 @@ function AddNewProject() {
               setDiscription(e.target.value);
             }}
           />
+          {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+
         </FormControl>
 
-        <FormControl mt={4}>
+        <FormControl mt={4} h={'6rem'}>
           <FormLabel> رابط خارجي للمشروع يحتوي على https او http</FormLabel>
           <Input
-            placeholder=" رابط المشروع  "
+            placeholder="   رابط خارجي للمشروع  "
             onChange={(e) => {
               setProjectURL(e.target.value);
             }}
           />
+          {error&&projectURL.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error&&projectURL&&!(projectURL.startsWith('http://')|| projectURL.startsWith('https://'))?<Box  ><Text  color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box>:''}
+
         </FormControl>
 
         <FormControl mt={4} p={0}>
@@ -146,6 +162,8 @@ function AddNewProject() {
               uploadFileHandler(e);
             }}
           />
+          {error&&img.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
         </FormControl>
 
         <SimpleGrid columns={2} mt={4}>

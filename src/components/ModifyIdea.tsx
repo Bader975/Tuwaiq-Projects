@@ -17,9 +17,17 @@ function ModifyIdea() {
   const [data, setData] = React.useState<any>([]);
   const [title, setTitle] = React.useState<any>("");
   const [discription, setDiscription] = React.useState<any>("");
-  
+  const [error, setError] = React.useState(false);
+
   const navigate = useNavigate();
 const {id}=useParams();
+
+const validation = () => {
+  if (title.length == 0 || discription.length == 0) {
+    setError(true);
+  }
+};
+
 
   React.useEffect(() => {
     // fetch data
@@ -50,7 +58,9 @@ const {id}=useParams();
 //update Idea
 
 
-const updateIdea = async () => {
+const updateCamp = async () => {
+  validation()
+
   const data = await (
     await fetch(`http://localhost:3008/idea/${id}`, {
       method: "PUT",
@@ -83,16 +93,18 @@ const updateIdea = async () => {
 
       <Box m={'auto'} w={800} minH={'60vh'}> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
-      <FormControl>
-      <FormLabel> عنوان الفكرة </FormLabel>
-                <Input  placeholder={`${data.title}`} contentEditable={true} onChange={(e) => {
+      <FormControl h={'8rem'}>
+      <FormLabel > عنوان الفكرة </FormLabel>
+                <Input  placeholder={`${data.name}`} contentEditable={true} onChange={(e) => {
               setTitle(e.target.value);
             }} ></Input>
+        {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+
               </FormControl>
 
 
 
-              <FormControl mt={4}>
+              <FormControl mt={4}  h={'8rem'}>
                 <FormLabel>  اوصف الفكرة  </FormLabel>
 
 
@@ -101,6 +113,9 @@ const updateIdea = async () => {
             }}>
               
               </Textarea>
+              {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+                  {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+
               </FormControl>
  
       
@@ -108,8 +123,8 @@ const updateIdea = async () => {
 
      
 
-              <SimpleGrid columns={2} mt={4}>
-              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateIdea} >
+              <SimpleGrid columns={2} bg='red'>
+              <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>
             <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'onClick={()=>navigate("/Myideas")}>
