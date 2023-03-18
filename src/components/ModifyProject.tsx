@@ -24,6 +24,23 @@ function ModifyProject() {
   const [data, setData] = React.useState<any[]>([]);
   const [camp, setCamp] = React.useState<any[]>([]);
 
+
+  var fileAsBase64 = React.useCallback((file:File)=>{
+    return new Promise((resolve:any, reject:any)=>{
+        const reader = new FileReader();
+    
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result)
+        reader.onerror = err => reject(err)
+        })
+   },[])
+ 
+  const uploadFileHandler = async (e : any) => {
+    var file = e.target.files[0];
+    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+    setImg(image);
+  }
+
   const navigate = useNavigate();
 const {id}=useParams();
 React.useEffect(() => {
@@ -145,10 +162,11 @@ const getallcamp = async () => {
         <FormControl mt={4}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
-            
+           className="custom-file-input"
+            type={"file"}
             placeholder=" رابط الصوره"
             onChange={(e) => {
-              setImg(e.target.value);
+              uploadFileHandler(e);
             }}
           />
         </FormControl>

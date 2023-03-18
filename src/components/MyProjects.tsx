@@ -51,18 +51,22 @@ function MyProjects() {
   // console.log(data);
 
   const deletProject = async (id:string) => {
-    confirm("Want to delete?");
-    const data = await (
-      await fetch(
-        `http://localhost:3008/project/${id}`,{
-          method: "delete",
-          headers: {
-            "Content-Type": "application/json",
-            "authorization": localStorage.getItem('token') as string,
-          },
-        }
-        )
-        ).json();
+   let result= confirm("هل انت متاكد؟؟!");
+    if (result==true) {
+      const data = await (
+        await fetch(
+          `http://localhost:3008/project/${id}`,{
+            method: "delete",
+            headers: {
+              "Content-Type": "application/json",
+              "authorization": localStorage.getItem('token') as string,
+            },
+          }
+          )
+          ).json();
+    }
+
+   
         // we will come back to this to fix it!!!!!
         // window.location.reload();
         getallproject();
