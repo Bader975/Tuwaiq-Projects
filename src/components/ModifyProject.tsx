@@ -117,7 +117,7 @@ const getallcamp = async () => {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={800}>
+      <Box m={"auto"} w={800}  boxShadow={'dark-lg'}  rounded={'xl'} p={10}>
         <Text textAlign={"center"} fontSize={30}>
           تعديل المشروع 
         </Text>
@@ -210,7 +210,7 @@ const getallcamp = async () => {
           >
             حفظ
           </Button>
-          <Button mr={2} bg={"#fff"} border="solid 1px lightgray" onClick={()=>navigate("/MyProjects")}>
+          <Button mr={2}bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={()=>navigate("/MyProjects")}>
             إلغاء
           </Button>
         </SimpleGrid>

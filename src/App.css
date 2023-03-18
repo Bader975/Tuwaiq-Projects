@@ -91,3 +91,7 @@ html {
 :-ms-input-placeholder {  
   text-align: center; 
 }
+
+li{
+  list-style-type: none;
+}

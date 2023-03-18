@@ -108,7 +108,8 @@ const updateCamp = async () => {
       </Box>
        {/* Navbar */}
 {/* <input type='text' value={data.name} ></input> */}
-      <Box m={'auto'} w={800} minH={'60vh'}> 
+      <Box m={'auto'} w={800} minH={'60vh'} boxShadow={'dark-lg'}  rounded={'xl'} p={10}
+> 
       <Text textAlign={'center'} fontSize={30}> تعديل  </Text>
       <FormControl h={'5rem'}>
       <FormLabel> اسم المعسكر</FormLabel>
@@ -144,7 +145,7 @@ const updateCamp = async () => {
               <Button bg="#00ADBB" color={"#fff"}   _hover={{opacity:'0.8'}}  onClick={ updateCamp} >
               حفظ
             </Button>
-            <Button mr={2}   bg={'#fff'}    border='solid 1px lightgray'onClick={()=>navigate("/Bootcamp")}>
+            <Button mr={2}    bg={"red"} color={"#fff"}    border='solid 1px lightgray'onClick={()=>navigate("/Bootcamp")}>
               إلغاء
             </Button>
          </SimpleGrid>
