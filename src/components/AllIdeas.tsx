@@ -54,7 +54,7 @@ function AllIdeas() {
 
     const filtereddata = filteredData.filter(
       (data: { title: any }) =>
-        data.title.split(" ").toString().toLowerCase().indexOf(title) !== -1
+        data.title.split(" ").toString().toLowerCase().indexOf(title.toLowerCase()) !== -1
     );
     return filtereddata;
   };
