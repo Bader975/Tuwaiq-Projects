@@ -57,8 +57,35 @@ const reduser = (state: any, action: any) => {
 };
 function Nav() {
   const user = localStorage.getItem("token");
-  //   localStorage.removeItem("userName")
-  // console.log(user);
+  const [data, setData] = React.useState<any>([]);
+  const [user1, setUser1] = React.useState<any>([]);
+  const [name, setName] = React.useState<any>("");
+  const [profleImg, setProfleImg] = React.useState<any>("");
+  const [twitterURL, setTwitterURL] = React.useState<any>("");
+  const [img, setImg] = React.useState<any>("");
+
+  const getUserProfile = async () => {
+    // fetch data
+    const data = await (
+      await fetch("http://localhost:3008/profile", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token") as string,
+        },
+      })
+    ).json();
+    // set state when the data received
+    setData(data.profile);
+    setUser1(data.profile.user);
+    setProfleImg(data.profile.img);
+  };
+
+  React.useEffect(() => {
+    getUserProfile();
+  }, []);
+
+
   const removeUser = () => {
     localStorage.clear();
     navigate("/login");
@@ -204,7 +231,7 @@ function Nav() {
             <Spacer />
 
             <Flex justify="flex-end" align="center">
-              <HiOutlineMoon color="#fff" size={20} />
+            
 
               {user === null ? (
                 <RouteLink to={"/LoginPage"}>
@@ -241,7 +268,7 @@ function Nav() {
                           <Avatar
                             size={"sm"}
                             src={
-                              "https://apsec.iafor.org/wp-content/uploads/sites/37/2017/02/IAFOR-Blank-Avatar-Image.jpg"
+                              profleImg
                             }
                           />
                           <VStack

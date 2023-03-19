@@ -33,7 +33,7 @@ function IdeaInformation() {
       <Box bg="#E1EAF5" p={50} minH="80vh">
         <Box
           minH="30vh"
-          w={1000}
+          w={{base:300,md:500,lg:800}}
           m={"auto"}
           p={20}
           pt={5}
