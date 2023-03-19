@@ -1,5 +1,4 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-import anime from 'animejs/lib/anime.es.js';
 import {
   Avatar,
   Box,
@@ -101,9 +100,8 @@ function HomePage() {
     // set state when the data received
     setProfleImg(data && data.Project[0].user.Profill.img);
     setData(data && data.Project);
-    setData(data && data.Project);
-    console.log(data.project);
-    // setData(data&&data.Project);
+   
+  
   };
   // getfirst3();
 
