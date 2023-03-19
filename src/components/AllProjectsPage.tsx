@@ -171,6 +171,15 @@ function AllProjectsPage() {
                       >
                         المعسكر : {index.nameOfCamp}
                       </chakra.span>
+                      <br />
+                      <chakra.span
+                          fontSize="xs"
+                          textTransform="uppercase"
+                          color="brand.600"
+                          _dark={{ color: "brand.400" }}
+                        >
+                          التاريخ: {index.date}
+                        </chakra.span>
                     </Box>
                     <Divider borderColor={"blackAlpha.500"} mt={5} />
 
