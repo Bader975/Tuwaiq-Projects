@@ -269,7 +269,7 @@ function HomePage() {
                         <Flex alignItems="center">
                           <Flex alignItems="center">
                             <Avatar
-                              src={profleImg}
+                              src={index.user.Profill.img}
                               ml={2}
                             />
                             <RouteLnk to={`/UserProfile/${index.user.id}`}>

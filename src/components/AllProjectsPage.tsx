@@ -171,7 +171,7 @@ function AllProjectsPage() {
                       >
                         المعسكر : {index.nameOfCamp}
                       </chakra.span>
-                      <br />
+                      
                       <chakra.span
                           fontSize="xs"
                           textTransform="uppercase"
