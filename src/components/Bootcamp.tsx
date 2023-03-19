@@ -15,7 +15,7 @@ import Footer from "./Footer";
 function Bootcamp() {
   const [data, setData] = React.useState<any[]>([]);
 
-  React.useEffect(() => {
+  
     // fetch data
     const getallproject = async () => {
       const data = await (await fetch("http://localhost:3008/camp")).json();
@@ -24,6 +24,8 @@ function Bootcamp() {
       setData(data && data.Camp);
     };
 
+    
+    React.useEffect(() => {
     getallproject();
   }, []);
 
@@ -42,10 +44,10 @@ function Bootcamp() {
         })
       ).json();
     }
-
+    getallproject();
     // we will come back to this to fix it!!!!!
-    window.location.reload();
-    // navigate("/MyProjects")
+    // window.location.reload();
+    // // navigate("/MyProjects")
   };
 
   return (

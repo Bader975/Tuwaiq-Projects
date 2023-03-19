@@ -71,7 +71,7 @@ function UserProfile() {
     const getallproject = async () => {
       const data = await (
         await fetch(
-          "http://localhost:3008/project/userProject", {
+          `http://localhost:3008/project/userProject/${id}`, {
           method: "GET",
        
         }
