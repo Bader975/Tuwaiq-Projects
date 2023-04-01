@@ -44,7 +44,7 @@ function MyProjects() {
 
   const deletProject = async (id: string) => {
     let result = confirm("هل انت متاكد؟؟!");
- 
+
     if (result == true) {
       const data = await (
         await fetch(`http://localhost:3008/project/${id}`, {
@@ -61,6 +61,9 @@ function MyProjects() {
     navigate("/MyProjects");
   };
 
+  interface Itypes {
+    data: string[];
+  }
   return (
     <div>
       <nav>
@@ -75,7 +78,7 @@ function MyProjects() {
         </Box>
         <Spacer />
         <Box>
- 
+
           <Button
             onClick={() => navigate("/addProject")}
             m="10px"
@@ -100,6 +103,8 @@ function MyProjects() {
         columns={{ base: 1, md: 2, lg: 3 }}
         p={20}
       >
+
+        {/* {data as Itypes == 0 ? "  no data to show ": `you have ${data.length} projects`} */}
         {data.map((index) => (
           <div>
             <GridItem key={index.id}>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import {DatePicker} from 'chakra-ui-date-input'
 import Footer from "./Footer";
 import Nav from "./Nav";
 import  {Link as RouteLnk } from "@chakra-ui/react";
@@ -16,6 +17,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import './AddNewProject.css';
+import { SingleDatepicker } from "chakra-dayzed-datepicker";
 
 function AddNewProject() {
   const [title, setTitle] = React.useState<any>("");
@@ -23,10 +25,9 @@ function AddNewProject() {
   const [discription, setDiscription] = React.useState<any>("");
   const [projectURL, setProjectURL] = React.useState<any>("");
   const [img, setImg] = React.useState<any>("");
-  const [date, setDate] = React.useState<any>("");
-
+  // const [date, setDate] = React.useState<any>("");
   const [data, setData] = React.useState<any[]>([]);
-
+  const [date, setDate] = useState(new Date());
   const navigate = useNavigate();
   const [error, setError] = React.useState(false);
 
@@ -156,12 +157,19 @@ function AddNewProject() {
 
         <FormControl>
           <FormLabel> تاريخ المشروع</FormLabel>
-          <Input
+          {/* <Input
             placeholder=" 2/02/2023 "
             onChange={(e) => {
               setDate(e.target.value);
             }}
-          />
+          /> */}
+          <SingleDatepicker
+    name="date-input"
+ 
+    date={date}
+    onDateChange={setDate}
+  />
+
         </FormControl>
         
         <FormControl mt={4} p={0}>
