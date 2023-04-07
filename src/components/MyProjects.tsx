@@ -1,6 +1,6 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import { Link as RouteLnk } from "@chakra-ui/react";
+import { Link as RouteLnk, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
 import {
   Text,
   Box,
@@ -18,9 +18,14 @@ import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 
+
 function MyProjects() {
   const [data, setData] = React.useState<any[]>([]);
+
+
   const navigate = useNavigate();
+
+  // Delete alert 
 
   // fetch data
   const getallproject = async () => {
@@ -30,10 +35,11 @@ function MyProjects() {
         headers: {
           "Content-Type": "application/json",
           authorization: localStorage.getItem("token") as string,
+         
         },
       })
     ).json();
-
+    
     // set state when the data received
     setData(data && data.Project);
   };
@@ -43,9 +49,10 @@ function MyProjects() {
   }, []);
 
   const deletProject = async (id: string) => {
-    let result = confirm("هل انت متاكد؟؟!");
+    // let result = confirm("هل انت متاكد؟؟!");
 
-    if (result == true) {
+    // if (result == true) {
+     
       const data = await (
         await fetch(`http://localhost:3008/project/${id}`, {
           method: "delete",
@@ -55,7 +62,7 @@ function MyProjects() {
           },
         })
       ).json();
-    }
+    // }
 
     getallproject();
     navigate("/MyProjects");
@@ -72,13 +79,13 @@ function MyProjects() {
 
       <Flex ml={40} mb={5} mt={20}>
         <Box>
-          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
+          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"}>
             المشاريع الخاصة بك
           </Text>{" "}
         </Box>
         <Spacer />
         <Box>
-
+      
           <Button
             onClick={() => navigate("/addProject")}
             m="10px"
@@ -93,6 +100,7 @@ function MyProjects() {
       </Flex>
       {/* ------- this is where to code */}
 
+      {data.length ===0 ? <Text fontSize="20" mr={10}>no data to show </Text>  : <Text fontSize={20} mr={10}>you have {data.length} projects</Text>}
       <SimpleGrid
         spacingX={5}
         spacingY={10}
@@ -104,7 +112,6 @@ function MyProjects() {
         p={20}
       >
 
-        {/* {data as Itypes == 0 ? "  no data to show ": `you have ${data.length} projects`} */}
         {data.map((index) => (
           <div>
             <GridItem key={index.id}>
@@ -121,6 +128,7 @@ function MyProjects() {
                   // m={100}
                   // mt={10}
                   >
+
                     <Image
                       roundedTop="lg"
                       w="full"
@@ -153,7 +161,7 @@ function MyProjects() {
                           color="brand.600"
                           _dark={{ color: "brand.400" }}
                         >
-                          التاريخ: {index.date}
+                          التاريخ: {(index.date)}
                         </chakra.span>
 
                         <Box float={"left"}>

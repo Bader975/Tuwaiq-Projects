@@ -43,9 +43,9 @@ function AllProjectsPage() {
     getallproject();
   }, []);
 
-  console.log("bbbbb");
+ 
 
-  console.log(data);
+
 
   const [filteredList, setFilteredList] = useState(data);
 
@@ -171,15 +171,15 @@ function AllProjectsPage() {
                       >
                         المعسكر : {index.nameOfCamp}
                       </chakra.span>
-                      
+
                       <chakra.span
-                          fontSize="xs"
-                          textTransform="uppercase"
-                          color="brand.600"
-                          _dark={{ color: "brand.400" }}
-                        >
-                          التاريخ: {index.date}
-                        </chakra.span>
+                        fontSize="xs"
+                        textTransform="uppercase"
+                        color="brand.600"
+                        _dark={{ color: "brand.400" }}
+                      >
+                        التاريخ: {index.date}
+                      </chakra.span>
                     </Box>
                     <Divider borderColor={"blackAlpha.500"} mt={5} />
 
@@ -189,7 +189,7 @@ function AllProjectsPage() {
                           <Avatar
                             src={index.user.Profill.img}
                             ml={2}
-                            // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
+                          // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
                           />
                           <RouteLnk to={`/UserProfile/${index.user.id}`}>
                             {index.user.name}

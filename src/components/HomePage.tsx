@@ -62,18 +62,20 @@ function HomePage() {
   const [numOfcamp, setcamp] = React.useState<any[]>([]);
   const [data, setData] = React.useState<any[]>([]);
   const [profleImg, setProfleImg] = React.useState<any>("");
+  const [user, setUser] = React.useState<any>("");
 
   // fetch data
   const getallusers = async () => {
     const data = await (
       await fetch("http://localhost:3008/user/countall")
     ).json();
+    console.log("hi");
 
     // set state when the data received
     setusers(data && data.numOfuser);
   };
 
-  getallusers();
+  // getallusers();
   // ---------------
   const getallprojects = async () => {
     const data = await (
@@ -90,7 +92,7 @@ function HomePage() {
 
     setcamp(data && data.Camp);
   };
-
+  const padL = (nr: any, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
   //get first 3
   const getfirst3 = async () => {
     const data = await (
@@ -98,14 +100,18 @@ function HomePage() {
     ).json();
 
     // set state when the data received
+    setProfleImg(data && data.Project[0]);
     setProfleImg(data && data.Project[0].user.Profill.img);
+    console.log(profleImg);
+
     setData(data && data.Project);
-   
-  
+
+
   };
   // getfirst3();
 
   React.useEffect(() => {
+    getallusers();
     getfirst3();
     getallcamps();
     getallprojects();
@@ -126,14 +132,14 @@ function HomePage() {
           height={"20vh"}
           top={"25vh"}
         >
-          
+
           <Box display={"flex"} justifyContent={"center"} gap={"2"}>
             <Heading mb={330} mt={60}>
               {" "}
 
-               
-            مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
-         
+
+              مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
+
             </Heading>
           </Box>
 
@@ -205,6 +211,7 @@ function HomePage() {
         >
           {data.map((index: any) => (
             <div>
+
               <GridItem key={index.id}>
                 <Flex
                   _dark={{ bg: "#3e3e3e" }}
@@ -246,7 +253,7 @@ function HomePage() {
                         </Link>
 
                         <chakra.span
-                          fontSize="xs"
+                          fontSize="md"
                           textTransform="uppercase"
                           color="brand.600"
                           _dark={{ color: "brand.400" }}
@@ -255,12 +262,17 @@ function HomePage() {
                         </chakra.span>
                         <br />
                         <chakra.span
-                          fontSize="xs"
+                          fontSize="md"
                           textTransform="uppercase"
                           color="brand.600"
                           _dark={{ color: "brand.400" }}
+
+
                         >
-                          التاريخ: {index.date}
+                          التاريخ: {index.datetoLocaleString("en-US")}
+
+
+
                         </chakra.span>
                       </Box>
                       <Divider borderColor={"blackAlpha.500"} mt={5} />

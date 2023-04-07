@@ -27,7 +27,7 @@ function AddNewProject() {
   const [img, setImg] = React.useState<any>("");
   // const [date, setDate] = React.useState<any>("");
   const [data, setData] = React.useState<any[]>([]);
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState<Date>();
   const navigate = useNavigate();
   const [error, setError] = React.useState(false);
 
@@ -47,6 +47,7 @@ function AddNewProject() {
           authorization: localStorage.getItem("token") as string,
         },
         body: JSON.stringify({
+        
           title,
           nameOfCamp,
           discription,
@@ -112,7 +113,7 @@ function AddNewProject() {
 
         </FormControl>
 
-        <FormControl mt={4} h={'5rem'}>
+        <FormControl mt={4}>
           <FormLabel>اسم المعسكر</FormLabel>
 
           <Select

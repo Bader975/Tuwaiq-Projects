@@ -241,7 +241,7 @@ function Nav() {
                     color={"#00ADBB"}
                     bg={"none"}
                     border="1px solid #00ADBB"
-                    mr={10}
+                   
                   >
                     تسجيل دخول
                   </Button>

@@ -12,6 +12,7 @@ import {
   useToast,
   InputGroup,
   InputRightAddon,
+  Checkbox,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -137,6 +138,7 @@ function AdminSignUpPage() {
                   type="tel"
                   bg={"#fff"}
                   textAlign={"right"}
+
                   onChange={(e) => {
                     setEmail(e.target.value);
                   }}
@@ -312,13 +314,14 @@ function AdminSignUpPage() {
               )}
             </Box>
             <Box h={"85px"}>
-              <Box float="right">
-                <MDBCheckbox
+              <Box float="right" mx={'auto'}>
+                <Checkbox colorScheme='blue'
                   value="naruto"
                   onClick={(e) => {
                     setChecked(true);
                   }}
-                />
+                ></Checkbox>
+
               </Box>
 
               <Text float={"right"} mr={1}>

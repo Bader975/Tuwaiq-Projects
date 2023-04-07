@@ -57,6 +57,7 @@ function LoginPage() {
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
         localStorage.setItem("name", data.name);
+        sessionStorage.setItem("token", data.token);
       }
     } catch (error) {
       toast({
