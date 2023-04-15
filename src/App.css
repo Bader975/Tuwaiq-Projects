@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Tajawal&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&family=Tajawal:wght@800;700&display=swap'); */
 #root{
   font-family: 'Oswald', sans-serif;
 font-family: 'Tajawal', sans-serif;
@@ -7,13 +6,20 @@ font-family: 'Tajawal', sans-serif;
 
 
 }
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards; 
   background-color: #F9F9F9 !important;
    height:100vh;
-
+ 
+   
 
 }
 .allidels{

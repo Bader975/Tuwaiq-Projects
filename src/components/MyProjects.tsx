@@ -1,6 +1,6 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
-import { Link as RouteLnk, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { ButtonGroup, Link as RouteLnk, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, useDisclosure } from "@chakra-ui/react";
 import {
   Text,
   Box,
@@ -19,8 +19,11 @@ import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
 
 
+
 function MyProjects() {
   const [data, setData] = React.useState<any[]>([]);
+
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
 
   const navigate = useNavigate();
@@ -35,11 +38,11 @@ function MyProjects() {
         headers: {
           "Content-Type": "application/json",
           authorization: localStorage.getItem("token") as string,
-         
+
         },
       })
     ).json();
-    
+
     // set state when the data received
     setData(data && data.Project);
   };
@@ -52,20 +55,22 @@ function MyProjects() {
     // let result = confirm("هل انت متاكد؟؟!");
 
     // if (result == true) {
-     
-      const data = await (
-        await fetch(`http://localhost:3008/project/${id}`, {
-          method: "delete",
-          headers: {
-            "Content-Type": "application/json",
-            authorization: localStorage.getItem("token") as string,
-          },
-        })
-      ).json();
-    // }
+
+    const data = await (
+      await fetch(`http://localhost:3008/project/${id}`, {
+        method: "delete",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: localStorage.getItem("token") as string,
+        },
+      })
+    ).json();
+
 
     getallproject();
-    navigate("/MyProjects");
+    // to close the model for delete
+    onClose();
+
   };
 
   interface Itypes {
@@ -85,7 +90,7 @@ function MyProjects() {
         </Box>
         <Spacer />
         <Box>
-      
+
           <Button
             onClick={() => navigate("/addProject")}
             m="10px"
@@ -100,7 +105,7 @@ function MyProjects() {
       </Flex>
       {/* ------- this is where to code */}
 
-      {data.length ===0 ? <Text fontSize="20" mr={10}>no data to show </Text>  : <Text fontSize={20} mr={10}>you have {data.length} projects</Text>}
+      {data.length === 0 ? <Text fontSize="20" mr={10}>no data to show </Text> : <Text fontSize={20} mr={10}>you have {data.length} projects</Text>}
       <SimpleGrid
         spacingX={5}
         spacingY={10}
@@ -164,13 +169,39 @@ function MyProjects() {
                           التاريخ: {(index.date)}
                         </chakra.span>
 
+                        {/* DELETE BUTTON */}
                         <Box float={"left"}>
                           <IconButton
                             color={"red"}
                             aria-label="delete"
                             icon={<DeleteIcon />}
-                            onClick={() => deletProject(index.id)}
+                            onClick={onOpen}
+                            m={5}
+
                           />
+
+                          <Modal isOpen={isOpen} onClose={onClose}>
+                            <ModalOverlay />
+                            <ModalContent>
+                              <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
+                              <ModalCloseButton />
+                              <ModalBody  >
+                                هل انت متاكد انك تريد حذف هذا المشروع ؟
+
+                              </ModalBody>
+
+                              <ModalFooter>
+                                <Button mr={3} onClick={onClose}>
+                                  الغاء
+                                </Button>
+                                <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
+                              </ModalFooter>
+                            </ModalContent>
+                          </Modal>
+
+
+                          {/* --------- */}
+
                           <Link to={`/ModifyProject/${index.id}`}>
                             <IconButton
                               mr={5}

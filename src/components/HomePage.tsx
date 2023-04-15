@@ -64,12 +64,25 @@ function HomePage() {
   const [profleImg, setProfleImg] = React.useState<any>("");
   const [user, setUser] = React.useState<any>("");
 
+//AJEX CALL
+
+// ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
+// ajex.send();
+// ajex.onload = () =>{
+//   const data= JSON.parse(ajex.responseText);
+//   console.log(data);
+  
+// }
+
+// END OF GET
+
+
   // fetch data
   const getallusers = async () => {
     const data = await (
       await fetch("http://localhost:3008/user/countall")
     ).json();
-    console.log("hi");
+   
 
     // set state when the data received
     setusers(data && data.numOfuser);
@@ -102,7 +115,7 @@ function HomePage() {
     // set state when the data received
     setProfleImg(data && data.Project[0]);
     setProfleImg(data && data.Project[0].user.Profill.img);
-    console.log(profleImg);
+
 
     setData(data && data.Project);
 
@@ -127,7 +140,7 @@ function HomePage() {
           pos={"absolute"}
           zIndex={"1"}
           color={"white"}
-          w={"100%"}
+          w={"full"}
           textAlign={"center"}
           height={"20vh"}
           top={"25vh"}
@@ -144,7 +157,7 @@ function HomePage() {
           </Box>
 
           <Box mt={20}>
-            <Text fontSize={"x-large"}> </Text>
+          
             <Box
               bg={"#fff"}
               mt={10}
@@ -173,10 +186,9 @@ function HomePage() {
             </Box>
           </Box>
         </Box>
-        <Image w="full" mt={-1} fit="cover" src={HomeImg} alt="HomeImg" />
+        <Image w="full"  fit="cover" src={HomeImg} alt="HomeImg" />
       </Box>
-      <br></br>
-      <br></br>
+     
       <Flex ml={40} mb={5} mt={80}>
         <Box>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
@@ -269,7 +281,7 @@ function HomePage() {
 
 
                         >
-                          التاريخ: {index.datetoLocaleString("en-US")}
+                          التاريخ: {index.date}
 
 
 

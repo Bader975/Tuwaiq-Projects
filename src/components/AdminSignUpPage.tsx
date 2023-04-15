@@ -23,6 +23,7 @@ import { MdOutlineWork } from "react-icons/md";
 import { MDBCheckbox } from "mdb-react-ui-kit";
 
 function AdminSignUpPage() {
+
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("Admin");
@@ -30,13 +31,14 @@ function AdminSignUpPage() {
   const [employeeID, setEmployeeID] = useState("");
   const [password2, setPassword2] = useState("");
   const [cheked, setChecked] = React.useState(true);
-
   const [error, setError] = React.useState(false);
 
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post("http://localhost:3008/user/login",
+
+
+
   const submitLogin = async () => {
     if (
       name.length == 0 ||
@@ -49,7 +51,9 @@ function AdminSignUpPage() {
     ) {
       setError(true);
       setChecked(false);
-    } else {
+    }
+
+    else {
       try {
         const request = await fetch("http://localhost:3008/user", {
           method: "POST",
@@ -92,7 +96,7 @@ function AdminSignUpPage() {
       }
     }
   };
-
+ 
   return (
     <div>
       <Grid mt={20}>

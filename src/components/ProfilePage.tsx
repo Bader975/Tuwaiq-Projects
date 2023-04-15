@@ -48,8 +48,8 @@ function ProfilePage() {
   }, []);
 
   const uploadFileHandler = async (e: any) => {
-    var file = e.target.files[0];
-    var image = await fileAsBase64(file)
+    let file = e.target.files[0];
+    let image = await fileAsBase64(file)
       .then((img) => img)
       .then((img) => img);
     setImg(image);
@@ -198,6 +198,7 @@ function ProfilePage() {
               <Input
                 type="file"
                 border={"none"}
+
                 className="custom-file-input2"
                 onChange={(e) => {
                   uploadFileHandler(e);
@@ -237,6 +238,7 @@ function ProfilePage() {
                   bg={"#fff"}
                   placeholder={`${data.skill}`}
                   textAlign={"right"}
+
                   onChange={(e) => {
                     setSkill(e.target.value);
                   }}
@@ -313,7 +315,7 @@ function ProfilePage() {
                 <Input
                   id="phone"
                   bg={"#fff"}
-                  placeholder={`${user.phone_number}`}
+                  placeholder={`${user.phone_number === null ? "لا يوجد معلومات" : user.phone_number}`}
                   textAlign={"right"}
                   onChange={(e) => {
                     setPhone_number(e.target.value);
