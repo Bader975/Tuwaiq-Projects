@@ -146,7 +146,7 @@ function HomePage() {
           top={"25vh"}
         >
 
-          <Box display={"flex"} justifyContent={"center"} gap={"2"}>
+          {/* <Box display={"flex"} justifyContent={"center"} gap={"2"}> */}
             <Heading mb={330} mt={60}>
               {" "}
 
@@ -154,7 +154,7 @@ function HomePage() {
               مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
 
             </Heading>
-          </Box>
+          {/* </Box> */}
 
           <Box mt={20}>
           
@@ -186,7 +186,7 @@ function HomePage() {
             </Box>
           </Box>
         </Box>
-        <Image w="full"  fit="cover" src={HomeImg} alt="HomeImg" />
+        <Image w="100vw"  fit="cover" src={HomeImg} alt="HomeImg" />
       </Box>
      
       <Flex ml={40} mb={5} mt={80}>

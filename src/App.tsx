@@ -26,50 +26,42 @@ import ModifyIdea from "./components/ModifyIdea";
 import Myideas from "./components/Myideas";
 import IdeaInformation from "./components/IdeaInformation";
 import UserProfile from "./components/UserProfile";
+import NotFound from "./components/NotFound";
 
 function App() {
   return (
     <div>
-      {/* <Addbootcamp/> */}
-      {/* <CompanyProjects/> */}
-      {/* <MyProjects/> */}
+
 
       <Routes>
       <Route path="/" element={<HomePage />} />
       
         <Route path="/UserProfile/:id" element={<UserProfile />} />
-
         <Route path="/Bootcamp" element={<Bootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />
         <Route path="/ModifyBootcamp/:id" element={<ModifyBootcamp />} />
-
 
         <Route path="/MyProjects" element={<MyProjects />} />
         <Route path="/addProject" element={<AddNewProject />} />
         <Route path="/ModifyProject/:id" element={<ModifyProject />} />
 
-
-
         <Route path="/Myideas" element={<Myideas />} />
         <Route path="/AddNewIdea" element={<AddNewIdea />} />
         <Route path="/ModifyIdea/:id" element={<ModifyIdea />} />
 
-
         <Route path="/IdeaInfo/:id" element={<IdeaInformation />} />
 
-
-
-        
         <Route path="/Allproject" element={<AllProjectsPage />} />
         <Route path="/Allideas" element={<AllIdeas />} />
         <Route path="/Profile" element={<ProfilePage />} />
         <Route path="/ProjectPage/:id" element={<ProjectPage />} />
 
-
         <Route path="/SignUpPage" element={<SignUpPage />} />
         <Route path="/AdminSignUpPage" element={<AdminSignUpPage />} />
         <Route path="/CompamySignUp" element={<CompamySignUp />} />
         <Route path="/LoginPage" element={<LoginPage />} />
+        {/* NOT FOUND PAGE */}
+        <Route path="*" element={<NotFound />} />
 
 
       </Routes>

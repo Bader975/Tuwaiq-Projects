@@ -98,7 +98,7 @@ function AdminSignUpPage() {
   };
  
   return (
-    <div>
+    <>
       <Grid mt={20}>
         {/*  صفحتي الشخصية */}
         <GridItem
@@ -377,7 +377,7 @@ function AdminSignUpPage() {
           </Box>{" "}
         </GridItem>
       </Grid>
-    </div>
+    </>
   );
 }
 

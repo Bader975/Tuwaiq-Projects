@@ -67,7 +67,7 @@ function ModifyIdea() {
   };
 
   return (
-    <div>
+    <>
       {/* Navbar */}
       <Box mb={10}>
         <Nav />
@@ -162,7 +162,7 @@ function ModifyIdea() {
         <Footer />
       </Box>
       {/* Footer */}
-    </div>
+    </>
   );
 }
 

@@ -71,7 +71,7 @@ function AllIdeas() {
   });
 
   return (
-    <div>
+    <>
       <nav>
         <Nav />
       </nav>
@@ -141,7 +141,7 @@ function AllIdeas() {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 }
 
