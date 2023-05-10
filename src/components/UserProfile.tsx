@@ -27,6 +27,14 @@ import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
 
+
+interface User {
+  name: string;
+  twitterURL: string | any;
+  aboutMy:string |any;
+  skill:string | any;
+}
+
 function UserProfile() {
   const [data, setData] = React.useState<any[]>([]);
   const [user, setUser] = React.useState<any>([]);
@@ -60,12 +68,12 @@ function UserProfile() {
     //  setUser(data.profile.user)
     };
 
-    console.log("user "+ user);
-    console.log("hhhh");
+
+
   getUserProfile();
   getallproject()
   }, []);
-  console.log("bb");
+
   
     // fetch data
     const getallproject = async () => {

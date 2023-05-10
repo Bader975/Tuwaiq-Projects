@@ -26,7 +26,7 @@ function LoginPage() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post("http://localhost:3008/user/login",
+
   const submitLogin = async () => {
     try {
       const request = await fetch("http://localhost:3008/user/login", {

@@ -26,8 +26,10 @@ function AllProjectsPage() {
 
   const getallproject = async () => {
     const data = await (
-      await fetch("http://localhost:3008/project/all")
-    ).json();
+       axios.get("http://localhost:3008/project/all").then(res => res.data)
+      
+      )
+    
 
     // set state when the data received
     setData(data && data.Project);
@@ -35,7 +37,7 @@ function AllProjectsPage() {
 
     setProfleImg(data && data.Project.user.Profill.img);
   };
-  console.log("ggg");
+
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;

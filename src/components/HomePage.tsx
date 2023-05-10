@@ -64,17 +64,17 @@ function HomePage() {
   const [profleImg, setProfleImg] = React.useState<any>("");
   const [user, setUser] = React.useState<any>("");
 
-//AJEX CALL
+  //AJEX CALL
 
-// ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
-// ajex.send();
-// ajex.onload = () =>{
-//   const data= JSON.parse(ajex.responseText);
-//   console.log(data);
-  
-// }
+  // ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
+  // ajex.send();
+  // ajex.onload = () =>{
+  //   const data= JSON.parse(ajex.responseText);
+  //   console.log(data);
 
-// END OF GET
+  // }
+
+  // END OF GET
 
 
   // fetch data
@@ -82,7 +82,7 @@ function HomePage() {
     const data = await (
       await fetch("http://localhost:3008/user/countall")
     ).json();
-   
+
 
     // set state when the data received
     setusers(data && data.numOfuser);
@@ -147,17 +147,17 @@ function HomePage() {
         >
 
           {/* <Box display={"flex"} justifyContent={"center"} gap={"2"}> */}
-            <Heading mb={330} mt={60}>
-              {" "}
+          <Heading mb={330} mt={60}>
+            {" "}
 
 
-              مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
+            مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
 
-            </Heading>
+          </Heading>
           {/* </Box> */}
 
           <Box mt={20}>
-          
+
             <Box
               bg={"#fff"}
               mt={10}
@@ -186,9 +186,9 @@ function HomePage() {
             </Box>
           </Box>
         </Box>
-        <Image w="100vw"  fit="cover" src={HomeImg} alt="HomeImg" />
+        <Image w="100vw" fit="cover" src={HomeImg} alt="HomeImg" />
       </Box>
-     
+
       <Flex ml={40} mb={5} mt={80}>
         <Box>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>

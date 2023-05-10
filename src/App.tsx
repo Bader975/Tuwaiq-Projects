@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import "./App.css";
 
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route,Router, useParams } from "react-router-dom";
 import AllProjectsPage from "./components/AllProjectsPage";
 
 import ProfilePage from "./components/ProfilePage";
@@ -29,6 +29,7 @@ import UserProfile from "./components/UserProfile";
 import NotFound from "./components/NotFound";
 
 function App() {
+  let {id}=useParams()
   return (
     <div>
 

@@ -1,5 +1,7 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+
+
 import { ButtonGroup, Link as RouteLnk, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, useDisclosure } from "@chakra-ui/react";
 import {
   Text,
@@ -118,117 +120,119 @@ function MyProjects() {
       >
 
         {data.map((index) => (
-          <div>
-            <GridItem key={index.id}>
-              <Box textAlign={"right"} shadow={"lg"}>
-                <Flex
-                  _dark={{ bg: "#3e3e3e" }}
-                  w="full"
-                  alignItems="center"
-                  justifyContent="center"
-                  textAlign={"right"}
-                >
-                  <Box
-                  // mx="auto"
-                  // m={100}
-                  // mt={10}
+          <>
+            <GridItem >
+              <li key={index.id}>
+                <Box textAlign={"right"} shadow={"lg"}>
+                  <Flex
+                    _dark={{ bg: "#3e3e3e" }}
+                    w="full"
+                    alignItems="center"
+                    justifyContent="center"
+                    textAlign={"right"}
                   >
+                    <Box
+                    // mx="auto"
+                    // m={100}
+                    // mt={10}
+                    >
 
-                    <Image
-                      roundedTop="lg"
-                      w="full"
-                      h={64}
-                      fit="cover"
-                      src={index.img}
-                      alt="Article"
-                    />
-                    <Text fontWeight={"bold"} fontSize={25} mr={5} mt={2}>
-                      {" "}
-                      {index.title}
-                    </Text>
+                      <Image
+                        roundedTop="lg"
+                        w="full"
+                        h={64}
+                        fit="cover"
+                        src={index.img}
+                        alt="Article"
+                      />
+                      <Text fontWeight={"bold"} fontSize={25} mr={5} mt={2}>
+                        {" "}
+                        {index.title}
+                      </Text>
 
-                    <Box p={6}>
-                      <Box>
-                        <chakra.span
-                          fontSize="xs"
-                          textTransform="uppercase"
-                          color="brand.600"
-                          _dark={{ color: "brand.400" }}
-                        >
-                          <Text fontSize={20}>
-                            المعسكر : {index.nameOfCamp}
-                          </Text>
-                        </chakra.span>
-                        <br />
-                        <chakra.span
-                          fontSize="xs"
-                          textTransform="uppercase"
-                          color="brand.600"
-                          _dark={{ color: "brand.400" }}
-                        >
-                          التاريخ: {(index.date)}
-                        </chakra.span>
+                      <Box p={6}>
+                        <Box>
+                          <chakra.span
+                            fontSize="xs"
+                            textTransform="uppercase"
+                            color="brand.600"
+                            _dark={{ color: "brand.400" }}
+                          >
+                            <Text fontSize={20}>
+                              المعسكر : {index.nameOfCamp}
+                            </Text>
+                          </chakra.span>
+                          <br />
+                          <chakra.span
+                            fontSize="xs"
+                            textTransform="uppercase"
+                            color="brand.600"
+                            _dark={{ color: "brand.400" }}
+                          >
+                            التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
+                          </chakra.span>
 
-                        {/* DELETE BUTTON */}
-                        <Box float={"left"}>
-                          <IconButton
-                            color={"red"}
-                            aria-label="delete"
-                            icon={<DeleteIcon />}
-                            onClick={onOpen}
-                            m={5}
-
-                          />
-
-                          <Modal isOpen={isOpen} onClose={onClose}>
-                            <ModalOverlay />
-                            <ModalContent>
-                              <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
-                              <ModalCloseButton />
-                              <ModalBody  >
-                                هل انت متاكد انك تريد حذف هذا المشروع ؟
-
-                              </ModalBody>
-
-                              <ModalFooter>
-                                <Button mr={3} onClick={onClose}>
-                                  الغاء
-                                </Button>
-                                <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
-                              </ModalFooter>
-                            </ModalContent>
-                          </Modal>
-
-
-                          {/* --------- */}
-
-                          <Link to={`/ModifyProject/${index.id}`}>
+                          {/* DELETE BUTTON */}
+                          <Box float={"left"}>
                             <IconButton
-                              mr={5}
-                              color={"green"}
-                              aria-label="edit"
-                              icon={<EditIcon />}
-                            />
-                          </Link>
-                        </Box>
+                              color={"red"}
+                              aria-label="delete"
+                              icon={<DeleteIcon />}
+                              onClick={onOpen}
+                              m={5}
 
-                        <RouteLnk
-                          display="block"
-                          color="gray.800"
-                          _dark={{ color: "white" }}
-                          fontWeight="bold"
-                          fontSize="2xl"
-                          mt={2}
-                          _hover={{ color: "gray.600", textDecor: "underline" }}
-                        ></RouteLnk>
+                            />
+
+                            <Modal isOpen={isOpen} onClose={onClose}>
+                              <ModalOverlay />
+                              <ModalContent>
+                                <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
+                                <ModalCloseButton />
+                                <ModalBody  >
+                                  هل انت متاكد انك تريد حذف هذا المشروع ؟
+
+                                </ModalBody>
+
+                                <ModalFooter>
+                                  <Button mr={3} onClick={onClose}>
+                                    الغاء
+                                  </Button>
+                                  <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
+                                </ModalFooter>
+                              </ModalContent>
+                            </Modal>
+
+
+                            {/* --------- */}
+
+                            <Link to={`/ModifyProject/${index.id}`}>
+                              <IconButton
+                                mr={5}
+                                color={"green"}
+                                aria-label="edit"
+                                icon={<EditIcon />}
+                              />
+                            </Link>
+                          </Box>
+
+                          <RouteLnk
+                            display="block"
+                            color="gray.800"
+                            _dark={{ color: "white" }}
+                            fontWeight="bold"
+                            fontSize="2xl"
+                            mt={2}
+                            _hover={{ color: "gray.600", textDecor: "underline" }}
+                          ></RouteLnk>
+                        </Box>
                       </Box>
+                      <br />
                     </Box>
-                    <br />
-                  </Box>
-                </Flex>
-              </Box>
+                  </Flex>
+                </Box>
+              </li>
             </GridItem>
-          </div>
+          </>
         ))}
       </SimpleGrid>
 

@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouteLnk } from "@chakra-ui/react";
+import { SingleDatepicker } from "chakra-dayzed-datepicker";
 
 function AddNewBootcamp() {
   const [error, setError] = React.useState(false);
@@ -90,6 +91,7 @@ function AddNewBootcamp() {
               setDate(e.target.value);
             }}
           />
+        
           {error && date.length <= 0 ? (
             <Box>
               <Text color={"red"} fontSize={15}>
