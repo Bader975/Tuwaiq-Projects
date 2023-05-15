@@ -113,8 +113,7 @@ function AllIdeas() {
         columns={{ base: 1, md: 2, lg: 3 }}
       >
         {filteredList.map((index: any) => (
-          <div>
-            <GridItem>
+            <GridItem key={index.id}>
               <Card h={320}>
                 <CardHeader>
                   <Text fontSize={30} mb={4}>
@@ -135,7 +134,7 @@ function AllIdeas() {
                 </CardFooter>
               </Card>
             </GridItem>
-          </div>
+          
         ))}
       </SimpleGrid>
       <footer>

@@ -27,6 +27,7 @@ function AddNewIdea() {
     }
   };
 
+ 
   const addIdea = async () => {
     validation();
     const data = await (
@@ -44,10 +45,14 @@ function AddNewIdea() {
     ).json();
     navigate("/Myideas");
     // set state when the data received
+
+    
   };
 
+
   return (
-    <div>
+    <>
+
       {/* Navbar */}
       <Box mb={10}>
         <Nav />
@@ -139,7 +144,7 @@ function AddNewIdea() {
         <Footer />
       </Box>
       {/* Footer */}
-    </div>
+    </>
   );
 }
 

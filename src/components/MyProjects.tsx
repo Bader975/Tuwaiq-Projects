@@ -19,6 +19,7 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
+import DeleteModal from "./DeleteModal";
 
 
 
@@ -75,11 +76,12 @@ function MyProjects() {
 
   };
 
+
   interface Itypes {
-    data: string[];
+    data: any[];
   }
   return (
-    <div>
+    <>
       <nav>
         <Nav />
       </nav>
@@ -120,119 +122,125 @@ function MyProjects() {
       >
 
         {data.map((index) => (
-          <>
-            <GridItem >
-              <li key={index.id}>
-                <Box textAlign={"right"} shadow={"lg"}>
-                  <Flex
-                    _dark={{ bg: "#3e3e3e" }}
+          <GridItem key={index.id}>
+
+            <Box textAlign={"right"} shadow={"lg"}>
+              <Flex
+                _dark={{ bg: "#3e3e3e" }}
+                w="full"
+                alignItems="center"
+                justifyContent="center"
+                textAlign={"right"}
+              >
+                <Box
+                // mx="auto"
+                // m={100}
+                // mt={10}
+                >
+
+                  <Image
+                    roundedTop="lg"
                     w="full"
-                    alignItems="center"
-                    justifyContent="center"
-                    textAlign={"right"}
-                  >
-                    <Box
-                    // mx="auto"
-                    // m={100}
-                    // mt={10}
-                    >
+                    h={64}
+                    fit="cover"
+                    src={index.img}
+                    alt="Article"
+                  />
+                  <Text fontWeight={"bold"} fontSize={25} mr={5} mt={2}>
+                    {" "}
+                    {index.title}
+                  </Text>
 
-                      <Image
-                        roundedTop="lg"
-                        w="full"
-                        h={64}
-                        fit="cover"
-                        src={index.img}
-                        alt="Article"
-                      />
-                      <Text fontWeight={"bold"} fontSize={25} mr={5} mt={2}>
-                        {" "}
-                        {index.title}
-                      </Text>
-
-                      <Box p={6}>
-                        <Box>
-                          <chakra.span
-                            fontSize="xs"
-                            textTransform="uppercase"
-                            color="brand.600"
-                            _dark={{ color: "brand.400" }}
-                          >
-                            <Text fontSize={20}>
-                              المعسكر : {index.nameOfCamp}
-                            </Text>
-                          </chakra.span>
-                          <br />
-                          <chakra.span
-                            fontSize="xs"
-                            textTransform="uppercase"
-                            color="brand.600"
-                            _dark={{ color: "brand.400" }}
-                          >
-                            التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
-                          </chakra.span>
-
-                          {/* DELETE BUTTON */}
-                          <Box float={"left"}>
-                            <IconButton
-                              color={"red"}
-                              aria-label="delete"
-                              icon={<DeleteIcon />}
-                              onClick={onOpen}
-                              m={5}
-
-                            />
-
-                            <Modal isOpen={isOpen} onClose={onClose}>
-                              <ModalOverlay />
-                              <ModalContent>
-                                <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
-                                <ModalCloseButton />
-                                <ModalBody  >
-                                  هل انت متاكد انك تريد حذف هذا المشروع ؟
-
-                                </ModalBody>
-
-                                <ModalFooter>
-                                  <Button mr={3} onClick={onClose}>
-                                    الغاء
-                                  </Button>
-                                  <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
-                                </ModalFooter>
-                              </ModalContent>
-                            </Modal>
-
-
-                            {/* --------- */}
-
-                            <Link to={`/ModifyProject/${index.id}`}>
-                              <IconButton
-                                mr={5}
-                                color={"green"}
-                                aria-label="edit"
-                                icon={<EditIcon />}
-                              />
-                            </Link>
-                          </Box>
-
-                          <RouteLnk
-                            display="block"
-                            color="gray.800"
-                            _dark={{ color: "white" }}
-                            fontWeight="bold"
-                            fontSize="2xl"
-                            mt={2}
-                            _hover={{ color: "gray.600", textDecor: "underline" }}
-                          ></RouteLnk>
-                        </Box>
-                      </Box>
+                  <Box p={6}>
+                    <Box>
+                      <chakra.span
+                        fontSize="xs"
+                        textTransform="uppercase"
+                        color="brand.600"
+                        _dark={{ color: "brand.400" }}
+                      >
+                        <Text fontSize={20}>
+                          المعسكر : {index.nameOfCamp}
+                        </Text>
+                      </chakra.span>
                       <br />
+                      <chakra.span
+                        fontSize="xs"
+                        textTransform="uppercase"
+                        color="brand.600"
+                        _dark={{ color: "brand.400" }}
+                      >
+                        التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
+                      </chakra.span>
+
+                      {/* DELETE BUTTON */}
+                      <Box float={"left"}>
+
+                        {/* <Button onClick={onOpen} colorScheme={"red"}> */}
+
+
+                        <Modal isOpen={isOpen} onClose={onClose} key={index.id}>
+                          <ModalOverlay />
+                          <ModalContent>
+                            <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
+                            <ModalCloseButton />
+                            <ModalBody  >
+                              هل انت متاكد انك تريد حذف هذا المشروع ؟
+
+                            </ModalBody>
+
+
+                            <ModalFooter>
+                              <Button mr={3} onClick={onClose}>
+                                الغاء
+                              </Button>
+
+                              <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
+                            </ModalFooter>
+                          </ModalContent>
+                        </Modal>
+
+                        {/* </Button> */}
+
+
+                        <IconButton
+                          color={"red"}
+                          aria-label="delete"
+                          icon={<DeleteIcon />}
+                          onClick={onOpen}
+                          m={5}
+
+                        />
+                        {/* --------- */}
+
+                        <Link to={`/ModifyProject/${index.id}`}>
+                          <IconButton
+                            mr={5}
+                            color={"green"}
+                            aria-label="edit"
+                            icon={<EditIcon />}
+                          />
+                        </Link>
+                      </Box>
+
+                      <RouteLnk
+                        display="block"
+                        color="gray.800"
+                        _dark={{ color: "white" }}
+                        fontWeight="bold"
+                        fontSize="2xl"
+                        mt={2}
+                        _hover={{ color: "gray.600", textDecor: "underline" }}
+                      ></RouteLnk>
                     </Box>
-                  </Flex>
+                  </Box>
+                  <br />
                 </Box>
-              </li>
-            </GridItem>
-          </>
+              </Flex>
+            </Box>
+
+          </GridItem>
+
         ))}
       </SimpleGrid>
 
@@ -241,7 +249,7 @@ function MyProjects() {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 }
 

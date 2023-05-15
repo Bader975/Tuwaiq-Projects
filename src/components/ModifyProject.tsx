@@ -28,66 +28,69 @@ function ModifyProject() {
 
 
 
-  var fileAsBase64 = React.useCallback((file:File)=>{
-    return new Promise((resolve:any, reject:any)=>{
-        const reader = new FileReader();
-    
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = err => reject(err)
-        })
-   },[])
- 
-  const uploadFileHandler = async (e : any) => {
+  var fileAsBase64 = React.useCallback((file: File) => {
+    return new Promise((resolve: any, reject: any) => {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = err => reject(err)
+    })
+  }, [])
+
+  const uploadFileHandler = async (e: any) => {
     var file = e.target.files[0];
-    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+    var image = await fileAsBase64(file).then(img => img).then(img => img)
     setImg(image);
   }
 
   const navigate = useNavigate();
-const {id}=useParams();
-React.useEffect(() => {
+  const { id } = useParams();
+  React.useEffect(() => {
+    // fetch data
+    const getProjectByid = async () => {
+      const data = await (
+        await fetch(
+          `http://localhost:3008/project/${id}`
+        )
+      ).json();
+
+
+
+      // set state when the data received
+      setData(data && data.Project);
+    };
+
+    const getallcamp = async () => {
+      const data = await (await fetch("http://localhost:3008/camp")).json();
+
+      // set state when the data received
+      setCamp(data && data.Camp);
+    };
+
+    getallcamp();
+    console.log("rerender");
+
+    getProjectByid();
+  }, []);
+
+
+
+
   // fetch data
-  const getProjectByid = async () => {
-    const data = await (
-      await fetch(
-        `http://localhost:3008/project/${id}`
-      )
-    ).json();
-   
 
-    
-    // set state when the data received
-    setData(data&&data.Project);
-  };
-  
-const getallcamp = async () => {
-    const data = await (await fetch("http://localhost:3008/camp")).json();
-
-    // set state when the data received
-    setCamp(data && data.Camp);
-  };
-
-  getallcamp();
-
-  getProjectByid();
-}, []);
-
-
-
-
-  // fetch data
-  
 
   const validation = () => {
-    if (title.length == 0 || discription.length == 0 ||projectURL.length ==0 || img.length == 0 ) {
+    if (title.length == 0 || discription.length == 0 || projectURL.length == 0 || img.length == 0) {
       setError(true);
+
     }
+
   };
 
-  
+
   const updateproject = async () => {
-    validation()
+    validation();
     const data = await (
       await fetch(`http://localhost:3008/project/${id}`, {
         method: "PUT",
@@ -117,9 +120,9 @@ const getallcamp = async () => {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={800}  boxShadow={'dark-lg'}  rounded={'xl'} p={10}>
+      <Box m={"auto"} w={800} boxShadow={'dark-lg'} rounded={'xl'} p={10}>
         <Text textAlign={"center"} fontSize={30}>
-          تعديل المشروع 
+          تعديل المشروع
         </Text>
         <FormControl h={'6rem'}>
           <FormLabel> عنوان المشروع</FormLabel>
@@ -129,9 +132,9 @@ const getallcamp = async () => {
               setTitle(e.target.value);
             }}
           />
-            {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error && title.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
 
-         
+
         </FormControl>
 
         <FormControl mt={4} h={'5rem'}>
@@ -145,7 +148,7 @@ const getallcamp = async () => {
             <option></option>
             {camp.map((index1: any) => (
               // <option>{`${index.name}` + ` ` + `${index.date}`}</option>
-              <option>{index1.name}</option>
+              <option key={index1.id}>{index1.name}</option>
 
             ))}
           </Select>
@@ -159,8 +162,8 @@ const getallcamp = async () => {
               setDiscription(e.target.value);
             }}
           />
-          {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-          {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+          {error && discription.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
+          {error && discription && discription.split(' ').length <= 10 ? <Box  ><Text color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box> : ''}
 
         </FormControl>
 
@@ -172,8 +175,8 @@ const getallcamp = async () => {
               setProjectURL(e.target.value);
             }}
           />
-            {error&&projectURL.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-          {error&&projectURL&&!(projectURL.startsWith('http://')|| projectURL.startsWith('https://'))?<Box  ><Text  color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box>:''}
+          {error && projectURL.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
+          {error && projectURL && !(projectURL.startsWith('http://') || projectURL.startsWith('https://')) ? <Box  ><Text color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box> : ''}
 
         </FormControl>
 
@@ -190,14 +193,14 @@ const getallcamp = async () => {
         <FormControl mt={4} h={'6rem'}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
-           className="custom-file-input"
+            className="custom-file-input"
             type={"file"}
             placeholder=" رابط الصوره"
             onChange={(e) => {
               uploadFileHandler(e);
             }}
           />
-          {error&&img.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error && img.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
 
         </FormControl>
 
@@ -206,11 +209,11 @@ const getallcamp = async () => {
             bg="#00ADBB"
             color={"#fff"}
             _hover={{ opacity: "0.8" }}
-            onClick={ updateproject}
+            onClick={updateproject}
           >
             حفظ
           </Button>
-          <Button mr={2}bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={()=>navigate("/MyProjects")}>
+          <Button mr={2} bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={() => navigate("/MyProjects")}>
             إلغاء
           </Button>
         </SimpleGrid>

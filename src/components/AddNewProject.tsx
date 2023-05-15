@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import {DatePicker} from 'chakra-ui-date-input'
+import { DatePicker } from 'chakra-ui-date-input'
 import Footer from "./Footer";
 import Nav from "./Nav";
-import  {Link as RouteLnk } from "@chakra-ui/react";
+import { Link as RouteLnk } from "@chakra-ui/react";
 import {
   FormControl,
   Input,
@@ -32,7 +32,7 @@ function AddNewProject() {
   const [error, setError] = React.useState(false);
 
   const validation = () => {
-    if (title.length == 0 || discription.length == 0 ||projectURL.length ==0 || img.length == 0 ) {
+    if (title.length == 0 || discription.length == 0 || projectURL.length == 0 || img.length == 0) {
       setError(true);
     }
   };
@@ -47,7 +47,7 @@ function AddNewProject() {
           authorization: localStorage.getItem("token") as string,
         },
         body: JSON.stringify({
-        
+
           title,
           nameOfCamp,
           discription,
@@ -61,19 +61,19 @@ function AddNewProject() {
     // set state when the data received
   };
 
-  var fileAsBase64 = React.useCallback((file:File)=>{
-    return new Promise((resolve:any, reject:any)=>{
-        const reader = new FileReader();
-    
-        reader.readAsDataURL(file);
-        reader.onload = () => resolve(reader.result)
-        reader.onerror = err => reject(err)
-        })
-   },[])
- 
-  const uploadFileHandler = async (e : any) => {
-    var file = e.target.files[0];
-    var image  = await fileAsBase64(file).then(img => img).then(img => img)
+  let fileAsBase64 = React.useCallback((file: File) => {
+    return new Promise((resolve: any, reject: any) => {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result)
+      reader.onerror = err => reject(err)
+    })
+  }, [])
+
+  const uploadFileHandler = async (e: any) => {
+    let file = e.target.files[0];
+    let image = await fileAsBase64(file).then(img => img).then(img => img)
     setImg(image);
   }
 
@@ -81,6 +81,7 @@ function AddNewProject() {
     // fetch data
     const getallcamp = async () => {
       const data = await (await fetch("http://localhost:3008/camp")).json();
+
 
       // set state when the data received
       setData(data && data.Camp);
@@ -97,7 +98,7 @@ function AddNewProject() {
       </Box>
       {/* Navbar */}
 
-      <Box m={"auto"} w={{base:300,md:500,lg:800}} boxShadow={'dark-lg'}  rounded={'xl'} p={10}>
+      <Box m={"auto"} w={{ base: 300, md: 500, lg: 800 }} boxShadow={'dark-lg'} rounded={'xl'} p={10}>
         <Text textAlign={"center"} fontSize={30}>
           اضافة مشروع جديد
         </Text>
@@ -109,7 +110,7 @@ function AddNewProject() {
               setTitle(e.target.value);
             }}
           />
-          {error&&title.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error && title.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
 
         </FormControl>
 
@@ -128,7 +129,7 @@ function AddNewProject() {
             ))}
           </Select>
         </FormControl>
-     
+
 
         <FormControl mt={4} h={'8rem'}>
           <FormLabel>وصف المشروع</FormLabel>
@@ -138,8 +139,8 @@ function AddNewProject() {
               setDiscription(e.target.value);
             }}
           />
-          {error&&discription.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-          {error&&discription&&discription.split(' ').length<=10?<Box  ><Text  color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box>:''}
+          {error && discription.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
+          {error && discription && discription.split(' ').length <= 10 ? <Box  ><Text color={'red'} fontSize={15}   > الوصف يجب أن يحتوي على عشر كلمات على الأقل </Text></Box> : ''}
 
         </FormControl>
 
@@ -151,8 +152,8 @@ function AddNewProject() {
               setProjectURL(e.target.value);
             }}
           />
-          {error&&projectURL.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
-          {error&&projectURL&&!(projectURL.startsWith('http://')|| projectURL.startsWith('https://'))?<Box  ><Text  color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box>:''}
+          {error && projectURL.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
+          {error && projectURL && !(projectURL.startsWith('http://') || projectURL.startsWith('https://')) ? <Box  ><Text color={'red'} fontSize={15}   >هذا الرابط غير صالح</Text></Box> : ''}
 
         </FormControl>
 
@@ -165,26 +166,26 @@ function AddNewProject() {
             }}
           /> */}
           <SingleDatepicker
-    name="date-input"
- 
-    date={date}
-    onDateChange={setDate}
-  />
+            name="date-input"
+
+            date={date}
+            onDateChange={setDate}
+          />
 
         </FormControl>
-        
+
         <FormControl mt={4} p={0}>
           <FormLabel>صورة للمشروع</FormLabel>
           <Input
-          p={0}
-          className="custom-file-input"
+            p={0}
+            className="custom-file-input"
             type={'File'}
             placeholder=" رابط الصوره"
             onChange={(e) => {
               uploadFileHandler(e);
             }}
           />
-          {error&&img.length<=0?<Box  ><Text  color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box>:''}
+          {error && img.length <= 0 ? <Box  ><Text color={'red'} fontSize={15}   >هذا الحقل لا يجب ان يكون فارغا</Text></Box> : ''}
 
         </FormControl>
 
@@ -193,11 +194,11 @@ function AddNewProject() {
             bg="#00ADBB"
             color={"#fff"}
             _hover={{ opacity: "0.8" }}
-            onClick={ addproject}
+            onClick={addproject}
           >
             اضافة
           </Button>
-          <Button mr={2} bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={()=>{navigate("/MyProjects");}}>
+          <Button mr={2} bg={"red"} color={"#fff"} border="solid 1px lightgray" onClick={() => { navigate("/MyProjects"); }}>
             إلغاء
           </Button>
         </SimpleGrid>

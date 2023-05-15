@@ -222,8 +222,6 @@ function HomePage() {
           p={20}
         >
           {data.map((index: any) => (
-            <div>
-
               <GridItem key={index.id}>
                 <Flex
                   _dark={{ bg: "#3e3e3e" }}
@@ -314,7 +312,7 @@ function HomePage() {
                   </Box>
                 </Flex>
               </GridItem>
-            </div>
+           
           ))}
         </SimpleGrid>
       </Box>

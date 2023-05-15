@@ -58,6 +58,7 @@ function LoginPage() {
         localStorage.setItem("role", data.role);
         localStorage.setItem("name", data.name);
         sessionStorage.setItem("token", data.token);
+
       }
     } catch (error) {
       toast({
@@ -70,7 +71,7 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <>
       <Grid mt={20}>
         {/*  صفحتي الشخصية */}
         <GridItem
@@ -97,54 +98,54 @@ function LoginPage() {
             >
               تسجيل دخول
             </Heading>
+            <form>
+              <Box mb={"10px"}>
+                <Box float={"right"} fontWeight={"bold"}>
+                  {" "}
+                  البريد الإلكتروني{" "}
+                </Box>
+                <InputGroup>
+                  <InputRightAddon
+                    pointerEvents="none"
+                    children={<EmailIcon color="#00ADBB" />}
+                  />
 
-            <Box mb={"10px"}>
-              <Box float={"right"} fontWeight={"bold"}>
-                {" "}
-                البريد الإلكتروني{" "}
-              </Box>
-              <InputGroup>
-                <InputRightAddon
-                  pointerEvents="none"
-                  children={<EmailIcon color="#00ADBB" />}
-                />
-
-                <Input
-                  type="tel"
-                  bg={"#fff"}
-                  textAlign={"right"}
-                  onChange={(e) => {
-                    setEmail(e.target.value);
-                  }}
-                />
-              </InputGroup>
-            </Box>
-
-            <br></br>
-
-            <Box mb={"10px"}>
-              <Box float={"right"} fontWeight={"bold"}>
-                {" "}
-                كلمة المرور{" "}
+                  <Input
+                    type="tel"
+                    bg={"#fff"}
+                    textAlign={"right"}
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                    }}
+                  />
+                </InputGroup>
               </Box>
 
-              <InputGroup>
-                <InputRightAddon
-                  pointerEvents="none"
-                  children={<LockIcon color="#00ADBB" />}
-                />
+              <br></br>
 
-                <Input
-                  type="password"
-                  bg={"#fff"}
-                  textAlign={"right"}
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </InputGroup>
-            </Box>
+              <Box mb={"10px"}>
+                <Box float={"right"} fontWeight={"bold"}>
+                  {" "}
+                  كلمة المرور{" "}
+                </Box>
 
+                <InputGroup>
+                  <InputRightAddon
+                    pointerEvents="none"
+                    children={<LockIcon color="#00ADBB" />}
+                  />
+
+                  <Input
+                    type="password"
+                    bg={"#fff"}
+                    textAlign={"right"}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                    }}
+                  />
+                </InputGroup>
+              </Box>
+            </form>
             <Box>
               <Checkbox value="naruto">تذكرني</Checkbox>
               <Box float={"left"} color={"#00ADBB"}>
@@ -197,7 +198,7 @@ function LoginPage() {
           </Box>
         </GridItem>
       </Grid>
-    </div>
+    </>
   );
 }
 
