@@ -35,7 +35,6 @@ function ModifyBootcamp() {
     getCampByid();
   }, []);
 
-  console.log(data);
 
   const validation = () => {
     if (name.length == 0 || date.length == 0) {

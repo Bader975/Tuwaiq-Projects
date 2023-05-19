@@ -13,6 +13,7 @@ import {
   Box,
   SimpleGrid,
   Button,
+
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -91,7 +92,7 @@ function AddNewProject() {
   }, []);
 
   return (
-    <div>
+    <>
       {/* Navbar */}
       <Box mb={10}>
         <Nav />
@@ -117,14 +118,14 @@ function AddNewProject() {
         <FormControl mt={4}>
           <FormLabel>اسم المعسكر</FormLabel>
 
-          <Select
+          <Select w={100}
             onChange={(e) => {
               setNameOfCamp(e.target.value);
             }}
           >
             <option></option>
             {data.map((index: any) => (
-              <option>{index.name}</option>
+              <option key={index.id}>{index.name}</option>
 
             ))}
           </Select>
@@ -209,7 +210,7 @@ function AddNewProject() {
         <Footer />
       </Box>
       {/* Footer */}
-    </div>
+    </>
   );
 }
 

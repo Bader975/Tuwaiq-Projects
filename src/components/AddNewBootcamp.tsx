@@ -46,7 +46,7 @@ function AddNewBootcamp() {
   };
 
   return (
-    <div>
+    <>
       {/* Navbar */}
       <Box mb={10}>
         <Nav />
@@ -129,7 +129,7 @@ function AddNewBootcamp() {
         <Footer />
       </Box>
       {/* Footer */}
-    </div>
+    </>
   );
 }
 

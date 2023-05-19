@@ -163,12 +163,11 @@ function ProfilePage() {
   };
 
   return (
-    <div>
+    <>
       <nav>
         <Nav />
       </nav>
       <Box w={"full"} mx={"auto"} p={5}>
-        {/* <Image src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3"></Image> */}
         <Grid templateColumns="repeat(2, 1fr)" gap={6}>
           {/*  صفحتي الشخصية */}
           <GridItem w="100%" padding={2} borderRadius={"10px"} bg={"gray.100"}>
@@ -342,7 +341,7 @@ function ProfilePage() {
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 }
 

@@ -9,7 +9,7 @@ import {
   SimpleGrid,
 
   GridItem,
-  
+
   InputLeftElement,
   Input,
   InputGroup,
@@ -68,7 +68,7 @@ function AllIdeas() {
   React.useEffect(() => {
     let filteredData = filter(data);
     setFilteredList(filteredData);
-  });
+  }, [title, data]);
 
   return (
     <>
@@ -101,7 +101,9 @@ function AllIdeas() {
           جميع الافكار
         </Text>
       </Box>
-
+      {console.log(filteredList.length)}
+      {/* Added checker for input */}
+      {filteredList.length == 0 && <Text textAlign={"center"} fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
       <SimpleGrid
         borderColor={"blackAlpha.200"}
         minH={"60vh"}
@@ -113,28 +115,28 @@ function AllIdeas() {
         columns={{ base: 1, md: 2, lg: 3 }}
       >
         {filteredList.map((index: any) => (
-            <GridItem key={index.id}>
-              <Card h={320}>
-                <CardHeader>
-                  <Text fontSize={30} mb={4}>
-                    {index.title}
-                  </Text>
-                  <hr />
-                  <Text mt={3}>صاحب الفكرة : {index.user.name} </Text>
-                </CardHeader>
-                <CardBody h={10}>{index.discription}</CardBody>
-                <CardFooter>
-                  <Box right={"230px"}>
-                    <Link to={`/IdeaInfo/${index.id}`} color={"#4299E1"}>
-                      التفاصيل
-                      <ChevronLeftIcon />
-                    </Link>
-                  </Box>
-                  {/* {index.user.name} */}
-                </CardFooter>
-              </Card>
-            </GridItem>
-          
+          <GridItem key={index.id}>
+            <Card h={320}>
+              <CardHeader>
+                <Text fontSize={30} mb={4}>
+                  {index.title}
+                </Text>
+                <hr />
+                <Text mt={3}>صاحب الفكرة : {index.user.name} </Text>
+              </CardHeader>
+              <CardBody h={10}>{index.discription}</CardBody>
+              <CardFooter>
+                <Box right={"230px"}>
+                  <Link to={`/IdeaInfo/${index.id}`} color={"#4299E1"}>
+                    التفاصيل
+                    <ChevronLeftIcon />
+                  </Link>
+                </Box>
+                {/* {index.user.name} */}
+              </CardFooter>
+            </Card>
+          </GridItem>
+
         ))}
       </SimpleGrid>
       <footer>

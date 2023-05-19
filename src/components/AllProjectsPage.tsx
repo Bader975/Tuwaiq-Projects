@@ -1,4 +1,7 @@
 import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
+import { Dimmer, Loader, Segment } from 'semantic-ui-react';
+import { Image as Img } from 'semantic-ui-react';
+
 import {
   Box,
   GridItem,
@@ -9,6 +12,12 @@ import {
   Spacer,
   Link,
   Avatar,
+  Progress,
+  VStack,
+  HStack,
+  CircularProgress,
+  CircularProgressLabel,
+  Spinner,
 } from "@chakra-ui/react";
 import { Text, Flex, Image, chakra, Divider } from "@chakra-ui/react";
 import { Link as RouteLnk } from "react-router-dom";
@@ -18,25 +27,24 @@ import axios from "axios";
 import React, { useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import OnePorject from "./OnePorject";
 
 function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
   const [id, setId] = React.useState<number>();
   const [profleImg, setProfleImg] = React.useState<any>("");
   const [filteredList, setFilteredList] = useState(data);
+  const [showElement, setShowElement] = React.useState(true);
 
   const [title, settitle] = React.useState("");
 
   const getallproject = async () => {
-    const data = await (
-      axios.get("http://localhost:3008/project/all").then(res => res.data)
-
-    )
+    const data = await axios.get("http://localhost:3008/project/all").then(res => res.data)
 
 
     // set state when the data received
     setData(data && data.Project);
-    // console.log(data && data.Project[0].user.Profill.img);
+
 
     setProfleImg(data && data.Project && data.Project.user && data.Project.user.Profill.img);
   };
@@ -49,13 +57,19 @@ function AllProjectsPage() {
     getallproject();
 
 
-
   }, []);
 
 
 
+  // $(function() {
 
-
+  // });
+  // Spinner time
+  React.useEffect(() => {
+    setTimeout(function () {
+      setShowElement(false);
+    }, 1000);
+  }, []);
 
 
 
@@ -77,11 +91,12 @@ function AllProjectsPage() {
 
 
   //Stoped The infinte Loop in useEffect by Adding dependency []
+
   React.useEffect(() => {
     let filteredData = filter(data);
     setFilteredList(filteredData);
   }, [title, data]);
-  // });
+
   return (
     <>
       <nav>
@@ -114,6 +129,25 @@ function AllProjectsPage() {
           جميع المشاريع
         </Text>
       </Box>
+      {showElement ? (
+        <div className="spinner">
+          <Spinner
+            boxSize="4rem"
+            thickness="5px"
+            speed="0.80s"
+            emptyColor="gray.400"
+            color="blue.500"
+            size="md"
+            ml={"auto"}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
+      {/* {console.log(filteredList.length)} */}
+      {/* Added checker for input */}
+
+      {filteredList.length == 0 && <Text textAlign={"center"} fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
 
       <SimpleGrid
         borderColor={"blackAlpha.200"}
@@ -126,97 +160,16 @@ function AllProjectsPage() {
         p={20}
         minH={"60vh"}
       >
+        {/* Using Props to Render the Projecs */}
         {filteredList.map((index) => (
-
-          <GridItem key={index.id}>
-            <Flex
-              _dark={{ bg: "#3e3e3e" }}
-              alignItems="center"
-              justifyContent="center"
-              textAlign={"right"}
-            >
-              <Box
-                mx="auto"
-                rounded="lg"
-                shadow="xl"
-                bg="white"
-                _dark={{ bg: "gray.800" }}
-                w={500}
-              >
-                <Image
-                  mx={"auto"}
-                  roundedTop="lg"
-                  w={"auto"}
-                  h={64}
-                  fit="cover"
-                  src={index.img}
-                  alt="Article"
-                />
-
-                <Box p={6}>
-                  <Box>
-                    <Link
-                      href={`/ProjectPage/${index.id}`}
-                      display="block"
-                      color="gray.800"
-                      _dark={{ color: "white" }}
-                      fontWeight="bold"
-                      fontSize="2xl"
-                      mt={2}
-                      _hover={{ color: "gray.600", textDecor: "underline" }}
-                    >
-                      {index.title}{" "}
-                    </Link>
-                    <chakra.span
-                      fontSize="sm"
-                      textTransform="uppercase"
-                      color="brand.600"
-                      _dark={{ color: "brand.400" }}
-                      m={2}
-                    >
-                      المعسكر : {index.nameOfCamp}
-                    </chakra.span>
-
-                    <chakra.span
-                      fontSize="sm"
-                      textTransform="uppercase"
-                      color="brand.600"
-                      _dark={{ color: "brand.400" }}
-                    >
-                      التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
-                    </chakra.span>
-                  </Box>
-                  <Divider borderColor={"blackAlpha.500"} mt={5} />
-
-                  <Box mt={4}>
-                    <Flex alignItems="center">
-                      <Flex alignItems="center">
-                        <Avatar
-                          src={index.user.Profill.img}
-                          ml={2}
-                        // src='data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD…/2wBDAQoKCg0MDRoPDxo3JR8lNzc3Nzc3Nzc3Nzc3Nzc3Nzc3'
-                        />
-                        <RouteLnk to={`/UserProfile/${index.user.id}`}>
-                          {index.user.name}
-                          <ChevronLeftIcon />
-                        </RouteLnk>
-                      </Flex>
-
-                      <Spacer />
-
-                      <RouteLnk to={`/ProjectPage/${index.id}`}>
-                        التفاصيل
-                        <ChevronLeftIcon />
-                      </RouteLnk>
-                    </Flex>
-                  </Box>
-                </Box>
-              </Box>
-            </Flex>
-          </GridItem>
+          <OnePorject id={index.id} title={index.title} img={index.img}
+            nameOfCamp={index.nameOfCamp} date={index.date} userProfillimg={index.user.Profill.img}
+            user_id={index.user.id}
+            user_name={index.user.name} />
 
         ))}
       </SimpleGrid>
+
 
       <footer>
         <Footer />

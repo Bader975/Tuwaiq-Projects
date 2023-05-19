@@ -93,7 +93,7 @@ function SignUpPage() {
   };
 
   return (
-    <div>
+    <>
       <Grid mt={20}>
         {/*  صفحتي الشخصية */}
         <GridItem
@@ -330,7 +330,7 @@ function SignUpPage() {
           </Box>{" "}
         </GridItem>
       </Grid>
-    </div>
+    </>
   );
 }
 

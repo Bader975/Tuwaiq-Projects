@@ -12,6 +12,7 @@ import {
   InputGroup,
   Checkbox,
   InputRightAddon,
+  Spinner,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -53,6 +54,7 @@ function LoginPage() {
           duration: 3000,
           position: "top",
         });
+        
         navigate("/");
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);

@@ -103,42 +103,42 @@ function Myideas() {
       >
         {/* {data== "" || "" ? "لا توجد لديك افكار " :""} */}
         {data.map((index) => (
-          <div>
-            <GridItem key={index.id}>
-              <Card h={320}>
-                <CardHeader>
-                  <Text fontSize={30} mb={4}>
-                    {index.title}
-                  </Text>
-                  <hr />
-                  <Text> </Text>
-                </CardHeader>
 
-                <CardBody h={20}>
-                  <Text>{index.discription}</Text>
-                </CardBody>
+          <GridItem key={index.id}>
+            <Card h={320}>
+              <CardHeader>
+                <Text fontSize={30} mb={4}>
+                  {index.title}
+                </Text>
+                <hr />
+                <Text> </Text>
+              </CardHeader>
 
-                <CardFooter>
-                  <Box>
+              <CardBody h={20}>
+                <Text>{index.discription}</Text>
+              </CardBody>
+
+              <CardFooter>
+                <Box>
+                  <IconButton
+                    color={"red"}
+                    aria-label="delete"
+                    icon={<DeleteIcon />}
+                    onClick={() => deletIdea(index.id)}
+                  />
+                  <Link to={`/ModifyIdea/${index.id}`}>
                     <IconButton
-                      color={"red"}
-                      aria-label="delete"
-                      icon={<DeleteIcon />}
-                      onClick={() => deletIdea(index.id)}
+                      mr={10}
+                      color={"green"}
+                      aria-label="edit"
+                      icon={<EditIcon />}
                     />
-                    <Link to={`/ModifyIdea/${index.id}`}>
-                      <IconButton
-                        mr={10}
-                        color={"green"}
-                        aria-label="edit"
-                        icon={<EditIcon />}
-                      />
-                    </Link>
-                  </Box>
-                </CardFooter>
-              </Card>
-            </GridItem>
-          </div>
+                  </Link>
+                </Box>
+              </CardFooter>
+            </Card>
+          </GridItem>
+
         ))}
       </SimpleGrid>
 

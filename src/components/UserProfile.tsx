@@ -1,8 +1,8 @@
 
 
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import "../App.css";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Text,
   SimpleGrid,
@@ -17,7 +17,7 @@ import {
   GridItem,
   Spacer
 } from "@chakra-ui/react";
-import {  Link as RouteLnk } from "react-router-dom";
+import { Link as RouteLnk } from "react-router-dom";
 
 import {
   MdContactPhone,
@@ -31,8 +31,8 @@ import { ChevronLeftIcon } from "@chakra-ui/icons";
 interface User {
   name: string;
   twitterURL: string | any;
-  aboutMy:string |any;
-  skill:string | any;
+  aboutMy: string | any;
+  skill: string | any;
 }
 
 function UserProfile() {
@@ -40,8 +40,9 @@ function UserProfile() {
   const [user, setUser] = React.useState<any>([]);
   const [project, setProject] = React.useState<any[]>([]);
 
+
   const { id } = useParams();
-  console.log('ggg');
+
   React.useEffect(() => {
     // fetch data
     document.documentElement.scrollTop = 0;
@@ -57,48 +58,48 @@ function UserProfile() {
       ).json();
       console.log(data.profile[0]);
       console.log("--------------");
-      
- console.log(data.profile.user);
-     
-      
+
+      console.log(data.profile.user);
+
+
       setData(data.profile[0]);
       setUser(data.profile[0].user)
-      
-      
-    //  setUser(data.profile.user)
+
+
+      //  setUser(data.profile.user)
     };
 
 
 
-  getUserProfile();
-  getallproject()
+    getUserProfile();
+    getallproject()
   }, []);
 
-  
-    // fetch data
-    const getallproject = async () => {
-      const data = await (
-        await fetch(
-          `http://localhost:3008/project/userProject/${id}`, {
-          method: "GET",
-       
-        }
-        )
-      ).json();
-      console.log("project");
-      
-        console.log(data&&data.Project);
-        
-      // set state when the data received
-      setProject(data&&data.Project);
-      
-    };
 
-console.log(data);
+  // fetch data
+  const getallproject = async () => {
+    const data = await (
+      await fetch(
+        `http://localhost:3008/project/userProject/${id}`, {
+        method: "GET",
 
-    console.log("user "+ user);
+      }
+      )
+    ).json();
+    console.log("project");
+
+    console.log(data && data.Project);
+
+    // set state when the data received
+    setProject(data && data.Project);
+
+  };
+
+  console.log(data);
+
+  console.log("user " + user);
   return (
-    <div>
+    <>
       <nav>
         <Nav />
       </nav>
@@ -224,111 +225,110 @@ console.log(data);
           </Heading>
         </Box>
       </Box>
-      <SimpleGrid  borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} spacingY={10} alignItems={'center'} minWidth={400} columns={{ base: 1, md: 2, lg: 3 }} p={20}> 
+      <SimpleGrid borderColor={"blackAlpha.200"} borderRadius={'2xl'} mx='auto' spacingX={20} spacingY={10} alignItems={'center'} minWidth={400} columns={{ base: 1, md: 2, lg: 3 }} p={20}>
 
-  
-      {project.map((index:any)=>(
-              <div >
-      
-              <GridItem key={index.id}> 
-             
-              
-  <Flex
-     
-      _dark={{ bg: "#3e3e3e" }}
-     
-      
-      alignItems="center"
-      justifyContent="center"
-      textAlign={'right'}
-    >
-      <Box
-        mx="auto"
-        rounded="lg"
-        shadow="xl"
-        bg="white"
-        _dark={{ bg: "gray.800" }}
-        w={500}
-      >
-        <Image
-mx={'auto'}
-          roundedTop="lg"
-          w={"auto"}
-          h={64}
-          fit="cover"
-          src={index.img}
-          alt="Article"
-        />
 
-        <Box p={6}>
-          <Box>
-            <chakra.span
-              fontSize="xs"
-              textTransform="uppercase"
-              color="brand.600"
-              _dark={{ color: "brand.400" }}
+        {project.map((index: any) => (
+
+          <GridItem key={index.id}>
+
+
+            <Flex
+
+              _dark={{ bg: "#3e3e3e" }}
+
+
+              alignItems="center"
+              justifyContent="center"
+              textAlign={'right'}
             >
-              المعسكر: {index.nameOfCamp}
-            </chakra.span>
-            <Link
-            href={`/ProjectPage/${index.id}`}
-              display="block"
-              color="gray.800"
-              _dark={{ color: "white" }}
-              fontWeight="bold"
-              fontSize="2xl"
-              mt={2}
-              _hover={{ color: "gray.600", textDecor: "underline" }}
-            >
-        {index.title}     </Link>
-       
-           
-          </Box>
-          <Divider borderColor={'blackAlpha.500'} mt={5} />
+              <Box
+                mx="auto"
+                rounded="lg"
+                shadow="xl"
+                bg="white"
+                _dark={{ bg: "gray.800" }}
+                w={500}
+              >
+                <Image
+                  mx={'auto'}
+                  roundedTop="lg"
+                  w={"auto"}
+                  h={64}
+                  fit="cover"
+                  src={index.img}
+                  alt="Article"
+                />
 
-          <Box mt={4} >
-            <Flex alignItems="center">
-              <Flex alignItems="center">
-            
-                
-                <RouteLnk to={`/UserProfile/${index.user.id}`}
-                 
-               >
-{index.user.name}<ChevronLeftIcon/>                
-               
-</RouteLnk>
+                <Box p={6}>
+                  <Box>
+                    <chakra.span
+                      fontSize="xs"
+                      textTransform="uppercase"
+                      color="brand.600"
+                      _dark={{ color: "brand.400" }}
+                    >
+                      المعسكر: {index.nameOfCamp}
+                    </chakra.span>
+                    <Link
+                      href={`/ProjectPage/${index.id}`}
+                      display="block"
+                      color="gray.800"
+                      _dark={{ color: "white" }}
+                      fontWeight="bold"
+                      fontSize="2xl"
+                      mt={2}
+                      _hover={{ color: "gray.600", textDecor: "underline" }}
+                    >
+                      {index.title}     </Link>
 
-              </Flex>
-             
-              <Spacer />
 
-              <RouteLnk to={`/ProjectPage/${index.id}`}
-                 
-             
-                >
-التفاصيل<ChevronLeftIcon/>                
-                
-</RouteLnk>
+                  </Box>
+                  <Divider borderColor={'blackAlpha.500'} mt={5} />
+
+                  <Box mt={4} >
+                    <Flex alignItems="center">
+                      <Flex alignItems="center">
+
+
+                        <RouteLnk to={`/UserProfile/${index.user.id}`}
+
+                        >
+                          {index.user.name}<ChevronLeftIcon />
+
+                        </RouteLnk>
+
+                      </Flex>
+
+                      <Spacer />
+
+                      <RouteLnk to={`/ProjectPage/${index.id}`}
+
+
+                      >
+                        التفاصيل<ChevronLeftIcon />
+
+                      </RouteLnk>
+                    </Flex>
+
+
+                  </Box>
+
+                </Box>
+              </Box>
             </Flex>
 
-            
-          </Box>
-          
-        </Box>
-      </Box>
-    </Flex>
 
+          </GridItem>
 
-    </GridItem>
-  </div>
-  ))}
-  
-</SimpleGrid>
+        ))}
+
+      </SimpleGrid>
 
       <footer>
         <Footer />
       </footer>
-    </div>
+    </>
   );
 }
 

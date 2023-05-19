@@ -77,8 +77,8 @@ function Nav() {
     ).json();
     // set state when the data received
     setData(data.profile);
-    setUser1(data.profile.user);
-    setProfleImg(data.profile.img);
+    setUser1(data.profile && data.profile.user);
+    setProfleImg(data.profile && data.profile.img);
   };
 
   React.useEffect(() => {
@@ -212,26 +212,26 @@ function Nav() {
                     جميع الأفكار
                   </Button>
                 </RouteLink>
-                { localStorage.getItem('role')=="Admin" ? 
-                <RouteLink to="/Bootcamp">
-                  <Button
-                    bg={"none"}
-                    color="white"
-                    display="inline-flex"
-                    alignItems="center"
-                    fontSize="md"
-                    _hover={{ color: "#00ADBB", backgroundColor: "none" }}
-                  >
-                   المعسكرات
-                  </Button>
-                </RouteLink>
-                : ""}
+                {localStorage.getItem('role') == "Admin" ?
+                  <RouteLink to="/Bootcamp">
+                    <Button
+                      bg={"none"}
+                      color="white"
+                      display="inline-flex"
+                      alignItems="center"
+                      fontSize="md"
+                      _hover={{ color: "#00ADBB", backgroundColor: "none" }}
+                    >
+                      المعسكرات
+                    </Button>
+                  </RouteLink>
+                  : ""}
               </HStack>
             </Flex>
             <Spacer />
 
             <Flex justify="flex-end" align="center">
-            
+
 
               {user === null ? (
                 <RouteLink to={"/LoginPage"}>
@@ -241,7 +241,7 @@ function Nav() {
                     color={"#00ADBB"}
                     bg={"none"}
                     border="1px solid #00ADBB"
-                   
+
                   >
                     تسجيل دخول
                   </Button>
@@ -288,44 +288,46 @@ function Nav() {
                         borderColor={useColorModeValue("gray.200", "gray.700")}
                       >
                         <Box textAlign={"center"} fontWeight={"bold"}>
-                          مرحبا: {localStorage.getItem('name')} 
+                          مرحبا: {localStorage.getItem('name')}
                         </Box>
                         <MenuDivider />
                         {
-                        localStorage.getItem('role')=="User"  ?
-                        <RouteLink to={"/Profile"}>
-                          <MenuItem
-                            _hover={{
-                              color: "#00ADBB",
-                              backgroundColor: "none",
-                            }}
-                          >
-                            الملف الشخصي
-                          </MenuItem>
-                        </RouteLink>
-                        :  localStorage.getItem('role')=="Admin" || "Company" ? "": ""}
+                          localStorage.getItem('role') == "User" ?
+                            <RouteLink to={"/Profile"}>
+                              <MenuItem
+                                _hover={{
+                                  color: "#00ADBB",
+                                  backgroundColor: "none",
+                                }}
+                              >
+                                الملف الشخصي
+                              </MenuItem>
+                              <MenuDivider />
+                            </RouteLink>
 
-                        <MenuDivider /> 
+                            : localStorage.getItem('role') == "Admin" || "Company" ? "" : ""}
+
+
                         {
-                        localStorage.getItem('role')=="User" ? <RouteLink to={"/MyProjects"}>
-                          <MenuItem
-                            _hover={{
-                              color: "#00ADBB",
-                              backgroundColor: "none",
-                            }}
-                          >
-                            مشاريعي
-                          </MenuItem>
-                        </RouteLink> :  localStorage.getItem('role')=="Company" ? <RouteLink to={"/Myideas"}>
-                          <MenuItem
-                            _hover={{
-                              color: "#00ADBB",
-                              backgroundColor: "none",
-                            }}
-                          >
-                        أفكاري
-                          </MenuItem>
-                        </RouteLink> : "" } 
+                          localStorage.getItem('role') == "User" ? <RouteLink to={"/MyProjects"}>
+                            <MenuItem
+                              _hover={{
+                                color: "#00ADBB",
+                                backgroundColor: "none",
+                              }}
+                            >
+                              مشاريعي
+                            </MenuItem>
+                          </RouteLink> : localStorage.getItem('role') == "Company" ? <RouteLink to={"/Myideas"}>
+                            <MenuItem
+                              _hover={{
+                                color: "#00ADBB",
+                                backgroundColor: "none",
+                              }}
+                            >
+                              أفكاري
+                            </MenuItem>
+                          </RouteLink> : ""}
 
                         <MenuDivider />
                         <RouteLink to={"/"}>

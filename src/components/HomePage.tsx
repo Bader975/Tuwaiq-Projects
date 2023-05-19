@@ -18,7 +18,7 @@ import {
   Text,
   useColorModeValue,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import HomeImg from "../img/Homeimg1.svg";
 import { Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
@@ -73,6 +73,9 @@ function HomePage() {
   //   console.log(data);
 
   // }
+
+
+
 
   // END OF GET
 
@@ -190,13 +193,13 @@ function HomePage() {
       </Box>
 
       <Flex ml={40} mb={5} mt={80}>
-        <Box>
+        <>
           <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
             أحدث المشاريع
           </Text>{" "}
-        </Box>
+        </>
         <Spacer />
-        <Box>
+        <>
           <RouteLnk to="/Allproject">
             <Button
               _hover={{ color: "white", backgroundColor: "#00ADBB" }}
@@ -207,9 +210,9 @@ function HomePage() {
               مشاهدة الكل
             </Button>{" "}
           </RouteLnk>{" "}
-        </Box>
+        </>
       </Flex>
-      <Box>
+      <>
         <SimpleGrid
           borderColor={"blackAlpha.200"}
           borderRadius={"2xl"}
@@ -222,100 +225,100 @@ function HomePage() {
           p={20}
         >
           {data.map((index: any) => (
-              <GridItem key={index.id}>
-                <Flex
-                  _dark={{ bg: "#3e3e3e" }}
-                  alignItems="center"
-                  justifyContent="center"
-                  textAlign={"right"}
+            <GridItem key={index.id}>
+              <Flex
+                _dark={{ bg: "#3e3e3e" }}
+                alignItems="center"
+                justifyContent="center"
+                textAlign={"right"}
+              >
+                <Box
+                  mx="auto"
+                  rounded="lg"
+                  shadow="xl"
+                  bg="white"
+                  _dark={{ bg: "gray.800" }}
+                  w={500}
                 >
-                  <Box
-                    mx="auto"
-                    rounded="lg"
-                    shadow="xl"
-                    bg="white"
-                    _dark={{ bg: "gray.800" }}
-                    w={500}
-                  >
-                    <Image
-                      mx={"auto"}
-                      roundedTop="lg"
-                      w={"auto"}
-                      h={64}
-                      fit="cover"
-                      src={index.img}
-                      alt="Article"
-                    />
+                  <Image
+                    mx={"auto"}
+                    roundedTop="lg"
+                    w={"auto"}
+                    h={64}
+                    fit="cover"
+                    src={index.img}
+                    alt="Article"
+                  />
 
-                    <Box p={6}>
-                      <Box>
-                        <Link
-                          href={`/ProjectPage/${index.id}`}
-                          display="block"
-                          color="gray.800"
-                          _dark={{ color: "white" }}
-                          fontWeight="bold"
-                          fontSize="2xl"
-                          mt={2}
-                          _hover={{ color: "gray.600", textDecor: "underline" }}
-                        >
-                          {index.title}{" "}
-                        </Link>
+                  <Box p={6}>
+                    <>
+                      <Link
+                        href={`/ProjectPage/${index.id}`}
+                        display="block"
+                        color="gray.800"
+                        _dark={{ color: "white" }}
+                        fontWeight="bold"
+                        fontSize="2xl"
+                        mt={2}
+                        _hover={{ color: "gray.600", textDecor: "underline" }}
+                      >
+                        {index.title}{" "}
+                      </Link>
 
-                        <chakra.span
-                          fontSize="md"
-                          textTransform="uppercase"
-                          color="brand.600"
-                          _dark={{ color: "brand.400" }}
-                        >
-                          المعسكر: {index.nameOfCamp}
-                        </chakra.span>
-                        <br />
-                        <chakra.span
-                          fontSize="md"
-                          textTransform="uppercase"
-                          color="brand.600"
-                          _dark={{ color: "brand.400" }}
+                      <chakra.span
+                        fontSize="md"
+                        textTransform="uppercase"
+                        color="brand.600"
+                        _dark={{ color: "brand.400" }}
+                      >
+                        المعسكر: {index.nameOfCamp}
+                      </chakra.span>
+                      <br />
+                      <chakra.span
+                        fontSize="md"
+                        textTransform="uppercase"
+                        color="brand.600"
+                        _dark={{ color: "brand.400" }}
 
 
-                        >
-                          التاريخ: {index.date}
+                      >
+                        التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
 
 
 
-                        </chakra.span>
-                      </Box>
-                      <Divider borderColor={"blackAlpha.500"} mt={5} />
+                      </chakra.span>
+                    </>
+                    <Divider borderColor={"blackAlpha.500"} mt={5} />
 
-                      <Box mt={4}>
+                    <Box mt={4}>
+                      <Flex alignItems="center">
                         <Flex alignItems="center">
-                          <Flex alignItems="center">
-                            <Avatar
-                              src={index.user.Profill.img}
-                              ml={2}
-                            />
-                            <RouteLnk to={`/UserProfile/${index.user.id}`}>
-                              {index.user.name}
-                              <ChevronLeftIcon />
-                            </RouteLnk>
-                          </Flex>
-
-                          <Spacer />
-
-                          <RouteLnk to={`/ProjectPage/${index.id}`}>
-                            التفاصيل
+                          <Avatar
+                            src={index.user.Profill.img}
+                            ml={2}
+                          />
+                          <RouteLnk to={`/UserProfile/${index.user.id}`}>
+                            {index.user.name}
                             <ChevronLeftIcon />
                           </RouteLnk>
                         </Flex>
-                      </Box>
+
+                        <Spacer />
+
+                        <RouteLnk to={`/ProjectPage/${index.id}`}>
+                          التفاصيل
+                          <ChevronLeftIcon />
+                        </RouteLnk>
+                      </Flex>
                     </Box>
                   </Box>
-                </Flex>
-              </GridItem>
-           
+                </Box>
+              </Flex>
+            </GridItem>
+
           ))}
         </SimpleGrid>
-      </Box>
+      </>
 
       <footer>
         <Footer />
