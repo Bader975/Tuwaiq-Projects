@@ -19,7 +19,7 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
-import DeleteModal from "./DeleteModal";
+
 
 
 
@@ -61,7 +61,7 @@ function MyProjects() {
 
     const data = await (
       await fetch(`http://localhost:3008/project/${id}`, {
-        method: "delete",
+        method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           authorization: localStorage.getItem("token") as string,
@@ -175,11 +175,31 @@ function MyProjects() {
 
                       {/* DELETE BUTTON */}
                       <Box float={"left"}>
+                        <Popover>
+                          <PopoverTrigger>
+                            <IconButton
+                              color={"red"}
+                              aria-label="delete"
+                              icon={<DeleteIcon />}
+                              m={5}
 
-                        {/* <Button onClick={onOpen} colorScheme={"red"}> */}
+                            />
+                          </PopoverTrigger>
+                          <PopoverContent>
+                            <PopoverArrow />
+                            <PopoverCloseButton mr={"280"} fontSize={15} />
+                            <PopoverHeader fontSize={18} p={10}>هل انت متاكد انك تريد حذف هذا المشروع ؟</PopoverHeader>
+                            <PopoverBody>  <Button mr={3} onClick={onClose}>
+                              الغاء
+                            </Button>
+                              <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button> </PopoverBody>
+                          </PopoverContent>
+                        </Popover>
 
+                        {/* <Button onClick={onOpen} colorScheme={"red"} /> */}
+                        {/* <DeleteButton id={index.id}/> */}
 
-                        <Modal isOpen={isOpen} onClose={onClose} key={index.id}>
+                        {/* <Modal isOpen={isOpen} onClose={onClose} >
                           <ModalOverlay />
                           <ModalContent>
                             <ModalHeader m={5}>هل انت متاكد؟</ModalHeader>
@@ -198,19 +218,19 @@ function MyProjects() {
                               <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button>
                             </ModalFooter>
                           </ModalContent>
-                        </Modal>
+                        </Modal> */}
 
                         {/* </Button> */}
 
 
-                        <IconButton
+                        {/* <IconButton
                           color={"red"}
                           aria-label="delete"
                           icon={<DeleteIcon />}
                           onClick={onOpen}
                           m={5}
 
-                        />
+                        /> */}
                         {/* --------- */}
 
                         <Link to={`/ModifyProject/${index.id}`}>
