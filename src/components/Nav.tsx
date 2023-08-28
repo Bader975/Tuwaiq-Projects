@@ -25,7 +25,6 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { useViewportScroll } from "framer-motion";
-import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io";
 import {
   AiOutlineMenu,

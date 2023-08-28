@@ -1,6 +1,5 @@
 import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
-import { Dimmer, Loader, Segment } from 'semantic-ui-react';
-import { Image as Img } from 'semantic-ui-react';
+
 
 
 import {
@@ -13,7 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { Text } from "@chakra-ui/react";
 
-import axios from "axios";
+// import axios from "axios";
 
 import React, { useState } from "react";
 import Footer from "./Footer";
@@ -30,7 +29,7 @@ function AllProjectsPage() {
   const [title, settitle] = React.useState("");
 
   const getallproject = async () => {
-    const data = await axios.get("http://localhost:3008/project/all").then(res => res.data)
+    const data = await fetch("http://localhost:3008/project/all").then(res => res.json())
 
 
     // set state when the data received
