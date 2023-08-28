@@ -1,4 +1,5 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+
 import {
   Avatar,
   Box,
@@ -19,7 +20,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useEffect } from "react";
-import HomeImg from "../img/Homeimg1.svg";
+import HomeImg from "../assets/Homeimg1.svg";
 import { Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
@@ -65,20 +66,18 @@ function HomePage() {
   const [user, setUser] = React.useState<any>("");
 
   //AJEX CALL
+//  const ajex=new XMLHttpRequest();
+//   ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
+//   ajex.send();
+//   ajex.onload = () =>{
+//     const data= JSON.parse(ajex.responseText);
+//     console.log(data);
 
-  // ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
-  // ajex.send();
-  // ajex.onload = () =>{
-  //   const data= JSON.parse(ajex.responseText);
-  //   console.log(data);
-
-  // }
-
-
+//   }
 
 
   // END OF GET
-
+ 
 
   // fetch data
   const getallusers = async () => {
@@ -108,7 +107,7 @@ function HomePage() {
 
     setcamp(data && data.Camp);
   };
-  const padL = (nr: any, len = 2, chr = `0`) => `${nr}`.padStart(2, chr);
+
   //get first 3
   const getfirst3 = async () => {
     const data = await (
@@ -143,14 +142,14 @@ function HomePage() {
           pos={"absolute"}
           zIndex={"1"}
           color={"white"}
-          w={"full"}
+          w={"100%"}
           textAlign={"center"}
           height={"20vh"}
           top={"25vh"}
         >
 
           {/* <Box display={"flex"} justifyContent={"center"} gap={"2"}> */}
-          <Heading mb={330} mt={60}>
+          <Heading mb={330} mt={60} >
             {" "}
 
 
@@ -171,7 +170,7 @@ function HomePage() {
               rounded={"xl"}
             >
               <Box
-                maxW="full"
+                w="full"
                 mx={"auto"}
                 pt={5}
                 px={{ base: 2, sm: 12, md: 17 }}
@@ -189,12 +188,12 @@ function HomePage() {
             </Box>
           </Box>
         </Box>
-        <Image w="100vw" fit="cover" src={HomeImg} alt="HomeImg" />
+        <Image w="full" fit="cover" src={HomeImg} alt="HomeImg" />
       </Box>
 
       <Flex ml={40} mb={5} mt={80}>
         <>
-          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={40}>
+          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={[5,20,40]}>
             أحدث المشاريع
           </Text>{" "}
         </>
@@ -220,7 +219,7 @@ function HomePage() {
           spacingX={20}
           spacingY={10}
           alignItems={"center"}
-          minWidth={400}
+          w={'full'}
           columns={{ base: 1, md: 2, lg: 3 }}
           p={20}
         >
@@ -318,6 +317,7 @@ function HomePage() {
 
           ))}
         </SimpleGrid>
+
       </>
 
       <footer>

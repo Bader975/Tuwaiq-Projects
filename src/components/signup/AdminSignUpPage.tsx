@@ -16,8 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import tuwaiqSvg from "../img/logIn_img.png";
-import axios from "axios";
+import tuwaiqSvg from "../../assets/logIn_img.png";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
 import { MDBCheckbox } from "mdb-react-ui-kit";

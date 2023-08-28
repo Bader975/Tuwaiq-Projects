@@ -10,6 +10,7 @@ import {
   Input,
   Text,
   useToast,
+  SimpleGrid,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React from "react";
@@ -91,7 +92,7 @@ function ProfilePage() {
         }),
       })
     ).json();
-    // window.location.reload();
+
     toast({
       title: data.message,
       status: "success",
@@ -168,7 +169,7 @@ function ProfilePage() {
         <Nav />
       </nav>
       <Box w={"full"} mx={"auto"} p={5}>
-        <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 2 }} gap={6}>
           {/*  صفحتي الشخصية */}
           <GridItem w="100%" padding={2} borderRadius={"10px"} bg={"gray.100"}>
             <Box p={"12px"} mb={5} pl={2} pr={2} fontWeight={"bold"}>
@@ -223,7 +224,8 @@ function ProfilePage() {
                 <Box float={"right"}>المعلومات الشخصية</Box>
                 <Textarea
                   bg={"#fff"}
-                  placeholder={`${data.aboutMy}`}
+                  
+                  placeholder={data.aboutMy ==null ? " لا يوجد بياتات حتى الان" : data.aboutMy}
                   textAlign={"right"}
                   onChange={(e) => {
                     setAboutMy(e.target.value);
@@ -235,7 +237,10 @@ function ProfilePage() {
                 <Box float={"right"}> المهارات</Box>
                 <Textarea
                   bg={"#fff"}
-                  placeholder={`${data.skill}`}
+                  // placeholder={`${data.skill}`}
+                  placeholder={data.skill ==null ? " لا يوجد بياتات حتى الان" : data.skill}
+                  // value={`${data.skill}`}
+                  
                   textAlign={"right"}
 
                   onChange={(e) => {
@@ -248,7 +253,8 @@ function ProfilePage() {
                 <Box float={"right"}> حساب لينكد إن </Box>
                 <Input
                   bg={"#fff"}
-                  placeholder={`${data.twitterURL}`}
+
+                  placeholder={data.twitterURL ==null ? " لا يوجد بياتات حتى الان" : data.twitterURL}
                   textAlign={"right"}
                   onChange={(e) => {
                     setTwitterURL(e.target.value);
@@ -336,7 +342,7 @@ function ProfilePage() {
               </Box>
             </Box>
           </GridItem>
-        </Grid>
+        </SimpleGrid>
       </Box>
       <footer>
         <Footer />

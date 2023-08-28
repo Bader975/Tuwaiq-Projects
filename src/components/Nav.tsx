@@ -1,6 +1,5 @@
 import React, { useReducer } from "react";
-import tuwaiqSvg from "../components/tuwaiq_logo.svg";
-import { HiOutlineMoon } from "react-icons/Hi";
+import tuwaiqSvg from "../assets/tuwaiq_logo.svg";
 
 import {
   Box,
@@ -8,24 +7,14 @@ import {
   CloseButton,
   Flex,
   HStack,
-  Icon,
   IconButton,
   Link,
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-  SimpleGrid,
-  Stack,
   VStack,
   chakra,
   useColorMode,
   useColorModeValue,
   useDisclosure,
   Image,
-  InputGroup,
-  InputLeftElement,
-  Input,
-  InputRightElement,
   Spacer,
   Avatar,
   Menu,
@@ -39,16 +28,12 @@ import { useViewportScroll } from "framer-motion";
 import axios from "axios";
 import { IoIosArrowDown } from "react-icons/io";
 import {
-  AiFillHome,
-  AiOutlineInbox,
   AiOutlineMenu,
-  AiOutlineSearch,
 } from "react-icons/ai";
-import { BsFillCameraVideoFill } from "react-icons/bs";
-import { FiBell, FiChevronDown, FiLogIn } from "react-icons/Fi";
+import { FiBell, FiChevronDown } from "react-icons/Fi";
 
 import { FaMoon, FaSun } from "react-icons/fa";
-import { Link as RouteLink, useNavigate } from "react-router-dom";
+import { NavLink as RouteLink, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
 
 const reduser = (state: any, action: any) => {
@@ -173,10 +158,10 @@ function Nav() {
 
             <Flex>
               <HStack spacing="5" display={{ base: "none", md: "flex" }}>
-                <RouteLink to={"/"}>
+                <RouteLink to={"/"} >
                   <Image w="full" h={10} src={tuwaiqSvg} alt="logo" />
                 </RouteLink>
-                <RouteLink to={"/"}>
+                <RouteLink to={"/"} className={({ isActive }) => isActive ? "nav-Active-Link" : ""}>
                   <Button
                     bg={"none"}
                     color="white"
@@ -188,7 +173,7 @@ function Nav() {
                     الصفحة الرئيسية
                   </Button>
                 </RouteLink>
-                <RouteLink to="/Allproject">
+                <RouteLink to="/Allproject" className={({ isActive }) => isActive ? "nav-Active-Link" : ""}>
                   <Button
                     bg={"none"}
                     color="white"
@@ -200,7 +185,7 @@ function Nav() {
                     جميع المشاريع
                   </Button>
                 </RouteLink>
-                <RouteLink to="/Allideas">
+                <RouteLink to="/Allideas" className={({ isActive }) => isActive ? "nav-Active-Link" : ""}>
                   <Button
                     bg={"none"}
                     color="white"
@@ -213,7 +198,7 @@ function Nav() {
                   </Button>
                 </RouteLink>
                 {localStorage.getItem('role') == "Admin" ?
-                  <RouteLink to="/Bootcamp">
+                  <RouteLink to="/Bootcamp" className={({ isActive }) => isActive ? "nav-Active-Link" : ""}>
                     <Button
                       bg={"none"}
                       color="white"

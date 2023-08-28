@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { DatePicker } from 'chakra-ui-date-input'
-import Footer from "./Footer";
-import Nav from "./Nav";
+import Footer from ".././Footer";
+import Nav from ".././Nav";
 import { Link as RouteLnk } from "@chakra-ui/react";
 import {
   FormControl,

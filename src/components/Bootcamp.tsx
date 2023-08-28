@@ -39,7 +39,7 @@ function Bootcamp() {
           method: "delete",
           headers: {
             "Content-Type": "application/json",
-            authorization: localStorage.getItem("token") as string,
+            authorization:  localStorage.getItem("token") as string,
           },
         })
       ).json();

@@ -15,7 +15,7 @@ import {
 import { ReactNode } from "react";
 import { FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
-import footerImg from "../img/footer.png";
+import footerImg from "../assets/footer.png";
 
 import { CgWebsite } from "react-icons/Cg";
 

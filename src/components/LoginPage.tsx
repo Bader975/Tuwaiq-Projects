@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import tuwaiqSvg from "../img/logIn_img.png";
+import tuwaiqSvg from "../assets/logIn_img.png";
 import axios from "axios";
 
 function LoginPage() {
@@ -113,7 +113,7 @@ function LoginPage() {
                   />
 
                   <Input
-                    type="tel"
+                    type="email"
                     bg={"#fff"}
                     textAlign={"right"}
                     onChange={(e) => {

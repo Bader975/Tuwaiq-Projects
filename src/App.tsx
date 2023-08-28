@@ -1,42 +1,45 @@
-import { useState } from "react";
 
 import "./App.css";
-
-import { Routes, Route,Router, useParams } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import AllProjectsPage from "./components/AllProjectsPage";
-
 import ProfilePage from "./components/ProfilePage";
-import Footer from "./components/Footer";
-import Nav from "./components/Nav";
 import HomePage from "./components/HomePage";
-import SignUpPage from "./components/SignUpPage";
-import AdminSignUpPage from "./components/AdminSignUpPage";
+import SignUpPage from "./components/signup/SignUpPage";
+import AdminSignUpPage from "./components/signup/AdminSignUpPage";
 import LoginPage from "./components/LoginPage";
 import ProjectPage from "./components/ProjectPage";
-import CompamySignUp from "./components/CompamySignUp";
+import CompamySignUp from "./components/signup/CompamySignUp";
 import Bootcamp from "./components/Bootcamp";
 import MyProjects from "./components/MyProjects";
 import AllIdeas from "./components/AllIdeas";
-import AddNewProject from "./components/AddNewProject";
+import AddNewProject from "./components/add/AddNewProject";
 import ModifyProject from "./components/ModifyProject";
-import AddNewBootcamp from "./components/AddNewBootcamp";
+import AddNewBootcamp from "./components/add/AddNewBootcamp";
 import ModifyBootcamp from "./components/ModifyBootcamp";
-import AddNewIdea from "./components/AddNewIdea";
+import AddNewIdea from "./components/add/AddNewIdea";
 import ModifyIdea from "./components/ModifyIdea";
 import Myideas from "./components/Myideas";
 import IdeaInformation from "./components/IdeaInformation";
 import UserProfile from "./components/UserProfile";
 import NotFound from "./components/NotFound";
 
+
+
+
+
+
+
 function App() {
-  let {id}=useParams()
+  const location = useLocation()
+
+
+
   return (
-    <div>
+    <>
+      <Routes location={location} key={location.pathname}>
 
+        <Route path="/" element={<HomePage />} />
 
-      <Routes>
-      <Route path="/" element={<HomePage />} />
-      
         <Route path="/UserProfile/:id" element={<UserProfile />} />
         <Route path="/Bootcamp" element={<Bootcamp />} />
         <Route path="/AddNewBootcamp" element={<AddNewBootcamp />} />
@@ -66,7 +69,7 @@ function App() {
 
 
       </Routes>
-    </div>
+    </>
   );
 }
 

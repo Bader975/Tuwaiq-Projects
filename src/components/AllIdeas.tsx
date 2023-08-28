@@ -76,7 +76,7 @@ function AllIdeas() {
         <Nav />
       </nav>
       {/* Searsh bar */}
-      <Box w={"35%"} mx={"auto"} mt={10}>
+      <Box w={["70%","30%","35%"]} mx={"auto"} mt={10}>
         <InputGroup
           display={{
             lg: "block",
@@ -103,7 +103,7 @@ function AllIdeas() {
       </Box>
       {console.log(filteredList.length)}
       {/* Added checker for input */}
-      {filteredList.length == 0 && <Text textAlign={"center"} fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
+      {filteredList.length == 0 && title.length > 0 && <Text textAlign="center" fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
       <SimpleGrid
         borderColor={"blackAlpha.200"}
         minH={"60vh"}

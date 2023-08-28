@@ -1,83 +1,95 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Tajawal&display=swap');
 
-#root{
+#root {
   font-family: 'Oswald', sans-serif;
-font-family: 'Tajawal', sans-serif;
-/* background-color: #F9F9F9 !important; */
+  font-family: 'Tajawal', sans-serif;
+  /* background-color: #F9F9F9 !important; */
 
 
 }
 
-*{
+.nav-Active-Link {
+  background-color: rgb(2, 115, 135);
+  border-radius: 8px;
+
+}
+
+
+* {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
 }
+
 body {
   animation: fadeInAnimation ease 3s;
   animation-iteration-count: 1;
-  animation-fill-mode: forwards; 
+  animation-fill-mode: forwards;
   background-color: #F9F9F9 !important;
-   height:100vh;
- 
-   
+  margin: 0;
+  padding: 0;
 
 }
-.allidels{
+
+.allidels {
   height: 100vh;
   border: 3px solid #ff0000;
   color: #dfe3e9;
 }
-html {
-  margin: 0 !important;
-  padding: 0 !important;
-  
-}
+
+
 @keyframes fadeInAnimation {
   0% {
-      opacity: 0;
+    opacity: 0;
   }
+
   100% {
-      opacity: 1;
+    opacity: 1;
   }
 }
 
 
-.line{
-  border-left:1px solid #AFB8C3;
+.line {
+  border-left: 1px solid #AFB8C3;
 
   /* height:300px; */
-  height:auto;
+  height: auto;
 }
 
-.spinner{
+.spinner {
   margin-left: auto;
   margin-right: auto;
   margin-top: 5rem;
   display: table;
- 
+
 }
+
 .card {
   border-radius: .7rem;
 }
-.list{
+
+.list {
   border: 1px solid #000;
 }
+
 @media (min-width: 1025px) {
   .h-custom-2 {
     height: 100%;
-    }
   }
+}
 
- .ayaa{
+.ayaa {
   clear: both;
- }
-  
+}
+
+img{
+  width: 100%;
+  height: 100%;
+}
 
 
 
- /* ------------------ */
- input::placeholder{
+/* ------------------ */
+input::placeholder {
   text-align: center;
 }
 
@@ -87,18 +99,20 @@ html {
   text-align: center;
 }
 
-:-moz-placeholder { /* Firefox 18- */
-  text-align: center;  
+:-moz-placeholder {
+  /* Firefox 18- */
+  text-align: center;
 }
 
-::-moz-placeholder {  /* Firefox 19+ */
-  text-align: center;  
+::-moz-placeholder {
+  /* Firefox 19+ */
+  text-align: center;
 }
 
-:-ms-input-placeholder {  
-  text-align: center; 
+:-ms-input-placeholder {
+  text-align: center;
 }
 
-li{
+li {
   list-style-type: none;
 }

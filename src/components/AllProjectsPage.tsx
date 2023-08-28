@@ -2,25 +2,16 @@ import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
 import { Dimmer, Loader, Segment } from 'semantic-ui-react';
 import { Image as Img } from 'semantic-ui-react';
 
+
 import {
   Box,
-  GridItem,
   Input,
   InputGroup,
   InputLeftElement,
   SimpleGrid,
-  Spacer,
-  Link,
-  Avatar,
-  Progress,
-  VStack,
-  HStack,
-  CircularProgress,
-  CircularProgressLabel,
   Spinner,
 } from "@chakra-ui/react";
-import { Text, Flex, Image, chakra, Divider } from "@chakra-ui/react";
-import { Link as RouteLnk } from "react-router-dom";
+import { Text } from "@chakra-ui/react";
 
 import axios from "axios";
 
@@ -47,8 +38,9 @@ function AllProjectsPage() {
 
 
     setProfleImg(data && data.Project && data.Project.user && data.Project.user.Profill.img);
-  };
 
+  };
+ 
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
@@ -95,6 +87,7 @@ function AllProjectsPage() {
   React.useEffect(() => {
     let filteredData = filter(data);
     setFilteredList(filteredData);
+
   }, [title, data]);
 
   return (
@@ -103,14 +96,12 @@ function AllProjectsPage() {
         <Nav />
       </nav>
 
-      <Box w={"35%"} mx={"auto"} mt={10}>
+      <Box w={["70%","30%","35%"]} mx={"auto"} mt={10}>
         <InputGroup
-          display={{
-            lg: "block",
-          }}
-          ml="auto"
+         
+          mx={"auto"}
         >
-          <InputLeftElement pointerEvents="none">
+          <InputLeftElement pointerEvents="none" float={"left"}>
             <Search2Icon />
           </InputLeftElement>
           <Input
@@ -147,7 +138,7 @@ function AllProjectsPage() {
       {/* {console.log(filteredList.length)} */}
       {/* Added checker for input */}
 
-      {filteredList.length == 0 && <Text textAlign={"center"} fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
+      {filteredList.length == 0 && title.length > 0 && <Text textAlign="center" fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
 
       <SimpleGrid
         borderColor={"blackAlpha.200"}
@@ -162,7 +153,7 @@ function AllProjectsPage() {
       >
         {/* Using Props to Render the Projecs */}
         {filteredList.map((index) => (
-          <OnePorject id={index.id} title={index.title} img={index.img}
+          <OnePorject  key={index.id} id={index.id} title={index.title} img={index.img}
             nameOfCamp={index.nameOfCamp} date={index.date} userProfillimg={index.user.Profill.img}
             user_id={index.user.id}
             user_name={index.user.name} />

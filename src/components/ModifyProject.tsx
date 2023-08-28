@@ -14,7 +14,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
-import './AddNewProject.css';
+import './add/AddNewProject.css';
 function ModifyProject() {
   const [title, setTitle] = React.useState<any>("");
   const [nameOfCamp, setNameOfCamp] = React.useState<any>("");

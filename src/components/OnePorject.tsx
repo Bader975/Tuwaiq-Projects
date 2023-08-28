@@ -33,10 +33,6 @@ interface ProjectsProps {
     userProfillimg?: string;
     user_id?: string;
     user_name?: string;
-
-
-
-
 }
 
 function OnePorject({ id, img, title, nameOfCamp, date, userProfillimg, user_id, user_name }: ProjectsProps) {

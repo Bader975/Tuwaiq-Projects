@@ -15,27 +15,24 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import tuwaiqSvg from "../img/logIn_img.png";
-import axios from "axios";
-import { FaUserAlt } from "react-icons/fa";
+import tuwaiqSvg from "../../assets/logIn_img.png";
 import { MDBCheckbox } from "mdb-react-ui-kit";
+import { MdOutlineWork } from "react-icons/md";
 
-function SignUpPage() {
+function CompamySignUp() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("User");
+
+  const [role, setRole] = useState("Company");
   const [email, setEmail] = useState("");
   const [error, setError] = React.useState(false);
   const [password2, setPassword2] = useState("");
   const [cheked, setChecked] = React.useState(true);
 
-  const [data, setData] = React.useState<any>([]);
-
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post("http://localhost:3008/user/login",
-  const submitSignUp = async () => {
+  const submitLogin = async () => {
     if (
       name.length == 0 ||
       email.length == 0 ||
@@ -61,10 +58,7 @@ function SignUpPage() {
           }),
         });
         const data = await request.json();
-
         if (request.status !== 200) {
-          console.log(data.message);
-          
           toast({
             title: data.message,
             status: "error",
@@ -93,7 +87,7 @@ function SignUpPage() {
   };
 
   return (
-    <>
+    <div>
       <Grid mt={20}>
         {/*  صفحتي الشخصية */}
         <GridItem
@@ -109,6 +103,7 @@ function SignUpPage() {
             <Link to={"/"}>
               <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
             </Link>
+
             <Heading
               as="h1"
               size="lg"
@@ -118,7 +113,7 @@ function SignUpPage() {
               mb={10}
               p={2}
             >
-              تسجيل جديد
+              تسجيل جديد كشركة{" "}
             </Heading>
 
             <Box h={"90px"}>
@@ -133,6 +128,7 @@ function SignUpPage() {
                 />
 
                 <Input
+                  display={"flex"}
                   type="tel"
                   bg={"#fff"}
                   textAlign={"right"}
@@ -162,12 +158,12 @@ function SignUpPage() {
             <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
-                اسم المستخدم{" "}
+                اسم الشركة{" "}
               </Box>
               <InputGroup>
                 <InputRightAddon
                   pointerEvents="none"
-                  children={<FaUserAlt color="#00ADBB" />}
+                  children={<MdOutlineWork color="#00ADBB" />}
                 />
 
                 <Input
@@ -310,7 +306,7 @@ function SignUpPage() {
                 color={"#fff"}
                 w="100%"
                 _hover={{ opacity: 0.6 }}
-                onClick={submitSignUp}
+                onClick={submitLogin}
               >
                 {" "}
                 تسجيل{" "}
@@ -330,8 +326,8 @@ function SignUpPage() {
           </Box>{" "}
         </GridItem>
       </Grid>
-    </>
+    </div>
   );
 }
 
-export default SignUpPage;
+export default CompamySignUp;

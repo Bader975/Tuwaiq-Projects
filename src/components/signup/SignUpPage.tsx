@@ -15,26 +15,27 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import tuwaiqSvg from "../img/logIn_img.png";
-import axios from "axios";
+import tuwaiqSvg from "../../assets/logIn_img.png";
+;
 import { FaUserAlt } from "react-icons/fa";
 import { MDBCheckbox } from "mdb-react-ui-kit";
-import { MdOutlineWork } from "react-icons/md";
 
-function CompamySignUp() {
+function SignUpPage() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
-  const [role, setRole] = useState("Company");
+  const [role, setRole] = useState("User");
   const [email, setEmail] = useState("");
   const [error, setError] = React.useState(false);
   const [password2, setPassword2] = useState("");
   const [cheked, setChecked] = React.useState(true);
 
+  const [data, setData] = React.useState<any>([]);
+
   const toast = useToast();
   const navigate = useNavigate();
 
-  const submitLogin = async () => {
+  // axios.post("http://localhost:3008/user/login",
+  const submitSignUp = async () => {
     if (
       name.length == 0 ||
       email.length == 0 ||
@@ -60,7 +61,10 @@ function CompamySignUp() {
           }),
         });
         const data = await request.json();
+
         if (request.status !== 200) {
+          console.log(data.message);
+          
           toast({
             title: data.message,
             status: "error",
@@ -89,7 +93,7 @@ function CompamySignUp() {
   };
 
   return (
-    <div>
+    <>
       <Grid mt={20}>
         {/*  صفحتي الشخصية */}
         <GridItem
@@ -105,7 +109,6 @@ function CompamySignUp() {
             <Link to={"/"}>
               <Image w={300} src={tuwaiqSvg} alt="logo" mb={5} mr={16} />
             </Link>
-
             <Heading
               as="h1"
               size="lg"
@@ -115,7 +118,7 @@ function CompamySignUp() {
               mb={10}
               p={2}
             >
-              تسجيل جديد كشركة{" "}
+              تسجيل جديد
             </Heading>
 
             <Box h={"90px"}>
@@ -130,8 +133,7 @@ function CompamySignUp() {
                 />
 
                 <Input
-                  display={"flex"}
-                  type="tel"
+                  type="email"
                   bg={"#fff"}
                   textAlign={"right"}
                   onChange={(e) => {
@@ -160,16 +162,16 @@ function CompamySignUp() {
             <Box h={"90px"}>
               <Box float={"right"} fontWeight={"bold"}>
                 {" "}
-                اسم الشركة{" "}
+                اسم المستخدم{" "}
               </Box>
               <InputGroup>
                 <InputRightAddon
                   pointerEvents="none"
-                  children={<MdOutlineWork color="#00ADBB" />}
+                  children={<FaUserAlt color="#00ADBB" />}
                 />
 
                 <Input
-                  type="tel"
+                  type="text"
                   bg={"#fff"}
                   textAlign={"right"}
                   onChange={(e) => {
@@ -308,7 +310,7 @@ function CompamySignUp() {
                 color={"#fff"}
                 w="100%"
                 _hover={{ opacity: 0.6 }}
-                onClick={submitLogin}
+                onClick={submitSignUp}
               >
                 {" "}
                 تسجيل{" "}
@@ -328,8 +330,8 @@ function CompamySignUp() {
           </Box>{" "}
         </GridItem>
       </Grid>
-    </div>
+    </>
   );
 }
 
-export default CompamySignUp;
+export default SignUpPage;
