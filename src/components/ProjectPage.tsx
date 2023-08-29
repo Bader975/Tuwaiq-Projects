@@ -9,14 +9,13 @@ import {
   Flex,
   Link,
   IconButton,
+  Avatar,
 } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import React from "react";
-import { RiPagesLine } from "react-icons/Ri";
 
 import Footer from "./Footer";
 import Nav from "./Nav";
-import { FaUserAlt } from "react-icons/fa";
 import { LinkIcon } from "@chakra-ui/icons";
 
 function ProjectPage() {
@@ -29,7 +28,7 @@ function ProjectPage() {
       const data = await (
         await fetch(`http://localhost:3008/project/${id}`)
       ).json();
-       (data);
+      (data);
 
       // set state when the data received
       setData(data && data.Project && data.Project[0]);
@@ -38,7 +37,7 @@ function ProjectPage() {
     getallproject();
   }, []);
 
-   (data);
+  (data);
 
   return (
     <Box bg={"#F9F9F9"}>
@@ -86,7 +85,7 @@ function ProjectPage() {
         >
           <Box alignContent={"center"}>
             <Box float={"right"}>
-              <IconButton
+              {/* <IconButton
                 fontSize={"3xl"}
                 borderRadius={"50%"}
                 color={"#00ADBB"}
@@ -96,8 +95,11 @@ function ProjectPage() {
                 _hover={{ color: "none", backgroundColor: "none" }}
                 bg={"#DBF0F7"}
                 aria-label=""
-                icon={<FaUserAlt />}
-              />
+                // icon={<FaUserAlt />}
+              
+              /> */}
+              <Avatar name='user icon' fontSize={"3xl"}
+                src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCbU49DD_iYcjSUEXG-Oy7POjJzaMn1GYEZg&usqp=CAU' />
             </Box>
 
             <Text
@@ -153,7 +155,7 @@ function ProjectPage() {
           pr={5}
         >
           <Box float={"right"}>
-            <IconButton
+            {/* <IconButton
               fontSize={"3xl"}
               borderRadius={"50%"}
               color={"#00ADBB"}
@@ -164,7 +166,9 @@ function ProjectPage() {
               bg={"#DBF0F7"}
               aria-label=""
               icon={<RiPagesLine />}
-            />
+            /> */}
+            <Avatar name='user icon' fontSize={"3xl"}
+              src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScbMk-ySm0Uxdez17pfcRRG59KD7kFrXJvE7CMCmxOr8fL0TZhM3v4wROfiy6cZhiBXaU&usqp=CAU' />
           </Box>
           <Text
             mt={5}

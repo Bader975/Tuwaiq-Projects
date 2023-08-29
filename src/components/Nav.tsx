@@ -28,7 +28,7 @@ import { useViewportScroll } from "framer-motion";
 import {
   AiOutlineMenu,
 } from "react-icons/ai";
-import { FiBell, FiChevronDown } from "react-icons/Fi";
+// import { FiBell, FiChevronDown } from "react-icons/fi";
 
 import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink as RouteLink, useNavigate } from "react-router-dom";
@@ -238,7 +238,7 @@ function Nav() {
                     mr={5}
                     bg={"none"}
                     aria-label=""
-                    icon={<FiBell />}
+                    // icon={<FiBell />}
                   />
                   <Flex alignItems={"flex-end"}>
                     <Menu>
@@ -261,7 +261,7 @@ function Nav() {
                             ml="2"
                           ></VStack>
                           <Box display={{ base: "none", md: "flex" }}>
-                            <FiChevronDown color="#fff" />
+                            {/* <FiChevronDown color="#fff" /> */}
                           </Box>
                         </HStack>
                       </MenuButton>

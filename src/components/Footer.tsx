@@ -11,13 +11,12 @@ import {
   Input,
   IconButton,
   useColorModeValue,
+  Avatar,
 } from "@chakra-ui/react";
 import { ReactNode } from "react";
 import { FaTwitter, FaYoutube } from "react-icons/fa";
 import { BiMailSend } from "react-icons/bi";
 import footerImg from "../assets/footer.png";
-
-import { CgWebsite } from "react-icons/Cg";
 
 import { AiFillLinkedin } from "react-icons/ai";
 
@@ -126,7 +125,8 @@ function Footer() {
                   label={"webSite"}
                   href={"https://tuwaiq.edu.sa/"}
                 >
-                  <CgWebsite/>
+                    <Avatar name='user icon' bg={"#ffff"}
+  size='2xs' src='https://cdn.icon-icons.com/icons2/2385/PNG/512/description_icon_144381.png' />
                 </SocialButton>
                 
 
