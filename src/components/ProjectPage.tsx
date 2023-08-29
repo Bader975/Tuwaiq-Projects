@@ -21,7 +21,6 @@ import { LinkIcon } from "@chakra-ui/icons";
 
 function ProjectPage() {
   const [data, setData] = React.useState<any>([]);
-  // const [id , setId] =React.useState<number>();
   const { id } = useParams();
 
   React.useEffect(() => {
