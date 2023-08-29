@@ -2,33 +2,14 @@ import {
   Text,
   SimpleGrid,
   Box,
-  Spinner,
-  FormControl,
-  FormLabel,
-  Input,
-  Textarea,
   Grid,
   GridItem,
   chakra,
   Image,
   Flex,
-  Icon,
-  Button,
-  HStack,
-  InputLeftElement,
-  InputGroup,
-  Heading,
-  Divider,
-  ButtonGroup,
-  Card,
-  CardBody,
   Link,
-  CardFooter,
-  Stack,
-  Avatar,
   IconButton,
 } from "@chakra-ui/react";
-import axios from "axios";
 import { useParams } from "react-router-dom";
 import React from "react";
 import { RiPagesLine } from "react-icons/Ri";
@@ -36,7 +17,6 @@ import { RiPagesLine } from "react-icons/Ri";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { FaUserAlt } from "react-icons/fa";
-import { FiBell } from "react-icons/Fi";
 import { LinkIcon } from "@chakra-ui/icons";
 
 function ProjectPage() {
