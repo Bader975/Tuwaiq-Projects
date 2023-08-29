@@ -60,7 +60,7 @@ function ModifyBootcamp() {
     ).json();
 
     navigate("/Bootcamp");
-    console.log(data.message);
+     (data.message);
 
     // set state when the data received
   };

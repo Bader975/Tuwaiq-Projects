@@ -12,7 +12,6 @@ import {
   useToast,
   SimpleGrid,
 } from "@chakra-ui/react";
-import axios from "axios";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
@@ -159,7 +158,7 @@ function ProfilePage() {
     getUserProfile();
     navigate("/Profile/");
 
-    console.log(data.message);
+     (data.message);
     // set state when the data received
   };
 

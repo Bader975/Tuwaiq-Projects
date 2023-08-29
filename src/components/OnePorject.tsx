@@ -1,7 +1,5 @@
 import React from 'react'
 import { ChevronLeftIcon, Search2Icon } from "@chakra-ui/icons";
-import { Dimmer, Loader, Segment } from 'semantic-ui-react';
-import { Image as Img } from 'semantic-ui-react';
 
 import {
     Box,

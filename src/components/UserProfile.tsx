@@ -78,18 +78,15 @@ function UserProfile() {
       }
       )
     ).json();
-    console.log("project");
+     ("project");
 
-    console.log(data && data.Project);
+     (data && data.Project);
 
     // set state when the data received
     setProject(data && data.Project);
 
   };
 
-  // console.log(data);
-
-  // console.log("user " + user);
   return (
     <>
       <nav>
@@ -139,7 +136,7 @@ function UserProfile() {
               <p className="ayaa"></p>
             </Box>
 
-            {/* {console.log(data.aboutMy)} */}
+            {/* { (data.aboutMy)} */}
             <Box mr={5}>
               <Box fontSize="lg">
                 <Text mt={10}> الاسم :{user.name} </Text>

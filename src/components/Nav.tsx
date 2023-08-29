@@ -25,7 +25,6 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { useViewportScroll } from "framer-motion";
-import { IoIosArrowDown } from "react-icons/io";
 import {
   AiOutlineMenu,
 } from "react-icons/ai";

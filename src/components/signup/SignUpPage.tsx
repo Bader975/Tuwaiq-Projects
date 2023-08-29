@@ -63,7 +63,7 @@ function SignUpPage() {
         const data = await request.json();
 
         if (request.status !== 200) {
-          console.log(data.message);
+           (data.message);
           
           toast({
             title: data.message,

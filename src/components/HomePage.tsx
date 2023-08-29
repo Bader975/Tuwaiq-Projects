@@ -71,7 +71,7 @@ function HomePage() {
 //   ajex.send();
 //   ajex.onload = () =>{
 //     const data= JSON.parse(ajex.responseText);
-//     console.log(data);
+//      (data);
 
 //   }
 

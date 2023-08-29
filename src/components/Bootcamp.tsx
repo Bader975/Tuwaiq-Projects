@@ -9,7 +9,6 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Link as RouteLnk } from "@chakra-ui/react";
 import Nav from "./Nav";
 import Footer from "./Footer";
 function Bootcamp() {

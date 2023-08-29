@@ -69,7 +69,7 @@ function ModifyProject() {
     };
 
     getallcamp();
-    console.log("rerender");
+     ("rerender");
 
     getProjectByid();
   }, []);

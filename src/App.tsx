@@ -1,4 +1,3 @@
-
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import AllProjectsPage from "./components/AllProjectsPage";
@@ -24,14 +23,8 @@ import UserProfile from "./components/UserProfile";
 import NotFound from "./components/NotFound";
 
 
-
-
-
-
-
 function App() {
   const location = useLocation()
-
 
 
   return (

@@ -50,7 +50,7 @@ function ProjectPage() {
       const data = await (
         await fetch(`http://localhost:3008/project/${id}`)
       ).json();
-      console.log(data);
+       (data);
 
       // set state when the data received
       setData(data && data.Project && data.Project[0]);
@@ -59,7 +59,7 @@ function ProjectPage() {
     getallproject();
   }, []);
 
-  console.log(data);
+   (data);
 
   return (
     <Box bg={"#F9F9F9"}>

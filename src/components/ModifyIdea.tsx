@@ -63,7 +63,7 @@ function ModifyIdea() {
     ).json();
 
     navigate("/Myideas");
-    console.log(data.message);
+     (data.message);
   };
 
   return (

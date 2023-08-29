@@ -43,7 +43,7 @@ function AllProjectsPage() {
 
   React.useEffect(() => {
     document.documentElement.scrollTop = 0;
-    console.log("rerenderd");
+     ("rerenderd");
 
     getallproject();
 
@@ -134,7 +134,7 @@ function AllProjectsPage() {
       ) : (
         <></>
       )}
-      {/* {console.log(filteredList.length)} */}
+      {/* { (filteredList.length)} */}
       {/* Added checker for input */}
 
       {filteredList.length == 0 && title.length > 0 && <Text textAlign="center" fontSize="25"> لا يوجد بيانات مطابقة للبحث</Text>}
