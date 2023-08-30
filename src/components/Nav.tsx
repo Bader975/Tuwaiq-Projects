@@ -349,7 +349,7 @@ function Nav() {
               />
             </Flex>
           </Flex>
-          {/* {MobileNavContent} */}
+          {MobileNavContent}
         </chakra.div>
       </chakra.header>
     </>

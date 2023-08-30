@@ -66,18 +66,18 @@ function HomePage() {
   const [user, setUser] = React.useState<any>("");
 
   //AJEX CALL
-//  const ajex=new XMLHttpRequest();
-//   ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
-//   ajex.send();
-//   ajex.onload = () =>{
-//     const data= JSON.parse(ajex.responseText);
-//      (data);
+  //  const ajex=new XMLHttpRequest();
+  //   ajex.open('GET',"https://jsonplaceholder.typicode.com/todos")
+  //   ajex.send();
+  //   ajex.onload = () =>{
+  //     const data= JSON.parse(ajex.responseText);
+  //      (data);
 
-//   }
+  //   }
 
 
   // END OF GET
- 
+
 
   // fetch data
   const getallusers = async () => {
@@ -144,12 +144,13 @@ function HomePage() {
           color={"white"}
           w={"100%"}
           textAlign={"center"}
-          height={"20vh"}
-          top={"25vh"}
+          height={"20%"}
+          top={["25vh","30vh","30vh","70vh"]}
         >
 
           {/* <Box display={"flex"} justifyContent={"center"} gap={"2"}> */}
-          <Heading mb={330} mt={60} >
+          <Heading fontSize={[16,20,35]}  pos={"relative"}
+          zIndex={"1"}>
             {" "}
 
 
@@ -158,42 +159,40 @@ function HomePage() {
           </Heading>
           {/* </Box> */}
 
-          <Box mt={20}>
 
-            <Box
-              bg={"#fff"}
-              mt={10}
-              m={10}
-              p={20}
-              zIndex={5}
-              boxShadow="2xl"
-              rounded={"xl"}
+        </Box>
+        <Image w="full" pos={"relative"} zIndex={"-1"} fit="cover" src={HomeImg} alt="HomeImg" />
+      </Box>
+      <Box>
+
+        <Box
+          bg={"#fff"}
+          mt={10}
+          p={10}
+          boxShadow="xl"
+          rounded={"xl"}
+        >
+          <Box
+            w="full"
+            mx={"auto"}
+            pt={5}
+            px={{ base: 2, sm: 10, md: 10 }}
+            textAlign="center"
+          >
+            <SimpleGrid
+              columns={{ base: 1, md: 2, lg: 3 }}
+              spacing={{ base: 5, lg: 8 }}
             >
-              <Box
-                w="full"
-                mx={"auto"}
-                pt={5}
-                px={{ base: 2, sm: 12, md: 17 }}
-                textAlign="center"
-              >
-                <SimpleGrid
-                  columns={{ base: 1, md: 2, lg: 3 }}
-                  spacing={{ base: 5, lg: 8 }}
-                >
-                  <StatsCard title={"عدد المشاريع"} stat={`${numOfproject}`} />
-                  <StatsCard title={"عدد المستخدمين"} stat={`${numOfusers}`} />
-                  <StatsCard title={"عدد المعسكرات"} stat={`${numOfcamp}`} />
-                </SimpleGrid>
-              </Box>
-            </Box>
+              <StatsCard title={"عدد المشاريع"} stat={`${numOfproject}`} />
+              <StatsCard title={"عدد المستخدمين"} stat={`${numOfusers}`} />
+              <StatsCard title={"عدد المعسكرات"} stat={`${numOfcamp}`} />
+            </SimpleGrid>
           </Box>
         </Box>
-        <Image w="full" fit="cover" src={HomeImg} alt="HomeImg" />
       </Box>
-
-      <Flex ml={40} mb={5} mt={80}>
+      <Flex ml={40} mb={5} mt={[40,80]}>
         <>
-          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={[5,20,40]}>
+          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={[5, 20, 40]}>
             أحدث المشاريع
           </Text>{" "}
         </>
