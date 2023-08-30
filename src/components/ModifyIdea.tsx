@@ -33,7 +33,7 @@ function ModifyIdea() {
     // fetch data
     const getIdeaByid = async () => {
       const data = await (
-        await fetch(`http://localhost:3008/idea/company/${id}`)
+        await fetch(` https://tuwaiq-api.onrender.com/idea/company/${id}`)
       ).json();
 
       // set state when the data received
@@ -49,7 +49,7 @@ function ModifyIdea() {
     validation() == false ? "aaaaa" : "aa";
 
     const data = await (
-      await fetch(`http://localhost:3008/idea/${id}`, {
+      await fetch(` https://tuwaiq-api.onrender.com/idea/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -45,7 +45,7 @@ function CompamySignUp() {
       setChecked(false);
     } else {
       try {
-        const request = await fetch("http://localhost:3008/user", {
+        const request = await fetch(" https://tuwaiq-api.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

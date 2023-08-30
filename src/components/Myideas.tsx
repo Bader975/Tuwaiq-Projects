@@ -30,7 +30,7 @@ function Myideas() {
   // fetch data
   const getallproject = async () => {
     const data = await (
-      await fetch("http://localhost:3008/idea/", {
+      await fetch(" https://tuwaiq-api.onrender.com/idea/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +51,7 @@ function Myideas() {
     let result = confirm("هل انت متاكد؟؟!");
     if (result == true) {
       const data = await (
-        await fetch(`http://localhost:3008/idea/${id}`, {
+        await fetch(` https://tuwaiq-api.onrender.com/idea/${id}`, {
           method: "delete",
           headers: {
             "Content-Type": "application/json",

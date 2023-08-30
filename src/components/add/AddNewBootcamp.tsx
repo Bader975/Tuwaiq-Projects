@@ -29,7 +29,7 @@ function AddNewBootcamp() {
   const addCamp = async () => {
     validation();
     const data = await (
-      await fetch("http://localhost:3008/admin/camp", {
+      await fetch(" https://tuwaiq-api.onrender.com/admin/camp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -15,7 +15,7 @@ function IdeaInformation() {
     // fetch data
     const getIdeaByid = async () => {
       const data = await (
-        await fetch(`http://localhost:3008/idea/company/${id}`)
+        await fetch(` https://tuwaiq-api.onrender.com/idea/company/${id}`)
       ).json();
 
       setData(data && data.Idea && data.Idea[0]);

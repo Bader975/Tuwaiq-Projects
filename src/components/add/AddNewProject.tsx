@@ -41,7 +41,7 @@ function AddNewProject() {
   const addproject = async () => {
     validation()
     const data = await (
-      await fetch("http://localhost:3008/project/", {
+      await fetch(" https://tuwaiq-api.onrender.com/project/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function AddNewProject() {
   React.useEffect(() => {
     // fetch data
     const getallcamp = async () => {
-      const data = await (await fetch("http://localhost:3008/camp")).json();
+      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
 
 
       // set state when the data received

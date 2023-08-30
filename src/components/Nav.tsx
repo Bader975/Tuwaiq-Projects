@@ -50,7 +50,7 @@ function Nav() {
   const getUserProfile = async () => {
     // fetch data
     const data = await (
-      await fetch("http://localhost:3008/profile", {
+      await fetch(" https://tuwaiq-api.onrender.com/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

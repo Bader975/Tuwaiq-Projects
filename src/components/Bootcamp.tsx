@@ -17,7 +17,7 @@ function Bootcamp() {
   
     // fetch data
     const getallproject = async () => {
-      const data = await (await fetch("http://localhost:3008/camp")).json();
+      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
 
       // set state when the data received
       setData(data && data.Camp);
@@ -34,7 +34,7 @@ function Bootcamp() {
     let result = confirm("هل انت متاكد؟؟!");
     if (result == true) {
       const data = await (
-        await fetch(`http://localhost:3008/admin/camp/${id}`, {
+        await fetch(` https://tuwaiq-api.onrender.com/admin/camp/${id}`, {
           method: "delete",
           headers: {
             "Content-Type": "application/json",

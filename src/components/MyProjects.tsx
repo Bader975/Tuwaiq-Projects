@@ -36,7 +36,7 @@ function MyProjects() {
   // fetch data
   const getallproject = async () => {
     const data = await (
-      await fetch("http://localhost:3008/project", {
+      await fetch(" https://tuwaiq-api.onrender.com/project", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ function MyProjects() {
     // if (result == true) {
 
     const data = await (
-      await fetch(`http://localhost:3008/project/${id}`, {
+      await fetch(` https://tuwaiq-api.onrender.com/project/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",

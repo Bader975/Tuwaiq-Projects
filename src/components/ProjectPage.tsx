@@ -26,7 +26,7 @@ function ProjectPage() {
     document.documentElement.scrollTop = 0;
     const getallproject = async () => {
       const data = await (
-        await fetch(`http://localhost:3008/project/${id}`)
+        await fetch(` https://tuwaiq-api.onrender.com/project/${id}`)
       ).json();
       (data);
 

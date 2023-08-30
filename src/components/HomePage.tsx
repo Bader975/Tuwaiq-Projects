@@ -82,7 +82,7 @@ function HomePage() {
   // fetch data
   const getallusers = async () => {
     const data = await (
-      await fetch("http://localhost:3008/user/countall")
+      await fetch(" https://tuwaiq-api.onrender.com/user/countall")
     ).json();
 
 
@@ -94,7 +94,7 @@ function HomePage() {
   // ---------------
   const getallprojects = async () => {
     const data = await (
-      await fetch("http://localhost:3008/project/all")
+      await fetch(" https://tuwaiq-api.onrender.com/project/all")
     ).json();
 
     setproject(data && data.Project.length);
@@ -102,7 +102,7 @@ function HomePage() {
 
   const getallcamps = async () => {
     const data = await (
-      await fetch("http://localhost:3008/camp/countAll")
+      await fetch(" https://tuwaiq-api.onrender.com/camp/countAll")
     ).json();
 
     setcamp(data && data.Camp);
@@ -111,7 +111,7 @@ function HomePage() {
   //get first 3
   const getfirst3 = async () => {
     const data = await (
-      await fetch("http://localhost:3008/project/last3")
+      await fetch(" https://tuwaiq-api.onrender.com/project/last3")
     ).json();
 
     // set state when the data received

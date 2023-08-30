@@ -29,7 +29,7 @@ function AllIdeas() {
   const [id, setId] = React.useState<number>();
 
   const getallideas = async () => {
-    const data = await (await fetch("http://localhost:3008/idea/all")).json();
+    const data = await (await fetch(" https://tuwaiq-api.onrender.com/idea/all")).json();
 
     // set state when the data received
     setData(data && data.Idea);

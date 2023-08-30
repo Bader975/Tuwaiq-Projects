@@ -29,7 +29,7 @@ function AllProjectsPage() {
   const [title, settitle] = React.useState("");
 
   const getallproject = async () => {
-    const data = await fetch("http://localhost:3008/project/all").then(res => res.json())
+    const data = await fetch(" https://tuwaiq-api.onrender.com/project/all").then(res => res.json())
 
 
     // set state when the data received

@@ -58,7 +58,7 @@ function ProfilePage() {
   const getUserProfile = async () => {
     // fetch data
     const data = await (
-      await fetch("http://localhost:3008/profile", {
+      await fetch(" https://tuwaiq-api.onrender.com/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +78,7 @@ function ProfilePage() {
 
   const updateProfle = async () => {
     const data = await (
-      await fetch(`http://localhost:3008/profile/`, {
+      await fetch(` https://tuwaiq-api.onrender.com/profile/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +108,7 @@ function ProfilePage() {
   // Upadate User Image --------------------------------
   const updateProfleImg = async () => {
     const data = await (
-      await fetch(`http://localhost:3008/profile/`, {
+      await fetch(` https://tuwaiq-api.onrender.com/profile/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +135,7 @@ function ProfilePage() {
   // --------
   const updateUserInfo = async () => {
     const data = await (
-      await fetch(`http://localhost:3008/user/`, {
+      await fetch(` https://tuwaiq-api.onrender.com/user/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

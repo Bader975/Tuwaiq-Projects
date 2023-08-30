@@ -31,7 +31,7 @@ function AddNewIdea() {
   const addIdea = async () => {
     validation();
     const data = await (
-      await fetch("http://localhost:3008/idea", {
+      await fetch(" https://tuwaiq-api.onrender.com/idea", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

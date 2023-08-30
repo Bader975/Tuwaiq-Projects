@@ -51,7 +51,7 @@ function UserProfile() {
 
     const getUserProfile = async () => {
       const data = await (
-        await fetch(`http://localhost:3008/profile/${id}`, {
+        await fetch(` https://tuwaiq-api.onrender.com/profile/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -72,7 +72,7 @@ function UserProfile() {
   const getallproject = async () => {
     const data = await (
       await fetch(
-        `http://localhost:3008/project/userProject/${id}`, {
+        ` https://tuwaiq-api.onrender.com/project/userProject/${id}`, {
         method: "GET",
 
       }

@@ -34,7 +34,7 @@ function SignUpPage() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post("http://localhost:3008/user/login",
+  // axios.post(" https://tuwaiq-api.onrender.com/user/login",
   const submitSignUp = async () => {
     if (
       name.length == 0 ||
@@ -48,7 +48,8 @@ function SignUpPage() {
       setChecked(false);
     } else {
       try {
-        const request = await fetch("http://localhost:3008/user", {
+        // const request = await fetch(" https://tuwaiq-api.onrender.com/user", {
+        const request = await fetch("https://tuwaiq-api.onrender.com/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

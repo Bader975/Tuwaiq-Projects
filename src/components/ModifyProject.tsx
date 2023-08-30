@@ -51,7 +51,7 @@ function ModifyProject() {
     const getProjectByid = async () => {
       const data = await (
         await fetch(
-          `http://localhost:3008/project/${id}`
+          ` https://tuwaiq-api.onrender.com/project/${id}`
         )
       ).json();
 
@@ -62,7 +62,7 @@ function ModifyProject() {
     };
 
     const getallcamp = async () => {
-      const data = await (await fetch("http://localhost:3008/camp")).json();
+      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
 
       // set state when the data received
       setCamp(data && data.Camp);
@@ -92,7 +92,7 @@ function ModifyProject() {
   const updateproject = async () => {
     validation();
     const data = await (
-      await fetch(`http://localhost:3008/project/${id}`, {
+      await fetch(` https://tuwaiq-api.onrender.com/project/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

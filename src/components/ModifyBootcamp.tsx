@@ -25,7 +25,7 @@ function ModifyBootcamp() {
     // fetch data
     const getCampByid = async () => {
       const data = await (
-        await fetch(`http://localhost:3008/camp/${id}`)
+        await fetch(` https://tuwaiq-api.onrender.com/camp/${id}`)
       ).json();
 
       // set state when the data received
@@ -46,7 +46,7 @@ function ModifyBootcamp() {
   const updateCamp = async () => {
     validation();
     const data = await (
-      await fetch(`http://localhost:3008/admin/camp/${id}`, {
+      await fetch(` https://tuwaiq-api.onrender.com/admin/camp/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
