@@ -1,27 +1,28 @@
+import { lazy } from "react";
 import "./App.css";
-import { Routes, Route, useLocation } from "react-router-dom";
-import AllProjectsPage from "./components/AllProjectsPage";
-import ProfilePage from "./components/ProfilePage";
-import HomePage from "./components/HomePage";
-import SignUpPage from "./components/signup/SignUpPage";
-import AdminSignUpPage from "./components/signup/AdminSignUpPage";
-import LoginPage from "./components/LoginPage";
-import ProjectPage from "./components/ProjectPage";
-import CompamySignUp from "./components/signup/CompamySignUp";
-import Bootcamp from "./components/Bootcamp";
-import MyProjects from "./components/MyProjects";
-import AllIdeas from "./components/AllIdeas";
-import AddNewProject from "./components/add/AddNewProject";
-import ModifyProject from "./components/ModifyProject";
-import AddNewBootcamp from "./components/add/AddNewBootcamp";
-import ModifyBootcamp from "./components/ModifyBootcamp";
-import AddNewIdea from "./components/add/AddNewIdea";
-import ModifyIdea from "./components/ModifyIdea";
-import Myideas from "./components/Myideas";
-import IdeaInformation from "./components/IdeaInformation";
-import UserProfile from "./components/UserProfile";
-import NotFound from "./components/NotFound";
+import { Routes, Route, useLocation} from "react-router-dom";
 
+const HomePage = lazy(() => import("./components/HomePage"));
+const ProfilePage = lazy(() => import("./components/ProfilePage"));
+const SignUpPage = lazy(() => import("./components/signup/SignUpPage"));
+const AdminSignUpPage = lazy(() => import("./components/signup/AdminSignUpPage"));
+const LoginPage = lazy(() => import("./components/LoginPage"));
+const ProjectPage = lazy(() => import("./components/ProjectPage"));
+const CompamySignUp = lazy(() => import("./components/signup/CompamySignUp"));
+const Bootcamp = lazy(() => import("./components/Bootcamp"));
+const MyProjects = lazy(() => import("./components/MyProjects"));
+const AllIdeas = lazy(() => import("./components/AllIdeas"));
+const AddNewProject = lazy(() => import("./components/add/AddNewProject"));
+const ModifyProject = lazy(() => import("./components/ModifyProject"));
+const AddNewBootcamp = lazy(() => import("./components/add/AddNewBootcamp"));
+const ModifyBootcamp = lazy(() => import("./components/ModifyBootcamp"));
+const AddNewIdea = lazy(() => import("./components/add/AddNewIdea"));
+const ModifyIdea = lazy(() => import("./components/ModifyIdea"));
+const Myideas = lazy(() => import("./components/Myideas"));
+const IdeaInformation = lazy(() => import("./components/IdeaInformation"));
+const UserProfile = lazy(() => import("./components/UserProfile"));
+const NotFound = lazy(() => import("./components/NotFound"));
+const AllProjectsPage = lazy(() => import("./components/AllProjectsPage"));
 
 function App() {
   const location = useLocation()
@@ -67,3 +68,4 @@ function App() {
 }
 
 export default App;
+
