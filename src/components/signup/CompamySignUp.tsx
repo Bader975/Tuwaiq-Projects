@@ -18,6 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import tuwaiqSvg from "../../assets/logIn_img.png";
 import { MDBCheckbox } from "mdb-react-ui-kit";
 import { MdOutlineWork } from "react-icons/md";
+import { Environment } from "../../../api/shared";
 
 function CompamySignUp() {
   const [name, setName] = useState("");
@@ -45,7 +46,7 @@ function CompamySignUp() {
       setChecked(false);
     } else {
       try {
-        const request = await fetch(" https://tuwaiq-api.onrender.com/user", {
+        const request = await fetch(Environment.api+"/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

@@ -18,6 +18,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import './AddNewProject.css';
+import { Environment } from "../../../api/shared";
 // import { SingleDatepicker } from "chakra-dayzed-datepicker";
 
 function AddNewProject() {
@@ -41,7 +42,7 @@ function AddNewProject() {
   const addproject = async () => {
     validation()
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/project/", {
+      await fetch(Environment.api+ "/project/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +82,7 @@ function AddNewProject() {
   React.useEffect(() => {
     // fetch data
     const getallcamp = async () => {
-      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
+      const data = await (await fetch(Environment.api + "/camp")).json();
 
 
       // set state when the data received

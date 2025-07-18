@@ -22,6 +22,7 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate, Link } from "react-router-dom";
+import { Environment } from "../../api/shared";
 
 function Myideas() {
   const [data, setData] = React.useState<any[]>([]);
@@ -30,7 +31,7 @@ function Myideas() {
   // fetch data
   const getallproject = async () => {
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/idea/", {
+      await fetch(Environment.api+ "/idea/", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +52,7 @@ function Myideas() {
     let result = confirm("هل انت متاكد؟؟!");
     if (result == true) {
       const data = await (
-        await fetch(` https://tuwaiq-api.onrender.com/idea/${id}`, {
+        await fetch(`${Environment.api}/idea/${id}`, {
           method: "delete",
           headers: {
             "Content-Type": "application/json",

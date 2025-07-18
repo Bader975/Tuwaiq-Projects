@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import tuwaiqSvg from "../assets/logIn_img.png";
+import { Environment } from "../../api/shared";
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,8 +29,8 @@ function LoginPage() {
 
   const submitLogin = async () => {
     try {
-      // const request = await fetch(" https://tuwaiq-api.onrender.com/user/login", {
-      const request = await fetch("https://tuwaiq-api.onrender.com/user/login", {
+      // const request = await fetch(ENV.prod/user/login", {
+      const request = await fetch(Environment.api+"/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

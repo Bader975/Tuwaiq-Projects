@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import { Environment } from "../../api/shared";
 
 function AllIdeas() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ function AllIdeas() {
   const [id, setId] = React.useState<number>();
 
   const getallideas = async () => {
-    const data = await (await fetch(" https://tuwaiq-api.onrender.com/idea/all")).json();
+    const data = await (await fetch(Environment.api+"/idea/all")).json();
 
     // set state when the data received
     setData(data && data.Idea);

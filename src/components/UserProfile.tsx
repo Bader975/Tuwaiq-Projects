@@ -26,6 +26,7 @@ import Nav from "./Nav";
 import Footer from "./Footer";
 import { FaUserAlt } from "react-icons/fa";
 import { ChevronLeftIcon } from "@chakra-ui/icons";
+import { Environment } from '../../api/shared';
 
 
 interface Userinfo {
@@ -51,7 +52,7 @@ function UserProfile() {
 
     const getUserProfile = async () => {
       const data = await (
-        await fetch(` https://tuwaiq-api.onrender.com/profile/${id}`, {
+        await fetch(`${Environment.api}/profile/${id}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -72,7 +73,7 @@ function UserProfile() {
   const getallproject = async () => {
     const data = await (
       await fetch(
-        ` https://tuwaiq-api.onrender.com/project/userProject/${id}`, {
+        `${Environment.api}/project/userProject/${id}`, {
         method: "GET",
 
       }

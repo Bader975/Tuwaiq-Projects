@@ -1,5 +1,5 @@
 import { ChevronLeftIcon } from "@chakra-ui/icons";
-
+import { Environment } from "../../api/shared";
 import {
   Avatar,
   Box,
@@ -25,6 +25,7 @@ import { Link as RouteLnk } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
 import { motion } from "framer-motion";
+import { format, isValid } from "date-fns";
 
 interface StatsCardProps {
   title: string;
@@ -75,16 +76,11 @@ function HomePage() {
 
   //   }
 
-
   // END OF GET
-
 
   // fetch data
   const getallusers = async () => {
-    const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/user/countall")
-    ).json();
-
+    const data = await (await fetch(Environment.api + "/user/countall")).json();
 
     // set state when the data received
     setusers(data && data.numOfuser);
@@ -93,35 +89,26 @@ function HomePage() {
   // getallusers();
   // ---------------
   const getallprojects = async () => {
-    const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/project/all")
-    ).json();
+    const data = await (await fetch(Environment.api + "/project/all")).json();
 
     setproject(data && data.Project.length);
   };
 
   const getallcamps = async () => {
-    const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/camp/countAll")
-    ).json();
+    const data = await (await fetch(Environment.api + "/camp/countAll")).json();
 
     setcamp(data && data.Camp);
   };
 
   //get first 3
   const getfirst3 = async () => {
-    const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/project/last3")
-    ).json();
+    const data = await (await fetch(Environment.api + "/project/last3")).json();
 
     // set state when the data received
     setProfleImg(data && data.Project[0]);
     setProfleImg(data && data.Project[0].user.Profill.img);
 
-
     setData(data && data.Project);
-
-
   };
   // getfirst3();
 
@@ -145,33 +132,26 @@ function HomePage() {
           w={"100%"}
           textAlign={"center"}
           height={"20%"}
-          top={["25vh","30vh","30vh","70vh"]}
+          top={["25vh", "30vh", "30vh", "70vh"]}
         >
-
           {/* <Box display={"flex"} justifyContent={"center"} gap={"2"}> */}
-          <Heading fontSize={[16,20,35]}  pos={"relative"}
-          zIndex={"1"}>
+          <Heading fontSize={[16, 20, 35]} pos={"relative"} zIndex={"1"}>
             {" "}
-
-
             مشاريع طلاب معسكرات أكاديمية طويق في مكان واحد{" "}
-
           </Heading>
           {/* </Box> */}
-
-
         </Box>
-        <Image w="full" pos={"relative"} zIndex={"-1"} fit="cover" src={HomeImg} alt="HomeImg" />
+        <Image
+          w="full"
+          pos={"relative"}
+          zIndex={"-1"}
+          fit="cover"
+          src={HomeImg}
+          alt="HomeImg"
+        />
       </Box>
       <Box>
-
-        <Box
-          bg={"#fff"}
-          mt={10}
-          p={10}
-          boxShadow="xl"
-          rounded={"xl"}
-        >
+        <Box bg={"#fff"} mt={10} p={10} boxShadow="xl" rounded={"xl"}>
           <Box
             w="full"
             mx={"auto"}
@@ -190,9 +170,14 @@ function HomePage() {
           </Box>
         </Box>
       </Box>
-      <Flex ml={40} mb={5} mt={[40,80]}>
+      <Flex ml={40} mb={5} mt={[40, 80]}>
         <>
-          <Text fontSize="2xl" fontWeight="bold" textAlign={"right"} mr={[5, 20, 40]}>
+          <Text
+            fontSize="2xl"
+            fontWeight="bold"
+            textAlign={"right"}
+            mr={[5, 20, 40]}
+          >
             أحدث المشاريع
           </Text>{" "}
         </>
@@ -218,7 +203,7 @@ function HomePage() {
           spacingX={20}
           spacingY={10}
           alignItems={"center"}
-          w={'full'}
+          w={"full"}
           columns={{ base: 1, md: 2, lg: 3 }}
           p={20}
         >
@@ -277,13 +262,11 @@ function HomePage() {
                         textTransform="uppercase"
                         color="brand.600"
                         _dark={{ color: "brand.400" }}
-
-
                       >
-                        التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
-
-
-
+                        التاريخ:{" "}
+                        {index?.date && isValid(new Date(index.date)) // Check if it's a valid date object
+                          ? format(new Date(index.date), "yyyy/MM/dd") // Format it
+                          : "No date available"}
                       </chakra.span>
                     </>
                     <Divider borderColor={"blackAlpha.500"} mt={5} />
@@ -291,10 +274,7 @@ function HomePage() {
                     <Box mt={4}>
                       <Flex alignItems="center">
                         <Flex alignItems="center">
-                          <Avatar
-                            src={index.user.Profill.img}
-                            ml={2}
-                          />
+                          <Avatar src={index.user.Profill.img} ml={2} />
                           <RouteLnk to={`/UserProfile/${index.user.id}`}>
                             {index.user.name}
                             <ChevronLeftIcon />
@@ -313,10 +293,8 @@ function HomePage() {
                 </Box>
               </Flex>
             </GridItem>
-
           ))}
         </SimpleGrid>
-
       </>
 
       <footer>

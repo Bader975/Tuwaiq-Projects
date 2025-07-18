@@ -17,6 +17,7 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { LinkIcon } from "@chakra-ui/icons";
+import { Environment } from "../../api/shared";
 
 function ProjectPage() {
   const [data, setData] = React.useState<any>([]);
@@ -26,7 +27,7 @@ function ProjectPage() {
     document.documentElement.scrollTop = 0;
     const getallproject = async () => {
       const data = await (
-        await fetch(` https://tuwaiq-api.onrender.com/project/${id}`)
+        await fetch(`${Environment.api}/project/${id}`)
       ).json();
       (data);
 

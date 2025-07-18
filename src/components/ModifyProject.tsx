@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
 import './add/AddNewProject.css';
+import { Environment } from "../../api/shared";
 function ModifyProject() {
   const [title, setTitle] = React.useState<any>("");
   const [nameOfCamp, setNameOfCamp] = React.useState<any>("");
@@ -51,7 +52,7 @@ function ModifyProject() {
     const getProjectByid = async () => {
       const data = await (
         await fetch(
-          ` https://tuwaiq-api.onrender.com/project/${id}`
+          `${Environment.api}/project/${id}`
         )
       ).json();
 
@@ -62,7 +63,7 @@ function ModifyProject() {
     };
 
     const getallcamp = async () => {
-      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
+      const data = await (await fetch(Environment.api+"/camp")).json();
 
       // set state when the data received
       setCamp(data && data.Camp);
@@ -92,7 +93,7 @@ function ModifyProject() {
   const updateproject = async () => {
     validation();
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/project/${id}`, {
+      await fetch(`${Environment.api}/project/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

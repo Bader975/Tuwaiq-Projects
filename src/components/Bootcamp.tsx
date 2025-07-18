@@ -11,13 +11,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Nav from "./Nav";
 import Footer from "./Footer";
+import { Environment } from "../../api/shared";
 function Bootcamp() {
   const [data, setData] = React.useState<any[]>([]);
 
   
     // fetch data
     const getallproject = async () => {
-      const data = await (await fetch(" https://tuwaiq-api.onrender.com/camp")).json();
+      const data = await (await fetch(Environment.api+"/camp")).json();
 
       // set state when the data received
       setData(data && data.Camp);
@@ -34,7 +35,7 @@ function Bootcamp() {
     let result = confirm("هل انت متاكد؟؟!");
     if (result == true) {
       const data = await (
-        await fetch(` https://tuwaiq-api.onrender.com/admin/camp/${id}`, {
+        await fetch(`${Environment.api}/admin/camp/${id}`, {
           method: "delete",
           headers: {
             "Content-Type": "application/json",

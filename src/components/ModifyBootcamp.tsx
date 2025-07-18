@@ -11,6 +11,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Environment } from "../../api/shared";
 
 function ModifyBootcamp() {
   const [data, setData] = React.useState<any>([]);
@@ -25,7 +26,7 @@ function ModifyBootcamp() {
     // fetch data
     const getCampByid = async () => {
       const data = await (
-        await fetch(` https://tuwaiq-api.onrender.com/camp/${id}`)
+        await fetch(`${Environment.api}/camp/${id}`)
       ).json();
 
       // set state when the data received
@@ -46,7 +47,7 @@ function ModifyBootcamp() {
   const updateCamp = async () => {
     validation();
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/admin/camp/${id}`, {
+      await fetch(`${Environment.api}/admin/camp/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

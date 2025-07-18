@@ -20,6 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { Text, Flex, Image, chakra, Divider } from "@chakra-ui/react";
 import { Link as RouteLnk } from "react-router-dom";
+import { format, isValid } from 'date-fns';
 
 interface ProjectsProps {
     id: string;
@@ -91,7 +92,11 @@ function OnePorject({ id, img, title, nameOfCamp, date, userProfillimg, user_id,
                                     color="brand.600"
                                     _dark={{ color: "brand.400" }}
                                 >
-                                    التاريخ: {new Date(date).toISOString().slice(0, 10).replace(/-/g, '/')}
+
+                        التاريخ:{" "}
+                        {date && isValid(new Date(date)) // Check if it's a valid date object
+                          ? format(new Date(date), "yyyy/MM/dd") // Format it
+                          : "No date available"}
                                 </chakra.span>
                             </Box>
                             <Divider borderColor={"blackAlpha.500"} mt={5} />

@@ -1,8 +1,27 @@
 import { DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { format, isValid } from "date-fns";
 
-
-import { ButtonGroup, Link as RouteLnk, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverFooter, PopoverHeader, PopoverTrigger, useDisclosure } from "@chakra-ui/react";
+import {
+  ButtonGroup,
+  Link as RouteLnk,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Popover,
+  PopoverArrow,
+  PopoverBody,
+  PopoverCloseButton,
+  PopoverContent,
+  PopoverFooter,
+  PopoverHeader,
+  PopoverTrigger,
+  useDisclosure,
+} from "@chakra-ui/react";
 import {
   Text,
   Box,
@@ -19,29 +38,25 @@ import React from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
-
-
-
+import { Environment } from "../../api/shared";
 
 function MyProjects() {
   const [data, setData] = React.useState<any[]>([]);
 
-  const { isOpen, onOpen, onClose } = useDisclosure()
-
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navigate = useNavigate();
 
-  // Delete alert 
+  // Delete alert
 
   // fetch data
   const getallproject = async () => {
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/project", {
+      await fetch(Environment.api + "/project", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
           authorization: localStorage.getItem("token") as string,
-
         },
       })
     ).json();
@@ -60,7 +75,7 @@ function MyProjects() {
     // if (result == true) {
 
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/project/${id}`, {
+      await fetch(`${Environment.api}/project/${id}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -69,13 +84,10 @@ function MyProjects() {
       })
     ).json();
 
-
     getallproject();
     // to close the model for delete
     onClose();
-
   };
-
 
   interface Itypes {
     data: any[];
@@ -94,7 +106,6 @@ function MyProjects() {
         </Box>
         <Spacer />
         <Box>
-
           <Button
             onClick={() => navigate("/addProject")}
             m="10px"
@@ -109,7 +120,15 @@ function MyProjects() {
       </Flex>
       {/* ------- this is where to code */}
 
-      {data.length === 0 ? <Text fontSize="20" mr={10}>no data to show </Text> : <Text fontSize={20} mr={10}>you have {data.length} projects</Text>}
+      {data.length === 0 ? (
+        <Text fontSize="20" mr={10}>
+          no data to show{" "}
+        </Text>
+      ) : (
+        <Text fontSize={20} mr={10}>
+          you have {data.length} projects
+        </Text>
+      )}
       <SimpleGrid
         spacingX={5}
         spacingY={10}
@@ -120,10 +139,8 @@ function MyProjects() {
         columns={{ base: 1, md: 2, lg: 3 }}
         p={20}
       >
-
         {data.map((index) => (
           <GridItem key={index.id}>
-
             <Box textAlign={"right"} shadow={"lg"}>
               <Flex
                 _dark={{ bg: "#3e3e3e" }}
@@ -137,18 +154,17 @@ function MyProjects() {
                 // m={100}
                 // mt={10}
                 >
-
                   <Image
                     roundedTop="lg"
                     w="full"
                     h={64}
                     fit="cover"
-                    src={index.img}
+                    src={index?.img}
                     alt="Article"
                   />
                   <Text fontWeight={"bold"} fontSize={25} mr={5} mt={2}>
                     {" "}
-                    {index.title}
+                    {index?.title}
                   </Text>
 
                   <Box p={6}>
@@ -159,9 +175,7 @@ function MyProjects() {
                         color="brand.600"
                         _dark={{ color: "brand.400" }}
                       >
-                        <Text fontSize={20}>
-                          المعسكر : {index.nameOfCamp}
-                        </Text>
+                        <Text fontSize={20}>المعسكر : {index?.nameOfCamp}</Text>
                       </chakra.span>
                       <br />
                       <chakra.span
@@ -170,7 +184,10 @@ function MyProjects() {
                         color="brand.600"
                         _dark={{ color: "brand.400" }}
                       >
-                        التاريخ: {new Date(index.date).toISOString().slice(0, 10).replace(/-/g, '/')}
+                        التاريخ:{" "}
+                        {index?.date && isValid(new Date(index.date)) // Check if it's a valid date object
+                          ? format(new Date(index.date), "yyyy/MM/dd") // Format it
+                          : "No date available"}
                       </chakra.span>
 
                       {/* DELETE BUTTON */}
@@ -182,17 +199,27 @@ function MyProjects() {
                               aria-label="delete"
                               icon={<DeleteIcon />}
                               m={5}
-
                             />
                           </PopoverTrigger>
                           <PopoverContent>
                             <PopoverArrow />
                             <PopoverCloseButton mr={"280"} fontSize={15} />
-                            <PopoverHeader fontSize={18} p={10}>هل انت متاكد انك تريد حذف هذا المشروع ؟</PopoverHeader>
-                            <PopoverBody>  <Button mr={3} onClick={onClose}>
-                              الغاء
-                            </Button>
-                              <Button m={5} colorScheme="red" onClick={() => deletProject(index.id)}>حذف</Button> </PopoverBody>
+                            <PopoverHeader fontSize={18} p={10}>
+                              هل انت متاكد انك تريد حذف هذا المشروع ؟
+                            </PopoverHeader>
+                            <PopoverBody>
+                              {" "}
+                              <Button mr={3} onClick={onClose}>
+                                الغاء
+                              </Button>
+                              <Button
+                                m={5}
+                                colorScheme="red"
+                                onClick={() => deletProject(index.id)}
+                              >
+                                حذف
+                              </Button>{" "}
+                            </PopoverBody>
                           </PopoverContent>
                         </Popover>
 
@@ -221,7 +248,6 @@ function MyProjects() {
                         </Modal> */}
 
                         {/* </Button> */}
-
 
                         {/* <IconButton
                           color={"red"}
@@ -258,9 +284,7 @@ function MyProjects() {
                 </Box>
               </Flex>
             </Box>
-
           </GridItem>
-
         ))}
       </SimpleGrid>
 

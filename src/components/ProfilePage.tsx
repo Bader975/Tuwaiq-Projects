@@ -16,6 +16,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Footer from "./Footer";
 import Nav from "./Nav";
+import { Environment } from "../../api/shared";
 interface UserData {
   name?: any;
   twitterURL: string;
@@ -58,7 +59,7 @@ function ProfilePage() {
   const getUserProfile = async () => {
     // fetch data
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/profile", {
+      await fetch(Environment.api + "/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -78,7 +79,7 @@ function ProfilePage() {
 
   const updateProfle = async () => {
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/profile/`, {
+      await fetch(Environment.api + `/profile/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +109,7 @@ function ProfilePage() {
   // Upadate User Image --------------------------------
   const updateProfleImg = async () => {
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/profile/`, {
+      await fetch(`${Environment.api}/profile/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +136,7 @@ function ProfilePage() {
   // --------
   const updateUserInfo = async () => {
     const data = await (
-      await fetch(` https://tuwaiq-api.onrender.com/user/`, {
+      await fetch(`${Environment.api}/user/`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

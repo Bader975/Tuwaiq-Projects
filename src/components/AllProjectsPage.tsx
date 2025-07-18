@@ -18,6 +18,7 @@ import React, { useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import OnePorject from "./OnePorject";
+import { Environment } from "../../api/shared";
 
 function AllProjectsPage() {
   const [data, setData] = React.useState<any[]>([]);
@@ -29,7 +30,7 @@ function AllProjectsPage() {
   const [title, settitle] = React.useState("");
 
   const getallproject = async () => {
-    const data = await fetch(" https://tuwaiq-api.onrender.com/project/all").then(res => res.json())
+    const data = await fetch(Environment.api+"/project/all").then(res => res.json())
 
 
     // set state when the data received

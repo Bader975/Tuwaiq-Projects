@@ -12,6 +12,7 @@ import {
   Button,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { Environment } from "../../../api/shared";
 
 function AddNewIdea() {
   const [error, setError] = React.useState(false);
@@ -31,7 +32,7 @@ function AddNewIdea() {
   const addIdea = async () => {
     validation();
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/idea", {
+      await fetch(Environment.api+ "/idea", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

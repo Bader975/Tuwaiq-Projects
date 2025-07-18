@@ -33,6 +33,7 @@ import {
 import { FaMoon, FaSun } from "react-icons/fa";
 import { NavLink as RouteLink, useNavigate } from "react-router-dom";
 import { BiLogOut } from "react-icons/bi";
+import { Environment } from "../../api/shared";
 
 const reduser = (state: any, action: any) => {
   if (action.type === "user logIn") return { user: (state.user = true) };
@@ -50,7 +51,7 @@ function Nav() {
   const getUserProfile = async () => {
     // fetch data
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/profile", {
+      await fetch(Environment.api + "/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",

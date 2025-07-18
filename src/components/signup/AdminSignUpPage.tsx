@@ -20,6 +20,7 @@ import tuwaiqSvg from "../../assets/logIn_img.png";
 import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineWork } from "react-icons/md";
 import { MDBCheckbox } from "mdb-react-ui-kit";
+import { Environment } from "../../../api/shared";
 
 function AdminSignUpPage() {
 
@@ -54,7 +55,7 @@ function AdminSignUpPage() {
 
     else {
       try {
-        const request = await fetch(" https://tuwaiq-api.onrender.com/user", {
+        const request = await fetch(Environment.api+ "/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

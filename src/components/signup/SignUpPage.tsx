@@ -19,6 +19,7 @@ import tuwaiqSvg from "../../assets/logIn_img.png";
 ;
 import { FaUserAlt } from "react-icons/fa";
 import { MDBCheckbox } from "mdb-react-ui-kit";
+import { Environment } from "../../../api/shared";
 
 function SignUpPage() {
   const [name, setName] = useState("");
@@ -34,7 +35,7 @@ function SignUpPage() {
   const toast = useToast();
   const navigate = useNavigate();
 
-  // axios.post(" https://tuwaiq-api.onrender.com/user/login",
+  // axios.post(ENV.prod/user/login",
   const submitSignUp = async () => {
     if (
       name.length == 0 ||
@@ -48,8 +49,8 @@ function SignUpPage() {
       setChecked(false);
     } else {
       try {
-        // const request = await fetch(" https://tuwaiq-api.onrender.com/user", {
-        const request = await fetch("https://tuwaiq-api.onrender.com/user", {
+        // const request = await fetch(ENV.prod/user", {
+        const request = await fetch(Environment.api+"/user", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

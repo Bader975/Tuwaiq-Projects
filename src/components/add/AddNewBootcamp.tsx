@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Link as RouteLnk } from "@chakra-ui/react";
+import { Environment } from "../../../api/shared";
 
 
 function AddNewBootcamp() {
@@ -29,7 +30,7 @@ function AddNewBootcamp() {
   const addCamp = async () => {
     validation();
     const data = await (
-      await fetch(" https://tuwaiq-api.onrender.com/admin/camp", {
+      await fetch(Environment.api+ "/admin/camp", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
