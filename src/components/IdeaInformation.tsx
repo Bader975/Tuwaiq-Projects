@@ -5,6 +5,7 @@ import { MdContactPhone } from "react-icons/md";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import { useNavigate, useParams } from "react-router-dom";
+import { Environment } from "../../api/shared";
 
 function IdeaInformation() {
   const [data, setData] = React.useState<any>([]);
